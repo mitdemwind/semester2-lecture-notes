@@ -1,0 +1,156 @@
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage[usenames,svgnames,dvipnames,hyperref,table]{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+%%----section headers----
+\titleformat{\section}{\sffamily\bfseries\Large\centering}
+{\color{purple}\S\thesection\enskip}{0em}{}
+
+\titleformat{\subsection}{\sffamily\bfseries\large}
+{\color{purple}\S\thesubsection\enskip}{0em}{}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=RoyalBlue
+}
+
+%%----page formats----
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\addtolength{\textheight}{3.14cm}
+\setlength{\footskip}{0.5in}
+\setlength{\headsep}{10pt}
+
+\lhead{\footnotesize \normalfont\leftmark}
+\chead{}
+\cfoot{\pagemark}
+
+%%----theorem environments----
+
+%%fakesection New Theorem Styles
+\usepackage{amsthm}
+\usepackage{thmtools}
+
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfdefinestyle{mdbluebox}{%
+	roundcorner=10pt,
+	linewidth=1pt,
+	skipabove=12pt,
+	innerbottommargin=9pt,
+	skipbelow=2pt,
+	linecolor=blue,
+	nobreak=true,
+	backgroundcolor=TealBlue!6,
+}
+\declaretheoremstyle[
+headfont=\sffamily\bfseries\color{MidnightBlue},
+mdframed={style=mdbluebox},
+headpunct={\\[3pt]},
+postheadspace={0pt}
+]{thmbluebox}
+\mdfdefinestyle{mdredbox}{%
+	linewidth=0.5pt,
+	skipabove=12pt,
+	frametitleaboveskip=5pt,
+	frametitlebelowskip=0pt,
+	skipbelow=2pt,
+	frametitlefont=\bfseries,
+	innertopmargin=4pt,
+	innerbottommargin=8pt,
+	nobreak=true,
+	backgroundcolor=Salmon!5,
+	linecolor=RawSienna,
+}
+\declaretheoremstyle[
+headfont=\bfseries\color{RawSienna},
+mdframed={style=mdredbox},
+headpunct={\\[3pt]},
+postheadspace={0pt},
+]{thmredbox}
+\mdfdefinestyle{mdgreenbox}{%
+	skipabove=8pt,
+	linewidth=2pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	linecolor=ForestGreen,
+	backgroundcolor=ForestGreen!5,
+}
+\declaretheoremstyle[
+headfont=\bfseries\sffamily\color{ForestGreen!70!black},
+bodyfont=\normalfont,
+spaceabove=2pt,
+spacebelow=1pt,
+mdframed={style=mdgreenbox},
+headpunct={ --- },
+]{thmgreenbox}
+\mdfdefinestyle{mdblackbox}{%
+	skipabove=8pt,
+	linewidth=3pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	linecolor=black,
+	backgroundcolor=RedViolet!5!gray!5,
+}
+\declaretheoremstyle[
+headfont=\bfseries,
+bodyfont=\normalfont\small,
+spaceabove=0pt,
+spacebelow=0pt,
+mdframed={style=mdblackbox}
+]{thmblackbox}
+\newcommand{\listhack}{$\empty$\vspace{-2em}}
+
+%%fakesection Theorem setup
+
+\theoremstyle{definition}
+%Branching here: the option secthm changes theorems to be labelled by section
+
+\declaretheorem[%
+style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
+
+\declaretheorem[style=thmbluebox,name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[style=thmbluebox,name=Proposition,sibling=theorem]{proposition}
+\declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
+\declaretheorem[style=thmbluebox,name=Lemma,numbered=no]{lemma*}
+\declaretheorem[style=thmbluebox,name=Proposition,numbered=no]{proposition*}
+\declaretheorem[style=thmbluebox,name=Corollary,numbered=no]{corollary*}
+
+\declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algorithm}
+\declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algorithm*}
+\declaretheorem[style=thmgreenbox,name=Claim,sibling=theorem]{claim}
+\declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
+
+\declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
+\declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
+
+% Remark-style theorems
+%\theoremstyle{remark}
+
+\declaretheorem[style=thmgreenbox,name=Remark,sibling=theorem]{remark}
+\declaretheorem[style=thmgreenbox,name=Remark,numbered=no]{remark*}
+
+\declaretheorem[name=Conjecture,sibling=theorem]{conjecture}
+\declaretheorem[name=Conjecture,numbered=no]{conjecture*}
+\declaretheorem[name=Definition,sibling=theorem]{definition}
+\declaretheorem[name=Definition,numbered=no]{definition*}
+\declaretheorem[name=Exercise,sibling=theorem]{exercise}
+\declaretheorem[name=Exercise,numbered=no]{exercise*}
+\declaretheorem[name=Fact,sibling=theorem]{fact}
+\declaretheorem[name=Fact,numbered=no]{fact*}
+\declaretheorem[style=thmblackbox,name=Problem,sibling=theorem]{problem}
+\declaretheorem[style=thmblackbox,name=Problem,numbered=no]{problem*}
+\declaretheorem[name=Question,sibling=theorem]{ques}
+\declaretheorem[name=Question,numbered=no]{ques*}
+%\Crefname{claim}{Claim}{Claims}
+%\Crefname{conjecture}{Conjecture}{Conjectures}
+%\Crefname{exercise}{Exercise}{Exercises}
+%\Crefname{fact}{Fact}{Facts}
+%\Crefname{problem}{Problem}{Problems}
+%\Crefname{ques}{Question}{Questions}
