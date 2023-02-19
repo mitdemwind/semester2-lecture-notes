@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1676804630 "main.tex" "main.pdf" "main" 1676804631
+["pdflatex"] 1676804610 "main.tex" "main.pdf" "main" 1676804611
   "../macros.tex" 1676297105 99 dfee529093071e9e64331ea82d8ec74c ""
   "../preamble.tex" 1676803829 4618 b8d8a90f6abfc0a875e313364ca3cc2d ""
   "/etc/texmf/web2c/texmf.cnf" 1675046653 475 c0e671620eb5563b2130f56340a5fde8 ""
@@ -185,10 +185,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1675047236 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1675047266 2801788 844d8b9bebc50a82223f302562cd2ca3 ""
-  "lecture1.tex" 1676804277 95 294eae1b0df00fa618b2eab6ebf03651 ""
-  "main.aux" 1676804631 1291 363deef9905cb033ad4cc8f4966bfc26 "pdflatex"
-  "main.tex" 1676804479 303 a2a0fc2eb88397e5fe2569d7a9f588b0 ""
-  "main.toc" 1676804631 68 422450c2a666dfbf59c2f9003cf3f68d "pdflatex"
+  "lecture1.tex" 1676804609 63 4f8b0b68e822d13f4a41cf757e62260b ""
+  "main.aux" 1676804611 1117 c355fe0293477ad9be14a94165836431 "pdflatex"
+  "main.tex" 1676804600 340 7a1652e5b125a6eea404e6baf3104566 ""
+  "main.toc" 1676804611 68 422450c2a666dfbf59c2f9003cf3f68d "pdflatex"
   (generated)
   "main.aux"
   "main.log"
