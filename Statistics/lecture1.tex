@@ -1,5 +1,66 @@
 \section{Introduction}
 \label{sec:Introduction}
-\begin{definition}
-	Let \dots
+\begin{center}
+	\bfseries
+	Teacher: Liu Liping
+\end{center}
+
+{\bfseries References}:
+\begin{itemize}
+	\item Chen Jiading, \textit{Mathematical Statistics handouts}, third edition;
+	\item D. Freedman, \textit{Statistics};
+	\item Lehmann, \textit{Theory of Point Estimation}, John Wiley and Sons;
+	\item Lehmann, \textit{Testing Statistical Hypothesis}, John Wiley and Sons.
+\end{itemize}
+
+{\bfseries Differences between Statistics and Probablistics}:
+\begin{itemize}
+	\item Clearer backgrounds;
+	\item ``right'' or ``wrong'' vs. ``good'' or ``bad'';
+	\item Different research method, more computation and simulation;
+	\item Different ways of thinking.
+\end{itemize}
+
+{\bfseries Contents of this course}:
+\begin{itemize}
+	\item Focusing on common backgrounds, common thoughts and classic methods,
+		don't focus on rigorous proofs.
+	\item Chapter 2--4, first 2 sections of chapter 5, first 2 sections
+		of chapter 7.
+\end{itemize}
+
+{\bfseries Statistical regularity}:
+Law of large numbers, Central limit theorem, Law of iterated logarithm, etc.
+
+\subsection{Basic concepts of statistics}
+\label{sub:Basic concepts of statistics}
+\begin{itemize}
+	\item Totality and individuals: denoted by distribution function
+		$F(\cdot)$ or random variable $X$.
+	\item Samples: denoted by  $X_1,\dots, X_n$ or $x_1,\dots, x_n$.
+		We call $n$ the sample size.
+		If we assume independent random identically distribution (iid),
+		call them simple random samples.
+	\item Statistical magnitude: (measurable) sample function $g(x_1,\dots,x_n)$.
+	\item and more...
+\end{itemize}
+
+\subsection{Parameter estimation}
+\label{sub:Parameter estimation}
+Backgrounds: We already know the distribution type, but do not know
+the parameters. We hope to give an estimation of parameters from sample data.
+
+Maximum Likelihood Estimate (MLE)
+
+\begin{definition}[Likelihood function]
+	We call \[
+		L(x_1,\dots,x_n; \theta) = \prod_{i=1}^n f(x_i; \theta)
+	.\]
+	is the likelihood function of parameter $\theta$ about samples  $x_1,\dots,x_n$.
+
+	We say the maximum point of likelihood function
+	$\hat{\theta}_n = \hat{\theta}$ is the MLE of this sample.
 \end{definition}
+
+MLE is the most important method in classic statistics,
+and it should be considered first.

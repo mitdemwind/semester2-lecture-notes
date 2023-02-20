@@ -1,8 +1,9 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{mathrsfs}
 \usepackage{enumerate}
-\usepackage[usenames,svgnames,dvipnames,hyperref,table]{xcolor}
+\usepackage[usenames,svgnames,dvipsnames,hyperref,table]{xcolor}
 \usepackage{hyperref}
+\usepackage[margin = 1.3 in]{geometry}
 \usepackage{titlesec}
 %%----section headers----
 \titleformat{\section}{\sffamily\bfseries\Large\centering}
@@ -19,13 +20,10 @@
 %%----page formats----
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\addtolength{\textheight}{3.14cm}
-\setlength{\footskip}{0.5in}
-\setlength{\headsep}{10pt}
 
 \lhead{\footnotesize \normalfont\leftmark}
 \chead{}
-\cfoot{\pagemark}
+\cfoot{\thepage}
 
 %%----theorem environments----
 

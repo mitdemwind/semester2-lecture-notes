@@ -1,3 +1,216 @@
 %!TEX root=./main.tex
 \section{Introduction}
 \label{sec:Introduction}
+\begin{center}
+	\bfseries Teacher: Yang Shiwu
+\end{center}
+
+Grading: Homework-Midterm-Endterm: 30-30-40
+
+Contents of this course: Real analysis
+
+\subsection{Recap}
+\label{sub:Recap}
+\begin{definition}[Measurable space]
+	Let $X$ be a set and $\mathcal{A}$ be a $\sigma$-algebra,
+	we say  $(X, \mathcal{A})$ is a measurable space if
+	\begin{itemize}
+		\item $\emptyset \in \mathcal{A}$;
+		\item If $A\in \mathcal{A}$, then $A^c\in \mathcal{A}$;
+		\item If  $A_k\in \mathcal{A}$, then $\bigcup_{k=1}^{+\infty } \in \mathcal{A}$.
+	\end{itemize}
+\end{definition}
+
+Outer measure $m^*$:
+\begin{itemize}
+	\item $m^*(A)\ge 0$;
+	\item  $m^*(\bigcup_{k=1}^{\infty }A_k)\le \sum_{k=1}^{\infty} m^*(A_k)$;
+	\item $m^*(A)\le m^*(B)$ when $A\subset B$.
+\end{itemize}
+
+Caratheodry condition:
+\[
+m^*(T) = m^*(T \cap E) + m^*(T \cap E^c),\quad \forall T \subset X
+.\]
+We define the measurable sets to be all the sets $E$ satisfying above condition.
+
+This implies the Lebesgue measure space $(\mathbb{R}^n, \mathscr{U}, m)$.
+It is a complete measure space, i.e. null sets are measurable.
+
+\begin{proposition}[Properties of measurable sets]
+	Let $E$ be a measurable set, there exists $G_{\delta}$ set and  $F_{\sigma}$ set
+	such that
+	 \[
+		 E = G_{\delta}\backslash Z_1 = F_{\delta} \cup Z_2
+	.\]
+	where $Z_1,Z_2$ are null sets.
+
+	$E_k\nearrow E$  $\implies$  $ \lim_{k \to \infty}m(E_k) = m(E)$ and
+
+	 \[
+		 m\left(\liminf_{k\to \infty}E_k\right)\le \liminf_{k\to \infty}m(E_k)
+	.\]
+	(Fauto's Lemma)
+\end{proposition}
+
+\begin{definition}[Measurable function]
+	Let $f$ be a map from measurable space $(X, \mathcal{A})$ to $(Y, \mathcal{B})$.
+	We say $f$ is measurable if
+	 \[
+	\forall B\in \mathcal{B}, \quad f^{-1}(B)\in \mathcal{A}
+	.\]
+	
+	In the case of real functions, this is equivalent to
+	\[
+		\forall t\in \mathbb{R}, \quad \{x; f(x)>t\} \text{ is a measurable set}
+	.\]
+\end{definition}
+
+\begin{proposition}
+    Let $f$ be a non-negative measurable function,
+	$\exists \varphi_k \nearrow f$,
+	where $\varphi_k$ are simple functions.
+
+	For a general measurable function $f$, decompose it to $f=f_+-f_-$. 
+\end{proposition}
+
+\begin{theorem}[Egorov]
+    Let $E$ be a measurable set and $m(E)<\infty$, $f_n\to f, a.e.$,
+	Then  $\forall\varepsilon>0$, there exists a closed set $F_\varepsilon$ s.t.
+	$m(E\backslash F_{\varepsilon})<\varepsilon$ and
+	$f_n\to f$ uniformly on $F_{\varepsilon}$.
+\end{theorem}
+
+\begin{theorem}[Lusin]
+    Let $E$ be a measurable set and  $m(E)<\infty$.
+	Then $\forall \varepsilon>0, \exists F_{\varepsilon}$ such that
+	$f \big|_{F_\varepsilon}$ is continuous.
+\end{theorem}
+
+Convergence patterns:
+\begin{itemize}
+	\item $f_n\to f, a.e.$
+	\item  $f_n\to f, a.u.$
+	\item  $f_n\xrightarrow{m} f$
+\end{itemize}
+
+\section{Lebesgue integrals}
+\label{sec:Lebesgue integrals}
+The critical question of this section:
+If a sequence of functions $f_n$ converges to  $f$, when does their
+integrals $\int f_n$ converge to  $\int f$? 
+
+\subsection{Definition of Lebesgue integrals}
+\label{sub:Definition of Lebesgue integrals}
+
+\begin{itemize}
+	\item Simple functions:
+		$f=\sum_{k=1}^N a_k\chi_{E_k}$, define
+		\[
+			\int f = \sum_{k=1}^N a_km(E_k)
+		.\]
+	\item $f: E\to \mathbb{R}^n$, where $m(E)<\infty$, $f$ bounded.
+		These functions form the set $\mathcal{L}_0$
+		Then $\epsilon \varphi_k \to f$,  $\varphi_k$ simple, define
+		 \[
+		\int f = \lim_{k\to \infty}\int \varphi_k
+        .\]
+	\item Non-negative function:
+		\[
+			\int f = \sup \{\int g\mid 0\le g\le f, g\in \mathcal{L}_0\}
+		.\]
+	\item General functions:
+		\[
+		\int f = \int f_+ - \int f_-
+		.\]
+		Integrable $\iff \int f_+, \int f_- <\infty$.
+\end{itemize}
+
+Relations between Riemann integrals and Lebesgue integrals:
+\begin{itemize}
+	\item $f$ is integrable on $[a,b]$ iff
+		$f$ bounded and the discontinuous points form a null set.
+	\item If $f$ Riemann integrable on $[a,b]$, then
+		two types of integral yield the same result.
+\end{itemize}
+
+\subsection{Dominatied convergence theorem}
+\label{sub:Dominated convergence theorem}
+\begin{theorem}
+    Let $E$ be a bounded and measurable set, $f_n\to f, a.e.$ on $E$.
+	Furthermore,  $f_n$ is uniformly bounded almost everywhere ($|f_n|<M,a.e.$)
+	Then
+	\[
+	\int_E |f_n-f|\to 0 \implies \lim_{m\to \infty}\int_E f_n = \int_E f
+	.\]
+\end{theorem}
+\begin{proof}[Proof]
+    By Egorov's Theorem
+\end{proof}
+
+\begin{lemma}[Fatou's Lemma]
+	 If $f_n\ge 0$, then
+	 \[
+		 \int \liminf_{n\to \infty}f_n\le \liminf_{n\to \infty}\int f_n
+	.\]
+\end{lemma}
+\begin{proof}[Proof]
+	For any $g\in \mathcal{L}_0$, $0\le g\le \liminf_{n\to \infty} f_n$,
+	we need to prove $\inf g\le \liminf \int f_n$. 
+
+	Let $g_k=\min\{f_k, g\}$, then  $g_k\in \mathcal{L}_0$.
+    We'll prove $g_k\to g$:
+
+	Assmue by contrsdiction that  $\exists\varepsilon_0>0, \exists x_0$ s.t.
+	\[
+		g(x_0) - g_{k'}(x_0) > \varepsilon_0
+	.\]
+	then $g(x_0) - f_{k'}(x_0) > \varepsilon_0$,
+\end{proof}
+
+\begin{theorem}[Beppo-Levi]
+    $f_n \nearrow f$, non-negative,
+	 \[
+	\lim_{n\to \infty}\int f_n = \int f
+	.\]
+\end{theorem}
+\begin{proof}[Proof]
+    \[
+    f_n\le f\implies \lim_{n \to \infty}\int f_n \le \int f
+    .\]
+    By Fatou's Lemma,
+	\[
+	\int \liminf_{n\to \infty} f_n \le \liminf_{n\to \infty}\int f_n
+	.\]
+	\[
+		\implies \int f \le \liminf_{n\to \infty} \int f_n
+	.\]
+\end{proof}
+\begin{corollary}
+    Let $f_n$ be non-negative functions,
+	\[
+	\int \sum_{k=1}^{\infty} f_k(x) = \sum_{k=1}^{\infty} \int f_k(x)
+	.\]
+\end{corollary}
+
+\begin{proposition}
+    Let $f$ be an integrable function, $\forall\varepsilon>0$, we have:
+	 \begin{itemize}
+		\item Exists finite measurable set $B$ s.t.
+			\[
+				\int_{B^c}|f|<\varepsilon
+			.\]
+	    \item (ab continuity) $\exists\delta>0$ s.t.
+			$\forall B$, $m(B)<\delta$, we have
+			 \[
+			 \int_B |f| < \varepsilon
+			.\]
+			This is equivalent to
+			\[
+				\lim_{m(B)\to 0}\int_B f = 0
+			.\]
+	\end{itemize}
+\end{proposition}
+\begin{proof}[Proof]
+    ...
+\end{proof}

@@ -1,3 +1,104 @@
 \section{Introduction}
 \label{sec:Introduction}
-something here
+\begin{center}
+	\sffamily\large\bfseries Teacher: Liu Yi
+
+	Email: liuyi@bicmr.pku.edu.cn
+
+	Homepage: scholar.pku.edu.cn/liuyi $\Rightarrow$``Teaching''
+\end{center}
+
+This course covers the topic of elementary \textit{differential geometry}
+and \textit{fundamental groups in algebraic topology}.
+
+Grading: Homework-Midterm-Final: 20-40-40
+
+Midterm: Wednesday, week 8
+
+\subsection{Intro}
+\label{sub:Intro}
+\begin{definition}[Manifold]
+	Let $M$ be an open subset of $\mathbb{R}^n$, we call $M$ an $m$-dimensional regular
+	manifold of $\mathbb{R}^n$, if $\forall p\in M$, exists an open neighborhood
+	$W \subset \mathbb{R}^n$ such that there exists open set $U \subset \mathbb{R}^m$
+	and homeomorphism $\phi: U\to M \cap W$, satisfying the Jabobi matrix of $\phi$
+	is injective everywhere, i.e.
+	\[
+	\D\phi(x) = \begin{pmatrix}
+		\frac{\partial\phi_1}{\partial u_1} &\cdots &\frac{\partial\phi_1}{\partial u_m}\\
+		\vdots &\ddots &\vdots \\
+		\frac{\partial\phi_n}{\partial u_1} &\cdots &\frac{\partial\phi_n}{\partial u_m}
+	\end{pmatrix}
+	\]
+	has rank $m$ for all  $x\in U$.
+\end{definition}
+When $n=3$, we say $M$ is a curve for $m=1$, and a surface for $m=2$.
+\begin{remark}
+    The term ``$C^r$ regular manifold'' means $\phi$ is a  $C^r$ function.
+\end{remark}
+
+\begin{example}
+    Some quadratic surfaces like cylinders, biparted hyperboloids and saddle surfaces
+	are all regular 2-manifolds, but a cone is not a regular manifold.
+\end{example}
+\begin{example}
+    The curve $\phi(r) = (\cos(2\pi r), \sin (2\pi r), r)$ is a 1-manifold in $\mathbb{R}^3$.
+	This curve is called a \textit{helix}.
+\end{example}
+\begin{example}[Cycloid]
+    A cycloid is the locus of a point on a circle while the circle ``rolls'' along a line.
+	When the point lies inside resp. outside the circle, the curve is called
+	curtate cycloid resp. procolate cycloid.
+
+	{\bfseries TODO: Images here.}
+
+	The cycloid is not a manifold because it has singularity where it touches the line,
+	and procolate cycloids are also not manifolds as they have self-intersections.
+\end{example}
+\begin{remark}
+    The regular manifolds we talk about are also called ``embedded manifolds'',
+	the ones with self-intersections can be discribed as ``immersed manifolds'',
+	such as the curves in the previous example. The immersed manifolds are complex
+	and hence beyond the scope of this class.
+\end{remark}
+
+However, it turns out that the curves or surfaces with self-intersections also have some
+properties, so we need to find a way to describe them. This induces:
+
+\begin{definition}[Regular parametrized curve]
+	Let $\gamma: J\to \mathbb{R}^3$ be a function, where $J$ is an open interval.
+	if for every point $p\in J$, there exists open neighborhood  $J'$ s.t.
+	$\gamma\big|_{J'}$ is a regular 1-manifold, then we say $\gamma(J)$
+	is a regular parametrized curve, and  $\gamma\big|_{J'}$ is
+	called its regular parametrization.
+\end{definition}
+Likewise, we have:
+\begin{definition}[Regular parametrizd surface]
+	Let $\phi:U\to \mathbb{R}^3$ be a function, where $U\in \mathbb{R}^2$ is an open set.
+	If for every point $p\in U$, there exists open neighborhood  $U'$ s.t.
+	$\phi\big|_{U'}$ is a regular 2-manifold, we say $\phi(U)$ is
+	a regular parametrized surface.
+\end{definition}
+
+\subsection{Prerequisites}
+\label{sub:Prerequisites}
+\paragraph{Vector calculus}
+Let $\vec{v}(t)$ be a 3-dimensional vector function,
+its derivative resp. integration is the vector formed by taking
+derivative resp. integration of each component,
+and the derivative satisfies Leibniz's rule with respect to both dot product
+and cross product.
+
+\paragraph{Multi-variable calculus}
+If $f: \mathbb{R}^m\to \mathbb{R}^n$ is $C^2$, then the partial derivative
+can change order with each other:
+ \[
+	 \frac{\partial}{\partial x_i} \frac{\partial}{\partial x_j} f =
+	 \frac{\partial}{\partial x_j} \frac{\partial}{\partial x_i} f.
+\]
+
+Integration of surfaces has two types:
+\begin{enumerate}
+	\item $\iint f \dd x\dd y$, multiple integrals.
+	\item  $\iint f \dd x\wedge \dd y$, integrals with orientation.
+\end{enumerate}
