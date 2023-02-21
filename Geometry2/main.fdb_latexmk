@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1676883806 "main.tex" "main.pdf" "main" 1676883807 0
-  "../macros.tex" 1676879813 138 f178499bd9f843e81e14645b84ecec10 ""
-  "../preamble.tex" 1676874965 4567 23d13c31e3deea5c07eebd4131ba7183 ""
+["pdflatex"] 1676943522 "main.tex" "main.pdf" "main" 1676943523 0
+  "../macros.tex" 1676883840 138 f178499bd9f843e81e14645b84ecec10 ""
+  "../preamble.tex" 1676943518 4609 ac52699feb83172c5ca020d0a2a611c7 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcsx1200.tfm" 1136768653 1536 af648657788fd77239d1f9e0a2b79b39 ""
@@ -206,10 +206,10 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1676871738 4623355 58034c3eb7ddf7eacc726a83d01e26d2 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1676871762 7879246 a0e06bd93a50eeea2adb95467ae0402a ""
   "/usr/local/texlive/2022/texmf.cnf" 1676871735 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "lecture1.tex" 1676883806 4109 781ce3bce43a278d3fdcc38b334a331f ""
-  "main.aux" 1676883807 3595 9930fd9f1248a4659108573747b73512 "pdflatex"
+  "lecture1.tex" 1676943521 4112 dfc67fcdb436aa22827382bee300c204 ""
+  "main.aux" 1676943523 3595 9930fd9f1248a4659108573747b73512 "pdflatex"
   "main.tex" 1676804417 328 f00d6a282f307efc68026b7ce572183d ""
-  "main.toc" 1676883807 352 66d88ebe1115ee4d36ad1fece022383e "pdflatex"
+  "main.toc" 1676943523 352 66d88ebe1115ee4d36ad1fece022383e "pdflatex"
   (generated)
   "main.aux"
   "main.log"

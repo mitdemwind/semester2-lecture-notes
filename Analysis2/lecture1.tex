@@ -37,23 +37,27 @@ We define the measurable sets to be all the sets $E$ satisfying above condition.
 This implies the Lebesgue measure space $(\mathbb{R}^n, \mathscr{U}, m)$.
 It is a complete measure space, i.e. null sets are measurable.
 
-\begin{proposition}[Properties of measurable sets]
+\begin{proposition}
+	\label{mfatou}
 	
-	$\bullet$ Let $E$ be a measurable set, there exists 
+	Properties of measurable sets:
+	\begin{itemize}
+		\item Let $E$ be a measurable set, there exists 
 	a $G_{\delta}$ set $G$ and a $F_{\sigma}$ set $F$
 	such that
 	 \[
 		 E = G\backslash Z_1 = F \cup Z_2
 	.\]
 	where $Z_1,Z_2$ are null sets.
-
-	\noindent $\bullet$ (Fatou's Lemma)
+		\item (Fatou's Lemma)
 	
-	 Measurable sets $E_k\nearrow E$  $\implies$  $ \lim_{k \to \infty}m(E_k) = m(E)$ and
-
+	 Measurable sets $E_k\nearrow E$  $\implies$  $ \lim_{k \to \infty}m(E_k) = m(E)$
+	 and
 	 \[
 		 m\left(\liminf_{k\to \infty}E_k\right)\le \liminf_{k\to \infty}m(E_k)
 	.\]
+
+	\end{itemize}
 \end{proposition}
 
 \begin{definition}[Measurable function]
@@ -123,7 +127,7 @@ Convergence patterns:
 		\[
 		\int f = \int f_+ - \int f_-
 		.\]
-		Integrable $\iff \int f_+, \int f_- <\infty$.
+		Integrable $\iff \int f_+, \int f_- < +\infty$.
 \end{itemize}
 
 Relations between Riemann integrals and Lebesgue integrals:
@@ -177,7 +181,7 @@ famous Dominated Convergence Theorem.
 \end{lemma}
 \begin{proof}[Proof]
 	For any $g\in \mathcal{L}_0$,
-	$0\le g\le \liminf_{n\to \infty} f_n$, and $g\in \mathcal{L}_0$,
+	$0\le g\le \liminf_{n\to \infty} f_n$,
 	we need to prove $\int g\le \liminf \int f_n$. 
 
 	Let $g_k=\min\{f_k, g\}$, assmue $g$ is uniformly bounded
@@ -201,6 +205,11 @@ famous Dominated Convergence Theorem.
 	\end{align*}
 	and we're done.
 \end{proof}
+\begin{remark}
+	This is nearly indentical to the measure version of
+	Fatou's Lemma (\autoref{mfatou}).
+	It shows some similarities between measure and integrals.
+\end{remark}
 
 \begin{theorem}[Beppo-Levi]
 	\label{thm:beppo-levi}
@@ -233,21 +242,37 @@ famous Dominated Convergence Theorem.
 \begin{proposition}
     Let $f$ be an integrable function, $\forall\varepsilon>0$, we have:
 	 \begin{itemize}
-		\item Exists finite measurable set $B$ s.t.
+		\item There exists a set $B$ with finite measure s.t.
 			\[
 				\int_{B^c}|f|<\varepsilon
 			.\]
-	    \item (absolute continuity of integrals) $\exists\delta>0$ s.t.
-			$\forall B$, $m(B)<\delta$, we have
+	    \item (Absolute continuity of integrals) $\exists\delta>0$ s.t.
+			$\forall E$, if $m(E)<\delta$,
 			 \[
-			 \int_B |f| < \varepsilon
+			 \int_E |f| < \varepsilon
 			.\]
 			This is equivalent to
 			\[
-				\lim_{m(B)\to 0}\int_B f = 0
+				\lim_{m(E)\to 0}\int_E |f| = 0
 			.\]
 	\end{itemize}
 \end{proposition}
 \begin{proof}[Proof]
-    ...
+    Let $f_N(x) = |f(x)|$ when $|x|\le N, |f(x)|\le N$, and $f_N(x)=0$ otherwise. 
+	Then $f_N \nearrow |f|$, so by Beppo-Levi (\autoref{thm:beppo-levi}),
+	we get
+	\[
+		\lim_{N\to \infty}\int f_N = \int |f|.
+	\]
+	Let $B = \{x\mid |x|\le N, |f(x)|\le N\}$, when $N$ gets sufficiently large,
+	we must have $\int_{B^c}|f|<\varepsilon$.
+
+	For the second part, when $N$ sufficiently large we have
+	$\int (|f|-f_N)<\frac{\varepsilon}{2}$, so
+	\begin{align*}
+		\int_{E}|f| &= \int_E f_N + \int_E(|f|-f_N)\\
+		&\le N\cdot m(E) + \frac{\varepsilon}{2}.
+	\end{align*}
+	
+	Let $\delta = \frac{\varepsilon}{2N}$ to finish.
 \end{proof}
