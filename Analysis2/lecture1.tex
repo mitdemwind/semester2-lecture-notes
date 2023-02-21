@@ -2,7 +2,7 @@
 \section{Introduction}
 \label{sec:Introduction}
 \begin{center}
-	\bfseries Teacher: Yang Shiwu
+	\sffamily\large\bfseries Teacher: Yang Shiwu
 \end{center}
 
 Grading: Homework-Midterm-Endterm: 30-30-40
@@ -38,19 +38,22 @@ This implies the Lebesgue measure space $(\mathbb{R}^n, \mathscr{U}, m)$.
 It is a complete measure space, i.e. null sets are measurable.
 
 \begin{proposition}[Properties of measurable sets]
-	Let $E$ be a measurable set, there exists $G_{\delta}$ set and  $F_{\sigma}$ set
+	
+	$\bullet$ Let $E$ be a measurable set, there exists 
+	a $G_{\delta}$ set $G$ and a $F_{\sigma}$ set $F$
 	such that
 	 \[
-		 E = G_{\delta}\backslash Z_1 = F_{\delta} \cup Z_2
+		 E = G\backslash Z_1 = F \cup Z_2
 	.\]
 	where $Z_1,Z_2$ are null sets.
 
-	$E_k\nearrow E$  $\implies$  $ \lim_{k \to \infty}m(E_k) = m(E)$ and
+	\noindent $\bullet$ (Fatou's Lemma)
+	
+	 Measurable sets $E_k\nearrow E$  $\implies$  $ \lim_{k \to \infty}m(E_k) = m(E)$ and
 
 	 \[
 		 m\left(\liminf_{k\to \infty}E_k\right)\le \liminf_{k\to \infty}m(E_k)
 	.\]
-	(Fauto's Lemma)
 \end{proposition}
 
 \begin{definition}[Measurable function]
@@ -89,18 +92,15 @@ It is a complete measure space, i.e. null sets are measurable.
 
 Convergence patterns:
 \begin{itemize}
-	\item $f_n\to f, a.e.$
-	\item  $f_n\to f, a.u.$
-	\item  $f_n\xrightarrow{m} f$
+	\item Converge almost everywhere: $f_n\to f, a.e.$
+	\item Converge almost uniformly: $f_n\to f, a.u.$
+	\item Converge in measure: $f_n\xrightarrow{m} f$
 \end{itemize}
 
 \section{Lebesgue integrals}
 \label{sec:Lebesgue integrals}
-The critical question of this section:
-If a sequence of functions $f_n$ converges to  $f$, when does their
-integrals $\int f_n$ converge to  $\int f$? 
 
-\subsection{Definition of Lebesgue integrals}
+\subsection{Recap: Definition of Lebesgue integrals}
 \label{sub:Definition of Lebesgue integrals}
 
 \begin{itemize}
@@ -110,14 +110,14 @@ integrals $\int f_n$ converge to  $\int f$?
 			\int f = \sum_{k=1}^N a_km(E_k)
 		.\]
 	\item $f: E\to \mathbb{R}^n$, where $m(E)<\infty$, $f$ bounded.
-		These functions form the set $\mathcal{L}_0$
-		Then $\epsilon \varphi_k \to f$,  $\varphi_k$ simple, define
+		These functions form the set $\mathcal{L}_0$.
+		Then $\exists \varphi_k \to f$,  $\varphi_k$ simple, define
 		 \[
 		\int f = \lim_{k\to \infty}\int \varphi_k
         .\]
 	\item Non-negative function:
 		\[
-			\int f = \sup \{\int g\mid 0\le g\le f, g\in \mathcal{L}_0\}
+			\int f = \sup \left\{\int g\ \middle|\ 0\le g\le f, g\in \mathcal{L}_0\right\}
 		.\]
 	\item General functions:
 		\[
@@ -128,48 +128,83 @@ integrals $\int f_n$ converge to  $\int f$?
 
 Relations between Riemann integrals and Lebesgue integrals:
 \begin{itemize}
-	\item $f$ is integrable on $[a,b]$ iff
+	\item $f$ is Riemann integrable on $[a,b]$ iff
 		$f$ bounded and the discontinuous points form a null set.
-	\item If $f$ Riemann integrable on $[a,b]$, then
+	\item If $f$ is Riemann integrable on $[a,b]$, then
 		two types of integral yield the same result.
 \end{itemize}
 
-\subsection{Dominatied convergence theorem}
+\subsection{Dominated convergence theorem}
 \label{sub:Dominated convergence theorem}
+The critical question of this section:
+If a sequence of functions $f_n$ converges to $f$ (almost everywhere),
+when does their integrals $\int f_n$ converge to  $\int f$?
+
+We'll discuss this issue under various conditions and reach the
+famous Dominated Convergence Theorem.
+
 \begin{theorem}
-    Let $E$ be a bounded and measurable set, $f_n\to f, a.e.$ on $E$.
-	Furthermore,  $f_n$ is uniformly bounded almost everywhere ($|f_n|<M,a.e.$)
-	Then
+	\label{thm:bounded convergence}
+    Let $E$ be a measurable set with finite measure.
+    Measurable functions $f_n\to f, a.e.$ on $E$.
+	Furthermore, $f_n$ is uniformly bounded almost everywhere ($|f_n|<M,a.e.$).
+	Then we have
 	\[
 	\int_E |f_n-f|\to 0 \implies \lim_{m\to \infty}\int_E f_n = \int_E f
 	.\]
 \end{theorem}
 \begin{proof}[Proof]
-    By Egorov's Theorem
+    By Egorov's Theorem, $\forall \varepsilon>0$,
+    there exists $F_\varepsilon \subset E$ s.t.
+    $f_n\to f$ uniformly on $F_\varepsilon$,
+    and $m(E\backslash F_\varepsilon)<\varepsilon$.
+    
+    Hence
+    \begin{align*}
+    \int_E|f_n-f| &= \int_{F_\varepsilon} |f_n-f| +
+    \int_{E\backslash F_\varepsilon} |f_n-f|\\
+    &\le \varepsilon_0 m(E) + 2M \varepsilon,
+    \end{align*}
+	which proves the result.
 \end{proof}
 
 \begin{lemma}[Fatou's Lemma]
-	 If $f_n\ge 0$, then
-	 \[
-		 \int \liminf_{n\to \infty}f_n\le \liminf_{n\to \infty}\int f_n
+	\label{lem:fatou}
+	If $f_n\ge 0$, then
+	\[
+		\int \liminf_{n\to \infty}f_n\le \liminf_{n\to \infty}\int f_n
 	.\]
 \end{lemma}
 \begin{proof}[Proof]
-	For any $g\in \mathcal{L}_0$, $0\le g\le \liminf_{n\to \infty} f_n$,
-	we need to prove $\inf g\le \liminf \int f_n$. 
+	For any $g\in \mathcal{L}_0$,
+	$0\le g\le \liminf_{n\to \infty} f_n$, and $g\in \mathcal{L}_0$,
+	we need to prove $\int g\le \liminf \int f_n$. 
 
-	Let $g_k=\min\{f_k, g\}$, then  $g_k\in \mathcal{L}_0$.
+	Let $g_k=\min\{f_k, g\}$, assmue $g$ is uniformly bounded
+	so that $g_k\in \mathcal{L}_0$.
+	
     We'll prove $g_k\to g$:
-
-	Assmue by contrsdiction that  $\exists\varepsilon_0>0, \exists x_0$ s.t.
+	Assmue by contradiction that $\exists\varepsilon_0>0, \exists x_0$ s.t.
 	\[
 		g(x_0) - g_{k'}(x_0) > \varepsilon_0
 	.\]
 	then $g(x_0) - f_{k'}(x_0) > \varepsilon_0$,
+	which contradicts with $g\le \liminf_{n\to \infty} f_n$.
+	
+	Thus for sufficiently large $k$,
+	$g_k(x)\le g(x)\le g_k(x) + \varepsilon_0$, $\implies g_k\to g$.
+	
+	Therefore by \autoref{thm:bounded convergence} (note $g_k\in \mathcal{L}_0$),
+	\begin{align*}
+		\int g &= \lim_{k \to \infty}\int g_k \\
+		&\le \liminf_{k \to \infty} \int f_k,
+	\end{align*}
+	and we're done.
 \end{proof}
 
 \begin{theorem}[Beppo-Levi]
-    $f_n \nearrow f$, non-negative,
+	\label{thm:beppo-levi}
+    If non-negative functions $f_n \nearrow f$, we have
 	 \[
 	\lim_{n\to \infty}\int f_n = \int f
 	.\]
@@ -178,16 +213,18 @@ Relations between Riemann integrals and Lebesgue integrals:
     \[
     f_n\le f\implies \lim_{n \to \infty}\int f_n \le \int f
     .\]
-    By Fatou's Lemma,
+    By Fatou's Lemma (\ref{lem:fatou}),
 	\[
 	\int \liminf_{n\to \infty} f_n \le \liminf_{n\to \infty}\int f_n
-	.\]
+	= \lim_{n \to \infty}\int f_n,
+	\]
 	\[
-		\implies \int f \le \liminf_{n\to \infty} \int f_n
-	.\]
+		\implies \int f \le \lim_{n\to \infty} \int f_n.
+	\]
+	Combining the two inequalities we get the desired equality.
 \end{proof}
 \begin{corollary}
-    Let $f_n$ be non-negative functions,
+    Let $f_n$ be non-negative functions, then
 	\[
 	\int \sum_{k=1}^{\infty} f_k(x) = \sum_{k=1}^{\infty} \int f_k(x)
 	.\]
@@ -200,7 +237,7 @@ Relations between Riemann integrals and Lebesgue integrals:
 			\[
 				\int_{B^c}|f|<\varepsilon
 			.\]
-	    \item (ab continuity) $\exists\delta>0$ s.t.
+	    \item (absolute continuity of integrals) $\exists\delta>0$ s.t.
 			$\forall B$, $m(B)<\delta$, we have
 			 \[
 			 \int_B |f| < \varepsilon
