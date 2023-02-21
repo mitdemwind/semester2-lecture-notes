@@ -1,3 +1,171 @@
 \section{Introduction}
 \label{sec:Introduction}
-something here
+\begin{center}
+	\sffamily\large\bfseries
+	Teacher: An Jinpeng
+
+	Homepage: \url{https://www.math.pku.edu.cn/teachers/anjp/algebra}
+\end{center}
+
+\subsection{recap}
+\label{sub:recap}
+\paragraph{Direct sums of vector spaces}
+Given a field $F$, let $V_1,\dots,V_k$ be vector spaces over $F$.
+The set
+ \[
+	V_1 \times \dots \times V_k = \{(v_1,\dots,v_k)\mid v_i\in V_i\}
+\]
+forms a vector space by the operations
+\[
+	(v_1,\dots,v_k) + (w_1,\dots,w_k) = (v_1+w_1,\dots,v_k+w_k)
+\]
+and
+\[
+c\cdot (v_1,\dots,v_k) = (cv_1,\dots,cv_k).
+\]
+We call this vector space the external direct sum of $V_1,\dots,V_k$,
+denoted by $\bigoplus_{i=1}^k V_i$.
+
+Obviously  $(U\oplus V)\oplus W\simeq U\oplus (V\oplus W)$.
+
+For every $i$, we have an injective linear map:
+ \begin{align*}
+	\tau_i: &V_i \to \bigoplus_{j=1}^k V_j\\
+	&v_i \mapsto (0,\dots,v_i,\dots,0)
+\end{align*}
+\begin{lemma}
+	If $\mathcal{B}_i$ are the bases of $V_i$, then
+	$\bigcup_{i=1}^k \tau_i(\mathcal{B}_i)$ is
+	a basis for  $\bigoplus_{i=1}^k V_i$.
+
+	In paricular,
+	\[
+		\dim \bigoplus_{i=1}^k V_i = \sum_{i=1}^k \dim V_i.
+	\]
+\end{lemma}
+\begin{proof}[Proof]
+    Spanning part:
+
+	For any $(v_1,\dots,v_k)\in \bigoplus_{i=1}^kV_i$,
+	\[
+		v_i\in V_i = \Span(\mathcal{B}_i)\implies
+		\tau_i(v_i)\in \Span\left(\tau_i(\mathcal{B})_i\right)\implies
+		(v_1,\dots,v_k)\in \Span\left(\bigcup_{i=1}^k \tau_i(\mathcal{B}_i)\right)
+	\]
+
+	Linearly independent part:
+
+	If $\bigcup_{i=1}^k \tau_i(\mathcal{B}_i)$ is linearly dependent,
+	i.e. exists $e_{ij}\in \mathcal{B}_i$ satisfying $\exists c_{ij}\in F$,
+	\[
+		\sum_{i,j} c_{ij} \tau_i(e_{ij}) = 0.
+	\]
+	This expands to
+	\[
+		\left( \sum_{j=1}^{m_1} c_{1j}e_{1j}, \dots, \sum_{j=1}^{m_k} c_{kj}e_{kj} \right)=0.
+	\]
+	but $e_{1j}$ are linear independent, which implies $c_{1j}=0$.
+\end{proof}
+
+\begin{remark}
+    Let $V$ be a vector space over $F$, and $V_1,\dots,V_k$ are subspaces of $V$.
+
+	Consider a linear map  $\Phi: V_1\oplus \dots\oplus V_k\to V$ by
+	$(v_1,\dots,v_k)\mapsto v_1+\dots+v_k$.
+
+	Then $\Img(\Phi) = V_1+\dots+V_k$.
+	If $\Phi$ is injective, i.e.  $V_1,\dots,V_k$ are independent, we say
+	$V_1+\dots+V_k$ the internal direct sum of  $V_1,\dots,V_k$.
+
+	In this case $\Phi$ gives an isomorphism of external and internal sums:
+	\[
+		\Phi: \bigoplus_{i=1}^k V_i \xrightarrow{\sim} \sum_{i=1}^k V_i.
+	\]
+\end{remark}
+
+\begin{lemma}
+	The following statements are equivalent:
+	\begin{enumerate}
+		\item $V_1,\dots, V_k$ are independent;
+		\item For $v_i\in V_i, (i=1,\dots,k)$, if $\sum_{i=1}^kv_i =0$, then  $v_i=0$.
+		\item For any  $1\le i\le k$,  $V_i\cap (V_1+\dots+V_{i-1})=\{0\}$.
+		\item Given arbitary bases  $\mathcal{B}_i$ of $V_i$,
+			they are disjoint and their union is a basis of $\bigoplus_{i=1}^k V_i$.
+		\item If $\dim V<+\infty$, they are also equivalent to:
+		\[
+			\dim \sum_{i=1}^{k} V_i = \sum_{i=1}^{k} \dim V_i.
+		\]
+	\end{enumerate}
+\end{lemma}
+\begin{proof}[Proof]
+    It's easy but verbose so I leave it out.
+\end{proof}
+
+\begin{example}
+	Let $\Char F \ne 2$,  $V=F^{n \times n}$, $V_1 = \{A\in V\mid A^t=A\}$,
+	$V_2 = \{A\in V\mid A^t = -A\}$.
+
+	Note that $V_1\cap V_2 = \{0\}$, and $V_1+V_2 = V$,
+	hence $V_1\oplus V_2=V$ is an internal direct sum.
+\end{example}
+
+\section{Eigenvectors and eigenvalues}
+\label{sec:Eigenvectors and eigenvalues}
+Example: google page rank?
+
+\begin{definition}[Diagonizable maps]
+	Let $V$ be a vector space over $F$,
+	$T\in L(V)$ is a linear map from $V$ to itself.
+	If the matrix of $T$ under a certain basis is diagonal, we say
+	$T$ is diagonizable.
+\end{definition}
+
+In this case the linear map $T$ can be simply described as a diagonal matrix,
+thus we'll study under what condition is $T$ diagonizable.
+
+\begin{definition}[Eigenvalue]
+	Let $T: V\to V$ be a linear map, for $c\in F$,
+	let
+	\[
+		V_c= \{v\in V\mid Tv = cv\} = \ker (T- c\cdot \id_V).
+	\]
+	If $V_c\ne \{0\}$, we call $c$ an eigenvalue of $T$,
+	and $V_c$ the eigenspace of $T$ with respect to $c$.
+	the vectors in $V_c$ are called eigenvectors.
+
+	All the eigenvalues of $T$ are called the spectrum of $T$, denoted by  $\sigma(T)$.
+\end{definition}
+
+\begin{proposition}
+	Let $\mathcal{B}$ be a basis of $V$, then  $[T]_{\mathcal{B}}$ is
+	diagonizable $\iff$ vectors in $\mathcal{B}$ are all eigenvectors.
+\end{proposition}
+\begin{proof}[Proof]
+	Let $\mathcal{B}=\{e_1,\dots,e_k\}$, $A = [T]_{\mathcal{B}}$.
+	\[
+	Te_j = \sum_{i=1}^k A_{ij} e_i.
+	\]
+	So $A$ is diagonal $\iff$ $A_{ij}=0$ when $i\ne j$, 
+
+	$\iff \exists c_j\in F, Te_j = c_j e_j$,
+
+	 $\iff$ all the vectors  $e_j$ are eigenvectors.
+\end{proof}
+\begin{example}
+    Let $V=F^{n\times n}$, then $V_{sym}$ is the eigenspace of $1$,
+	and  $V_{antisym}$ is the eigenspace of $-1$.
+\end{example}
+
+\begin{lemma}
+	Let $T$ be a linear operator, then
+	\[
+	\sigma(T) = \{c\in F\mid \det (c\cdot id_V - T) = 0\}.
+	\]
+\end{lemma}
+\begin{proof}[Proof]
+     $V_c=\ker (c\cdot \id_V - T)$,
+	  \[
+	 c\in \sigma(T) \iff V_c \ne \{0\} \iff \det(c\cdot \id_V -T) = 0.
+	 \]
+	 
+\end{proof}
