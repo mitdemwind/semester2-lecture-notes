@@ -1,0 +1,154 @@
+%! TeX root = ./main.tex
+\begin{remark}
+    On how to construct regular manifolds:
+
+	Let $f: \mathbb{R}^n\to \mathbb{R}^{n-m}$ be a smooth function,
+	for a fixed $y\in \mathbb{R}^{n-m}$, if $\forall x\in f^{-1}(y)$,
+	$Df(x)$ has rank $n-m$, then $M:=f^{-1}(y)$ is an $m$-dimensional
+	regular manifold.
+
+	In fact this is known as ``Regular Value Theorem'' in literarture,
+	and $y$ is called a regular value of $f$. This leads to a branch in
+	mathematics, namely \textit{differential topology}.
+\end{remark}
+\begin{remark}
+    On real/complex analysis:
+	Holomorphic (which is the complex version of differentiable) is way
+	stronger than smooth condition.
+\end{remark}
+
+\section{Theory of space curve}
+\label{sec:Theory of space curve}
+In this section we mainly discuss the regular parametrized curves
+$\gamma: J\to \mathbb{E}^3$.
+
+Our goal is to find some identities to describe the ``shape'' of the curves.
+Since the curve is 1-dimensional manifold in 3 dimensional space,
+somehow we should find 3 identities to describe it, including length and
+another two concerning how it ``bends''.
+
+\subsection{Arc length}
+\label{sub:arc length}
+\begin{definition}[Arc length]
+	Let $\gamma: J\to \mathbb{E}^3$ be a regular parametrized curve.
+	In an interval $[a,b] \subset J$, we define its length to be
+	\[
+		Length_\gamma([a,b]) := \int_{a}^{b} \lVert \gamma'(t)\rVert \dd t.
+	\]
+	where $\gamma'(t)\in V(\mathbb{E}^3)=\mathbb{R}^3$.
+\end{definition}
+\begin{proposition}
+	Arc length is a \vocab{geometry quantity}, i.e. fixed under reparametrization.
+\end{proposition}
+
+\begin{proof}[Proof]
+    For an arbitary regular reparametrization $t = t(\tilde{t})$,
+	$\tilde{\gamma}(\tilde{t}) = \gamma(t)$,
+	by Chain rule we get
+	\begin{align*}
+		Length_{\gamma}([a,b]) &= \int _a^b |\gamma'(t)| \dd t\\
+		&= \int_{\tilde{a}}^{\tilde{b}} |\gamma'(t(\tilde{t}))|
+		\frac{\dd t}{\dd \tilde{t}} \dd \tilde{t}\\
+		&=\int_{\tilde{a}}^{\tilde{b}} |\tilde\gamma'(\tilde t)| \dd \tilde{t}
+		= Length_{\tilde{\gamma}}([\tilde a,\tilde b]).
+	\end{align*}
+	However, here we used the fact that $\frac{\dd t}{\dd \tilde t}$
+	is positive, so when the reparametrization reverses the orientation,
+	we need to take extra care of it.
+
+	\begin{align*}
+		Length_{\gamma}([a,b]) &= \int _a^b |\gamma'(t)| \dd t\\
+		&= \int_{\tilde{a}}^{\tilde{b}} |\gamma'(t(\tilde{t}))|
+		\frac{\dd t}{\dd \tilde{t}} \dd \tilde{t}\\
+		&=\int^{\tilde{a}}_{\tilde{b}} |\tilde\gamma'(\tilde t)| \dd \tilde{t}
+		= Length_{\tilde{\gamma}}([\tilde b, \tilde a]).
+	\end{align*}
+\end{proof}
+
+The arc length induces a parametrization for regular curves, namely the
+\vocab{arc length parameter} $\gamma(s)$, with $\lVert \frac{\dd\gamma}{\dd s}\rVert = 1$
+everywhere.
+
+\subsection{Curvature}
+\label{sub:Curvature}
+\begin{definition}[Curvature]
+	Let $\gamma(s)$ be a regular curve with arc length parameter,
+	define its \vocab{curvature} to be
+	\[
+	\curv_\gamma(s) = \kappa(s) := \lVert \gamma''(s)\rVert.
+	\]
+	Since it is deduced from arc length (which is a geometry quantity), it
+	must be a geometry quantity as well.
+\end{definition}
+\begin{remark}
+    Sometimes $\gamma''(s)$ is called the curvature vector.
+	It's parallel to the normal vector and can be interpreted as
+	centripedal force.
+\end{remark}
+
+\begin{example}
+    For a straight line, its curvature is always $0$.
+
+	For a circle with radius $R$, $\gamma(s)=(R\cos(\frac{s}{R}), R\sin(\frac{s}{R}))$,
+	so $\curv_\gamma(s) = \frac{1}{R}$.
+\end{example}
+
+\begin{proposition}
+    When the parameter is a general parameter $\gamma(t)$, the curvature is equal to:
+	\[
+	\curv_\gamma(t) = \frac{\lVert\gamma''(t) \times \gamma'(t)\rVert}
+	{\lVert\gamma'(t)\rVert^3}.
+	\]
+\end{proposition}
+\begin{example}
+    Let $\Gamma: x^2+k^2y^2 = 1$, calculate curvature of $\Gamma$ at point $(x,y)$.
+\end{example}
+\begin{proof}[Solution]
+    First we take a parametrization for $\Gamma$:
+	$(x, y) = (\cos t, \frac{1}{k}\sin t)$.
+
+	Then compute the derivatives:
+	$(x', y') = (-\sin t, \frac{1}{k}\cos t) = (-ky, \frac{1}{k}x),
+	(x'', y'') = (-\cos t,-\frac{1}{k}\sin t) = (-x, -y)$.
+	\[
+	\curv_\Gamma = \frac{|ky^2 + \frac{1}{k}x^2|}
+	{(k^2y^2+\frac{1}{k^2}x^2)^{\frac{3}{2}}}
+	= \frac{1}{k(\frac{1}{k^2}x^2 + k^2y^2)^{\frac{3}{2}}}.
+	\]
+	When $(x,y)=(1,0)$,  $\curv = k^2$; when $(x,y)=(0,\frac{1}{k})$,
+	$\curv = \frac{1}{k}$.
+\end{proof}
+\begin{remark}
+    Osculating circle: A circle tangent to the curve with
+	the same curvature as the curve at the tangent point.
+	Specifically, its radius is equal to $\frac{1}{\curv}$.
+
+	This is useful in engineering to indicate the curvature
+	of a curve.
+\end{remark}
+
+\subsection{Torsion and Frenet frame}
+\label{sub:Torsion and Frenet frame}
+\begin{definition}[Torsion]
+	Let $\gamma(s)$ be a curve with arc length parameter.
+
+	Let $\vec{t}:=\gamma'(s), \vec{n}:=\frac{\gamma''(s)}{\lVert\gamma''(s)\rVert}$
+	be the tangent vector and normal vector.
+
+	Let $\vec{b} = \vec{t}\times \vec{n}$ be the \vocab{binormal vector}.
+	Define the \vocab{torsion} to be
+	\[
+	\tors_\gamma(s) = \tau(s) = - \vec{b}' \cdot \vec{n}.
+	\]
+	In fact $\vec{b}'$ is parallel to $\vec{n}$:
+	\[
+	\vec{b}'= \vec{t}'\times \vec{n} + \vec{t}\times \vec{n}'
+	= \vec{t}\times\vec{n}'\perp\vec{t},
+	\]
+	and $\lVert \vec{b}\rVert = 1$, so $\vec{b}\perp\vec{b}'$,
+	so $\vv{b}' \parallel \vec{n}$.
+\end{definition}
+
+The torsion's geometric meaning is less intuitive than the previous ones.
+It describes how much the curve is moving ``out'' the plane it currently
+lies in.

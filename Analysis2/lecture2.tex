@@ -1,0 +1,133 @@
+%! TeX root = ./main.tex
+Now we take a look at what we get so far:
+\begin{itemize}
+	\item If bounded functions $f_n\in \mathcal{L}_0$, $f_n\to f$,
+		then $\int f_n\to \int f$.
+	\item If $f_n$ is non-negative, then $\int \liminf f_n \le \liminf \int f_n$. (Fatou)
+
+		This corresponds to: $m(\liminf E_n)\le \liminf m(E_n)$.
+	\item If $f_n \nearrow f$, then $\int f_n \nearrow \int f$. (Beppo-Levi)
+
+		This corresponds to: $E_n \subset E_{n+1} \implies m(\bigcup E_n) = \lim m(E_n)$.
+\end{itemize}
+
+Finally we come to the famous Lebesgue dominated convergence theorem:
+\begin{theorem}[Lebesgue Dominated Convergence Theorem]
+	\label{thm:dominated}
+    Functions $f_n \to f, a.e.$, if there exists a function  $g$ s.t.
+	$|f_n|\le g, a.e.$, then we have:
+	 \[
+	\int |f-f_n| \to 0. \left(\lim_{n\to \infty} \int f_n = \int f\right)
+    \]
+\end{theorem}
+\begin{proof}[Proof]
+    By Fatou's lemma (\ref{lem:fatou}), $2g - |f_n-f|$ is non-negative,
+	 \[
+	\int \liminf (2g-|f_n-f|) \le \liminf \int (2g - |f_n-f|)
+	\]
+	\[
+	\implies 0 \le \liminf \left(- \int |f_n - f|\right)
+	\]
+	$\implies \limsup \int |f_n - f| \le 0$, hence it must equal to $0$.
+\end{proof}
+\begin{example}
+    Non-examples of lebesgue dominated convergence theorem:
+	\begin{itemize}
+		\item Let $f_n = \chi_{[n, n+1]}$, $g = 1$, note that $g$ is not
+			integrable, so $\int f_n = 1$ while  $f_n \to 0$.
+		\item $f_n = \frac{1}{n}\chi_{[0,n]}$, $f_n\to 0$,  $\int f_n =1\not\to 0$.
+			Since  $g(x)= \min\{\frac{1}{x}, 1\}$, which isn't integrable.
+		\item $f_n = n\chi_{(0, \frac{1}{n})}$, $f_n \to 0$,  $\int f_n =1\not\to 0$.
+			Here  $g(x) = \frac{1}{x}\chi_{[0,1]}$ is not integrable.
+	\end{itemize}
+\end{example}
+\begin{example}
+    Suppose that
+	\[
+	\lim_{n\to \infty}\int_E f_n = \int_E f
+	\]
+	holds for any measurable set $E$. Then
+	\[
+	\liminf_{n\to \infty} f_n \le f\le \limsup_{n\to \infty} f_n, a.e..
+	\]
+\end{example}
+\begin{proof}[Proof]
+	We only need to prove the case when $f=0$.
+
+	For  $\forall\varepsilon>0$, define
+	\[
+	E_n^{\varepsilon} = \{x: f_n(x)< -\varepsilon\}.
+	\]
+	Note that
+	\[
+	\liminf E_n^{\varepsilon} \subset \{x: \limsup f_n\le -\varepsilon\}
+	\subset \liminf E_n^{\frac{\varepsilon}{2}}.
+	\]
+	Because when $\limsup f_n(x)\le -\varepsilon$,  $\exists N$ such that
+	$\sup_{n>N} f_n(x) < -\frac{\varepsilon}{2}$
+	\[
+		\implies f_n(x)<-\frac{\varepsilon}{2}, \forall n>N
+	\]
+
+	This implies $x\in E_n^{\frac{\varepsilon}{2}}, \forall n>N$,
+	so $x\in\liminf E_n^{\frac{\varepsilon}{2}}$.
+
+	We proceed with the proof,
+	by using the condition ($E = \bigcap_{k\ge N}E_k^{\varepsilon}$),
+    \[
+	0 = \lim_{n\to \infty} \int_{\bigcap_{k\ge N}E_k^{\varepsilon}} f_n.
+	\]
+	Since $x\in \bigcap_{k\ge N} E_k^{\varepsilon}\implies f_k(x)<-\varepsilon$,
+	we deduce
+	\[
+	0 = \lim_{n\to \infty} \int_{\bigcap_{k\ge N}E_k^{\varepsilon}} f_n
+	\le (-\varepsilon)\cdot m(\bigcap_{k\ge N}E_k^{\varepsilon})
+	\]
+	Hence $E = \bigcap_{k\ge N}E_k^{\varepsilon}$ is a null set.
+\end{proof}
+
+\subsection{Integrable function space $\mathcal{L}^1(E)$}
+\label{sub:Integrable function space L1}
+
+\begin{definition}[$\mathcal{L}^1$ space]
+	Denoted by $\mathcal{L}^1(E)$ the space consisting of
+	all the integrable functions on $E$.
+
+	If $f=g, a.e.$, then  $\int |f-g| = 0$, we regard them as equivalent elements
+	in  $\mathcal{L}^1(E)$.
+
+	Observe that $\mathcal{L}^1(E)$ is a vector space, define the norm:
+	\[
+	\lVert f \rVert = \int_E |f|.
+	\]
+	It's easy to check that $\mathcal{L}^1(E)$ becomes a normal vector space.
+
+	Moreover, it's also a \vocab{Banach space} (complete normal vector space).
+\end{definition}
+\begin{theorem}
+    $\mathcal{L}^1(E)$ is a Banach space.
+\end{theorem}
+\begin{proof}[Proof]
+    Let $f_n$ be a Cauchy sequence in  $\mathcal{L}^1(E)$,
+	suppose $\lVert f_{n_k} - f_{n_{k+1}} \rVert < 2^{-k}$.
+
+	Let $f = \sum_{k=0}^{\infty} (f_{n_{k+1}} - f_{n_{k}})$, where $f_{n_0} = 0$.
+	Because
+	\[
+	\int _E \sum_{k=0}^{\infty} |f_{n_{k+1}} - f_{n_{k}}|
+	= \sum_{k=0}^{\infty} \int_E |f_{n_{k+1}-f_{n_k}}| \le \sum_{k=0}^{\infty} 2^{-k}
+	< +\infty.
+	\]
+	so our $f$ is well-defined (convergent).
+	Now we compute
+	\begin{align*}
+		\lVert f-f_m \rVert
+		&= \lVert f_m - f_{n_l} \rVert +
+		\left\lVert \sum_{k=l}^{\infty} (f_{n_{k+1}} - f_{n_k}) \right\rVert\\
+		&\le \lVert f_m - f_{n_l} \rVert +
+		\sum_{k=l}^{\infty} \lVert f_{n_{k+1}}-f_{n_k}\rVert\\
+		&\le \lVert f_m - f_{n_l} \rVert + 2^{-l+1}.
+	\end{align*}
+	As $m$ gets large, $\lVert f_m - f_{n_l} \rVert$ and $2^{-l+1}$ both
+	converge to $0$, so $f_n\to f$ in $\mathcal{L}^1(E)$.
+\end{proof}

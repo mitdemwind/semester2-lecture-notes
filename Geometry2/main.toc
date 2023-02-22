@@ -2,4 +2,8 @@
 \contentsline {subsection}{\numberline {1.1}Intro}{1}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Prerequisites}{2}{subsection.1.2}%
 \contentsline {paragraph}{Vector calculus}{2}{subsection.1.2}%
-\contentsline {paragraph}{Multi-variable calculus}{2}{subsection.1.2}%
+\contentsline {paragraph}{Multi-variable calculus}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Theory of space curve}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Arc length}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Curvature}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Torsion and Frenet frame}{5}{subsection.2.3}%
