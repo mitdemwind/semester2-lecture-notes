@@ -91,10 +91,10 @@ Next we define the limits of sets:
 	A family of sets is denoted by script letters $\mathscr{A},\mathscr{B},\dots$.
 
 	\begin{itemize}
-		\item A family is a $\pi$-family if  $\mathscr{P}\ne \emptyset$ and
+		\item A family is a $\pi$-system if  $\mathscr{P}\ne \emptyset$ and
 			it's closed under intersections, e.g.
 			$\{(-\infty, a]: a\in \mathbb{R}\}$.
-		\item Semi-rings: $\mathscr{Q}$ is a $\pi$-family, and for all
+		\item Semi-rings: $\mathscr{Q}$ is a $\pi$-system, and for all
 			$A \subset B$, then there exists finitely many pairwise disjoint sets
 			$C_1,\dots,C_n\in \mathscr{Q}$ s.t.
 			\[
@@ -108,16 +108,16 @@ Next we define the limits of sets:
 			union and substraction.
 
 			e.g. $\mathscr{R} = \{\bigcup_{k=1}^n (a_k,b_k]:a_k,b_k\in \mathbb{R}\}$.
-		\item Algebras (fields): $\mathscr{A}$ is a $\pi$-family that contains
+		\item Algebras (fields): $\mathscr{A}$ is a $\pi$-system that contains
 			$X$, and is closed under completion.
 	\end{itemize}
 \end{definition}
 
 \begin{proposition}
-	Semi-rings are $\pi$-families, rings are semi-rings, algebras are rings.
+	Semi-rings are $\pi$-systems, rings are semi-rings, algebras are rings.
 \end{proposition}
 \begin{proof}[Proof]
-    By definition we only need to check rings are $\pi$-families:
+    By definition we only need to check rings are $\pi$-systems:
 	$A\cap B = A\backslash (A\backslash B)$.
 
 	For algebras, $A\cup B = (A^c\cap B^c)^c, A\backslash B = A\cap B^c$,
@@ -130,9 +130,9 @@ Next we define the limits of sets:
 \begin{definition}
 	Some other families that start from taking limits:
 	\begin{itemize}
-		\item Monotone families: If $A_1,\dots\in \mathscr{U}$ and $A_n$
+		\item Monotone class: If $A_1,\dots\in \mathscr{U}$ and $A_n$
 			monotone, then  $\lim_{n\to \infty}A_n =\mathscr{U}$.
-		\item $\lambda$-families:
+		\item $\lambda$-system:
 			\[
 			X\in \mathscr{L};\quad
 			A_1,A_2,\dots\in \mathscr{L}, A_n \uparrow A\implies A\in \mathscr{L};
@@ -153,9 +153,9 @@ Next we define the limits of sets:
 	\end{itemize}
 \end{definition}
 \begin{proposition}
-	$\sigma$-algebra = algebra \& monotone family;
+	$\sigma$-algebra = algebra \& monotone class;
 
-	$\sigma$-algebra =  $\lambda$-family \&  $\pi$-family.
+	$\sigma$-algebra =  $\lambda$-system \&  $\pi$-system.
 \end{proposition}
 \begin{definition}
 	$\sigma$-rings:  $\mathscr{R}$ nonempty, $A,B\in \mathscr{R}\implies
