@@ -1,0 +1,236 @@
+%! TeX root = ./main.tex
+\begin{definition}[Rational function field]
+	Let $F$ be a field, and $F[x]$ be its polynoiaml ring.
+	Define the \vocab{rational function field}:
+	\[
+		H := \left\{(f,g)\mid f, g\in F[x], g\ne 0\right\}
+		= F[x]\times (F[x]\backslash \{0\}).
+	\]
+	This process is similar to the extension from $\mathbb{Z}$ to $\mathbb{Q}$:
+	We define a equivalent relation on $H$:
+	\[
+		(f_1,g_1)\sim(f_2,g_2)\iff f_1g_2=f_2g_1.
+	\]
+	Let $F(x)$ be the set of all the equivalence classes.
+
+	Next we define the addition and multiplication as the usual way,
+	and check they are well-defined (here it is left out).
+\end{definition}
+\begin{remark}
+    This process can be adapted to any integral domain $R$,
+	which gives its fraction field $\mathrm{Frac}(R)$.
+\end{remark}
+
+In general, we can define $F(x_1,\dots,x_n)= \mathrm{Frac}(F[x_1,\dots,x_n])$.
+
+Let $F$ be a field, and $V$ a finite dimensional vector space over $F$,
+$T$ is a linear operator on $V$.
+
+We want to find the eigenvalues of $T$, by \autoref{lem:eigenpoly},
+we need to solve the equation
+ \[
+\det(c\cdot \id_V - T) = 0.
+\]
+\begin{definition}[Characteristic polynomial]
+	Let $A\in F^{n \times n}$, consider
+	\[
+		xI-A\in F[x]^{n \times n} \subset F(x)^{n \times n}.
+	\]
+	So
+	\[
+	\det(xI-A) =: f_A(x)\in F(x).
+	\]
+	The polynomial $f_A(x)$ is called the \vocab{characteristic polynomial} of $A$.
+	Observe that its roots are all the eigenvalues of $A$.
+
+	In fact we can write  $f_A$ explicitly:
+	\[
+	f_A(x) = \sum_{i=0}^{n} (-1)^i\sum \det B
+	\]
+	where $\sum \det B$ is over all $i \times i$ principal minors of $A$.
+\end{definition}
+\begin{remark}
+    In fact, the more intrinsic way to define the characteristic polynomial
+	is to define it as $f_T(x)=(x-c_1)(x-c_2)\cdots(x-c_n)$, where
+	$c_i$'s are eigenvalues of a linear operator $T$.
+	However, this definition requires the theory of Jordan forms,
+	so it's hard to define it beforehand.
+\end{remark}
+
+It's clear that similar matrices has the same characteristic polynomial
+since they represent the same linear operator.
+
+\begin{lemma}
+	Let $A:F^r\to F^n$,  $B:F^n\to F^r$ be linear maps.
+	Then $f_{AB}(x)=x^{n-r}f_{BA}(x)$.
+\end{lemma}
+\begin{proof}[Proof 1]
+	Note that
+    \[
+    \begin{pmatrix}
+		xI_n &A\\ B &I_r
+    \end{pmatrix}
+	\begin{pmatrix}
+		I_n &0\\ -B &xI_r
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		xI_n - AB &xA\\ 0 &xI_r
+	\end{pmatrix}.
+    \]
+    and
+	\[
+	\begin{pmatrix}
+		I_n &0\\ -B &xI_r
+	\end{pmatrix}
+	\begin{pmatrix}
+		xI_n &A\\ B &I_r
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		xI_n &A\\ 0 &xI_r -BA
+	\end{pmatrix}.
+	\]
+	By taking the determinant of both equations, we get:
+	\[
+	x^r \det(xI_n - AB) = x^n \det(xI_r - BA).
+	\]
+\end{proof}
+\begin{proof}[Proof 2]
+    By taking a suitable basis, we may assume $A=\begin{pmatrix}
+		I_m &0 \\ 0 &0 \end{pmatrix}$.
+	Suppose $B=\begin{pmatrix}
+		B_{11} &B_{12}\\ B_{21} &B_{22}
+	\end{pmatrix}$, where $B_{11}$ is an $m \times m$ matrix.
+
+	Compute
+	\[
+	AB = \begin{pmatrix}
+		B_{11} &B_{12}\\0 &0
+	\end{pmatrix},
+	BA = \begin{pmatrix}
+		B_{11} &0 \\ B_{21} &0
+	\end{pmatrix}.
+	\]
+	we get $f_{AB}(x) = f_{B_{11}}(x)x^{n-m}, f_{BA}(x) =x^{r-m}f_{B_{11}}(x)$.
+\end{proof}
+
+If $T$ is diagonalizable, then  $f_T(x)=(x-c_1)\cdots (x-c_n)$, where
+$\{c_1,\dots,c_n\}=\sigma(T)$.
+
+\begin{example}[How to diagonalize a matrix]
+    Let $A = \begin{pmatrix}
+		5&-6&-6\\-1&4&2\\3&-6&-4
+    \end{pmatrix}$, we can compute $f_A(x)=(x-1)(x-2)^2$.
+
+	Next we compute the eigenspaces of each eigenvalue:
+	 \[
+	V_1=(3,-1,3), V_2=\Span\{(2,1,0),(2,0,1)\}.
+	\]
+	denote the eigenvectors by $v_1,v_2,v_3$.
+
+	At last we set $P=(v_1,v_2,v_3)$, we know $P^{-1}AP=\diag\{1,2,2\}$.
+\end{example}
+\begin{example}
+    Let $A=\begin{pmatrix}
+		\cos \theta &-\sin \theta \\ \sin\theta &\cos\theta
+    \end{pmatrix}$, $f_A(x)=x^2-2\cos\theta x + 1$, which has no real roots.
+
+	But if we regard it as a complex matrix, we can get
+	$\sigma(A)=\{e^{i\theta}, e^{-i\theta}\}$,
+	and $P = \begin{pmatrix}
+		1&1\\-i&i
+	\end{pmatrix}$.
+\end{example}
+\begin{example}
+    Let $A=\begin{pmatrix}
+		\lambda &a &b\\0&\lambda&c\\0&0&\lambda
+    \end{pmatrix}$, where $\lambda,a,b,c\in \mathbb{R}$.
+
+	$f_A=(x-\lambda)^3$, but its eigenspace has dimension less than $3$,
+	so $A$ is not diagonalizable.
+\end{example}
+
+From the examples we know not all the matrices can be diagonalized
+\begin{itemize}
+	\item When $f_A$ cannot decomposite to products of polynomials of degree 1;
+	\item When the dimensions of eigenspaces can't reach $\dim V$.
+\end{itemize}
+The first case can be solved by putting it in a larger field;
+While the second case is intrinsic.
+
+In what follows we'll take a closer look at the diagonalizable matrices,
+and find some equivalent statement of being diagonalizable.
+
+\begin{proposition}
+	$T$ can be diagonalize  $\iff$ $V$ can decomposite to direct sums of
+	one-dimensional fixed subspaces.
+\end{proposition}
+\begin{proof}[Proof]
+    Since there exists a basis consisting of eigenvectors:
+	$\{e_1,\dots,e_n\}$, then $V = \bigoplus_{i=1}^n Fe_i$.
+
+	On the other hand, if $V = \bigoplus_{i=1}^n V_i$,
+	where $V_i$'s are 1-dimensional subspaces fixed under  $T$,
+	take $v_i\in V_i$, it's clear that $v_i$'s form a basis of  $V$,
+	and they are all eigenvectors.
+	This implies  $T$ is diagonalizable.
+\end{proof}
+
+\begin{proposition}
+	The eigenspaces of different eigenvalues are independent.
+	So their sum is acutually internal direct sums.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $\sigma(T)=\{c_1,\dots,c_r\}$, for any $v_i\in V_{c_i}$,
+	if $v_1+\dots+v_r = 0$,
+	let
+	\[
+	S_1 = (T-c_2\id_V)\cdots (T-c_r\id_V),
+	\]
+	then $S_1(v_1+\cdots+v_r) = Cv_1 = 0\implies v_1=0$.
+
+	(As $S_1v_i = (c_i-c_2)\cdots (c_i - c_r)v_i$ for  $1\le i\le r$.)
+
+	Similarly $v_i=0$ for all  $i$.
+\end{proof}
+
+\begin{proposition}
+	Suppose
+	\[
+		f_T(x)=\prod_{c\in\sigma(T)}(x-c)^{m(c,f_T)}.
+	\]
+	then $\forall c\in \sigma(T)$ we have  $1\le \dim V_c\le m(c,f_T)$.
+
+	Here $\dim V_c$ is called the \vocab{geometric multiplicy},
+	and $m(c,f_T)$ is the \vocab{algebraic multiplicy} of $c$.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $d=\dim V_c\ge 1$.
+
+	Take a basis $\{e_1,\dots,e_d\}$ of  $V_c$ and extend it to a basis of $V$:
+	 $\{e_1,\dots,e_n\}$.
+
+	 Since $Te_i=ce_i, \forall i\le d$, so
+	 \[
+		 [T]_{(e_i)} = \begin{pmatrix}
+			 cI_d &* \\ 0 &*
+		 \end{pmatrix}.
+	 \]
+	 so $f_T(x)=(x-c)^dg(x)$, which means $m(c,f_T)\ge d$.
+\end{proof}
+
+Now we come to a conclusion:
+
+\begin{theorem}
+    The followings are equivalent:
+	\begin{enumerate}
+		\item $T$ is diagonalizable;
+		\item  $V=\bigoplus\limits_{c\in\sigma(T)}V_c$;
+		\item  $\dim V = \sum\limits_{c\in\sigma(T)}\dim V_c$;
+		\item $f_T(x)=\prod\limits_{c\in\sigma(T)}(x-c)^{\dim V_c}$.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}[Proof]
+    This follows immediately by previous propositions.
+\end{proof}

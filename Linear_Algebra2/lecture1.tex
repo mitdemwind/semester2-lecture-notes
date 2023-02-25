@@ -23,7 +23,7 @@ and
 \[
 c\cdot (v_1,\dots,v_k) = (cv_1,\dots,cv_k).
 \]
-We call this vector space the external direct sum of $V_1,\dots,V_k$,
+We call this vector space the \vocab{external direct sum} of $V_1,\dots,V_k$,
 denoted by $\bigoplus_{i=1}^k V_i$.
 
 Obviously  $(U\oplus V)\oplus W\simeq U\oplus (V\oplus W)$.
@@ -75,7 +75,7 @@ For every $i$, we have an injective linear map:
 
 	Then $\Img(\Phi) = V_1+\dots+V_k$.
 	If $\Phi$ is injective, i.e.  $V_1,\dots,V_k$ are independent, we say
-	$V_1+\dots+V_k$ the internal direct sum of  $V_1,\dots,V_k$.
+	$V_1+\dots+V_k$ the \vocab{internal direct sum} of  $V_1,\dots,V_k$.
 
 	In this case $\Phi$ gives an isomorphism of external and internal sums:
 	\[
@@ -117,7 +117,7 @@ Example: google page rank?
 	Let $V$ be a vector space over $F$,
 	$T\in L(V)$ is a linear map from $V$ to itself.
 	If the matrix of $T$ under a certain basis is diagonal, we say
-	$T$ is diagonizable.
+	$T$ is \vocab{diagonizable}.
 \end{definition}
 
 In this case the linear map $T$ can be simply described as a diagonal matrix,
@@ -129,11 +129,12 @@ thus we'll study under what condition is $T$ diagonizable.
 	\[
 		V_c= \{v\in V\mid Tv = cv\} = \ker (T- c\cdot \id_V).
 	\]
-	If $V_c\ne \{0\}$, we call $c$ an eigenvalue of $T$,
-	and $V_c$ the eigenspace of $T$ with respect to $c$.
-	the vectors in $V_c$ are called eigenvectors.
+	If $V_c\ne \{0\}$, we call $c$ an \vocab{eigenvalue} of $T$,
+	and $V_c$ the \vocab{eigenspace} of $T$ with respect to $c$.
+	the vectors in $V_c$ are called \vocab{eigenvectors}.
 
-	All the eigenvalues of $T$ are called the spectrum of $T$, denoted by  $\sigma(T)$.
+	All the eigenvalues of $T$ are called the \vocab{spectrum} of $T$,
+	denoted by  $\sigma(T)$.
 \end{definition}
 
 \begin{proposition}
@@ -157,6 +158,7 @@ thus we'll study under what condition is $T$ diagonizable.
 \end{example}
 
 \begin{lemma}
+	\label{lem:eigenpoly}
 	Let $T$ be a linear operator, then
 	\[
 	\sigma(T) = \{c\in F\mid \det (c\cdot id_V - T) = 0\}.

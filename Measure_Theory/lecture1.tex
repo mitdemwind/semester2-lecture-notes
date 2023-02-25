@@ -1,0 +1,184 @@
+%! Tex root = ./main.tex
+\section{Introduction}
+\label{sec:Introduction}
+\begin{center}
+	\sffamily\large\bfseries Teacher: Zhang Fuxi
+
+	Email: zhangfxi@math.pku.edu.cn
+
+	Homepage: \url{http://www.math.pku.edu.cn/teachers/zhangfxi}
+\end{center}
+
+\subsection{Starting from probablistics}
+\label{sub:Starting from probablistics}
+
+\begin{definition}[$\sigma$-algebra]
+	Let $\mathscr{F}$ be a family of subsets of a set $\Omega$, if
+	\begin{itemize}
+		\item $\Omega\in \mathscr{F}$;
+		\item If $A\in \mathscr{F}$, $A^c\in \mathscr{F}$;
+		\item If  $ A_1,A_2,\dots\in \mathscr{F}$,
+			then $\bigcup_{i=1}^\infty A_i\in \mathscr{F}$.(Countable union)
+	\end{itemize}
+	then we call $\mathscr{F}$ a $\sigma$-algebra.
+\end{definition}
+
+Some intros about probablistics (left out because I haven't studied
+probablistics yet;)
+
+\subsection{What is measure theory?}
+\label{sub:What is measure theory?}
+It's an abstract theory, different from probablistics and real analysis.
+In this course we study a general set $X$,
+focus on mathematical thinking and skills, from the simple
+to construct the complex.
+
+Measure theory studies the intrinsic structure of mathematical objects,
+and the map between different measure spaces.
+
+\section{Measure spaces and measurable maps}
+\label{sec:Measure spaces and measurable maps}
+\subsection{Sets and set operations}
+\label{sub:Sets and set operations}
+\begin{definition}
+	A non-empty set $X$ is our space(universal set),
+	its elements (points) are denoted by
+	lower case letters $x,y,\dots$.
+
+	Some notations:
+	\[
+	x\in A, x\notin A, x\in A^c, A \subset B, A\cup B, AB = A\cap B,
+	\]
+	\[
+	B\backslash A (B - A\text{ when } A \subset B), A\Delta B.
+	\]
+	A family of sets $\{A_t, t\in T\}$.
+	\[
+	\bigcup_{t\in T}A_t := \{x: \exists t\in T, s.t. x\in A_t\},\quad
+	\bigcap_{t\in T}A_t := \{x: x\in A_t, \forall t\in T\}.
+	\]
+	Sometimes we write the union of disjoint sets as sums to
+	emphasize the disjoint property.
+
+	Monotone sequence of sets:
+	\[
+	A_n\uparrow: A_n \subset A_{n+1}, \forall n;\quad
+	A_n \downarrow:	A_n \supseteq A_{n+1}, \forall n.
+	\]
+\end{definition}
+
+Next we define the limits of sets:
+\begin{definition}
+	For monotone sequences:
+	\[
+	\lim_{n\to \infty}A_n := \bigcup_{n=1}^\infty A_n \text{ or }
+	\bigcap_{n=1}^\infty A_n.
+	\]
+	For general sequence of sets:
+	\[
+	\limsup A_n := \bigcap_{n=1}^\infty \bigcup_{k=n}^\infty A_n;\quad
+	\liminf A_n := \bigcup_{n=1}^\infty \bigcap_{k=n}^\infty A_n.
+	\]
+	A clearer intepretation of limsup and liminf:
+
+	limsup is the set of elements which occurs infinitely many times in $A_n$,
+	and liminf is the elements which doesn't occur in only finitely many $A_n$'s.
+\end{definition}
+
+\subsection{Families of sets}
+\label{sub:Families of sets}
+\begin{definition}
+	A family of sets is denoted by script letters $\mathscr{A},\mathscr{B},\dots$.
+
+	\begin{itemize}
+		\item A family is a $\pi$-family if  $\mathscr{P}\ne \emptyset$ and
+			it's closed under intersections, e.g.
+			$\{(-\infty, a]: a\in \mathbb{R}\}$.
+		\item Semi-rings: $\mathscr{Q}$ is a $\pi$-family, and for all
+			$A \subset B$, then there exists finitely many pairwise disjoint sets
+			$C_1,\dots,C_n\in \mathscr{Q}$ s.t.
+			\[
+			B\backslash A = \bigcup_{k=1}^n C_k = \sum_{k=1}^n C_k.
+			\]
+			e.g. $\mathscr{Q}= \{(a,b]:a,b\in \mathbb{R}\}$.
+			\begin{remark}
+				The condition $A \subset B$ can be removed.
+			\end{remark}
+		\item Rings: $\mathscr{R}$ is nonempty, and it's closed under
+			union and substraction.
+
+			e.g. $\mathscr{R} = \{\bigcup_{k=1}^n (a_k,b_k]:a_k,b_k\in \mathbb{R}\}$.
+		\item Algebras (fields): $\mathscr{A}$ is a $\pi$-family that contains
+			$X$, and is closed under completion.
+	\end{itemize}
+\end{definition}
+
+\begin{proposition}
+	Semi-rings are $\pi$-families, rings are semi-rings, algebras are rings.
+\end{proposition}
+\begin{proof}[Proof]
+    By definition we only need to check rings are $\pi$-families:
+	$A\cap B = A\backslash (A\backslash B)$.
+
+	For algebras, $A\cup B = (A^c\cap B^c)^c, A\backslash B = A\cap B^c$,
+	so they are rings.
+\end{proof}
+\begin{remark}
+    Rings are semi-rings with unions, Algebras are rings with universal set $X$.
+\end{remark}
+
+\begin{definition}
+	Some other families that start from taking limits:
+	\begin{itemize}
+		\item Monotone families: If $A_1,\dots\in \mathscr{U}$ and $A_n$
+			monotone, then  $\lim_{n\to \infty}A_n =\mathscr{U}$.
+		\item $\lambda$-families:
+			\[
+			X\in \mathscr{L};\quad
+			A_1,A_2,\dots\in \mathscr{L}, A_n \uparrow A\implies A\in \mathscr{L};
+			\]
+			\[
+			A,B\in \mathscr{L}, A \supseteq B \implies A\backslash B \in\mathscr{L}.
+			\]
+			notes: $A_n\in \mathscr{L}\iff B_n = A_n^c\in \mathscr{L}$.
+
+		\item $\sigma$-algebra:
+			\[
+			X\in \mathscr{F};\quad A\in \mathscr{F}\implies A^c\in \mathscr{F};
+			\]
+			\[
+			A_1,A_2,\dots\in \mathscr{F}\implies
+			\bigcup_{n=1}^\infty A_n\in \mathscr{F}.
+			\]
+	\end{itemize}
+\end{definition}
+\begin{proposition}
+	$\sigma$-algebra = algebra \& monotone family;
+
+	$\sigma$-algebra =  $\lambda$-family \&  $\pi$-family.
+\end{proposition}
+\begin{definition}
+	$\sigma$-rings:  $\mathscr{R}$ nonempty, $A,B\in \mathscr{R}\implies
+	A\backslash B\in \mathscr{R}$ ;
+	\[
+	A_1,A_2,\dots\in \mathscr{R}\implies \bigcup_{n=1}^\infty A_n\in \mathscr{R}.
+	\]
+	Note: We only need to verify the case when $A_n$'s are disjoint.
+\end{definition}
+
+\begin{definition}[Measurable space]
+	Let $\mathscr{F}$ be a $\sigma$-algebra on a set $X$,
+	we say $(X, \mathscr{F})$ is a measurable space.
+\end{definition}
+
+\begin{proposition}
+	Let $(X,\mathscr{F})$ be a measure space, $A$ is a subset of $X$.
+	Then $(A, A\cap \mathscr{F})$ is also a measurable space.
+\end{proposition}
+
+The smallest $\sigma$-algebra is  $\{\emptyset, X\}$,
+the largest $\sigma$-algebra is the power set $\mathscr{T}=\mathcal{P}(X)$.
+
+In some cases, $\mathscr{T}$ is too large, for example,
+when $X=\mathbb{R}$, we can't assign a ``measure'' to every subset
+that fits our common sense.
