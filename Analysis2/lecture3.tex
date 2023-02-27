@@ -1,0 +1,159 @@
+%! TeX root = ./main/tex
+\begin{remark}
+    Notes on multi-dimensional Riemann integrals:
+
+	For functions $f: \mathbb{R}\to \mathbb{R}$, recall that
+	\[
+	\int_{a}^{b} f\dd x = \lim_{\delta_i\to 0}\sum_{i=1}^{n} f(\xi_i)(x_i-x_{i-1}).
+	\]
+	But in higher dimensional spaces, it's not so easy to find the suitable
+	partition of the integral region. In fact, this requires the differential
+	theory of multi-dimensional functions first.
+
+	As for the improper integrals, for an unbounded region $D$,
+	we can simlilarly define it to be
+	\[
+	\int_D f \dd x = \lim_{n\to \infty}\int_{D_n} f\dd x,
+	\]
+	where $D_n$ can be any shape, so the limit is actually stronger than
+	its one-dimensional counterpart. In other words, when we partition $D$
+	into small cuboids, there's an issue of the summation order.
+
+	This means the integral must be ``absolutely'' convergent, since by
+	Riemann rearrangement theorem, conditional convergent sequence can
+	be rearranged so that it becomes \textit {divergent}.
+\end{remark}
+
+Here we state again that if $f=g,a.e$, we regard them as the same function.
+
+ \begin{definition}[$\mathcal{L}^p$ space]
+	Define the $ \mathcal{L}^p$ space to be
+	\[
+	\mathcal{L}^p(E) = \left\{f \mid \left( \int_E |f|^p \right)^\frac{1}{p}
+	< +\infty\right\}
+	\]
+	Simliarly, it's a complete normal vector space.
+\end{definition}
+
+In this course we mainly discuss about $\mathcal{L}^1$ instead of general
+$\mathcal{L}^p$.
+
+\begin{theorem}
+    The following function spaces are dense in $ \mathcal{L}^1$ space:
+	\begin{itemize}
+		\item Simple functions;
+		\item Step functions;
+		\item Continuous functions with compact support,
+			denoted by $C_0(E)$ or $C_c(E)$.
+		\item Smooth functions with compact support,
+			denoted by  $C_0^\infty(E)$.
+	\end{itemize}
+\end{theorem}
+\begin{proof}[Proof]
+	$\bullet$ \textbf {Simple functions}:
+
+    Density is equivalent to:
+	\[
+	\forall \varepsilon>0, \exists \text{simple function } g, s.t.
+	\lVert f-g \rVert <\varepsilon.
+	\]
+	$f$ integrable  $ \implies f_+, f_-$ measurable,
+	so there exists simple functions $\varphi_+^n$ and $\varphi_-^n$ s.t.
+	\[
+	\varphi_+^n\nearrow f_+,\varphi_-^n\nearrow f_-
+	\overset{\text{Beppo-Levi}}{\implies} \int \varphi_+^n\nearrow \int f_+<\infty,
+	\int \varphi_-^n\nearrow \int f_-<\infty
+	\]
+
+	This implies $\int (f_\pm - \varphi_\pm^n) \to 0$.
+
+	$\bullet$ \textbf{Step functions}:
+
+	Let $g = \sum_{k=1}^{N} a_k \chi_{E_k}$, we only need to consider the case
+	$g = \chi_{E_k}$, where $E_k$ is a measurable set with finite measure.
+
+	Take cuboids $I_j$ s.t.  $E_k \subset \bigcup_{j=1}^\infty I_j$,
+	and $m(E_k) + \varepsilon > \sum_{j=1}^{+\infty} |I_j|$.
+
+	Let $h = \chi_{\bigcup_{j=1}^\infty I_j}$, then
+	\begin{align*}
+		\int |h-g| &= \left|E_k \Delta \left(\bigcup_{j=1}^N I_j\right)\right|\\
+	&< \varepsilon + \sum_{j>N} |I_j|
+	\end{align*}
+	Let $N$ be sufficiently large, we conclude that $\int|f-g|\to 0$.
+
+	$\bullet$ \textbf {1-dimensional continuous functions}:
+
+	Let $l = \left\{\begin{aligned}
+		&0, &&x\in (-\infty, a]\cup [b, +\infty)\\
+		&1, &&x\in [a+ \varepsilon, b - \varepsilon]\\
+		&linear / smooth, && otherwise
+	\end{aligned}\right.$
+
+	Then $l$ is a continuous/smooth function s.t.
+	$ \lVert \chi_{[a,b]} - l \rVert < 2\varepsilon$.
+
+	$\bullet$ \textbf {Multi-dimensional continuous functions}:
+
+	Let $I = (a_1,b_1)\times \dots \times (a_n,b_n)$ be a cuboid.
+	Let $l_1,\dots, l_n$ be continuous/smooth functions on $(a_i, b_i)$
+	defined earlier. We have
+	\[
+	\lVert l_1(x_1)\cdots l_n(x_n) - \chi_I \rVert < C(n)\varepsilon,
+	\]
+	where $C(n)$ is a constant depending on  $n$.
+\end{proof}
+
+\begin{proposition}[Integrals are invariance under translation and scaling]
+	Let $f\in \mathcal{L}^1(\mathbb{R}^n)$, for $h\in \mathbb{R}^n$,
+	define $\tau_h (f)(x) = f(x+h)$, then  $\tau_h(f)\in \mathcal{L}^1$,
+	and $ \lVert \tau_h(f) \rVert = \lVert f \rVert $.
+
+	Simlilarly, define $D_\delta f(x) = f(\delta x)$,
+	then  $D_\delta f\in \mathcal{L}^1$,
+	$ \lVert D_\delta f \rVert = \delta^{-n} \lVert f \rVert $.
+\end{proposition}
+
+\begin{theorem}[Translation and scaling are continuous]
+	For $h\in \mathbb{R}^n$ and $\delta\in \mathbb{R}$,
+	\[
+	\lim_{h\to 0}\lVert \tau_h f - f \rVert = 0,\quad
+	\lim_{\delta\to 1}\lVert D_\delta f - f \rVert = 0.
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    $\forall\varepsilon>0$,  $\exists$ step function $g$ such that
+	$ \lVert g-f \rVert <\frac{\varepsilon}{3}$.
+
+	\begin{align*}
+		\lVert \tau_h f-f \rVert
+		&= \lVert \tau_h(f-g) -(f-g) + (\tau_h g - g) \rVert \\
+		&= \lVert \tau_h(f-g) \rVert + \lVert f-g \rVert +
+		\lVert \tau_h g-g \rVert \\
+		&= \lVert \tau_h g - g \rVert + \frac{2}{3}\varepsilon.
+	\end{align*}
+
+	Suppose $g=\sum_{k=1}^{N} a_k\chi_{I_k}$, it's sufficient to prove the case
+	$g = \chi_{I}$:
+	\[
+	\lim_{h\to 0}\lVert \tau_h g - g \rVert =
+	\lim_{h\to 0}\lVert I\Delta (I + h) \rVert = 0.
+	\]
+
+	Similarly $D_\delta$ is continuous.
+\end{proof}
+
+\section{Fubini's theorem}
+\label{sec:Fubini's theorem}
+This theorem provides a way to compute nulti-dimensional integrals.
+
+Let $f(x,y) : \mathbb{R}^{d_1}\times \mathbb{R}^{d_2}\to \mathbb{R}$.
+We wonder if the following equation holds:
+\[
+\int f(x,y)\dd x\dd y = \int_{\mathbb{R}^{d_1}}
+\left(\int_{\mathbb{R}^{d_2}}f(x,y)\dd y\right) \dd x
+= \int_{\mathbb{R}^{d_2}}\left(\int_{\mathbb{R}^{d_1}}f(x,y)\dd x\right)\dd y?
+\]
+
+In fact, this formula somehow says the same thing as the area of a rectangle is
+equal to its width and length, and this multiplication is commutative.

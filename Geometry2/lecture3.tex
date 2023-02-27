@@ -1,0 +1,153 @@
+%! TeX root = ./main.tex
+\begin{proposition}
+	Torsion can be represented in general parameter:
+	\[
+	\tors_\gamma(t) = \frac{(\gamma'(t)\times \gamma''(t))\cdot \gamma'''(t)}
+	{\lVert \gamma'(t)\times \gamma''(t) \rVert^2 }.
+	\]
+\end{proposition}
+\begin{remark}
+    The torsion can be negative (while curvature is always non-negative),
+	and it is only defined at the points where the curvature is nonzero.
+\end{remark}
+
+Note that the vectors $\vv{t},\vv{n},\vv{b}$ form a right-handed
+orthogonormal basis in $\mathbb{R}^3$, and it's called the curve
+$\gamma(s)$'s \vocab {Frenet frame}.
+
+The plane containing $\vv{n}$ and $\vv{b}$ is called \vocab{normal plane},
+the plane containing $\vv{t}$ and $\vv{n}$ is called \vocab{osculating plane},
+and the last plane which contains $\vv{t},\vv{b}$ is called \vocab{rectifying plane}.
+
+The Frenet frame is not a fixed frame, it's moving with the point along the curve.
+So we can compute its derivative (with respect to $s$, the arc length parameter):
+\[
+	(\vv{t}',\vv{n}',\vv{b}') = (\vv{t}, \vv{n}, \vv{b})\cdot
+	\begin{pmatrix}
+		0&-\kappa&0\\ \kappa&0&-\tau\\0&\tau&0
+	\end{pmatrix}.
+\]
+\begin{example}
+    When $\gamma$ lies on the surface of a sphere, assmue
+	$\kappa>0$ on  $\gamma\big|_J$, then
+	\[
+		\left(\frac{1}{\kappa}\right)^2 +
+		\left(\frac{1}{\tau}\left(\frac{1}{\kappa}\right)'\right)^2 = c^2.
+	\]
+	where $c$ is the radius of the sphere.
+	\begin{proof}[Proof]
+		Let $\vv{u} = \gamma(s) - p$,
+		then $\vv{u}\cdot\vv{u} = c^2$.
+		To get a relation of $\kappa$ and  $\tau$, we only need to
+		represent $\vv{u}$ in terms of $\vv{t},\vv{n}$ and $\vv{b}$.
+
+		Taking derivative WRT $s$:
+		\[
+		0 = 2\vv{u}'\cdot\vv{u} = 2\vv{t}\cdot\vv{u}.
+		\]
+		and then by taking the second and third derivative,
+		\[
+		0 = \vv{t}'\cdot\vv{u} + \vv{t}^2 = \kappa\vv{n} \cdot \vv{u} + 1.
+		\]
+		We get $\vv{u}\cdot\vv{n}  = -\frac{1}{\kappa}$.
+		\[
+			(\kappa\vv{n})' = \kappa'\vv{n} + \kappa(-\kappa\vv{t} + \tau\vv{b}),
+		\]
+		so the third derivative should be
+		\[
+		0 = \kappa\vv{n}\cdot\vv{t} +
+		\kappa'\vv{n}\cdot\vv{u} +
+		\kappa(-\kappa\vv{t} + \tau\vv{b})\cdot\vv{u}
+		= -\frac{\kappa'}{\kappa} + \kappa\tau\vv{u}\cdot\vv{b},
+		\]
+		hence $\vv{u}\cdot\vv{b} = \frac{1}{\tau}(\frac{1}{\kappa})'$.
+
+		At last we just plugged everything into $\vv{u}^2 = c^2$ to conclude.
+	\end{proof}
+
+	Note: the inverse statement does not hold, e.g. helix
+	(which has constant curvature).
+\end{example}
+
+This example shows that Frenet frame is a powerful tool
+for handling the local properties of a curve.
+In fact, we could totally ``determine'' a curve near a point
+given the curvature and torsion.
+
+\begin{example}
+    We can expand the curve $(\gamma(s), \vv{t},\vv{u},\vv{b})$ around $s=0$:
+	\[
+	\left\{\begin{aligned}
+			x(s) &= x(0) + s - \frac{\kappa^2(0)}{6}s^3 + o(s^3)\\
+			y(s) &= y(0) + \frac{\kappa(0)}{2}s^2 + \frac{\kappa^2(0)}{6}s^3 + o(s^3)\\
+			z(s) &= z(0) + \frac{\kappa'(0)\tau(0)}{6}s^3 + o(s^3)
+	\end{aligned}\right.
+	\]
+\end{example}
+\begin{remark}
+    By Frenet's formula, we can expand it to higher degrees, but the expansion
+	need not converge to the original curve (similar reason as Taylor's formula).
+	Also we can expand the curve with any parameter instead of arclength.
+\end{remark}
+
+\begin{theorem}[Fundamental theorem of curve theory]
+    Let $\kappa,\tau : J\to \mathbb{R}$ be smooth functions, $\kappa(s)>0$ on $J$.
+	There exists a curve with arc length parameter $\gamma: J\to \mathbb{E}^3$,
+	such that $\curv_\gamma = \kappa$, $\tors_\gamma = \tau$ holds
+	on $J$.
+
+	Moreover, if $\tilde \gamma$ also satisfies above conditions,
+	then exists $\sigma: \mathbb{E}^3\to \mathbb{E}^3$ perserving orientation and
+	distance s.t.  $\tilde\gamma = \sigma\circ\gamma$.
+\end{theorem}
+\begin{proof}[Proof]
+    \begin{claim}
+        Let $H = \begin{pmatrix}
+			0&-\kappa&0\\\kappa&0&-\tau\\0&\tau&0
+        \end{pmatrix}
+        : J\to \Mat_{3 \times 3}(\mathbb{R})$.
+
+		The ODE about $F: J\to \Mat_{3 \times 3}(\mathbb{R})$ :
+		\[
+		\left\{\begin{aligned}
+				\frac{\dd F}{\dd s}(s) &= F(s)H(s)\\
+				F(s_0) &= F_0\in \Mat_{3 \times 3}(\mathbb{R})
+		\end{aligned}
+		\right.
+		\]
+		always has unique solution.
+		Moreover if $F(s_0)\in \SO(3)$, then $F(s)\in \SO(3)$ always holds.
+    \end{claim}
+
+	Since this claim requires some knowledge in ODE, which is beyond the scope of
+	this course, we'll directly use it without proving.
+
+	WLOG $0\in J$, let  $s_0=0$ and $F(0)=I_3$.
+
+	Let $\mathcal{F} = (\vv{t},\vv{n},\vv{b}) := (\vv{e_1},\vv{e_2},\vv{e_3})F(s)$
+	be a frame of $\mathbb{R}^3$.
+
+	Now we construct $\gamma$ to be
+	\[
+	\gamma(s_1) := \int_{0}^{s_1} \vv{t}\dd s.
+	\]
+	It's sufficient to prove that $\curv_\gamma=\kappa$ and  $\tors_\gamma=\tau$.
+
+	Since $\mathcal{F}(0)=(e_1,e_2,e_3)$ is orthonormal frame,
+	$\mathcal{F}(s)$ is orthonormal for all $s$.
+
+	Thus  $|\vv{t}| = 1$, $s$ is the arc length parameter.
+	Some computation yields $\mathcal{F}$ is Frenet frame of $\gamma$.
+
+	Compare its Frenet matrix to $H$, we get the desired result.
+
+	On the other hand, if  $\tilde\gamma$ is as stated,
+	take its Frenet frame $\tilde {\mathcal{F}}(s)$.
+
+	Let $\sigma$ be the map which maps $\mathcal{F}(0)$ to $\tilde {\mathcal{F}}(0)$,
+	$\gamma(0)$ to $\tilde\gamma(0)$.
+
+	Then the Frenet frame of $\sigma\circ\gamma$ and  $\tilde\gamma$
+	are the solution of the same ODE,
+	$\implies \sigma\circ\gamma=\tilde\gamma$ for all $s\in J$.
+\end{proof}
