@@ -97,6 +97,7 @@ For every $i$, we have an injective linear map:
 		\]
 	\end{enumerate}
 \end{lemma}
+
 \begin{proof}[Proof]
     It's easy but verbose so I leave it out.
 \end{proof}
@@ -109,9 +110,14 @@ For every $i$, we have an injective linear map:
 	hence $V_1\oplus V_2=V$ is an internal direct sum.
 \end{example}
 
-\section{Eigenvectors and eigenvalues}
-\label{sec:Eigenvectors and eigenvalues}
+\section{Diagonization}
+\label{sec:Diagonalization}
+
 Example: google page rank?
+
+Given a linear map $T$, it can be represented as different matrices
+under different bases. Thus a question arises: What's the simpliest
+matrix representation of a linear map?
 
 \begin{definition}[Diagonizable maps]
 	Let $V$ be a vector space over $F$,
@@ -122,6 +128,9 @@ Example: google page rank?
 
 In this case the linear map $T$ can be simply described as a diagonal matrix,
 thus we'll study under what condition is $T$ diagonizable.
+
+\subsection{Eigen-things}
+\label{sub:Eigen-things}
 
 \begin{definition}[Eigenvalue]
 	Let $T: V\to V$ be a linear map, for $c\in F$,
@@ -146,11 +155,11 @@ thus we'll study under what condition is $T$ diagonizable.
 	\[
 	Te_j = \sum_{i=1}^k A_{ij} e_i.
 	\]
-	So $A$ is diagonal $\iff$ $A_{ij}=0$ when $i\ne j$, 
+	So $A$ is diagonal $\iff$ $A_{ij}=0$ when $i\ne j$,
 
 	$\iff \exists c_j\in F, Te_j = c_j e_j$,
 
-	 $\iff$ all the vectors  $e_j$ are eigenvectors.
+	$\iff$ all the vectors  $e_j$ are eigenvectors.
 \end{proof}
 \begin{example}
     Let $V=F^{n\times n}$, then $V_{sym}$ is the eigenspace of $1$,
@@ -165,9 +174,9 @@ thus we'll study under what condition is $T$ diagonizable.
 	\]
 \end{lemma}
 \begin{proof}[Proof]
-     $V_c=\ker (c\cdot \id_V - T)$,
-	  \[
-	 c\in \sigma(T) \iff V_c \ne \{0\} \iff \det(c\cdot \id_V -T) = 0.
-	 \]
-	 
+    $V_c=\ker (c\cdot \id_V - T)$,
+	\[
+	c\in \sigma(T) \iff V_c \ne \{0\} \iff \det(c\cdot \id_V -T) = 0.
+	\]
+
 \end{proof}

@@ -1,0 +1,39 @@
+%! TeX root = ./main.tex
+\section{Jordan canonical form}
+\label{sec:Jordan canonical form}
+
+It turns out that not all linear operators can be expressed
+as diagonal matrix. In this section we proceed in another
+direction: to find the ``simpliest'' matrix expression for a
+general operator.
+
+\begin{definition}[Irreducible maps]
+	Let $T$ be a linear operator on  $V$.
+	We say  $T$ is \vocab{reducible} if $V$ can be decompose to
+	a direct sum of two $T$-invariant subspaces $W_1\oplus W_2$.
+	Otherwise we say $T$ is \vocab{irreducible}.
+\end{definition}
+
+In order to study $T$, we only need to study the ``smaller'' maps $T\big|_{W_1}$
+and $T\big|_{W_2}$. In this case we denote $T = T\big|_{W_1}\oplus T\big|_{W_2}$.
+By decompose these smaller maps, we'll eventually
+get a decomposition of $T$ consisting of irreducible maps:
+\[
+T = \bigoplus_{i=1}^r T_{W_i}.
+\]
+
+Then by taking a basis of each $W_i$, and they form a basis $\mathcal{B}$ of $V$.
+It's easy to observe that  $[T]_{\mathcal{B}}$ is a block diagonal matrix.
+
+In the special case when the $W_i$'s are all 1-dimensional subspaces,
+the map $T$ is diagonalizable. The eigenvectors are the elements in the
+$W_i$'s and the eigenvalues are actually the map $T_{W_i}$.
+
+\begin{definition}[Annihilating polynomial]
+	Let $M_T = \{f\in F[x]\mid f(T) = 0\}$, we say the polynomial in
+	$M_T$ are the \vocab {annihilating polynomials} of $T$.
+
+	Note that $M_T$ is an \textit{nonzero} ideal of $F[x]$.
+	This is because $\{\id, T, \dots, T^{n^2}\}\subset \Mat_{n \times n}(F)$
+	must be linealy dependent.
+\end{definition}

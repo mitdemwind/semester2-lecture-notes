@@ -1,4 +1,9 @@
 %! TeX root = ./main.tex
+\subsection{Characteristic polynomial}
+\label{sub:Characteristic polynomial}
+
+To define the characteristic polynomial rigorously,
+we need to introduce one more concept:
 \begin{definition}[Rational function field]
 	Let $F$ be a field, and $F[x]$ be its polynoiaml ring.
 	Define the \vocab{rational function field}:
@@ -45,9 +50,10 @@ we need to solve the equation
 
 	In fact we can write  $f_A$ explicitly:
 	\[
-	f_A(x) = \sum_{i=0}^{n} (-1)^i\sum \det B
+	f_A(x) = \sum_{i=0}^{n} (-1)^i\sum \det B x^{n-i}
 	\]
 	where $\sum \det B$ is over all $i \times i$ principal minors of $A$.
+	In particular, $f_A(0) = (-1)^n\det A$.
 \end{definition}
 \begin{remark}
     In fact, the more intrinsic way to define the characteristic polynomial
@@ -124,7 +130,7 @@ $\{c_1,\dots,c_n\}=\sigma(T)$.
     \end{pmatrix}$, we can compute $f_A(x)=(x-1)(x-2)^2$.
 
 	Next we compute the eigenspaces of each eigenvalue:
-	 \[
+	\[
 	V_1=(3,-1,3), V_2=\Span\{(2,1,0),(2,0,1)\}.
 	\]
 	denote the eigenvectors by $v_1,v_2,v_3$.
@@ -209,15 +215,15 @@ and find some equivalent statement of being diagonalizable.
     Let $d=\dim V_c\ge 1$.
 
 	Take a basis $\{e_1,\dots,e_d\}$ of  $V_c$ and extend it to a basis of $V$:
-	 $\{e_1,\dots,e_n\}$.
+	$\{e_1,\dots,e_n\}$.
 
-	 Since $Te_i=ce_i, \forall i\le d$, so
-	 \[
-		 [T]_{(e_i)} = \begin{pmatrix}
-			 cI_d &* \\ 0 &*
-		 \end{pmatrix}.
-	 \]
-	 so $f_T(x)=(x-c)^dg(x)$, which means $m(c,f_T)\ge d$.
+	Since $Te_i=ce_i, \forall i\le d$, so
+	\[
+		[T]_{(e_i)} = \begin{pmatrix}
+			cI_d &* \\ 0 &*
+		\end{pmatrix}.
+	\]
+	so $f_T(x)=(x-c)^dg(x)$, which means $m(c,f_T)\ge d$.
 \end{proof}
 
 Now we come to a conclusion:
