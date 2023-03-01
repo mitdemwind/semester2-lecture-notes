@@ -1,0 +1,163 @@
+%! TeX root = ./main.tex
+\begin{theorem}[Fubini's Theorem]
+    Let $f(x,y): \mathbb{R}^{d_1}\times \mathbb{R}^{d_2}\to \mathbb{R}$, and $f$ is
+	integrable on $\mathbb{R}^{d_1}\times \mathbb{R}^{d_2}$.
+	\begin{enumerate}%[(\arabic* )]
+		\item $f(x, y)$ as a function of  $y$ is integrable on  $\mathbb{R}^{d_2}$
+			for $x\in \mathbb{R}^{d_1}\backslash Z$ with $m(Z) = 0$.
+		\item Let  $g(x) = \int_{\mathbb{R}^{d_2}}f(x, y)\dd y$,
+			for $x\in \mathbb{R}^{d_1}\backslash Z$, where $Z$ is a null set.
+			We have $g$ is integrable on  $\mathbb{R}^{d_1}$.
+		\item
+			\[
+			\int_{\mathbb{R}^{d_1+d_2}} f(x,y) = \int_{\mathbb{R}^{d_1}}
+			\left( \int_{\mathbb{R}^{d_2}} f(x, y)\dd y \right)\dd x.
+			\]
+	\end{enumerate}
+\end{theorem}
+\begin{proof}[Proof]
+    Let $\mathscr{F}$ be the space consisting of all the integrable functions that
+	satisfy Fubini's theorem.
+
+	\begin{lemma}
+		$\mathscr{F}$ is a vector space. Furthermore, for non-negative
+		monotone sequence $f_n\in \mathscr{F}$, if $\lim f_n$ is integrable,
+		then $\lim f_n\in \mathscr{F}$ as well.
+	\end{lemma}
+	\begin{proof}[Proof of the lemma]
+		First notice that $f\in \mathscr{F}\implies cf\in \mathscr{F}$.
+
+		If $f,g\in \mathscr{F}$, consider $f+g$:
+
+		By our conditions, there exists $X_f,X_g \subset \mathbb{R}^{d_1}$,
+		s.t. $f(x, y)$ integrable on  $\mathbb{R}^{d_2}$, $\forall x\notin X_f$,
+		and  $g(x, y)$ integrable on $\mathbb{R}^{d_2}$, $\forall x\notin X_g$.
+
+		This implies $f(x, y)+g(x, y)$ integrable on $\mathbb{R}^{d_2}$ for
+		$x\notin X_f\cup X_g$, which proves (1).
+		\[
+		\int_{\mathbb{R}^{d_2}}f(x,y)+g(x,y)\dd y =
+		\int_{\mathbb{R}^{d_2}}f(x,y)\dd y +\int_{\mathbb{R}^{d_2}}g(x,y)\dd y.
+		\]
+		So the LHS is integrable on $\mathbb{R}^{d_1}$ (this is (2)),
+		taking the integral we get
+		\[
+		\int_{\mathbb{R}^{d_1}}\left( \int_{\mathbb{R}^{d_2}}f(x,y)\dd y \right)\dd x
+		+\int_{\mathbb{R}^{d_1}}\left( \int_{\mathbb{R}^{d_2}}g(x,y)\dd y \right)\dd x
+		=\int_{\mathbb{R}^{d_1}}
+		\left( \int_{\mathbb{R}^{d_2}}f(x,y)+g(x,y)\dd y \right)\dd x.
+		\]
+		Therefore $\mathscr{F}$ is a vector space.
+
+		For a monotone non-negative sequence $f_n$,
+		$\exists X_n \subset \mathbb{R}^{d_1}$ s.t.
+		$f_n$ is integrable with respect to  $y$ for $x\notin X_n$.
+
+		Similarly, when $x\notin \bigcup_{n=1}^\infty X_n$,
+		as a function of $y$, by Beppo-Levi (or Dominated convergence),
+		\[
+		\int_{\mathbb{R}^{d_2}}f(x,y)\dd y =
+		\lim_{n\to \infty}\int_{\mathbb{R}^{d_2}}f_n(x, y)\dd y.
+		\]
+
+		This equation holds when $\int f(x,y)\dd y$ is finite,
+		so we need to prove it is finite almost everywhere.
+
+		For  $x\notin\bigcup X_n$, we have:
+		\[
+		\int_{\mathbb{R}^{d_1}}\left( \int_{\mathbb{R}^{d_2}}f_n(x,y)\dd y \right)\dd x
+		\to\int_{\mathbb{R}^{d_1}}\left( \int_{\mathbb{R}^{d_2}}f(x,y)\dd y \right)\dd x
+		\]
+		\[
+		\int_{\mathbb{R}^{d_1}}\left( \int_{\mathbb{R}^{d_2}}f_n(x,y)\dd y \right)\dd x
+		= \int_{\mathbb{R}^{d_1+d_2}}f_n
+		\to\int_{\mathbb{R}^{d_1+d_2}}f
+		\]
+		Compare these relations we deduce
+		\[
+		\int_{\mathbb{R}^{d_1}}\left( \int_{\mathbb{R}^{d_2}}f(x,y)\dd y \right)\dd x
+		= \int_{\mathbb{R}^{d_1+d_2}}f < +\infty.
+		\]
+		so $\int_{\mathbb{R}^{d_2}}f(x,y)\dd y$ is finite almost everywhere.
+		This gives (1), and (2), (3) follows immediatedly.
+	\end{proof}
+
+	Back to the proof of the original theorem, we want to prove
+	$\mathscr{F} = \mathcal{L}^1$.
+
+	We prove the indicator function of following sets are in $\mathscr{F}$ :
+	\begin{itemize}
+		\item Cuboids;
+		\item Finite open sets;
+		\item $G_\delta$ sets;
+		\item Null sets;
+		\item General measurable sets.
+	\end{itemize}
+
+	Let $I$ be a cuboid,  $I = I_x \times I_y$, so $\chi_I = \chi_{I_x}\chi_{I_y}$.
+	\[
+	\int \chi_I = |I| = |I_x||I_y|
+	= \int \chi_{I_x}|I_y|\dd x = \int \int (\chi_{I_x}\chi_{I_y}\dd y)\dd x.
+	\]
+	Let $O$ be a finite open set,  $O=\bigcup_{n=1}^\infty I_n$,
+	where $I_n$ are pairwise disjoint cuboids.
+	\[
+	\chi_O = \lim_{n\to \infty}\chi_{\bigcup_{k=1}^n I_k} \in \mathscr{F},
+	\]
+	as it's an inceasing sequence.
+
+	For $G_\delta = \bigcap_{n=1}^\infty O_n$, $\chi_{O_n}\searrow \chi_{G_\delta}$.
+	$ \implies \chi_{G_\delta}\in \mathscr{F}$.
+
+	For null set  $E$, if $\chi_E\in \mathscr{F}$, $\forall A \subset E$,
+	\[
+	0 = \int \chi_E =
+	\int_{\mathbb{R}^{d_1}}\left( \int_{\mathbb{R}^{d_2}}\chi_E\dd y \right)\dd x.
+	\]
+	hence $\int_{\mathbb{R}^{d_2}} \chi_E\dd y = 0$, for $x,a.e.$
+	$ \implies \int_{\mathbb{R}^{d_2}}\chi_A\dd y = 0$ for $x,a.e.$.
+
+	Taking the integral with respect to $x$, we have  $\chi_A\in \mathscr{F}$.
+
+	Therefore if $E$ is a null set, by taking its equi-measure hull
+	we deduce  $\chi_E\in \mathscr{F}$.
+
+	Finally, for a general measurable set $E$,
+	let  $O$ be its equi-measure hull, and  $E=O\backslash A$.
+	since  $\mathscr{F}$ is a vector space, $\chi_E\in \mathscr{F}$.
+
+	The rest is trival now:
+	Because all the simple functions are in $\mathscr{F}$,
+	and any measurable functions can be expressed as limits of
+	increasing simple functions, so $\mathscr{F} = \mathcal{L}^1(\mathbb{R}^{d_1+d_2})$.
+\end{proof}
+
+\begin{theorem}[Tonelli's theorem]
+    Let $f$ be a non-negative measurable function on  $\mathbb{R}^{d}$.
+	\begin{itemize}
+		\item $f(x, y)$ is measurable on $\mathbb{R}^{d_2}$ for $x$ almost everywhere;
+		\item  $\int_{\mathbb{R}^{d_2}}f(x,y)\dd y$ as a function of $x$
+			is measurable;
+		\item The integral satisfies:
+			\[
+			\int_{\mathbb{R}^{d}} f =\int _{\mathbb{R}^{d_1}}
+			\left( \int_{\mathbb{R}^{d_2}} f(x,y)\dd y \right)\dd x.
+			\]
+	\end{itemize}
+\end{theorem}
+\begin{proof}[Proof]
+    Consider the truncation function $f(x,y)\chi_{|x|+|y|<k}\chi_{f<k}$.
+\end{proof}
+
+\begin{proposition}
+	Let $E$ be a measurable set on $\mathbb{R}^{d}$. For $x$ almost everywhere,
+	$E^x = \{y \mid (x,y)\in E\}$ is measurable on $\mathbb{R}^{d_2}$.
+
+	As a function of $x$,  $m(E^x)$ satisfies
+	\[
+	m(E) = \int_{\mathbb{R}^{d_1}}m(E^x).
+	\]
+\end{proposition}
+\begin{proof}[Proof]
+    Consider $f = \chi_{E}$ and use Tonelli's theorem.
+\end{proof}

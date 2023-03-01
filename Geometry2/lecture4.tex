@@ -1,0 +1,45 @@
+%! TeX root = ./main.tex
+\begin{remark}
+    Here we give a proof of $F\in \SO(3)$:
+	\begin{proof}[Proof]
+		Note that
+		\[
+			\left(FF^T\right)' = F'F^T + F(F')^T = F\left(H+H^T\right)F^T = 0.
+		\]
+		thus $FF^T = I$ as it holds at $s_0$ $ \implies F\in \mathrm{O}(3)$.
+
+		Beisdes, it's easy to see that $\det(F)$ doesn't change sign,
+		so  $F\in \SO(3)$.
+	\end{proof}
+
+	In the words of tangent spaces or Lie groups, we can say that
+	$T_I\SO(3) = \{X\mid X+X^T = 0\}$, and $T_F\SO(3) = \{FX\mid X+X^T = 0\}$.
+\end{remark}
+\begin{remark}
+	The above ODE cannot be solved explicitly, so
+    here we introduce a method called ``successive approximation''.
+	(For more details, see my notes of Analysis I)
+
+	Let $F_0(s) = F_0$,
+	$F_1(s) = F_0 + \int_{s_0}^{s} F_0(t)H(t)\dd t$,
+	and define
+	\[
+		F_{j+1}(s) = F_0 + \int_{s_0}^{s} F_j(t)H(t)\dd t.
+	\]
+	We can compute
+	\[
+	|F_1(s)-F_0(s)| = \left|\int_{s_0}^{s} F_0(t)H(t)\dd t\right|
+	\le \int_{s_0}^{s} |F_0(t)H(t)|\dd t
+	\le M(s-s_0) \cdot |F_0|.
+	\]
+	\[
+	|F_{j+1}(s)-F_{j}(s)| = \left|\int_{s_0}^{s} (F_j(t)-F_{j-1}(t))H(t)\dd t\right|
+	\le M^{j+1} \frac{(s-s_0)^{j+1}}{(j+1)!} |F_0|.
+	\]
+	Therefore $F_j$ must uniformly converge to some function $F$ on
+	some small interval $[s_0-\delta, s_0+\delta]$.
+
+	With some effort we can check $F$ is differentiable and satisfies the ODE.
+	Furthermore, $F$ can extend to the entire interval $J$, and it's
+	the \textit{unique} solution.
+\end{remark}

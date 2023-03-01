@@ -90,6 +90,9 @@ given the curvature and torsion.
 	Also we can expand the curve with any parameter instead of arclength.
 \end{remark}
 
+\subsection{Fundamental theorem of curve theory}
+\label{sub:Fundamental theorem of curve theory}
+
 \begin{theorem}[Fundamental theorem of curve theory]
     Let $\kappa,\tau : J\to \mathbb{R}$ be smooth functions, $\kappa(s)>0$ on $J$.
 	There exists a curve with arc length parameter $\gamma: J\to \mathbb{E}^3$,
@@ -100,31 +103,30 @@ given the curvature and torsion.
 	then exists $\sigma: \mathbb{E}^3\to \mathbb{E}^3$ perserving orientation and
 	distance s.t.  $\tilde\gamma = \sigma\circ\gamma$.
 \end{theorem}
-\begin{proof}[Proof]
-    \begin{claim}
-        Let $H = \begin{pmatrix}
-			0&-\kappa&0\\\kappa&0&-\tau\\0&\tau&0
-        \end{pmatrix}
-        : J\to \Mat_{3 \times 3}(\mathbb{R})$.
+\begin{claim}
+	Let $H = \begin{pmatrix}
+		0&-\kappa&0\\\kappa&0&-\tau\\0&\tau&0
+	\end{pmatrix}
+	: J\to \Mat_{3 \times 3}(\mathbb{R})$.
 
-		The ODE about $F: J\to \Mat_{3 \times 3}(\mathbb{R})$ :
-		\[
-		\left\{\begin{aligned}
-				\frac{\dd F}{\dd s}(s) &= F(s)H(s)\\
-				F(s_0) &= F_0\in \Mat_{3 \times 3}(\mathbb{R})
-		\end{aligned}
-		\right.
-		\]
-		always has unique solution.
-		Moreover if $F(s_0)\in \SO(3)$, then $F(s)\in \SO(3)$ always holds.
-    \end{claim}
-
+	The ODE about $F: J\to \Mat_{3 \times 3}(\mathbb{R})$ :
+	\[
+	\left\{\begin{aligned}
+			\frac{\dd F}{\dd s}(s) &= F(s)H(s)\\
+			F(s_0) &= F_0\in \Mat_{3 \times 3}(\mathbb{R})
+	\end{aligned}
+	\right.
+	\]
+	always has unique solution.
+	Moreover if $F(s_0)\in \SO(3)$, then $F(s)\in \SO(3)$ always holds.
+\end{claim}
+\begin{proof}[Proof of the theorem]
 	Since this claim requires some knowledge in ODE, which is beyond the scope of
 	this course, we'll directly use it without proving.
 
 	WLOG $0\in J$, let  $s_0=0$ and $F(0)=I_3$.
 
-	Let $\mathcal{F} = (\vv{t},\vv{n},\vv{b}) := (\vv{e_1},\vv{e_2},\vv{e_3})F(s)$
+	Let $\mathcal{F} = (\vv{t},\vv{n},\vv{b}) := (\vv{e}_1,\vv{e}_2,\vv{e}_3)F(s)$
 	be a frame of $\mathbb{R}^3$.
 
 	Now we construct $\gamma$ to be
@@ -138,7 +140,6 @@ given the curvature and torsion.
 
 	Thus  $|\vv{t}| = 1$, $s$ is the arc length parameter.
 	Some computation yields $\mathcal{F}$ is Frenet frame of $\gamma$.
-
 	Compare its Frenet matrix to $H$, we get the desired result.
 
 	On the other hand, if  $\tilde\gamma$ is as stated,
@@ -146,8 +147,7 @@ given the curvature and torsion.
 
 	Let $\sigma$ be the map which maps $\mathcal{F}(0)$ to $\tilde {\mathcal{F}}(0)$,
 	$\gamma(0)$ to $\tilde\gamma(0)$.
-
 	Then the Frenet frame of $\sigma\circ\gamma$ and  $\tilde\gamma$
-	are the solution of the same ODE,
+	are the solution of the same ODE
 	$\implies \sigma\circ\gamma=\tilde\gamma$ for all $s\in J$.
 \end{proof}
