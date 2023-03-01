@@ -91,10 +91,10 @@ Next we define the limits of sets:
 	A family of sets is denoted by script letters $\mathscr{A},\mathscr{B},\dots$.
 
 	\begin{itemize}
-		\item A family is a $\pi$-system if  $\mathscr{P}\ne \emptyset$ and
+		\item A family is a \vocab{$\pi$-system} if  $\mathscr{P}\ne \emptyset$ and
 			it's closed under intersections, e.g.
 			$\{(-\infty, a]: a\in \mathbb{R}\}$.
-		\item Semi-rings: $\mathscr{Q}$ is a $\pi$-system, and for all
+		\item \vocab{Semi-rings}: $\mathscr{Q}$ is a $\pi$-system, and for all
 			$A \subset B$, then there exists finitely many pairwise disjoint sets
 			$C_1,\dots,C_n\in \mathscr{Q}$ s.t.
 			\[
@@ -104,11 +104,11 @@ Next we define the limits of sets:
 			\begin{remark}
 				The condition $A \subset B$ can be removed.
 			\end{remark}
-		\item Rings: $\mathscr{R}$ is nonempty, and it's closed under
+		\item \vocab{Rings}: $\mathscr{R}$ is nonempty, and it's closed under
 			union and substraction.
 
 			e.g. $\mathscr{R} = \{\bigcup_{k=1}^n (a_k,b_k]:a_k,b_k\in \mathbb{R}\}$.
-		\item Algebras (fields): $\mathscr{A}$ is a $\pi$-system that contains
+		\item \vocab{Algebras (fields)}: $\mathscr{A}$ is a $\pi$-system that contains
 			$X$, and is closed under completion.
 	\end{itemize}
 \end{definition}
@@ -130,9 +130,9 @@ Next we define the limits of sets:
 \begin{definition}
 	Some other families that start from taking limits:
 	\begin{itemize}
-		\item Monotone class: If $A_1,\dots\in \mathscr{U}$ and $A_n$
-			monotone, then  $\lim_{n\to \infty}A_n =\mathscr{U}$.
-		\item $\lambda$-system:
+		\item \vocab{Monotone class}: If $A_1,\dots\in \mathscr{U}$ and $A_n$
+			monotone, then  $\lim_{n\to \infty}A_n \in\mathscr{U}$.
+		\item \vocab{$\lambda$-system}: 
 			\[
 			X\in \mathscr{L};\quad
 			A_1,A_2,\dots\in \mathscr{L}, A_n \uparrow A\implies A\in \mathscr{L};
@@ -142,7 +142,7 @@ Next we define the limits of sets:
 			\]
 			notes: $A_n\in \mathscr{L}\iff B_n = A_n^c\in \mathscr{L}$.
 
-		\item $\sigma$-algebra:
+		\item \vocab{$\sigma$-algebra}: 
 			\[
 			X\in \mathscr{F};\quad A\in \mathscr{F}\implies A^c\in \mathscr{F};
 			\]
@@ -153,12 +153,11 @@ Next we define the limits of sets:
 	\end{itemize}
 \end{definition}
 \begin{proposition}
-	$\sigma$-algebra = algebra \& monotone class;
-
-	$\sigma$-algebra =  $\lambda$-system \&  $\pi$-system.
+	$\sigma$-algebra = algebra \& monotone class =
+	$\lambda$-system \&  $\pi$-system.
 \end{proposition}
 \begin{definition}
-	$\sigma$-rings:  $\mathscr{R}$ nonempty, $A,B\in \mathscr{R}\implies
+	\vocab{$\sigma$-rings}:  $\mathscr{R}$ nonempty, $A,B\in \mathscr{R}\implies
 	A\backslash B\in \mathscr{R}$ ;
 	\[
 	A_1,A_2,\dots\in \mathscr{R}\implies \bigcup_{n=1}^\infty A_n\in \mathscr{R}.
@@ -168,11 +167,11 @@ Next we define the limits of sets:
 
 \begin{definition}[Measurable space]
 	Let $\mathscr{F}$ be a $\sigma$-algebra on a set $X$,
-	we say $(X, \mathscr{F})$ is a measurable space.
+	we say $(X, \mathscr{F})$ is a \vocab{measurable space}.
 \end{definition}
 
 \begin{proposition}
-	Let $(X,\mathscr{F})$ be a measure space, $A$ is a subset of $X$.
+	Let $(X,\mathscr{F})$ be a measurable space, $A$ is a subset of $X$.
 	Then $(A, A\cap \mathscr{F})$ is also a measurable space.
 \end{proposition}
 
