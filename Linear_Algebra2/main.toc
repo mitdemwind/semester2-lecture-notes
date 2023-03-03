@@ -1,7 +1,2 @@
-\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}recap}{1}{subsection.1.1}%
-\contentsline {paragraph}{Direct sums of vector spaces}{1}{subsection.1.1}%
-\contentsline {section}{\numberline {2}Diagonization}{3}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Eigen-things}{3}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Characteristic polynomial}{4}{subsection.2.2}%
-\contentsline {section}{\numberline {3}Jordan canonical form}{7}{section.3}%
+\contentsline {subsection}{\numberline {0.1}Characteristic polynomial}{1}{subsection.0.1}%
+\contentsline {section}{\numberline {1}Jordan canonical form}{4}{section.1}%

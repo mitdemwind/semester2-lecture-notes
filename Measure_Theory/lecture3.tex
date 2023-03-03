@@ -1,0 +1,208 @@
+%! TeX root = ./main.tex
+\begin{definition}[Generalize real numbers]
+	Let $ \overline{\mathbb{R}} := \mathbb{R}\cup \{-\infty,+\infty\}$.
+	Similarly we can assign an order to $\overline{\mathbb{R}}$.
+
+	For the calculations, we assign $0$ to  $0\cdot \pm \infty$,
+	and $ \infty-\infty, \frac{\infty}{\infty}$ is undefined.
+\end{definition}
+
+For all $a\in \overline{\mathbb{R}}$, define
+$a^+ = \max\{a,0\}, a^-=\max\{-a,0\}$, so $a = a^+ - a^-$.
+
+Define the Borel $\sigma$-algebra on  $ \overline{\mathbb{R}}$:
+\[
+\mathscr{B}_{\overline{\mathbb{R}}} := \sigma(\mathscr{B}_{\mathbb{R}}\cup
+\{+\infty,-\infty\}).
+\]
+For any set $A, A \in \mathscr{B}_{\overline{\mathbb{R}}} \iff A = B\cup C$,
+where  $B\in \mathscr{B}_{\mathbb{R}}, C \subset\{+\infty,-\infty\}$.
+
+\begin{definition}[Measurable functions]
+	We say a function $f$ is \vocab{measurable} if
+	\[
+	f:(X,\mathscr{F})\to (\overline{\mathbb{R}}, \mathscr{B}_{\overline{\mathbb{R}}}).
+	\]
+	A \vocab{random variable (r.v.)} is a measurable map to $(\mathbb{R}, \mathscr{B}_{\mathbb{R}})$.
+\end{definition}
+
+Measurable functions are in fact random variables that can take
+$\pm \infty$ as its value.
+
+\begin{theorem}
+    Let $(X,\mathscr{F})$ be a measurable space, $f:X\to \overline{\mathbb{R}}$
+	if and only if
+	\[
+	\{f\le a\}\in \mathscr{F}, \quad \forall a\in \mathbb{R}.
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    Just note that these sets can generate $\mathscr{B}_{\overline{\mathbb{R}}}$.
+
+	Let $\mathscr{E}=\{[-\infty, a]: \forall a\in \mathbb{R}\}$.
+	Then
+	\[
+	f \text{ measurable} \iff \sigma(f) = f^{-1} \mathscr{B}_{\overline{\mathbb{R}}}
+	= f^{-1} \sigma(\mathscr{E})\subset \mathscr{F} \iff
+	\sigma(f^{-1} \mathscr{E}) \subset \mathscr{F}.
+	\]
+\end{proof}
+
+\begin{example}
+    The contant functions are measurable; the indicator functions of a
+	measurable set are measurable $ \implies $ \textit{step functions}
+	are measurable.
+\end{example}
+
+We say a function $f$ is \vocab {Borel function} if it's a measurable
+function from Borel measurable space to itself.
+
+\begin{corollary}
+    If $f, g$ are measurable functions, then $ \{f = a\}, \{f>g\}, \dots$
+	are measurable sets.
+\end{corollary}
+
+\begin{theorem}
+    The arithmetic of measurable funtions are also measurable functions
+	(if they are well-defined).
+\end{theorem}
+\begin{proof}[Proof]
+    Here we only proof $f+g$ is measurable for  $f,g$ measurable.
+	For all  $a\in \mathbb{R}$, decompose $\{f+g<a\}$ to $A_1\cup A_2\cup A_3$:
+	\[
+	A_1 := \{f = -\infty, g<+\infty\}\cup \{g = -\infty, f<+\infty\}\in \mathscr{F};
+	\]
+	\[
+	A_2 := \{f = +\infty,g>-\infty\}\cup \{g=+\infty,f>-\infty\} \in \mathscr{F};
+	\]
+	\[
+	A_3 := \{f < a - g \}\cap \{f,g\in \mathbb{R}\}
+	= \left( \bigcup_{r\in \mathbb{Q}}(\{f<r\}\cap \{g<a-r\}) \right)\cap \{f,g\in \mathbb{R}\}\in \mathscr{F}.
+	\]
+\end{proof}
+\begin{remark}
+    All the measurable functions (or random variables) constitude a vector space.
+\end{remark}
+
+\begin{theorem}
+    The limit inferior and limit superior of measurable functions are measurable.
+\end{theorem}
+\begin{proof}[Proof]
+    If $f_1,f_2,\dots$ are measurable, then $\inf f_n$ is measurable:
+	\[
+	\left\{\inf_{n\ge 1} f_n \ge a\right\} = \bigcap_{n=1}^\infty\{f_n \ge a\}.
+	\]
+	\begin{remark}
+		In particular, $f$ measurable $\implies$ $f^+, f^-$ measurable.
+	\end{remark}
+
+	Hence
+	\[
+	\liminf_{n\to \infty}f_n = \lim_{N\to \infty}\inf _{n\ge N} f_n
+	= \sup_{N\ge 1}\inf_{n\ge N} f_n,
+	\]
+	which is clearly measurable.
+\end{proof}
+\begin{remark}
+    The inferior or superior of \textbf{countable} many measurable functions
+	are measurable as well.
+\end{remark}
+
+\begin{definition}[Simple functions]
+	Let $(X,\mathscr{F})$ be a measurable space. A \vocab{measurable partition}
+	of $X$ is a collection of subsets $\{A_1,\dots,A_n\}$
+	with $\sum_{i=1}^n A_i = X$, and  $A_i\in \mathscr{F}$.
+
+	A \vocab{simple function} is defined as
+	\[
+	f = \sum_{i=1}^n a_i \ii_{A_i}.
+	\]
+	where $\{A_1,\dots,A_n\}$ is a measurable partition of $X$,
+	and  $a_i\in \mathbb{R}$.
+
+	It's clear that simple functions are measurable.
+\end{definition}
+
+\begin{theorem}
+    Let $f$ be a measurable function, there exists simple functions
+	$f_1,\dots$ s.t. $f_n \to f$.
+	\begin{itemize}
+		\item If $f\ge 0$, we have  $0\le f_n\le f$;
+		\item If  $f$ is bounded, we have  $f_n\uto f$.
+	\end{itemize}
+\end{theorem}
+\begin{proof}[Proof]
+    This is a standard truncation.
+	For $f\ge 0$, let
+	\[
+	f_n = \sum_{k=0}^{n 2^n -1}\frac{k}{2^n} \ii_{\{k\le 2^nf\le k+1\}} + n\ii_{f\ge n}.
+	\]
+	It's clear that $f_n \ge 0$,  $f_n \uparrow$, and  $f_n(x)\to f(x)$:
+	 \[
+	0 \le f(x) - f_n(x)\le \frac{1}{2^n},\quad f(x)<n;
+	\]
+	\[
+	n = f_n(x) \le f(x), \quad f(x)\ge n.
+	\]
+	Therefore if $f$ is bounded, when  $n> \max f(x)$ we have
+	$|f_n(x)-f(x)|<\frac{1}{2^n}$ for all $x\in X$.
+
+	For general measurable functions, just decompose $f$ to $f^+ - f^-$.
+\end{proof}
+
+\begin{theorem}
+    Let $g: (X,\mathscr{F})\to (Y,\mathscr{S})$. Let $h$ be a map $X\to \mathbb{R}$.
+
+	Then $h:(X, g^{-1}\mathscr{S})$ iff  $h = f\circ g$,
+	where $f:(Y,\mathscr{S})\to(\mathbb{R}, \mathscr{B}_{\mathbb{R}})$.
+\end{theorem}
+\begin{remark}
+	For $\overline{\mathbb{R}}$ or $[a,b]$, this theorem also holds.
+\end{remark}
+\begin{proof}[Proof]
+    There's a typical method for proving something related to measurable functions:
+
+	We'll prove the statement for $h\in \mathcal{H}_i$ in order:
+	\begin{itemize}
+		\item $ \mathcal{H}_1$: indicator functions $h=\ii_A$,
+			$\forall A\in g^{-1}\mathscr{S}$;
+		\item $\mathcal{H}_2$: non-negative simple functions;
+		\item $\mathcal{H}_3$ : non-negative measurable functions;
+		\item $ \mathcal{H}_4$ : measurable functions.
+	\end{itemize}
+
+	When $h\in \mathcal{H}_1$, suppose $h=\ii_A$, then
+	 \[
+	A = g^{-1} B, B\in \mathscr{S}\implies f = \ii_B \text{ suffices.}
+	\]
+
+	When $h = \sum_{i=1}^n a_i\ii_{A_i}\in \mathcal{H}_2$,
+	since $A_i\in g^{-1}\mathscr{S}$,
+	\[
+	\exists B_i\in \mathscr{S}\quad s.t.\quad A_i = \{h = a_i\} = g^{-1}B_i.
+	\]
+	Thus $f = \sum_{i=1}^n a_i\ii_{B_i}$ is the desired function.
+
+	When $h\in \mathcal{H}_3$, $\exists h_1,h_2,\dots\uparrow h$.
+
+	Assume $h_n = f_n\circ g$, let
+	 \[
+	f(y) := \left\{
+	\begin{aligned}
+		&\lim_{n\to \infty}f_n(y), &&\text{if it exists;}\\
+		&0, &&\text{otherwise.}
+	\end{aligned}\right.
+	\]
+	\begin{remark}
+	    Here we still need to prove $f$ is measurable.
+	\end{remark}
+	Hence for any $x\in X$,
+	\[
+		h(x) = \lim_{n\to \infty} h_n(x)
+		= \lim_{n\to \infty}f_n(g(x)) = f(g(x)),
+	\]
+	as $f_n$'s limit must exist at  $y=g(x)$.
+
+	So for general $h$, let $h = h^+ - h^-$ and we're done.
+	NOTE: We need to assert that $\infty-\infty$ doesn't occur.
+\end{proof}
