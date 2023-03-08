@@ -1,0 +1,50 @@
+%! TeX root = ./main.tex
+% I missed this lecture, so this is the notes I copied from my teacher's handout.
+\subsection{Applications of Fubini's theorem}
+\label{sub:Applications of Fubini's theorem}
+
+\begin{definition}[Product measure]
+	Let $(X, \mathscr{F}, m)$ and $(Y, \mathscr{G}, m)$ be
+	measure spaces, define a measure on $X\times Y$:
+	The measure $m$ induces an outer measure on  $X\times Y$,
+	and complete it to a normal measure by using
+	Caratheodory conditions. This measure is called
+	the \vocab{product measure} on $X\times Y$.
+\end{definition}
+
+\begin{theorem}
+	Let $ \mathbb{R}^d = \mathbb{R}^{d_1}\times \mathbb{R}^{d_2}$,
+	$E_1,E_2$ are subsets of $\mathbb{R}^{d_1}, \mathbb{R}^{d_2}$,
+	respectively.
+	\begin{itemize}
+		\item If $ E_1,E_2$ are measurable, then $E$ is measurable as well,
+			and $m(E) = m(E_1)m(E_2)$.
+		\item If $E$ is measurable, then  $E_1,E_2$ are measurable,
+			and $m(E)=m(E_1)m(E_2)$, unless one of $E_1,E_2$ is null set,
+			which means $E$ is null as well.
+	\end{itemize}
+\end{theorem}
+\begin{corollary}
+    Let $f(x)$ be a measurable function on  $\mathbb{R}^{d_1}$,
+	we have $g(x,y)=f(x)$ is measurable on  $\mathbb{R}^{d_2}$.
+\end{corollary}
+
+\begin{proposition}
+	Let $L$ be a linear map $\mathbb{R}^{d}\to \mathbb{R}^{d}$,
+	$E \subset \mathbb{R}^{d}$ a measurable set, then  $L(E)$ is measurable, and
+	\[
+	m(L(E)) = |\det L|m(E).
+	\]
+\end{proposition}
+
+From this transformation formula we deduce the integral version:
+
+Let $f$ be an integrable function on  $\mathbb{R}^{d}$, then
+$f(L(x))$ is also integrable, and
+\[
+\int f(L(x)) = \frac{1}{|\det L|}\int f(x).
+\]
+Here we require $L\in \GL(n)$, since if  $\det L = 0$, the function
+ $f(L(x))$ need not be measurable.
+
+ At last we take a look at Fubini's theorem with the convolution product.

@@ -1,1 +1,2 @@
-\contentsline {section}{\numberline {1}Fubini's theorem}{3}{section.1}%
+\contentsline {subsection}{\numberline {0.1}Applications of Fubini's theorem}{3}{subsection.0.1}%
+\contentsline {section}{\numberline {1}Lebesgue differentiation}{4}{section.1}%

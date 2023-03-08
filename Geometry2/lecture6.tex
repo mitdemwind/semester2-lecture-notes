@@ -1,0 +1,75 @@
+%! TeX root = ./main.tex
+
+We say $\phi(s,t_0)$ is an $s$-curve and $\phi(s_0,t)$ is a $t$-curve.
+If $s$-curve and $t$-curve are orthogonal at every point $u\in U$,
+i.e. $F = 0$,
+we say  $\phi$ is an \vocab{orthogonal parametrization},
+and $s,t$ are \vocab{orthogonal parameters}.
+
+Moreover, if $E=G, F=0$ for all  $u\in U$, then we call  $\phi$ an
+\vocab{isothermal parametrization}, and  $s,t$ are \vocab{isothermal parameters}.
+(Sometimes also called \vocab{comformal parameters})
+
+\begin{example}
+    The longtitude and latitude on a sphere are orthogonal parameters,
+	but not isothermal parameters;
+	While the stereographical projection is an isothermal parametrization of the sphere.
+\end{example}
+
+\begin{remark}
+    The word ``isothermal'' is connected to thermology in a rather complicated way.
+	The word ``conformal'' provides a more intuitive comprehension.
+\end{remark}
+
+\subsection{Linear algebra review}
+\label{sub:Linear algebra review}
+
+Let $V$ be a vector space over $\mathbb{F}$.
+
+\textbf{Symmetrical bilinear form vs. quadratic form}
+
+A symmetrical bilinear form is a linear map $B: V\times V\to \mathbb{F}$
+with $B(v,w)=B(w,v)$.
+A quadratic form is a map $Q:V\to \mathbb{F}$ with $Q(v) = B(v,v)$ for
+some symmetrical bilinear form  $B$.
+
+By taking a basis of $V$, we can use the matrix to express them:
+ \[
+B(v,w) = vAw^T, \quad Q(v) = vAv^T.
+\]
+where $A$ is a symmetrical matrix.
+When we change the basis, the matrix  $A$ differs by a congruent transformation.
+
+We could also write $B\in V^*\otimes V^*$ for a bilinear form $B$.
+All the symmetrical bilinear forms constitude a subspace of  $V^*\otimes V^*$
+of dimension  $\frac{n(n+1)}{2}$. This is denoted by $\sym^2(V)$.
+\begin{remark}
+    The subspace of anti-symmetric matrices is denoted by $\alt^2(V)$,
+	and  $\alt^2(V)\oplus \sym^2(V) = V^*\otimes V^*$.
+\end{remark}
+
+\subsection{Tangent spaces}
+\label{sub:Tangent spaces}
+
+A surface $\phi:U\to \mathbb{E}^3$ has a tangent space at every point $\phi(u)$,
+which is just the space (in this case, a plane) spanned by $\phi_s(u)$ and $\phi_t(u)$.
+We can prove that this tangent space is independent to the parameters.
+Furthermore, we can equip it with the inner product in $\mathbb{E}^3$,
+the matrix of this product is exactly $\begin{pmatrix}
+	E &F \\ F &G
+\end{pmatrix}$.
+
+\begin{remark}
+    In modern differential manifold theory, there's an intrinsic definition of
+	tangent spaces, but this definition is too abstract.
+\end{remark}
+
+Here we present one of these intrinsic definitions.
+\begin{definition}[Tangent vectors]
+	Define an equivalence relation on smooth curves in $\phi(U)$:
+
+	Let $\gamma(r) = \phi(s(r),t(r))$ be a smooth curve $(-\epsilon,\epsilon)\to \phi(U)$.
+	Two curves $\gamma_1,\gamma_2$ are equivalent iff $s_1'(0)=s_2'(0)$ and $t_1'(0)=t_2'(0)$.
+
+	Each equivalence class is a ``tangent vector'' at point $\phi(s_0,t_0)$.
+\end{definition}

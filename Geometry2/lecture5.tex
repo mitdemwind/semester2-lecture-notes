@@ -1,0 +1,28 @@
+%! TeX root = ./main.tex
+% Missing lecture, notes are from the handout.
+\section{Theory of surfaces}
+\label{sec:Theory of surfaces}
+
+\subsection{The first fundamental form}
+\label{sub:The first fundamental form}
+
+Let $\phi: U\to \mathbb{E}^3$ be a regular parametrized surface.
+We denote the point in $U \subset \mathbb{R}^2$ as $u=(s,t)$.
+Hence the partial derivative of  $\phi$ gives:
+ \[
+\phi_s(u) = \frac{\partial\phi}{\partial s}(u),\quad
+\phi_t(u) = \frac{\partial\phi}{\partial t}(u).
+\]
+Define the first fundamental quantities
+\[
+E(u) = \phi_s(u)\cdot \phi_s(u), \quad
+F(u) = \phi_s(u)\cdot \phi_t(u), \quad
+G(u) = \phi_t(u)\cdot \phi_t(u). 
+\]
+
+The first fundamental form of the surface $\phi$ is the
+real bilinear form $T_u\phi(U)\times T_u\phi(U)\to \mathbb{R}$ :
+ \[
+g(u) = E(u)\dd s^2 + 2F(u) \dd s \dd t + G(u)\dd t^2.
+\]
+

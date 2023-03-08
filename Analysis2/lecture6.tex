@@ -1,0 +1,128 @@
+%! TeX root = ./main.tex
+Recall the Gauss integral:
+\[
+2\int_0^\infty e^{-x^2}\dd x = \sqrt{\pi}.
+\]
+Here we give a different proof:
+\begin{align*}
+    \int e^{-x^2}\dd x \int e^{-y^2}\dd y
+	&= \iint_{\mathbb{R}^2} e^{-(x^2+y^2)}\dd x\dd y\\
+	&= \int_{0}^{+\infty} e^{-r^2} \dd r^2 \cdot \pi\\
+	&= \pi.
+\end{align*}
+
+\section{Lebesgue differentiation}
+\label{sec:Lebesgue differentiation}
+
+The most important theorem in calculus is no doubt the
+Fundamental theorem of Calculus (which is also called Newton-Lebniz formula).
+Since we generalized the integrals,
+there must be a generalized version of this theorem:
+\begin{theorem}[Lebesgue differentiation theorem, part 1]
+	If $f$ is integrable on $\mathbb{R}^d$,
+	for any ball $B \subset \mathbb{R}^d$, we have
+	\[
+	\lim_{x\in B, |B|\to 0}\frac{1}{m(B)} \int_B f(y)\dd y = f(x), a.e.
+	\]
+\end{theorem}
+This theorem clearly holds for continuous points of $f$.
+
+Our basic idea is to take a continuous  $g$, such that
+$\lVert g-f \rVert_{\mathcal{L}^1} <\varepsilon$.
+
+and to prove
+\[
+\left\{x:
+\limsup_{x\in B, |B|\to 0} \frac{1}{m(B)}\int_B|f(y)-f(x)|\dd y \ge \varepsilon_0
+\right\}
+\]
+is a null set.
+
+Now we estimate
+\begin{align*}
+    \frac{1}{m(B)}\int_B |f(y)-f(x)|\dd y
+	&\le \frac{1}{m(B)}\int _B \left( |f(y)-g(y)|+|g(y)-g(x)|+|g(x)-f(x)| \right)\dd y
+	\\
+	&= |f(x)-g(x)| + \varepsilon + \frac{1}{m(B)}\int_B |f(y)-g(y)|\dd y
+\end{align*}
+
+We find that the last term is pretty hard to deal with,
+so we'll introduce some new tools:
+\begin{definition}[Hardy-Littlewood maximal function]
+	Let $f$ be an integrable function on  $\mathbb{R}^d$. Define
+	\[
+	Mf(x) = \sup_{x\in B}\frac{1}{m(B)}\int_B |f(y)|\dd y.
+	\]
+	to be the \vocab{maximal function} of $f$.
+\end{definition}
+
+\begin{theorem}[Hardy-Littlewood]
+    The maximal function $Mf$ satisfies:
+	 \begin{itemize}
+	 	\item $Mf$ is measurable;
+		\item For  $x$ almost everywhere,  $|f(x)|\le Mf(x)<+\infty$.
+
+		\item There exists a constant $C$ s.t.
+			 \[
+			\left|\{x: Mf> \alpha\}\right| \le
+			\frac{C}{\alpha}\lVert f \rVert _{\mathcal{L}^1}.
+			\]
+	 \end{itemize}
+\end{theorem}
+\begin{proof}[Proof]
+    First we prove $\{Mf>\alpha\}$ is measurable.
+	If $Mf(x_0)>\alpha$, then exists an open ball $B\ni x_0$,
+	\[
+	\int_B |f(y)|\dd y > \alpha m(B).
+	\]
+	This implies that $B \subset \{Mf>\alpha\}$
+	$ \implies \{Mf>\alpha\}$ is an open set.
+
+	For the second part, we'll prove for $\forall \varepsilon_0>0, N>0$,
+	\[
+	m(\{x: Mf(x)+ \varepsilon_0<|f(x)|\le N\}) = 0.
+	\]
+	Otherwise denote the above set as $E$,
+	for  $\forall 0<\lambda<1$,  $\exists B$
+	s.t. $|E\cap B|>\lambda |B|$.
+
+	Thus for $x\in E$,
+	 \begin{align*}
+		 Mf(x) &\ge \frac{1}{m(B)}\int_B |f(y)|\dd y\\
+			   &\ge \frac{1}{m(B)}\int _{E\cap B}|f(y)|\dd y\\
+			   &\ge \frac{1}{m(B)}\int_{E\cap B} \varepsilon_0+Mf(y)\dd y\\
+			   &= \frac{m(E\cap B)}{m(B)}\varepsilon_0
+			   + \frac{1}{|B|}\int _{E\cap B} Mf(y)\dd y.
+	\end{align*}
+	Taking the integral with respect to $x$:
+	 \[
+	\left( 1-\frac{|E\cap B|}{|B|} \right)\int_{E\cap B} Mf
+	\ge \frac{|E\cap B|^2}{|B|}\varepsilon_0.
+	\]
+	This implies $(1-\lambda)N \ge \lambda\varepsilon_0$, which is impossible
+	as $\lambda\to 1$.
+
+	Now for the last part, since $\{Mf>\alpha\}$ is open,
+	$\forall x\in \{Mf>\alpha\}$, $\exists B$ s.t.
+	 \[
+	\int_B |f(y)|\dd y >\alpha m(B).
+	\]
+
+	Hence for disjoint balls $B_{i_k}$,
+	\[
+	\lVert f \rVert _{\mathcal{L}^1}\ge
+	\sum_{l=1}^k \int_{B_{i_l}}|f(y)|\dd y > \alpha\sum_{l=1}^k |B_{i_l}|.
+	\]
+	If we could select $B_{i_l}$'s such that their measure achieves
+	say 1\% of $E$, then we're done.
+
+	\begin{lemma}
+		Let $B_1,\dots,B_n$ be open balls in $\mathbb{R}^d$.
+		There exists $i_1,\dots,i_k$ such that $B_{i_j}$'s are
+		pairwise disjoint, and
+		\[
+		\bigcup_{i=1}^n B_i \subset \bigcup_{j=1}^k 3B_{i_j}.
+		\]
+		Here $3B$ means to multiply the radius of the ball by 3.
+	\end{lemma}
+\end{proof}
