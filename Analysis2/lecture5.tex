@@ -24,10 +24,47 @@
 			which means $E$ is null as well.
 	\end{itemize}
 \end{theorem}
+\begin{proof}[Proof]
+    First it's easy to note that
+	\[
+	m^*(E)\le m^*(E_1)m^*(E_2).
+	\]
+	So we directly conclude that if one of $E_1,E_2$ is null set, $E$ must be null.
+
+	Thus we may assume below that $E_1,E_2$ have finite nonzero measure.
+	By taking the equimeasure hull of $E_1,E_2$ (denoted by $F_1,F_2$),
+	let $Z_1=F_1 \backslash E_1, Z_2=F_2\backslash E_2$, we have
+	\[
+		(F_1\times F_2)\backslash(Z_1\times F_2\cup F_1\backslash Z_2)\subset
+		E \subset F_1\times F_2,
+	\]
+	so $E$ is measurable.
+
+	Conversely, if  $E$ is measurable, consider the measurable function $\chi_E$,
+	by definition  $\chi_E = \chi_{E_1}\chi_{E_2}$, hence by Tonelli's theorem,
+	for $x$ almost everywhere, $\chi_{E_1}(x)\chi_{E_2}$ is measurable
+	on $\mathbb{R}^{d_2}$ $ \implies E_2$ is measurable.
+
+	Therefore we have the equation
+	\[
+	m(E) = \int_{\mathbb{R}^d} \chi_E
+	= \int_{\mathbb{R}^{d_1}} \left( \int_{\mathbb{R}^{d_2}} \chi_{E_1}\chi_{E_2} \right)
+	= m(E_1)m(E_2).
+	\]
+	This proves the theorem.
+\end{proof}
 \begin{corollary}
     Let $f(x)$ be a measurable function on  $\mathbb{R}^{d_1}$,
 	we have $g(x,y)=f(x)$ is measurable on  $\mathbb{R}^{d_2}$.
 \end{corollary}
+\begin{proof}[Proof]
+    It's sufficient to prove that $\{(x,y)|f(x)>t\}$ is measurable in $\mathbb{R}^{d}$.
+	This follows from the fact that
+	\[
+	\{(x,y)| f(x)>t\} = \{x|f(x)>t\}\times \mathbb{R}^{d_2},
+	\]
+	and the previous theorem.
+\end{proof}
 
 \begin{proposition}
 	Let $L$ be a linear map $\mathbb{R}^{d}\to \mathbb{R}^{d}$,
@@ -36,6 +73,26 @@
 	m(L(E)) = |\det L|m(E).
 	\]
 \end{proposition}
+\begin{proof}[Proof]
+    In fact we only need to prove it for cuboids $E$ and
+	elementary linear transformation $L$.
+
+	Now we only need to look at the case where
+	$L = \begin{pmatrix}
+		1 &c &\cdots &0\\
+		0 &1 &\cdots &0\\
+		\vdots &\vdots &\ddots &\vdots\\
+		0 &0 &\cdots &1
+	\end{pmatrix}$ since the other cases are trivial or similar to this case.
+
+	Thus by Fubini's theorem, WLOG $E$ is the unit cube,
+	\[
+	m(L(E)) = \int \chi_{L(E)} = \int_{\mathbb{R}^{d-1}}
+	\left( \int_{\mathbb{R}} \chi_{L(E)\dd x_1} \right)
+	= \int_{\mathbb{R}^{d-1}} \chi_{E'}\cdot 1 = 1 = |\det L|m(E),
+	\]
+	where $E' = \{(x_2,\dots,x_n)| 0\le x_i\le 1\}$.
+\end{proof}
 
 From this transformation formula we deduce the integral version:
 
@@ -47,4 +104,31 @@ $f(L(x))$ is also integrable, and
 Here we require $L\in \GL(n)$, since if  $\det L = 0$, the function
  $f(L(x))$ need not be measurable.
 
- At last we take a look at Fubini's theorem with the convolution product.
+At last we take a look at Fubini's theorem with the convolution product.
+\begin{definition}[Convolution]
+	Let $f, g$ be smooth functions with compact support, define
+	their \vocab{convolution} to be
+	\[
+	f*g = \int f(x-y)g(y)\dd y.
+	\]
+	Then $f*g$ is also a smooth function with compact support.
+\end{definition}
+
+In fact we can generalize this definition for $f,g\in L^1$.
+
+First note that $f(x-y),g(y)$ are measurable functions on $\mathbb{R}^{2d}$,
+by Tonelli's theorem,
+\[
+\int_{\mathbb{R}^{2d}} |f(x-y)||g(y)|\dd x\dd y
+=\int _{\mathbb{R}^{d}}\left( \int_{\mathbb{R}^{d}}|f(x-y)||g(y)|\dd x \right)\dd y
+=\lVert f \rVert _{L^1} \lVert g \rVert _{L^1} < +\infty.
+\]
+This shows that $f(x-y)g(y)$ is integrable on $\mathbb{R}^{2d}$.
+Hence by Fubini's theorem $f(x-y)g(y)$ is integrable as a function of $y$,
+and $f*g$ is integrable on $\mathbb{R}^{d}$.
+
+Moreover we have
+\[
+\lVert f*g \rVert _{L^1} \le \lVert f \rVert _{L^1} \lVert g \rVert _{L^1}.
+\]
+The equality holds when both $f$ and $g$ are non-negative.

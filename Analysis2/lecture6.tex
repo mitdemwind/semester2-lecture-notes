@@ -1,15 +1,17 @@
 %! TeX root = ./main.tex
-Recall the Gauss integral:
-\[
-2\int_0^\infty e^{-x^2}\dd x = \sqrt{\pi}.
-\]
-Here we give a different proof:
-\begin{align*}
-    \int e^{-x^2}\dd x \int e^{-y^2}\dd y
-	&= \iint_{\mathbb{R}^2} e^{-(x^2+y^2)}\dd x\dd y\\
-	&= \int_{0}^{+\infty} e^{-r^2} \dd r^2 \cdot \pi\\
-	&= \pi.
-\end{align*}
+Fubini's theorem is also useful when computing integrals.
+\begin{example}[Gauss integral]
+	Recall the Gauss integral:
+	\[
+	\int_0^\infty e^{-x^2}\dd x = \frac{\sqrt{\pi}}{2}.
+	\]
+	Here we give a different proof:
+	\begin{align*}
+		\int e^{-x^2}\dd x \int e^{-y^2}\dd y
+		&= \iint_{\mathbb{R}^2} e^{-(x^2+y^2)}\dd x\dd y\\
+		&= \int_{0}^{+\infty} e^{-r^2} \dd r^2 \cdot \pi = \pi.
+	\end{align*}
+\end{example}
 
 \section{Lebesgue differentiation}
 \label{sec:Lebesgue differentiation}
@@ -58,16 +60,16 @@ so we'll introduce some new tools:
 
 \begin{theorem}[Hardy-Littlewood]
     The maximal function $Mf$ satisfies:
-	 \begin{itemize}
-	 	\item $Mf$ is measurable;
+	\begin{itemize}
+		\item $Mf$ is measurable;
 		\item For  $x$ almost everywhere,  $|f(x)|\le Mf(x)<+\infty$.
 
 		\item There exists a constant $C$ s.t.
-			 \[
+			\[
 			\left|\{x: Mf> \alpha\}\right| \le
 			\frac{C}{\alpha}\lVert f \rVert _{\mathcal{L}^1}.
 			\]
-	 \end{itemize}
+	\end{itemize}
 \end{theorem}
 \begin{proof}[Proof]
     First we prove $\{Mf>\alpha\}$ is measurable.
@@ -87,15 +89,15 @@ so we'll introduce some new tools:
 	s.t. $|E\cap B|>\lambda |B|$.
 
 	Thus for $x\in E$,
-	 \begin{align*}
-		 Mf(x) &\ge \frac{1}{m(B)}\int_B |f(y)|\dd y\\
-			   &\ge \frac{1}{m(B)}\int _{E\cap B}|f(y)|\dd y\\
-			   &\ge \frac{1}{m(B)}\int_{E\cap B} \varepsilon_0+Mf(y)\dd y\\
-			   &= \frac{m(E\cap B)}{m(B)}\varepsilon_0
-			   + \frac{1}{|B|}\int _{E\cap B} Mf(y)\dd y.
+	\begin{align*}
+		Mf(x) &\ge \frac{1}{m(B)}\int_B |f(y)|\dd y\\
+		&\ge \frac{1}{m(B)}\int _{E\cap B}|f(y)|\dd y\\
+		&\ge \frac{1}{m(B)}\int_{E\cap B} \varepsilon_0+Mf(y)\dd y\\
+		&= \frac{m(E\cap B)}{m(B)}\varepsilon_0
+		+ \frac{1}{|B|}\int _{E\cap B} Mf(y)\dd y.
 	\end{align*}
 	Taking the integral with respect to $x$:
-	 \[
+	\[
 	\left( 1-\frac{|E\cap B|}{|B|} \right)\int_{E\cap B} Mf
 	\ge \frac{|E\cap B|^2}{|B|}\varepsilon_0.
 	\]
@@ -104,7 +106,7 @@ so we'll introduce some new tools:
 
 	Now for the last part, since $\{Mf>\alpha\}$ is open,
 	$\forall x\in \{Mf>\alpha\}$, $\exists B$ s.t.
-	 \[
+	\[
 	\int_B |f(y)|\dd y >\alpha m(B).
 	\]
 
