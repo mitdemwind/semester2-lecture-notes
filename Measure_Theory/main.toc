@@ -1,8 +1,4 @@
-\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Starting from probablistics}{1}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}What is measure theory?}{1}{subsection.1.2}%
-\contentsline {section}{\numberline {2}Measure spaces and measurable maps}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Sets and set operations}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Families of sets}{2}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Generation of $\sigma $-algebras}{4}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Measurable maps and measurable functions}{6}{subsection.2.4}%
+\contentsline {subsection}{\numberline {0.1}Generation of $\sigma $-algebras}{1}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Measurable maps and measurable functions}{3}{subsection.0.2}%
+\contentsline {section}{\numberline {1}Measure spaces}{7}{section.1}%
+\contentsline {subsection}{\numberline {1.1}The definition of measure and its properties}{7}{subsection.1.1}%

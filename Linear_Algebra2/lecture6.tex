@@ -1,0 +1,83 @@
+%! TeX root = ./main.tex
+
+There may not exist a subspace $W'$ s.t.  $W\oplus W' = V$, so we can instead
+study the quotient space.
+
+Let $W \subset V$ be a $T$-invariant subspace.
+Define $T_W = T|_W\in L(W)$, $T_{V/W}\in L(V/W)$:
+$T_{V /W}(\alpha+W) = T(\alpha) + W$. It's clear that $T_{V /W}$ is well-defined.
+
+However, this decomposition loses some imformation about $T$, i.e. they can't
+determine  $T$ completely. For example when $T=\begin{pmatrix}
+	A &B \\ 0 &C
+\end{pmatrix}$, the matrix $B$ will not be carried to
+$T_W$ and $T_{V /W}$ as their matrices are $A, C$ respectively.
+
+Since $\det T = \det T_W \det T_{V /W}$, $f_T = f_{T_W}\cdot f_{T_{V /W}}$.
+The minimal polynomials satisfy
+\[lcm(p_{T_W}, p_{T_{V/W}}) \mid p_T, \quad
+p_T \mid p_{T_W} p_{T_{V /W}}.\]
+
+This follows by the definition of $T_W, T_{V /W}$, readers can check it manually.
+Hint: The image of $p_{T_{V /W}}(T)$ is in $W$.
+So by \autoref{p_t decomposition}, $T$ is diagonalizable $\iff$ $T_W,T_{V /W}$
+are both diagonalizable.
+
+\begin{definition}[Simultaneous diagonalization]
+	Let $\mathcal{F} \subset L(V)$, if there exists $\mathcal{B}$ s.t.
+	$\forall T\in \mathcal{F}$, $[T]_{\mathcal{B}}$ is diagonal matrix,
+	then we say $\mathcal{F}$ can be simultaneously diagonalized.
+\end{definition}
+
+\begin{proposition}
+	Let $\mathcal{F} \subset L(V)$, TFAE:
+	\begin{itemize}
+		\item $\mathcal{F}$ can be simultaneously diagonalized;
+		\item Any element in $\mathcal{F}$ is diagonalizable, and any two elements
+			commute with each other.
+	\end{itemize}
+\end{proposition}
+\begin{proof}[Proof]
+    It's obvious the fisrt statement implies the second.
+
+	On the other hand, we proceed by induction on the dimension of the space $V$.
+
+	Assume  $\dim V = n\ge 2$, WLOG $T\in \mathcal{F}$ is not a scalar matrix.
+
+	Let $\sigma(T)=\{c_1,\dots,c_r\}, V=\bigoplus_{i=1}^r V_{c_i}$, where $r\ge 2$,
+	$V_{c_i}\ne V$.
+	Since $T$ commutes with other elements in  $\mathcal{F}$,
+	so $V_{c_i} = \ker(T - c_i\id_V)$ is invariant under all the maps in $\mathcal{F}$.
+
+	Hence we can restrict $\mathcal{F}$ to $V_{c_i}$ and apply
+	induction hypothesis, i.e. for any $U\in \mathcal{F}$, $U|_{V_{c_i}}$ can
+	be simultaneously diagonalized.
+
+	Therefore $\exists \mathcal{B}_i$ s.t. $[U|_{V_{c_i}}]_{\mathcal{B}_i}$ is diagonal
+	$\implies$  $[U]_{\mathcal{B}}$ is diagonal, where $\mathcal{B}=\bigcup \mathcal{B}_i$.
+\end{proof}
+
+\begin{definition}[Triangulable matrix]
+	Let $T\in L(V)$. If $[T]_{\mathcal{B}}$ is an upper
+	triangular matrix for some basis $\mathcal{B}$,
+	we say $T$ is \vocab{triangulable}.
+\end{definition}
+
+\begin{proposition}
+	Let $\dim V=n$, for  $T\in L(V)$, TFAE:
+	\begin{enumerate}
+		\item $T$ is triangulable;
+		\item  $f_T$(or $p_T$) can be decomposed to product of polynomials of degree 1.
+		\item There exists a sequence of $T$-invariant subspaces
+			$\{0\}=W_0 \subset W_1 \subset\dots \subset W_n = V$.
+
+			This kind of sequence is called a \vocab{flag}.(not require $T$-invariant)
+	\end{enumerate}
+\end{proposition}
+\begin{remark}
+	In particular, when the base field is \textit{algebraically closed}, the above
+	statements always holds.
+\end{remark}
+\begin{proof}[Proof]
+	It's obvious that $(1) \implies (2)$.
+\end{proof}

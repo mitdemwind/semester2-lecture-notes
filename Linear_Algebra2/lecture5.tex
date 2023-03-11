@@ -1,1 +1,34 @@
 %! TeX root = ./main.tex
+\begin{proof}[Proof of \autoref{p_t decomposition}]
+	First we prove a lemma:
+	\begin{lemma}
+		Let $T_1,\dots,T_k\in L(V)$, $\dim V<\infty$. Then
+		\[
+		\dim \ker(T_1T_2\dots T_n) \le \sum_{i=1}^{k} \dim \ker(T_i).
+		\]
+	\end{lemma}
+	\begin{proof}[Proof of the lemma]
+	    By induction we only need to prove the case $k=2$.
+
+		Note that $\ker(T_1T_2) = \ker(T_2) + \ker(T_1|_{\img T_2})$.
+		So
+		\[
+		\dim\ker(T_1T_2) = \dim\ker(T_2) + \dim\ker(T_1|_{\img T_2})
+		\le \dim\ker(T_2) + \dim\ker(T_1).
+		\]
+	\end{proof}
+
+	If $T$ is diagonalizable, suppose the matrix of $T$ is $diag\{c_1,\dots,c_r\}$,
+	then $g=\prod_{i=1}^r (x-c_i)$ is an annihilating polynomial of $T$.
+
+	Conversely, if $\prod_{i=1}^r (T - c_iI) = 0$, by lemma
+	\[
+	n = \ker \left( \prod_{i=1}^r (T-c_iI) \right) \le
+	\sum_{i=1}^r \ker(T - c_iI) = \sum_{i=1}^r \dim V_{c_i}.
+	\]
+	This forces $V = \bigoplus_{i=1}^r V_{c_i}$, which completes the proof.
+\end{proof}
+
+\subsection{Invariant subspaces}
+\label{sub:Invariant subspaces}
+

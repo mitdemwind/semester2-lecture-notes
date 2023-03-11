@@ -1,0 +1,192 @@
+%! TeX root = ./main.tex
+\section{Measure spaces}
+\label{sec:Measure spaces}
+
+\subsection{The definition of measure and its properties}
+\label{sub:The definition of measure and its properties}
+
+The concept of ``measure'' is frequently used in our everyday life:
+length, area, weight and even propbability.
+They all share a similarly: the measure of a whole is equal to the sum of
+the measure of each part.
+
+In the language of mathematics, let $\mathscr{E}$ be a collection of sets,
+and there's a function $\mu: \mathscr{E}\to [0,\infty]$ which
+stands for the measure.
+
+\vocab{countable additivity}: Let $A_1,A_2,\dots\in \mathscr{E}$ be pairwise disjoint
+sets, and $\sum_{i=1}^\infty A_i \in \mathscr{E}$, then
+\[
+\mu \left( \sum_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty \mu(A_i).
+\]
+
+\begin{definition}[Measure]
+	Suppose $\emptyset\in \mathscr{E}$, if a non-negative function
+	\[
+		\mu: \mathscr{E}\to [0,\infty]
+	\]
+	satisfies countable additivity, and $\mu(\emptyset)=0$, then
+	we say  $\mu$ is a \vocab {measure} on $\mathscr{E}$.
+\end{definition}
+
+If $\mu(A)<\infty$ for all $A\in \mathscr{E}$, we say $\mu$ is finite.
+(In practice we'll just simplify this to $\mu(X)<\infty$)
+
+If $\exists A_1,A_2,\dots\in \mathscr{E}$ are pairwise disjoint sets, s.t.
+\[
+X = \sum_{n=1}^{\infty} A_n, \quad \mu(A_n)<\infty, \forall n.
+\]
+Then we say $\mu$ is  $\sigma$-finite.
+
+There's a weaker version of countable additivity, that is \vocab{finite additivity}:
+If $A_1,\dots,A_n\in \mathscr{E}$, pairwise disjoint, and $\sum A_i\in \mathscr{E}$,
+\[
+\mu\left( \sum_{i=1}^{n} A_i \right)=\sum_{1=i}^{n} \mu(A_i),
+\]
+then we say $\mu$ is finite additive.
+
+Subtractivity: $\mu(B-A)=\mu(B)-\mu(A)$, where  $A,B,B-A\in \mathscr{E}$,
+and $\mu(A)<\infty$.
+
+\begin{proposition}
+	Measure satisfies finite additivity and subtractivity.
+\end{proposition}
+
+\begin{example}[Counting measure]
+    Let $\mu(A)=\#A$,  $\forall A\in \mathscr{T}_X$.
+	Then $\mu$ is a measure.
+\end{example}
+
+\begin{example}[Point measure]
+    Let $(X,\mathscr{F})$ be a measurable space,
+	define $\delta_x(A) = \ii_A(x)$. Then we can define a measure
+	\[
+	\mu(A) = \sum_{i=1}^{n} p_i\delta_{x_i}(A)
+	\]
+\end{example}
+
+\begin{example}[Length]
+	Let $\mathscr{E}=\mathscr{Q}_{\mathbb{R}}=\{(a,b] : a,b\in \mathbb{R}\}$, $a\le b$,
+	then $\mu((a,b]) = b - a$ gives a measure.
+\end{example}
+
+Another classical example is the so-called ``coin space'':
+
+Let $X=\{x=(x_1,x_2,\dots): x_i\in {0,1}, \forall n\}$.
+\[
+C_{i_1,\dots,i_n}:=\{x:x_1=i_1,\dots, x_n=i_n\},
+\]
+Let
+\[
+\mathscr{Q} = \{\emptyset,X\}\cup
+\left\{C_{i_1,\dots,i_n}:n\in \mathbb{N}, i_1,\dots,i_n\in \{0,1\}\right\}
+\]
+be a semi-ring.
+Then $\mu(C_{i_1,\dots,i_n}) = \frac{1}{2^n}$ gives a measure.
+
+We need to check the countable additivity, but actually
+this can be realized as a compact space and the $C$'s are open sets,
+so in fact we only need to check finite additivity.
+(Or we can prove this explicitly)
+
+Another more complex example: finite markov chain.
+
+\begin{proposition}
+	Let $X=\mathbb{R}$, $\mathscr{E}=\mathscr{R}_{\mathbb{R}}$.
+	$F: \mathbb{R}\to \mathbb{R}$ is non-decreasing, right continuous, then
+	$\mu((a,b]) = F(b)-F(a)$ gives a measure on $\mathscr{E}$.
+\end{proposition}
+\begin{proof}[Proof]
+    First $\mu(\emptyset)=0$, suppose
+	 \[
+		 \sum_{i=1}^{\infty} (a_i,b_i] = (a,b]. 
+	\]
+	Since every partial sum has measure at most $F(b_{n+1})-F(a_1) < F(b)-F(a)$,
+
+	$\implies \sum_{i=1}^{n} \mu((a_i,b_i]) \le \mu((a,b])$.
+
+	For the reversed inequality, first we prove that for intervals
+	\[
+		\bigcup_{i=1}^n (c_i,d_i] \supseteq (a,b] \implies
+		\sum_{i=1}^{n} \mu((c_i,d_i]) \ge \mu((a,b]).
+	\]
+	This can be easily proved by induction, WLOG $b_{n+1} = \max_i b_i$.
+
+	Our idea is to extend each $(a_i, b_i]$ a little bit to apply above inequality.
+
+	For all  $\varepsilon>0$, take  $\delta_i>0$ s.t.
+	 \[
+	\tilde{b}_i := b_i + \delta_i, \quad F(\tilde{b}_i) - F(b_i) \le \frac{\varepsilon}{2}.
+	\]
+	Hence for all $\delta>0$, $\bigcup_{i=1}^\infty (a_i, \tilde{b}_i)\supseteq [a+\delta,b]$,
+	by compactness exists a finite open cover.
+
+	\[
+	F(b) - F(a+\delta)\le \sum_{i=1}^{n} \left(F(\tilde b_i)-F(a_i)\right)\le
+	\varepsilon+ \sum_{i=1}^{\infty} (F(b)-F(a)).
+	\]
+	Let $\varepsilon,\delta\to 0$ to conclude.
+\end{proof}
+
+\begin{definition}[Measure space]
+	A triple $(X,\mathscr{F},\mu)$ is called a \vocab{measure space},
+	if $(X,\mathscr{F})$ is a measurable space and $\mu$ is a measure on $ \mathscr{F}$.
+\end{definition}
+
+If $N\in \mathscr{F}$ s.t. $\mu(N)=0$, we say  $N$ is a \vocab{null set}.
+
+A probability space is a measure space $(X,\mathscr{F},P)$ with $P(X)=1$. 
+
+\begin{example}[Discrete measure]
+	If $X$ is countable,  $p:X\to [0,\infty]$, $\mu(A) := \sum_{x\in A} p(x)$.
+\end{example}
+
+There are other important properties which we think a sensible measure would have:
+\begin{itemize}
+	\item Monotonicity: If $A,B\in \mathscr{E}$, $A \subset B$, then $\mu(A)\le \mu(B)$. 
+
+	\item Countable subadditivity: $A_1,A_2,\dots\in \mathscr{E}$,
+	\[
+	\mu \left( \bigcup_{i=1}^\infty A_i \right)\le \sum_{i=1}^{\infty} \mu(A_i).
+	\]
+
+	\item Lower continuity: $A_1,A_2,\dots\in \mathscr{E}$ and $A_n \uparrow A\in \mathscr{E}$.
+	\[
+	\mu(A) = \lim_{n\to \infty}\mu(A_n).
+	\]
+
+	\item Similarly there's upper continuity (which requires $\mu(A_1)<\infty$).
+\end{itemize}
+
+\begin{theorem}
+    The measure on a semi-ring has all the above properties.
+\end{theorem}
+\begin{proof}[Proof]
+    We'll prove that:
+	\begin{itemize}
+		\item Finite additivity $ \implies $ monotonicity, subtractivity;
+		\item Countable additivity $\implies$ subadditivity, upper and lower continuity.
+	\end{itemize}
+
+	Here we only prove the subadditivity, since others are trivial.
+
+	Let $A_1,A_2,\dots\in \mathscr{Q}$, and $\bigcup_{i=1}^\infty A_i\in \mathscr{Q}$.
+	\[
+	B_n := A_n \backslash \bigcup_{i=1}^{n-1} A_i \in r(\mathscr{Q})
+	\implies B_n = \sum_{k=1}^{k_n} C_{n,k},\quad C_{n,k}\in \mathscr{Q}.
+	\]
+	\[
+	A_n \backslash B_n \in r(\mathscr{Q}) \implies
+	A_n \backslash B_n = \sum_{l=1}^{l_n} D_{n,l},\quad D_{n,l}\in \mathscr{Q}.
+	\]
+	
+	Thus by countable additivity,
+	\begin{align*}
+		\mu\left(\bigcup_{i=1}^\infty A_i\right) &= \sum_{n=1}^{\infty} \mu(B_n)
+		= \sum_{n=1}^{\infty}\left( \sum_{k=1}^{k_n} \mu(C_{n,k}) \right)\\
+		&\le \sum_{n=1}^{\infty}\left( \sum_{k=1}^{k_n} \mu(C_{n,k})+ \sum_{l=1}^{l_n}\mu(D_{n,l}) \right)
+		= \sum_{n=1}^{\infty} \mu(A_n). 
+	\end{align*}
+	
+	Using similar technique we can deduce the upper and lower continuity.
+\end{proof}

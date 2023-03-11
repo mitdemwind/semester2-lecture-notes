@@ -1,1 +1,3 @@
 \contentsline {section}{\numberline {1}Jordan canonical form}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Minimal polynomials and Cayley-Hamilton}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Invariant subspaces}{3}{subsection.1.2}%
