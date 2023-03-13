@@ -17,7 +17,7 @@ Define the first fundamental quantities
 \[
 E(u) = \phi_s(u)\cdot \phi_s(u), \quad
 F(u) = \phi_s(u)\cdot \phi_t(u), \quad
-G(u) = \phi_t(u)\cdot \phi_t(u). 
+G(u) = \phi_t(u)\cdot \phi_t(u).
 \]
 
 The first fundamental form of the surface $\phi$ is the
@@ -26,3 +26,14 @@ real bilinear form $T_u\phi(U)\times T_u\phi(U)\to \mathbb{R}$ :
 g(u) = E(u)\dd s^2 + 2F(u) \dd s \dd t + G(u)\dd t^2.
 \]
 
+It can also be written as $\begin{pmatrix}
+	E &F\\ F &G
+\end{pmatrix}$.
+
+\begin{remark}[On partial detivatives]
+	When using the notation $\frac{\partial}{\partial x}$, we must
+	declare the parameters we're using, e.g. $(x,y)$,
+	For example when $x' = x, y' = x + y$, the meaning
+	of $\frac{\partial}{\partial x}$ is different from
+	$\frac{\partial}{\partial x}$.
+\end{remark}

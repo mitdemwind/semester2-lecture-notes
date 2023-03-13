@@ -2,12 +2,13 @@
 
 We say $\phi(s,t_0)$ is an $s$-curve and $\phi(s_0,t)$ is a $t$-curve.
 If $s$-curve and $t$-curve are orthogonal at every point $u\in U$,
-i.e. $F = 0$,
+i.e. $F = 0$, or the matrix is diagonal,
 we say  $\phi$ is an \vocab{orthogonal parametrization},
 and $s,t$ are \vocab{orthogonal parameters}.
 
-Moreover, if $E=G, F=0$ for all  $u\in U$, then we call  $\phi$ an
-\vocab{isothermal parametrization}, and  $s,t$ are \vocab{isothermal parameters}.
+Moreover, if $E=G, F=0$ for all  $u\in U$, (the matrix is a scalar)
+then we call  $\phi$ an
+\vocab{isothermal parametrization}, and $s,t$ are \vocab{isothermal parameters}.
 (Sometimes also called \vocab{comformal parameters})
 
 \begin{example}
@@ -19,6 +20,11 @@ Moreover, if $E=G, F=0$ for all  $u\in U$, then we call  $\phi$ an
 \begin{remark}
     The word ``isothermal'' is connected to thermology in a rather complicated way.
 	The word ``conformal'' provides a more intuitive comprehension.
+\end{remark}
+\begin{remark}
+    A fun fact: Isothermal parameters always exist locally on
+	regular parametrized surfaces. This only holds for 2-dimensional
+	manifold.
 \end{remark}
 
 \subsection{Linear algebra review}
@@ -68,8 +74,10 @@ Here we present one of these intrinsic definitions.
 \begin{definition}[Tangent vectors]
 	Define an equivalence relation on smooth curves in $\phi(U)$:
 
-	Let $\gamma(r) = \phi(s(r),t(r))$ be a smooth curve $(-\epsilon,\epsilon)\to \phi(U)$.
-	Two curves $\gamma_1,\gamma_2$ are equivalent iff $s_1'(0)=s_2'(0)$ and $t_1'(0)=t_2'(0)$.
+	Let $\gamma(r) = \phi(s(r),t(r))$ be
+	a smooth curve $(-\epsilon,\epsilon)\to \phi(U)$.
+	Two curves $\gamma_1,\gamma_2$ are equivalent
+	iff $s_1'(0)=s_2'(0)$ and $t_1'(0)=t_2'(0)$.
 
 	Each equivalence class is a ``tangent vector'' at point $\phi(s_0,t_0)$.
 \end{definition}

@@ -21,6 +21,7 @@ Fundamental theorem of Calculus (which is also called Newton-Lebniz formula).
 Since we generalized the integrals,
 there must be a generalized version of this theorem:
 \begin{theorem}[Lebesgue differentiation theorem, part 1]
+	\label{Lebesgue differentiation thm p1}
 	If $f$ is integrable on $\mathbb{R}^d$,
 	for any ball $B \subset \mathbb{R}^d$, we have
 	\[
@@ -127,4 +128,21 @@ so we'll introduce some new tools:
 		\]
 		Here $3B$ means to multiply the radius of the ball by 3.
 	\end{lemma}
+	\begin{proof}[Proof of lemma]
+		Trivial, just take the largest ball first and using greedy algorithm.
+	\end{proof}
+	\begin{remark}
+		For countable many balls, the conculsion holds with $3$ replaced by $5$.
+	\end{remark}
+
+	In particular, for all compact sets $K \subset \{Mf>\alpha\}$,
+	there exists a finite open cover $B_1,B_2,\dots,B_n$ of $K$.
+	By lemma we can select $B_{i_j}$'s satisfying
+	\[
+		\sum_{i=1}^k m(B_{i_j}) \ge \frac{1}{3^d}m\left(\bigcup_{i=1}^n B_i\right)
+		\ge \frac{1}{3^d}m(K).
+	\]
+	Combining with our previous discussion
+	we get $\lVert f \rVert _{\mathcal{L}^1}\ge \frac{\alpha}{3^d}m(K)$.
+
 \end{proof}

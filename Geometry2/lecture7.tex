@@ -1,0 +1,113 @@
+%! TeX root = ./main.tex
+
+
+\subsection{The second fundamental form}
+\label{sub:The second fundamental form}
+Since the first fundamental form is not sufficient to describe
+all the properties of the surface (it can only describe the curves lying
+on it and the area), we thereby introduce the second fundamental form.
+
+\begin{definition}[The second fundamental form]
+	Let $\phi:U\to \mathbb{E}^3$ be a regular parametrized surface.
+	The normal vector at the point $u=(s,t)$ is defined as
+	\[
+		\vec{n} = \frac{\phi_s\times \phi_t}{\lVert \phi_s\times \phi_t \rVert }.
+	\]
+	Since the cross product cares about orientation, so
+	the normal vector is only fixed under orientation-preserving
+	reparametrization.
+
+	Now we expand $\phi$ to the second derivative:
+	\[
+	\phi(s+\Delta s, t+\Delta t) =
+	\phi(s,t) + (\phi_s, \phi_t)\colvec{\Delta s}{\Delta t}
+	+ \frac{1}{2} (\Delta s, \Delta t)\begin{pmatrix}
+		\phi_{ss} &\phi_{st}\\ \phi_{ts} &\phi_{tt}
+	\end{pmatrix} \colvec{\Delta s}{\Delta t}
+	+ o(|\Delta s|^2 + |\Delta t|^2).
+	\]
+	Hence we define
+	\[
+	L = \phi_{ss}\cdot\vec{n}, \quad M = \phi_{st}\cdot\vec{n},
+	\quad N = \phi_{tt}\cdot\vec{n}.
+	\]
+	The second fundamental form is defined as
+	$h = L\dd s^2 + M\dd s\dd t + N\dd t^2$.
+\end{definition}
+
+Intuitively, the second fundamental form describes
+how much the surface is ``going out'' of the tangent plane.
+
+Since the first fundamental form $g$ gives an inner product of
+the tangent space, so we can compute the ``canonical form'' of
+$h$ with respect to $g$, this process will generate some geometric quantities.
+
+\begin{definition}
+	Define the \vocab{average curvature} and \vocab{Gaussian curvature}:
+	\[
+	H:= \frac{1}{2}\frac{LG-2MF+NE}{EG-F^2},\quad
+	K:= \frac{LN-M^2}{EG-F^2}.
+\]
+\end{definition}
+
+These expressions look complicated and ugly, the reason is that we didn't
+choose the right parameters. Indeed, if at some point $u=(s,t)$ we have
+\[
+\begin{pmatrix} E &F\\F&G \end{pmatrix} =
+\begin{pmatrix} 1&0\\0&1 \end{pmatrix},
+\]
+then
+\[
+H = \frac{1}{2} \tr \begin{pmatrix} L&M\\M&N \end{pmatrix}, \quad
+K = \det \begin{pmatrix} L&M\\M&N \end{pmatrix}.
+\]
+
+\begin{definition}[Principal curvatures]
+	The characteristic polynomial $\lambda^2 - 2H\lambda + K$
+	has two real roots, they are called the
+	\vocab{principal curvatures} of $\phi$.
+	The \vocab{principal directions} are defined as
+	the directions of eigenvectors of $h: T_uU\times T_uU\to \mathbb{R}$
+	WRT the inner product $g$.
+\end{definition}
+
+Now we'll dig deeper into the geometric meaning of these formulas.
+\begin{proposition}
+	$H$ and $K$ are geometric quantities.
+\end{proposition}
+\begin{proof}[Proof]
+    For any reparametrization $s=s(\tilde s, \tilde t), t=t(\tilde s,\tilde t)$,
+	we have
+	\[
+		\begin{pmatrix}\tilde E&\tilde F\\ \tilde F&\tilde G \end{pmatrix}
+		= J\begin{pmatrix} E&F\\F&G \end{pmatrix}J^{-1}.
+	\]
+
+	Similarly we can verify that
+	\[
+		\begin{pmatrix}\tilde L&\tilde M\\ \tilde M&\tilde N \end{pmatrix}
+		= J\begin{pmatrix} L&M\\M&N \end{pmatrix}J^{-1}.
+	\]
+
+	Since
+	\[
+	H = \frac{1}{2}\tr\EFFG^{-1}\LMMN,\quad
+	K = \det \EFFG^{-1}\LMMN
+	\]
+	Thus $H,K$ are fixed under reparametrization.
+\end{proof}
+
+\begin{example}
+    Some examples about curvatures:
+	\begin{itemize}
+		\item A sphere with radius $R$:
+			\[
+			H = \frac{1}{R}, \quad K = \frac{1}{R^2}.
+			\]
+			Note that
+			\[
+			\int _{S^2} K \dd Area = \frac{1}{R^2}4\pi R^2 = 2\pi \chi(S^2).
+			\]
+			This is an example of Gauss-Bonnet formula which we'll cover later.
+	\end{itemize}
+\end{example}

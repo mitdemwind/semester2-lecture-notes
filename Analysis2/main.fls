@@ -1266,6 +1266,13 @@ INPUT ./lecture6.tex
 INPUT ./lecture6.tex
 INPUT lecture6.tex
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcsx1440.tfm
+INPUT ./lecture7.tex
+INPUT ./lecture7.tex
+INPUT ./lecture7.tex
+INPUT lecture7.tex
+INPUT ./lecture7.tex
+INPUT ./lecture7.tex
+INPUT lecture7.tex
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out

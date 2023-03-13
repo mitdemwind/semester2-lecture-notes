@@ -1,0 +1,123 @@
+%! TeX root = ./main.tex
+Returning to the proof of \autoref{Lebesgue differentiation thm p1},
+we can assmue $g$ is continuous with compact support,
+ \[
+\frac{1}{m(B)} \int_B |f(y)-g(y)|\dd y \le M(f-g)(x)
+\]
+Hence by taking $B$ sufficiently small s.t. $|g(y)-g(x)|\le \varepsilon_0$
+for all $x,y\in B$,
+\[
+\frac{1}{m(B)}\int _B f(y)\dd y \ge 3\varepsilon_0
+\]
+\[
+\impliedby |f(x)-g(x)| + M(f-g)(x) \ge 2\varepsilon_0.
+\]
+But
+\[
+m\{|f(x)-g(x)|\ge \varepsilon_0\} + m\{M(f-g)>\varepsilon_0\}
+\le \frac{\lVert f-g \rVert _{\mathcal{L}^1}}{\varepsilon_0} +
+\frac{3^d}{\varepsilon_0}\lVert f-g \rVert _{\mathcal{L}^1}
+\le \frac{3^d+1}{\varepsilon_0}\varepsilon.
+\]
+This completes the proof.
+
+\begin{definition}[Lebesgue points]
+	Let $|f(x)|<\infty$, $f$ is \textit{locally integrable}. If $x$ satisfies
+	\[
+	\lim_{|B|\to 0, B\ni x}\frac{1}{|B|} \int_B |f(y)-f(x)|\dd y = 0,
+	\]
+	we say $x$ is a \vocab{Lebesgue point} of $f$.
+\end{definition}
+\begin{remark}
+    Here ``locally integrable'' means for all bounded measurable sets $E$,
+	$f\chi_E\in \mathcal{L}^1$.
+	This is denoted by $f\in \mathcal{L}_{loc}^1$.
+\end{remark}
+
+Let $E$ be a measurable set,  $\chi_E$ locally integrable,
+If point $x$ is called a \vocab{density point} of $E$
+if it's a Lebesgue point of  $\chi_E$.
+
+\begin{theorem}
+    Let $E$ be a measurable set, then almost all the points in $E$
+	are density points of $E$, almost all the points outside of $E$
+	are not density points of $E$.
+\end{theorem}
+\begin{proof}[Proof]
+    This is a direct corollary of \autoref{Lebesgue differentiation thm p1}.
+\end{proof}
+
+The differentiation theorem has some applications in convolution:
+\begin{align*}
+    \frac{1}{|B|}\int _B f(y)\dd y
+	&= c_d^{-1} \varepsilon^{-d}\int_{B(x,\varepsilon)} f(y)\dd y\\
+	&= \int f(x-y) \cdot c_d^{-1}\varepsilon^{-d}\chi_{B(0,\varepsilon)}(y)\dd y\\
+	&= f*K_\varepsilon.
+\end{align*}
+where $K_\varepsilon=c_d^{-1} \varepsilon^{-d}\chi_{B(0,\varepsilon)}$,
+$c_d$ is the measure of a unit sphere in  $\mathbb{R}^d$.
+
+By differentiation theorem, $\lim_{\varepsilon\to 0}f*K_\varepsilon = f(x), a.e.$.
+In the homework we proved that there doesn't exist a function $I$ s.t.
+$f*I=f$ for all $f\in \mathcal{L}^1$, but the functions $K_\varepsilon$
+is approximating this ``convolution identity''.
+
+\begin{definition}
+	In general, if $\int K_\varepsilon =1$,
+	$|K_\varepsilon|\le A\min\{\varepsilon^{-d},\varepsilon |x|^{-d-1}\}$,
+	we say $K_\varepsilon$ is an \vocab{approximation to the identity}.
+\end{definition}
+
+``convolution kernel''
+
+Let $\varphi$ be a smooth function whose support is in  $\{|x|\le 1\}$,
+and $\int \varphi = 1$.
+The function  $K_\varepsilon := \varepsilon^{-d}\varphi(\varepsilon^{-1}x)$
+is called the Friedrichs smoothing kernel.
+
+\begin{theorem}
+    If $K_\varepsilon$ is an approximation to the identity, $f$ integrable,
+	\[
+	\lim_{\varepsilon \to 0} \lVert f*K_\varepsilon - f \rVert _{\mathcal{L}^1} = 0.
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    \begin{align*}
+        |(f*K_\varepsilon)(x) - f(x)|
+		&= \left|\int f(x-y)K_\varepsilon(y)\dd y - f(x)\right|\\
+		&\le \int |f(x-y)-f(x)| |K_\varepsilon(y)|\dd y\\
+		&\le \int _{|y|\le R} |f(x-y)-f(x)| A\varepsilon^{-d}\dd y
+		+ \int _{|y|>R} |f(x-y)-f(x)| \varepsilon |y|^{-d-1}\dd y.
+    \end{align*}
+
+	Taking the integral over $\mathbb{R}^d$ :
+
+	\begin{align*}
+		&\le A\varepsilon^{-d} \int \int_{|y|\le R} |f(x-y)-f(x)|\dd y \dd x
+		+\varepsilon\int \int_{|y|>R} |f(x-y)-f(x)||y|^{-d-1}\dd y\dd x\\
+		&\le A\varepsilon^{-d} \int\int_{|y|\le R}|\tau_{-y}f(x)-f(x)|\dd y\dd x
+		+ \varepsilon \int_{|y|>R}|y|^{-d-1}\int |\tau_{-y}f(x)|+|f(x)|\dd x\dd y\\
+		&\le A\varepsilon^{-d}\int_{|y|\le R}\lVert \tau_{-y}f-f \rVert _{\mathcal{L}^1}
+		\dd y + \varepsilon \int_{|y|>R} |y|^{-d-1} 2\lVert f \rVert _{\mathcal{L}^1}\dd y.
+	\end{align*}
+
+	By the continuity of translation, let $R$ sufficiently small we have
+	\[
+	\lVert \tau_{-y}f-f \rVert _{\mathcal{L}^1} < \varepsilon_0, \forall|y|<R.
+	\]
+\end{proof}
+
+\begin{theorem}
+    Let $K_\varepsilon$ be an approximation to the identity, $f$ integrable,
+	\[
+	\lim_{\varepsilon\to 0} f*K_\varepsilon = f(x)
+	\]
+	holds for Lebesgue points $x$ of $f$.
+\end{theorem}
+\begin{proof}[Proof]
+    WLOG $x=0$, let
+	\[
+	\omega(r) = \frac{1}{c_d r^d}\int_{B(0,r)} |f(y)-f(0)| \dd y,
+	\]
+	we have  $\lim_{r\to 0}\omega(r) = 0$, and $\omega$ is continuous.
+\end{proof}

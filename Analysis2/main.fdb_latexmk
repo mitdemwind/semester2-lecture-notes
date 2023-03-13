@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1678370280 "main.tex" "main.pdf" "main" 1678370281 0
+["pdflatex"] 1678683328 "main.tex" "main.pdf" "main" 1678683329 0
   "../macros.tex" 1678245555 967 182b3f38fca2bf3090672c97ea267d76 ""
   "../preamble.tex" 1677570458 4884 3f6a0a1e0ebe87b1f83af32ba7f3f02c ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -214,14 +214,15 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1676871738 4623355 58034c3eb7ddf7eacc726a83d01e26d2 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1676871762 7879246 a0e06bd93a50eeea2adb95467ae0402a ""
   "/usr/local/texlive/2022/texmf.cnf" 1676871735 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "lecture4.tex" 1677635472 5963 d1957989fb577e2696ba16ae78ae2a1c ""
-  "lecture5.tex" 1678369996 4643 e79d620e63dc7826e0d46ad52893cbc2 ""
-  "lecture6.tex" 1678370280 3951 fc1ec43cb3049274edd8df107426705d ""
-  "main.aux" 1678370281 4174 95c9e02a6807038fd715a508ee48afc1 "pdflatex"
-  "main.out" 1678370281 383 4933b498a47dc11f0db591d86a88aff4 "pdflatex"
-  "main.pre" 1678370281 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1678233142 418 8575db439ee0038a26aa19579995e60b ""
-  "main.toc" 1678370281 178 61c55f39b54a17649abd1b246d2117f2 "pdflatex"
+  "lecture4.tex" 1678676850 5965 c19b676d547d4c07a5f1e98ad1e6c36f ""
+  "lecture5.tex" 1678370369 4622 e26d600c0151593baa05b3a6a2484710 ""
+  "lecture6.tex" 1678676753 4608 88692df60cd646b13f33488b38177503 ""
+  "lecture7.tex" 1678683326 4360 219f028b54b0003b40458cbb2eb0da71 ""
+  "main.aux" 1678683329 5694 1ccf49e3ba612337b56447cdda8afc23 "pdflatex"
+  "main.out" 1678683329 383 4933b498a47dc11f0db591d86a88aff4 "pdflatex"
+  "main.pre" 1678683328 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1678672781 437 747592f6d5c4c044b2a7db2d26b66cd8 ""
+  "main.toc" 1678683329 178 61c55f39b54a17649abd1b246d2117f2 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
