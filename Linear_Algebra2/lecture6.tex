@@ -67,11 +67,12 @@ are both diagonalizable.
 	Let $\dim V=n$, for  $T\in L(V)$, TFAE:
 	\begin{enumerate}
 		\item $T$ is triangulable;
-		\item  $f_T$(or $p_T$) can be decomposed to product of polynomials of degree 1.
+		\item $f_T$(or $p_T$) can be decomposed to product of polynomials of degree 1.
 		\item There exists a sequence of $T$-invariant subspaces
 			$\{0\}=W_0 \subset W_1 \subset\dots \subset W_n = V$.
 
-			This kind of sequence is called a \vocab{flag}.(not require $T$-invariant)
+			This kind of sequence is called a \vocab{flag}.
+			(Flag itself does not require $T$-invariant)
 	\end{enumerate}
 \end{proposition}
 \begin{remark}
@@ -80,4 +81,39 @@ are both diagonalizable.
 \end{remark}
 \begin{proof}[Proof]
 	It's obvious that $(1) \implies (2)$.
+
+	For $(3)\implies (4)$:
+	We proceed by induction, for $W_1$ just take the space spanned by
+	one of the eigenvectors of $T$.
+
+	Assume that we have constructed $W_j$ for $0\le j\le i$.
+	Instead of finding an invariant subspace of dimension $i+1$,
+	we'll find an invariant subspace of dimension 1 in  $V / W_i$.
+
+
+	Let $Q$ denote the quotient map  $V\to V / W_i$.
+	Consider the map $T_{V / W_i}: \alpha+W_i \mapsto T(\alpha)+W_i$.
+
+	We have
+	\[
+		T_{V / W_i}\circ Q = Q\circ T.
+	\]
+	%TODO: add a commute diagram here.
+
+	Since $p_{T_{V / W_i}}\mid p_T \implies p_{T_{V /W_i}}$ is product of
+	polynomials of degree 1, $T_{V / W_i}$ must have an eigenvector.
+	Let $L$ denote the subspace spanned by this vector,
+	and $W_{i+1}=Q^{-1}(L)$.
+
+	Clearly $\dim W_{i+1} = 1 + \dim W_i = i+1$.
+	It suffices to check that  $W_{i+1}$ is $T$-invariant:
+	\[
+	T(W_{i+1}) = T(Q^{-1}(L)) = Q^{-1}(T_{V / W_i}(L)) \subset Q^{-1}(L) = W_{i+1}.
+	\]
+
+	Now for the last part $(3)\implies (1)$:
+
+	Let $\mathcal{B} = \{\alpha_1,\dots,\alpha_n\}$,
+	such that $\Span\{\alpha_1,\dots,\alpha_i\} = W_i$.
+	The matrix of $T$ under  $\mathcal{B}$ is clearly an upper triangular matrix.
 \end{proof}

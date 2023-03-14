@@ -1,0 +1,99 @@
+%! TeX root = ./main.tex
+\begin{proposition}
+	Let $F$ be an algebraically closed field.
+	Suppose the elements of $\mathcal{F}\subset L(V)$ are pairwise commutative,
+	then $\mathcal{F}$ is simultaneously triangulable.
+\end{proposition}
+\begin{remark}
+    The inverse of this proposition is not true:
+	Just let $\mathcal{F}$ be the set consisting of all the
+	upper triangular matrices.
+\end{remark}
+\begin{lemma}
+	There's a common eigenvector of $\mathcal{F}$.
+\end{lemma}
+\begin{proof}[Proof of lemma]
+    WLOG $\mathcal{F}$ is finite.
+	(In fact, $\Span \mathcal{F} \subset L(V)$ is a finite dimensional vector space,
+	so we can take a basis $\mathcal{F}_0$.)
+
+	Now by induction, if $T_1,\dots, T_{k-1}$ have common eigenvector $\alpha$,
+	let $T_i\alpha = c_i \alpha$.
+	Then
+	\[
+	W = \bigcap_{i=1}^{k-1} \ker(T_i - c_i \id_V) \ne \{0\}
+	\]
+	is a $T_k$-invariant space.
+
+	So any eigenvector $\alpha'$ of $T_k\big|_W$ is the common eigenvector.
+\end{proof}
+\begin{proof}[Proof of the proposition]
+    It suffices to prove that there exists an $\mathcal{F}$-invariant flag.
+	By the lemma, the proof is nearly identical as the proof
+	of previous proposition.
+\end{proof}
+
+\subsection{Decomposition of linear maps}
+\label{sub:Decomposition of linear maps}
+
+In this section we mainly study how a linear map is decomposed into
+irreducible maps and the structure of irreducible maps.
+
+Recall that every vector space $V$ is an $F[x]$-module given a linear operator $T$.
+If a subspace $W \subset V$ is a $T$-invariant space,
+then $W$ is a submodule of $V$.
+
+Hence it leads to decompose $V$ into direct sums of submodules.
+
+\begin{definition}
+	Let $V, W$ be isomorphic vector spaces.
+	$T\in L(V)$, $T'\in L(W)$.
+	If there exists an isomorphism $\Phi: V\to W$ s.t.
+	$\Phi \circ T = T'\circ \Phi$,
+	we say $T$ and $T'$ are \vocab{equivalent}.
+\end{definition}
+
+\begin{definition}[Primary maps]
+	Let $T\in L(V)$ be a linear map. We say $T$ is \vocab{primary}
+	if $p_T$ is a power of prime polynomials.
+\end{definition}
+
+\begin{theorem}[Primary decomposition]
+    Let $T\in L(V)$,  $p_T = \prod_{i=1}^k p_i^{r_i}$,
+	where $p_i$ are different monic prime polynomials of degree 1.
+
+	We have
+	\[
+	V = \bigoplus_{i=1}^k W_i, \quad W_i = \ker\left(p_i^{r_i}(T)\right),
+	\]
+	with $W_i \ne \{0\}$ and $T\big|_{W_i}$ primary.
+\end{theorem}
+\begin{proof}[Proof]
+    Let $f_i = \prod_{j\ne i}p_j^{r_j}$, $f_i$ and $p_i$ are coprime.
+
+	Note that $f_i(T)\ne 0$ and $f_i(T)p_i^{r_i}(T) = p_T(T) = 0$,
+	thus $p_i^{r_i}(T)$ is not inversible, which implies $W_i \ne \{0\}$.
+
+	$W_i$ independent :
+	If there exists $\alpha_j\in W_j$ s.t. $\sum_{j=1}^k \alpha_j = 0$,
+	applying $f_i$ we get $f_i(\alpha_i) = 0$.
+	But $p_i^{r_i}(\alpha_i) = 0 \implies \alpha_i = 0, \forall i$.
+
+	To prove $V=\sum_{i=1}^k W_i$, observe that
+	\[
+	\gcd(f_1,\dots,f_k) = 1\implies \exists g_1,\dots,g_k
+	\quad s.t.\quad 1 = \sum_{i=1}^k g_if_i
+	\implies \alpha = \sum_{i=1}^k g_i(f_i\alpha),\quad \forall \alpha\in V.
+	\]
+	Since $f_i\alpha \in W_i$, $W_i$ is $T$-invariant $\implies g_if_i\alpha\in W_i$.
+
+	Lastly, we'll prove that the minimal polynomial $q_i$ of $T\big|_{W_i}$ is $p_i^{r_i}$.
+
+	Clearly $p_i^{r_i}(T\big|_{W_i}) = 0$, so $q_i\mid p_i^{r_i}$.
+
+	On the other hand, $q_1q_2\dots q_k$ is an annihilating polynomial of $T$,
+	hence
+	\[
+		\prod_{i=1}^k p_i^{r_i}\mid \prod_{i=1}^k q_i\implies q_i = p_i^{r_i}, \quad \forall i.
+	\]
+\end{proof}
