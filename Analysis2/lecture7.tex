@@ -64,7 +64,8 @@ is approximating this ``convolution identity''.
 
 \begin{definition}
 	In general, if $\int K_\varepsilon =1$,
-	$|K_\varepsilon|\le A\min\{\varepsilon^{-d},\varepsilon |x|^{-d-1}\}$,
+	$|K_\varepsilon|\le A\min\{\varepsilon^{-d},\varepsilon |x|^{-d-1}\}$
+	for some constant $A$,
 	we say $K_\varepsilon$ is an \vocab{approximation to the identity}.
 \end{definition}
 
@@ -87,24 +88,36 @@ is called the Friedrichs smoothing kernel.
 		&= \left|\int f(x-y)K_\varepsilon(y)\dd y - f(x)\right|\\
 		&\le \int |f(x-y)-f(x)| |K_\varepsilon(y)|\dd y\\
 		&\le \int _{|y|\le R} |f(x-y)-f(x)| A\varepsilon^{-d}\dd y
-		+ \int _{|y|>R} |f(x-y)-f(x)| \varepsilon |y|^{-d-1}\dd y.
+		+ \int _{|y|>R} |f(x-y)-f(x)| A\varepsilon |y|^{-d-1}\dd y.
     \end{align*}
 
 	Taking the integral over $\mathbb{R}^d$ :
 
 	\begin{align*}
+		&\lVert K_\varepsilon*f - f \rVert _{\mathcal{L}^1}\\
 		&\le A\varepsilon^{-d} \int \int_{|y|\le R} |f(x-y)-f(x)|\dd y \dd x
-		+\varepsilon\int \int_{|y|>R} |f(x-y)-f(x)||y|^{-d-1}\dd y\dd x\\
+		+A\varepsilon\int \int_{|y|>R} |f(x-y)-f(x)||y|^{-d-1}\dd y\dd x\\
 		&\le A\varepsilon^{-d} \int\int_{|y|\le R}|\tau_{-y}f(x)-f(x)|\dd y\dd x
-		+ \varepsilon \int_{|y|>R}|y|^{-d-1}\int |\tau_{-y}f(x)|+|f(x)|\dd x\dd y\\
+		+ A\varepsilon \int_{|y|>R}|y|^{-d-1}\int |\tau_{-y}f(x)|+|f(x)|\dd x\dd y\\
 		&\le A\varepsilon^{-d}\int_{|y|\le R}\lVert \tau_{-y}f-f \rVert _{\mathcal{L}^1}
-		\dd y + \varepsilon \int_{|y|>R} |y|^{-d-1} 2\lVert f \rVert _{\mathcal{L}^1}\dd y.
+		\dd y + A\varepsilon \int_{|y|>R} |y|^{-d-1} 2\lVert f \rVert _{\mathcal{L}^1}\dd y.
 	\end{align*}
 
-	By the continuity of translation, let $R$ sufficiently small we have
+	By the continuity of translation, $\forall \varepsilon_0$,
+	let $R$ be sufficiently small we have
 	\[
 	\lVert \tau_{-y}f-f \rVert _{\mathcal{L}^1} < \varepsilon_0, \forall|y|<R.
 	\]
+
+	\begin{align*}
+		\lVert K_\varepsilon*f - f \rVert _{\mathcal{L}^1}
+		&\le A\varepsilon^{-d}R^{d}c_d\varepsilon_0 + \varepsilon R^{-1} C
+	\end{align*}
+	where $C$ is a constant.
+
+	Take suitable $\varepsilon,\varepsilon_0$ s.t.
+	$R = \varepsilon\varepsilon_0^{-\frac{1}{2d}}$,
+	then $LHS \le C_1 \varepsilon_0^{\frac{1}{2}} + C_2 \varepsilon_0^{\frac{1}{2d}}\to 0$.
 \end{proof}
 
 \begin{theorem}
@@ -117,7 +130,28 @@ is called the Friedrichs smoothing kernel.
 \begin{proof}[Proof]
     WLOG $x=0$, let
 	\[
-	\omega(r) = \frac{1}{c_d r^d}\int_{B(0,r)} |f(y)-f(0)| \dd y,
+	\omega(r) = \frac{1}{r^d}\int_{B(0,r)} |f(y)-f(0)| \dd y,
 	\]
 	we have  $\lim_{r\to 0}\omega(r) = 0$, and $\omega$ is continuous.
+	\[
+	\omega(r) \le \frac{\lVert f \rVert _{\mathcal{L}^1}}{r^d} + |f(0)|,
+	\]
+	Thus $\omega$ is bounded.
+
+	Therefore we can compute
+	\begin{align*}
+		|K_\varepsilon*f(x) - f(x)|
+		&\le \int |K_\varepsilon(y)||f(x-y)-f(x)| \dd y\\
+		&\le \int_{B(0,r)} |K_\varepsilon(y)||f(x-y)-f(x)|\dd y
+		+ \sum_{k\ge 0} \int _{2^kr\le |y| < 2^{k+1}r}|K_\varepsilon(y)||f(x-y)-f(x)|\dd y\\
+		&\le A\varepsilon^{-d}\cdot r^d\omega(r)
+		+ \sum_{k\ge 0}\int_{2^kr\le |y| < 2^{k+1}r}A\varepsilon |y|^{-d-1}|f(x-y)-f(x)|\dd y\\
+		&\le A\varepsilon^{-d}r^d\omega(r) +
+		\sum_{k\ge 0}A\varepsilon 2^{-k(d+1)}r^{-d-1} \cdot 2^{(k+1)d}r^d\omega(2^{k+1}r)\\
+		&\le A\varepsilon^{-d}r^d\omega(r) +
+		A 2^d \varepsilon r^{-1} \sum_{k\ge 0}2^{-k}\omega(2^{k+1}r).
+	\end{align*}
+
+	Let $r=\varepsilon$, since $\omega(r)$ is continuous and bounded,
+	we're done.
 \end{proof}
