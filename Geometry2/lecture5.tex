@@ -37,3 +37,23 @@ It can also be written as $\begin{pmatrix}
 	of $\frac{\partial}{\partial x}$ is different from
 	$\frac{\partial}{\partial x}$.
 \end{remark}
+
+\begin{definition}[Length, angle and area]
+	Let $\gamma(r) = \phi(u(r))$ be a curve on $\phi$, then its length is equal to
+	\[
+	Length = \int_{a}^{b} \lVert s'(r)\phi_s(u(r))+t'(r)\phi_t(u(r)) \rVert \dd r.
+	\]
+
+	Let $\alpha,\beta: [0,\epsilon]\to \mathbb{E}^3$ be two curves on $\phi$.
+	Then the angle between  $\alpha$ and  $\beta$ (in $\mathbb{E}^3$)
+	is equal to
+	\[
+	Angle = \arccos \left( \frac{\phi_s(u)\cdot \phi_t(u)}{\lVert \phi_s(u)\cdot\phi_t(u) \rVert } \right).
+	\]
+
+	Lastly, let $R \subset U$ be a closed region whose boundary
+	is a regular curve, the area of $\phi$ on  $R$ is defined as
+	\[
+	Area = \iint_R \lVert \phi_s(u)\times \phi_t(u) \rVert \dd s\dd t.
+	\]
+\end{definition}

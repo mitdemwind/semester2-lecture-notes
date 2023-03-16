@@ -1,0 +1,119 @@
+%! TeX root = ./main.tex
+\subsection{Lebesgue Differentiation theorem part 2}
+\label{sub:Lebesgue Differentiation theorem part 2}
+
+Recall that Fundamental theorem of Calculus has a second part,
+Given any differentiable function $F(x)$, if $F'(x)$ Riemann integrable,
+then
+ \[
+F(b)-F(a) = \int_a^b F'(x)\dd x.
+\]
+When $F$ has nice properties (smooth), then it has a generalization to
+higher dimensions (Stokes' theorem).
+
+But in Lebesgue integration theory, the derivative of a function
+is hard to define. Hence we'll find an alternative for $F'(x)$.
+
+\begin{example}
+	Consider Heaviside function $H(t) = \left\{\begin{aligned}
+			&1, &t>0\\ &0, &t\le 0
+    \end{aligned} \right.$
+
+	Then $H$ is differentiable almost everywhere,
+	but $\int_{-1}^1 H'(t)\dd t = 0 \ne H(1)-H(-1)$.
+\end{example}
+\begin{example}
+    Consider Cantor-Lebesgue function $F$,
+	similarly we have $F'(x)=0, a.e.$,
+	but  $\int_0^1 F'(x)\dd x = 0\ne F(1)-F(0)$.
+\end{example}
+
+\begin{definition}[Dini derivatives]
+	Let $f(x)$ be a measurable function, define
+	\[
+	D^+(f)(x) = \limsup_{h>0, h\to 0}\frac{f(x+h)-f(x)}{h},\quad
+	D^-(f)(x) = \limsup_{h<0, h\to 0}\frac{f(x+h)-f(x)}{h}.
+	\]
+	\[
+	D_+(f)(x) = \liminf_{h>0, h\to 0}\frac{f(x+h)-f(x)}{h},\quad
+	D_-(f)(x) = \liminf_{h<0, h\to 0}\frac{f(x+h)-f(x)}{h}.
+	\]
+\end{definition}
+
+\begin{theorem}[Lebesgue Differentiation theorem for increasing functions]
+	Let $f$ be an increasing function on $[a,b]$,
+	then $F'(x)$ exists almost everywhere, and
+	\[
+	\int_{a}^{b} F'(x)\dd x \le F(b) - F(a).
+	\]
+\end{theorem}
+\begin{proof}[Sketch of the proof]
+	The outline of the proof is as follows:
+
+    Step 1: Decompose $F = F_c + J$, where $F_c$ is continuous, $J$ is a jump function.
+
+	Step 2: Prove $F_c$ increasing and  $J'=0, a.e.$.
+
+	Step 3: Prove $D^+(F)<+\infty, a.e.$, $D^+(F)\le D_-(F), a.e.$,
+	and $D^-(F)\le D_+(F),a.e.$.
+\end{proof}
+
+	\vspace{1em}
+	We proceed step by step.
+
+	\paragraph{Step 1}
+	Denote $F(x+0)=\lim_{h\to 0^+}F(x+h), F(x-0)=\lim_{h\to 0^-}F(x+h)$.
+
+	Since $F$ increasing, let $\{x_n\}$ be all the discontinuous points of $F$.
+	Define:
+	\[
+	j_n(x) = \left\{\begin{aligned}
+		&0, &x<x_n\\ &\beta_n, &x=x_n\\ &\alpha_n, & x>x_n
+	\end{aligned}\right.
+	\]
+	where $\alpha_n = F(x_n+0)-F(x_n-0), \beta_n = F(x_n) - F(x_n-0)$.
+
+	Hence the jump function 
+	\[
+	J_F(x) = \sum_{n=1}^{+\infty} j_n(x)\le \sum_{n=1}^{+\infty} \alpha_n
+	= \sum_{n=1}^{+\infty} (F(x_n+0)-F(x_n-0)) \le F(b)-F(a)
+	\]
+	is well-defined and increasing.
+
+\begin{theorem}
+    $F-J_F$ is continuous and increasing.
+\end{theorem}
+\begin{proof}[Proof]
+    First note that
+	\[
+	\lim_{h\to 0^+} (F(x+h)-J_F(x+h)) = F(x+0)-\lim_{h\to 0^+} J_F(x+h)
+	= F(x-0) - \lim_{h\to 0^+} J_F(x-h)
+	\]
+	This can be derived from the definition of $J_F$:
+	If $F$ is continuous at $x$, the equality is obvious;
+
+	If $x = x_n$ for some $n$,
+	\[
+	\lim_{h\to 0^+} J_F(x+h) = \sum_{x_k\le x_n} \alpha_k
+	+ \lim_{h\to 0^+}\sum_{x_n<x_k\le x_n+h} j_k(x+h)
+	= \sum_{x_k\le x_n}\alpha_k
+	\]
+	\[
+	\lim_{h\to 0^+}J_F(x-h) =
+	\lim_{h\to 0^+} \sum_{x_k<x_n-h} \alpha_k + \lim_{j\to 0^+}\sum_{x_k=x_n-h} \beta_k
+	= \sum_{x_k<x_n} \alpha_k
+	\]
+	Note that $\alpha_n = F(x_n + 0) - F(x_n - 0)$,
+	thus $F-J_F$ is continuous.
+
+	Secondly,
+	\[
+	F(x)-J_F(x)\le F(y)-J_F(y), \quad\forall a\le x\le y\le b.
+	\]
+	Because
+	\[
+	J_F(y)-J_F(x) = \sum_{x<x_j<y}\alpha_j + \sum_{x_k=y}\beta_k - \sum_{x_k=x}\beta_k
+	\le \sum_{x<x_j<y}\alpha_j + F(y)-F(y-0) \le F(y) - F(x).
+	\]
+	which means $F-J_F$ is increasing.
+\end{proof}

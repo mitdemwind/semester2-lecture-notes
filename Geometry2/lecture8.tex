@@ -1,0 +1,86 @@
+%! TeX root = ./main.tex
+\begin{example}
+	The conical and cylindrical surfaces have Gaussian curvature $0$.
+
+	For a general ruled surface, we can prove that $K\le 0$ everywhere.
+\end{example}
+\begin{example}
+    Minimal surfaces(like soap bubbles) have $H=0$ and $K\le 0$ everywhere.
+\end{example}
+\begin{example}[Dupin canonical form]
+	Let $\phi:U\to \mathbb{E}^3$ be a regular surface,
+	then at the neighborhood of any point, there exists a
+	parameter s.t. $\phi(s,t) = (s, t, \kappa_1s^2+\kappa_2t^2) + o(|s|^2+|t|^2)$,
+	where $\kappa_1,\kappa_2$ are principal curvatures of $\phi$.
+
+	In this case we can talk about concepts like ``elliptic point'',
+	``parabolic point'' and ``hyperbolic point''.
+\end{example}
+
+Next we'll going to switch to a more intrinsic view to study the meaning
+of those definitions again.
+
+If we look at a curve $\gamma$ on a surface $\phi$,
+let $r$ be the arc length parameter, then $\lVert \gamma' \rVert = 1$,
+$\lVert \gamma'' \rVert = \kappa(r)$, note that $\gamma''$ can be decompose
+with respect to the normal vector and tangent plane:
+\[
+	\gamma''=\kappa_n \vec{n}+\kappa_g\vec{n}\times \gamma'.
+\]
+Here $\kappa_n$ is called \vocab{normal curvature},
+and $\kappa_g$ is called \vocab{geodesic curvature} of $\gamma$ WRT $\phi$.
+
+Moreover we have \textit{Euler's formula}:
+\[
+\kappa^2 = \kappa_n^2 + \kappa_g^2.
+\]
+
+If we compute the normal curvature in terms of $u=(s,t)$:
+ \[
+\gamma' = \phi_s s' + \phi_t t'
+\]
+\[
+\gamma'' = (s',t')\begin{pmatrix}
+	\phi_{ss} &\phi_{st}\\\phi_{ts}&\phi_{tt}
+\end{pmatrix}
+\colvec{s'}{t'} + \phi_s s'' + \phi_t t''
+\]
+Hence
+\[
+\kappa_n = \gamma''\cdot \vec{n}
+= (s', t')\LMMN \colvec{s'}{t'} = L(s')^2+2Ms't'+N(t')^2.
+\]
+This is the formula under the arc length parameter.
+\begin{remark}
+    The general formula of $\kappa_n$:
+	\[
+	\kappa_n = \frac{Ls'^2 + 2Ms't' + Nt'^2}{Es'^2 + 2Fs't' + Gt'^2}.
+	\]
+\end{remark}
+
+The normal plane of $\gamma$ intersects the surface  $\phi$, the section curve
+is called a \vocab{normal section}.
+
+Oberserve that: if $ \lVert \gamma' \rVert = 1$, and the tangent vector is $\vec{t}$,
+then $\kappa_n(r)$ is the curvature of the normal section at $u$ in the plane
+spanned by $\vec{n},\vec{t}$.
+
+Hence $\kappa_n$ can be viewed as a quadratic form $\vec{n}^\perp \to \mathbb{R}$ which
+sends a vector $\vec{t}$ to the curvature of the normal section with
+tangent vector $\vec{t}$.
+
+Furthermore, the principal directions are the ``eigen-directions'' of $\kappa_n$,
+which are the directions where the curvature of normal section attains
+its extremum.
+
+ \begin{example}
+    Consider the helix and the cylinder
+	\[
+	\gamma(t)=(\cos t, \sin t, at),\quad S : x^2+y^2=1.
+	\]
+	It's easy to verify that $\kappa=\kappa_n=\frac{1}{1+a^2}$
+	as $\gamma''$ is always perpendicular to $z$-axis.
+
+	Note that $\kappa_g = 0$ everywhere, curves satisfying  $\kappa_g=0$ are
+	called \vocab{geodesic line}.
+\end{example}

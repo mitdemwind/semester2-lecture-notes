@@ -34,6 +34,13 @@ on it and the area), we thereby introduce the second fundamental form.
 	The second fundamental form is defined as
 	$h = L\dd s^2 + M\dd s\dd t + N\dd t^2$.
 \end{definition}
+\begin{remark}
+    Another expression of $L,M,N$:
+	 \[
+	L = -\phi_s \cdot \vec{n}_s,\quad M = -\phi_s\cdot \vec{n}_t
+	= -\phi_t \cdot \vec{n}_s, \quad N = -\phi_t \cdot \vec{n}_t.
+	\]
+\end{remark}
 
 Intuitively, the second fundamental form describes
 how much the surface is ``going out'' of the tangent plane.
@@ -94,20 +101,22 @@ Now we'll dig deeper into the geometric meaning of these formulas.
 	H = \frac{1}{2}\tr\EFFG^{-1}\LMMN,\quad
 	K = \det \EFFG^{-1}\LMMN
 	\]
-	Thus $H,K$ are fixed under reparametrization.
+	Thus $H,K$ are fixed under orientation-preserving reparametrization.
 \end{proof}
+\begin{remark}
+    When the reparametrization is orientation-reversing, $L,M,N$ all
+	differ by a sign, thus $H$ will change while $K$ is still fixed.
+\end{remark}
 
+Some examples about curvatures:
 \begin{example}
-    Some examples about curvatures:
-	\begin{itemize}
-		\item A sphere with radius $R$:
-			\[
-			H = \frac{1}{R}, \quad K = \frac{1}{R^2}.
-			\]
-			Note that
-			\[
-			\int _{S^2} K \dd Area = \frac{1}{R^2}4\pi R^2 = 2\pi \chi(S^2).
-			\]
-			This is an example of Gauss-Bonnet formula which we'll cover later.
-	\end{itemize}
+	A sphere with radius $R$:
+	\[
+	H = \frac{1}{R}, \quad K = \frac{1}{R^2}.
+	\]
+	Note that
+	\[
+	\int _{S^2} K \dd Area = \frac{1}{R^2}4\pi R^2 = 2\pi \chi(S^2).
+	\]
+	This is an example of Gauss-Bonnet formula which we'll cover later.
 \end{example}
