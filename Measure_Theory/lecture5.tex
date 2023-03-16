@@ -195,11 +195,17 @@ However, things could go wrong:
 	$\tau|_{\mathscr{F}}$ is the trivial measure.
 \end{example}
 \begin{example}
-    infinite measure, not unique extension
+	Let $X=\mathbb{R}$, $\mathscr{E}=\{(a,b]: a<b, a,b\in \mathbb{R}\}$.
+	Let $\mu(\emptyset)=0$, and  $\mu(A)=\infty$ for $A\ne \emptyset$.
+
+	Then $\mu$ can be extend to the Borel $\sigma$-algebra on $\mathbb{R}$
+	with $\mu_\alpha = \sum_{q\in \mathbb{Q}} \alpha\delta_q$, $\forall \alpha\ge 0$.
+	So the extension is not unique.
 \end{example}
 
-Therefore we must put some requirements the starting collection,
-namely semi-ring.
+Therefore in order to get a ``proper'' extension,
+we must put some requirements on both
+the starting collection and the set function $\mu$.
 
 \begin{proposition}
 	Let $ \mathscr{P}$ be a $\pi$ system. If two measures $\mu,\nu$
@@ -213,6 +219,11 @@ namely semi-ring.
 \begin{proof}[Proof]
     Let $A_1,A_2,\cdots\in \mathscr{P}$ s.t. $X = \sum_{n=1}^\infty A_n$ and
 	$\mu(A_n)<\infty$.
+
+	Fix $n$, let $B = A_n$, we want to prove that
+	\[
+		\mu(B\cap A)=\nu(B\cap A),\quad \forall A\in \sigma(\mathscr{P}).
+	\]
 
 	Let $B\in \mathscr{P}$ with $\mu(B)<\infty$,
 	\[
@@ -233,4 +244,15 @@ namely semi-ring.
 	\mu(AB) = \lim_{n\to \infty}\mu(A_nB) = \lim_{n\to \infty}\nu(A_n B) = \nu(AB).
 	\]
 	Which implies $A\in \mathscr{L}$.
+
+	Hence $\sigma(\mathscr{P}) \subset \mathscr{L}$, i.e.
+	\[
+	\mu(A\cap A_n) = \nu(A\cap A_n), \quad\forall A\in \sigma(\mathscr{P}).
+	\]
+	
+	Therefore
+	\[
+	\mu(A) = \sum_{n=1}^{\infty}\mu(A\cap A_n) = \sum_{n=1}^{\infty} \nu(A\cap A_n)
+	= \nu(A), \quad \forall A\in \sigma(\mathscr{P}).
+	\]
 \end{proof}
