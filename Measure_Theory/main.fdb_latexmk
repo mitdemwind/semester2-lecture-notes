@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1678942375 "main.tex" "main.pdf" "main" 1678942377 0
+["pdflatex"] 1679035743 "main.tex" "main.pdf" "main" 1679035744 0
   "../macros.tex" 1678697326 1207 12937b46d7931fd55098b8e256b7c637 ""
   "../preamble.tex" 1677570458 4884 3f6a0a1e0ebe87b1f83af32ba7f3f02c ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -52,7 +52,6 @@
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
-  "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1248133631 31764 459c573c03a4949a528c2cc7f557e217 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb" 1248133631 35309 940e81a5b9e04201a07e8b33a3ae6e64 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb" 1215737283 138258 6525c253f16cededa14c7fd0da7f67b2 ""
@@ -217,14 +216,14 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1676871738 4623355 58034c3eb7ddf7eacc726a83d01e26d2 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1676871762 7879246 a0e06bd93a50eeea2adb95467ae0402a ""
   "/usr/local/texlive/2022/texmf.cnf" 1676871735 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "lecture3.tex" 1678424379 6788 bc77d80b43ff423e54ead3508546769c ""
   "lecture4.tex" 1678863777 6491 36a80893a501dffcebb23423fd7e6c98 ""
-  "lecture5.tex" 1678942375 8508 0df945df3c0a3ab263dcb75797e2d251 ""
-  "main.aux" 1678942376 9569 8aaa5d4b6cc2f16e5f71aa66748321ab "pdflatex"
-  "main.out" 1678942376 681 1d4d27c7c8ac1c4e3e834a9cb1c99e44 "pdflatex"
-  "main.pre" 1678942376 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1678863615 381 30b54fc699805296a08e13ee118290cb ""
-  "main.toc" 1678942376 343 25e5e2c5bf137c1d51bd4c6696fe0e05 "pdflatex"
+  "lecture5.tex" 1679029082 8506 95ea4f777c4277c046dd3dc7f2abd10c ""
+  "lecture6.tex" 1679035741 5494 012d15e1aa092655f8ac3fb177e78312 ""
+  "main.aux" 1679035743 8004 399fb86ee9f2820053e1ff86bf6dc164 "pdflatex"
+  "main.out" 1679035743 681 1d4d27c7c8ac1c4e3e834a9cb1c99e44 "pdflatex"
+  "main.pre" 1679035743 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1679028913 401 265c65d102f656f6b3ad7af669c78abd ""
+  "main.toc" 1679035743 342 c20997c204d468ab2ae4b6149a3d6fa2 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
