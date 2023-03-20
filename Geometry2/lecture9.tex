@@ -1,0 +1,96 @@
+%! TeX root = ./main.tex
+\subsection{Gauss map and Weingarten map}
+\label{sub:Gauss map and Weingarten map}
+
+The strange definition of those curvatures don't
+come from nothing, in this section we'll cover this topic
+and give a geometric interpretation.
+
+\begin{definition}[Gauss map]
+	Let $\Sigma$ be a regular surface in $\mathbb{E}^3$,
+	denote its normal vector at $x$ by $\vec{n}(x)$.
+	Then this map $\mathcal{G}: \Sigma\to \mathbb{S}^2$ by
+	$x\mapsto \vec{n}(x)$ is called the \vocab{Gaussian map}.
+
+	In terms of a parametrized surface $\phi:U\to \mathbb{E}^3$,
+	we can compute that
+	\[
+	\mathcal{G}: U\to \mathbb{S}^2:\quad
+	\vec{n}(u) = \frac{\phi_s\times \phi_t}{\lVert \phi_s\times \phi_t \rVert}
+	\]
+\end{definition}
+
+But each vector has a normal plane, namely $\vec{n}^\perp$,
+and this derives the \vocab{Weingarten map}:
+\begin{definition}[Weingarten map]
+	For all $u\in U$, define $W: \vec{n}(u)^\perp\to \vec{n}(u)^\perp$:
+	$\vec{v}\mapsto W(\vec{v})$,
+	where
+	\[
+	W(\vec{v}) = - \frac{\dd (\mathcal{G}\circ \gamma)}{\dd u}\Bigg|_{u=0},
+	\quad \gamma:=\phi(u(r))\text{ is a curve on the surface}.
+	\]
+\end{definition}
+\begin{remark}
+    In the language of modern differetial manifolds,
+	Weingarten map is just the tangent map of Gauss map with a negative sign.
+\end{remark}
+
+Since $\vec{n}^\perp$ has a basis $\phi_s,\phi_t$, we can compute the matrix
+of Weingarten map:
+ \[
+(\phi_s, \phi_t)W = (-\vec{n}_s, -\vec{n}_t).
+\]
+Note that $-\vec{n}_s \cdot \phi_s = \vec{n}\cdot \phi_{ss} = L$,
+so if we take the inner product of $(\phi_s, \phi_t)$ on both sides,
+we get
+ \[
+\EFFG W = \LMMN \implies W = \EFFG^{-1}\LMMN.
+\]
+Since $W$ is clearly a geometric quantity, so its trace and determinant are
+also geometric:
+ \[
+\tr W = \frac{GL - 2FM + EN}{EG - F^2} = 2H,\quad
+\det W = \frac{LN - M^2}{EG - F^2} = K,
+\]
+which gives the average curvature and Gauss curvature.
+
+Moreover, the principal curvatures are the eigenvalues of $W$,
+and  principal directions are just the eigenspaces of $W$.
+
+Let $\vec{v}=(\phi_s,\phi_t)X$, then its normal section has curvature
+\[
+\kappa_n = \frac{X^T \LMMN X}{X^T \EFFG X}.
+\]
+When $ \lVert \vec{v} \rVert = 1$, we can change a parameter s.t.
+$\EFFG = I_2$, in this case we can observe that
+when $\kappa_n$ attains its extremum, $\vec{v}$ is precisely
+the eigenvector of $W$, i.e. lies on the principal directions.
+
+\begin{definition}[Curvature line]
+	A curve is called a \vocab{curvature line} if its tangent vector
+	is the same as principal directions everywhere.
+\end{definition}
+\begin{example}
+    Every curve on a sphere is curvature line.
+
+	Around a point where the principal curvatures are different,
+	there exists a orthogonal grid of curvature lines.
+\end{example}
+\begin{example}
+    monkey saddle surface, ``prong singularity''
+	%TODO: add a picture here
+\end{example}
+
+In the case when the $s$-curve and  $t$-curve are precisely the
+curvature lines, then we say this is a \vocab{curvature grid parameter},
+and here we have $g = E\dd s^2 + G\dd t^2$ and $h = L\dd s^2 + N\dd t^2$.
+
+\begin{remark}
+    The geometric interpretation of Gauss curvature:
+	For $u\in D \subset U$,
+	\[
+	|K(u)|=\lim_{``D\to u''}
+	\frac{Area_{\mathbb{S}^2}(\mathcal{G}(D))}{Area_{\mathbb{E}^3}(\phi(D))}
+	\]
+\end{remark}

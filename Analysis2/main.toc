@@ -1,4 +1,5 @@
-\contentsline {subsection}{\numberline {0.1}Applications of Fubini's theorem}{1}{subsection.0.1}%
-\contentsline {section}{\numberline {1}Lebesgue differentiation}{3}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Lebesgue Differentiation theorem part 2}{7}{subsection.1.1}%
-\contentsline {paragraph}{Step 1}{8}{theorem.1.15}%
+\contentsline {section}{\numberline {1}Lebesgue differentiation}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Lebesgue Differentiation theorem part 2}{6}{subsection.1.1}%
+\contentsline {paragraph}{Step 1}{7}{theorem.1.15}%
+\contentsline {paragraph}{Step 2}{8}{theorem.1.16}%
+\contentsline {paragraph}{Step 3}{8}{lemma.1.18}%

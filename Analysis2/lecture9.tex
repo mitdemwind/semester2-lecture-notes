@@ -1,0 +1,139 @@
+%! TeX root = ./main.tex
+\paragraph{Step 2}
+
+\begin{proposition}
+	The jump function $J(x)$ is differentiable almost everywhere, and $J'(x)=0, a.e.$.
+\end{proposition}
+\begin{proof}[Proof]
+    The Dini derivatives of $J(x)$ exist and are non-negative (since $J$ is increasing).
+	\[
+	\overline{D}(J)(x) = \max\{D^+(J)(x), D^-(J)(x)\}.
+	\]
+	Let $E_\varepsilon = \{\overline{D}(J)(x) > \varepsilon > 0\}$.
+	We'll prove $E_\varepsilon$ is null for all $\varepsilon$.
+	If $x\in E_\varepsilon$,  $\exists h$ s.t.
+	\[
+		\frac{J(x+h) - J(x)}{h}>\varepsilon \implies J(x+h)-J(x-h) > \varepsilon h.
+	\]
+
+	Let $N\in \mathbb{N}$ s.t. $\sum_{n>N}\alpha_n < \frac{\varepsilon\delta}{10}$.
+	Define $J_N(x) = \sum_{n>N} j_n(x)$.
+	\[
+	E_{\varepsilon, N} = \{\overline{D}(J_N)(x) > \varepsilon\},\quad
+	E_\varepsilon \subset E_{\varepsilon, N}\cup \{x_1,\dots,x_N\},
+	\]
+
+	Since for $x\ne x_i$,
+	\[
+	\overline{D}(J)(x) = \limsup_{h\to 0} \frac{J(x+h)-J(x)}{h}
+	= \limsup_{h\to 0} \left( \frac{J_N(x+h)-J_N(x)}{h} + \frac{1}{h}
+	\sum_{n=1}^{N} (j_n(x+h) - j_n(x))\right).
+	\]
+
+	\begin{lemma}
+		Let $\mathcal{B}$ be a collection of balls with bounded radius in $\mathbb{R}^{d}$.
+		There exists countably many disjoint balls $B_i$ s.t.
+		\[
+		\bigcup_{B\in \mathcal{B}} B \subset\bigcup_{i=1}^\infty 5B_i.
+		\]
+	\end{lemma}
+	\begin{proof}[Proof]
+		Let $r(B)$ denote the radius of $B$.
+		Take $B_1$ s.t. $r(B_1)>\frac{1}{2} \sup_{b\in \mathcal{B}}r(B)$.
+
+		The rest is the same as before.
+	\end{proof}
+
+	By lemma, there exists countably many disjoint intervals
+	$(x_i+h_i, x_i-h_i)$ s.t.
+	\begin{align*}
+	m^*(E_{\varepsilon,N})&\le 5 \sum_{i=1}^{\infty}2h_i\\
+	&\le 10 \sum_{i=1}^{\infty} \varepsilon^{-1}(J_N(x_i+h_i)-J_N(x_i-h_i))\\
+	&\le 10 \varepsilon^{-1} (J_N(b)-J_N(a)) < \delta.
+	\end{align*}
+
+	Hence $E_{\varepsilon, N}$ is a null set $ \implies E_\varepsilon$ null,
+	and at last $\overline{D}(J) = 0, a.e.$.
+\end{proof}
+
+\paragraph{Step 3}
+First we prove $D^+(F)<\infty, a.e.$.
+
+Let $E_\gamma = \{x: D^+(F)(x)>\gamma\}$.
+
+When $h\in [\frac{1}{n+1}, \frac{1}{n}]$ :
+\begin{align*}
+	\frac{F(x+h) - F(x)}{h}\le \frac{n+1}{n} \frac{F(x+\frac{1}{n})-F(x)}{\frac{1}{n}},\\
+	\ge \frac{n}{n+1}\frac{F(x+\frac{1}{n+1})-F(x)}{\frac{1}{n+1}}.
+\end{align*}
+
+Thus
+\[
+D^+(F)(x) = \limsup_{h\to 0}\frac{F(x+h)-F(x)}{h}
+=\limsup_{n\to \infty} \frac{F(x+\frac{1}{n})-F(x)}{\frac{1}{n}}
+\]
+is measurable.
+
+\begin{lemma}[Sunrise lemma]
+	Let $G(x)$ be a continuous function on $\mathbb{R}$. Define
+	\[
+	E = \{x: \exists h>0, G(x+h)>G(x)\}.
+	\]
+	Then $E$ is open and $E = \bigcup_{i=1}^\infty (a_i, b_i)$,
+	where $(a_i,b_i)$ are disjoint finite intervals s.t. $G(a_i) = G(b_i)$.
+
+	When $G$ is defined on finite interval $[a,b]$, we also have $G(a)\le G(b_1)$.
+\end{lemma}
+\begin{proof}[Proof]
+    $E$ is open since $G$ is continuous.
+
+	Take an interval $(a,b)$, by definition $a,b\notin E$, so $G(a)\ge G(b)$.
+
+	Since $b\notin E, G(x)\le G(b), \forall x>b$.
+	If $G(a)>G(b)$,
+	Let  $G(a+\varepsilon) > G(b)$, as $a+\varepsilon\in E$,
+	exists $h>0$ s.t. $G(a+\varepsilon+h)>G(a+\varepsilon)$.
+
+	But $G$ has a maximum on $[a+\varepsilon, b]$, say $G(c)$,
+	we must have $c\ne a+\varepsilon, b$.
+	This leads to a contradiction.
+\end{proof}
+
+For $x\in E_\gamma$,  $\exists h>0$ s.t. $F(x+h)-F(x) > \gamma h$,
+by Sunrise Lemma on  $F(x)-\gamma x$,
+\[
+	m(E_\gamma) \le \sum_{k=1}^{\infty} (b_k - a_k)
+	\le \gamma^{-1}\sum_{k=1}^{\infty} (F(b_k)-F(a_k))\le \gamma^{-1}(F(b)-F(a)).
+\]
+Therefore when $\gamma\to \infty$, $m(E_\gamma)\to 0$.
+
+The last part is $D^+(F)\le D_-(F),a.e.$.
+
+Similarly let
+ \[
+E_{r, R} = \{D^+(F)(x)>R, D_-(F)(x)<r\}.
+\]
+
+WLOG $E_{r,R}\subset[c,d]$, and $d-c<\frac{R}{r}m(E_{r,R})$.
+
+Let $G(x) = F(-x) + rx$, by Sunrise Lemma on $[-d,-c]$,
+ \[
+\{s: \exists h>0, G(x+h)>G(x)\} = \bigcup_k (-b_k, -a_k).
+\]
+Note that $-E_{r,R}$ is contained in the above set,
+and $G(-b_k)\le G(-a_k)\iff F(b_k) - F(a_k)\le r(b_k - a_k)$,
+
+We use Sunrise Lemma again on each $(a_k, b_k)$ and $F(x)-Rx$,
+ \[
+E_{r,R}\cap (a_k,b_k) \subset \{x: \exists h>0, F(x+h)-F(x)\ge Rh\}
+= \bigcup_{l=1}^\infty (a_{k,l}, b_{k,l}).
+\]
+
+Hence
+\begin{align*}
+	m(E_{r,R}) &\le \sum_{k,l=1}^{\infty}(b_{k,l}-a_{k,l})\\
+	&\le R^{-1} \sum_{k,l=1}^{\infty}(F(b_{k,l}) - F(a_{k,l}))
+	\le R^{-1} \sum_{k=1}^{\infty}(F(b_k) - F(a_k))\\
+	&\le R^{-1} r \sum_{k=1}^{\infty}(b_k - a_k) \le R^{-1}r (d-c),
+\end{align*}
+which gives a contradiction!
