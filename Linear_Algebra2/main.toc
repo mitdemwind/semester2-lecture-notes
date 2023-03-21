@@ -1,3 +1,2 @@
-\contentsline {subsection}{\numberline {0.1}Invariant subspaces}{1}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Decomposition of linear maps}{3}{subsection.0.2}%
-\contentsline {subsection}{\numberline {0.3}Cyclic decomposition}{4}{subsection.0.3}%
+\contentsline {subsection}{\numberline {0.1}Decomposition of linear maps}{3}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Cyclic decomposition}{4}{subsection.0.2}%

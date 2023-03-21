@@ -1,0 +1,91 @@
+%! TeX root = ./main.tex
+First we prove a lemma:
+\begin{lemma}
+	Let $\alpha\in V$ with $p_\alpha = p_T$, $\forall L \in V / R\alpha$,
+	exists $\beta\in L$ s.t. $p_\beta = p_L$.
+
+	Here $f\cdot L := f(T_{V / R\alpha}) L$, so $fL=0\iff f(T)\beta\in R\alpha$,
+	$\forall \beta\in L$.
+\end{lemma}
+\begin{proof}[Proof]
+    For all $\beta\in L$, we must have $p_\beta L=0$,
+	since $L = \beta + R\alpha, T(R\alpha) = R\alpha$.
+
+	If $p_L\beta \ne 0$, since $p_L \beta\in R\alpha$,
+	thus $p_L \beta = f\alpha$ for some $f\in R$.
+
+	Because $p_L \mid p_\beta \mid p_\alpha = p_T$,
+	\[
+	\left( \frac{p_\alpha}{p_L} \right)f\alpha = p_\alpha \beta = 0.
+	\]
+	We have $\frac{p_\alpha}{p_L}f$ is an annihilator of $\alpha$,
+	hence it's a multiple of $p_\alpha$, i.e.  $p_L \mid f$.
+
+	Let $f = p_L h$, $\beta_0 = \beta - h\alpha$,
+	we have $p_L\beta_0 = f\alpha - p_L h \alpha = 0$
+	$\implies p_{\beta_0} = p_L$.
+\end{proof}
+
+Returning to our original theorem,
+we'll prove by induction on $n$.
+
+Take $\alpha_1\in V$ s.t. $p_{\alpha_1} = p_T$.
+Consider $V / R\alpha_1$, its dimension is strictly lesser than $n$.
+By induction hypo, $\exists L_2, L_3, \dots, L_r\in V / R\alpha_1$,
+such that
+\[
+V / R\alpha_1 = \bigoplus _{i=1}^r RL_i, \quad p_{L_r}\mid \dots \mid p_{L_2}.
+\]
+Take $\alpha_i \in L_i$ s.t. $p_{\alpha_i} = p_{L_i}$,
+we must have $p_{\alpha_r} \mid \dots \mid p_{\alpha_1} = p_T$.
+
+If there exists $g_i\alpha_i \in R\alpha_i$ s.t. $\sum_{i=1}^r g_i\alpha_i = 0$,
+then
+\[
+	\sum_{i=2}^r g_iL_i = 0 \implies g_i L_i = 0 \implies g_i\alpha_i = 0.
+\]
+
+For any $\gamma \in V$, since $\gamma \in \gamma+R\alpha_1$,
+by induction hypo, $\gamma + R\alpha_1 = \sum_{i=2}^{r} h_iL_i$.
+
+This means $\gamma - \sum_{i=2}^{r} h_i \alpha_i \in R\alpha_1$,
+this completes the existence part of the theorem.
+\vspace{1ex}
+
+As for the uniqueness part,
+just note that $p_T = lcm(p_1,\dots,p_r) = p_1$ and $f_T = p_1\cdots p_r$,
+the rest can be done with induction. (Details are left to readers)
+
+\begin{theorem}
+    Let $G$ be a finite abelian group, then $\exists g_1,\dots,g_r\in G\backslash\{0\}$,
+	such that $G = \bigoplus_{i=1}^r \mathbb{Z}g_i$ and
+	$|\mathbb{Z}g_r| \mid \dots \mid |\mathbb{Z}g_1|$.
+\end{theorem}
+\begin{remark}
+    The proof is identical to the proof above.
+\end{remark}
+
+Let $d_i = \deg p_i = \dim R\alpha_i$,
+$\mathcal{B}_i = \{\alpha_i,\dots,T^{d_i-1}\alpha_i\}$ is a basis of $R\alpha_i$.
+Then $[T_{R\alpha_i}]_{\mathcal{B}_i}$ is the companian matrix $C_{p_i}$,
+hence $T$ can be represented as a blocked diagonal matrix with
+each block is $C_{p_i}$ for invariant factors $p_i$.
+This is called the \vocab{rational canonical form} of $T$.
+
+\begin{definition}
+	We say $A\in F^{n\times n}$ is \vocab{rational} if exists monic $p_1,\dots,p_r\in F[x]$,
+	such that $p_r\mid \dots \mid p_1$ and $A = \diag(C_{p_1},\dots,C_{p_r})$.
+\end{definition}
+
+\begin{theorem}
+    Let $T\in L(V)$, then $T$ has a unique rational canonical form.
+\end{theorem}
+\begin{proof}[Proof]
+	If $[T]_{\mathcal{B}'}=\diag(C_{q_1},\dots,C_{q_r})$ is another
+	rational canonical form, let $\mathcal{B}' = (\mathcal{B}_1',\dots,\mathcal{B}_r')$.
+
+	It's easy to observe that $\Span \mathcal{B}_i' = R\beta_i$, where
+	$\beta_i$ is the first element in $\mathcal{B}_i$,
+	so $V = \bigoplus_{i=1}^r R\beta_i$ is a cyclic decomposition of $V$,
+	by the previous theorem we deduce the canonical form is unique.
+\end{proof}
