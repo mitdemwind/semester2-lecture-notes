@@ -1,0 +1,160 @@
+%! TeX root = ./main.tex
+Now we can complete the proof of \autoref{LebesgueIncreasing}.
+Here we state the theorem again:
+
+Let $F$ be an increasing function on $[a,b]$, then $F$ is
+differentiable almost everywhere, and
+\[
+\int_{a}^{b} F'(x)\dd x \le F(b) - F(a).
+\]
+
+Let $F_n(x) = n(F(x+\frac{1}{n}) - F(x))$,
+Since $F_n\ge 0$, by Fatou's Lemma,
+\begin{align*}
+\int_{a}^{b} \liminf F_n \dd x &\le \liminf \int_{a}^{b} F_n \dd x\\
+&= \int_{a}^{b} F'(x)\dd x \le \liminf \int_{a}^{b} n\left(
+F\left(x+\frac{1}{n}\right) - F(x)\right)\dd x\\
+&= \liminf_{n \to \infty} n\left(\int_{a+\frac{1}{n}}^{b+\frac{1}{n}} F(x)
+- \int_{a}^{b} F(x)\right)\dd x\\
+&= \liminf_{n\to \infty} \left(F(b) - n \int_{a}^{a+\frac{1}{n}} F(x)\dd x\right)\\
+&\le F(b) - F(a)
+\end{align*}
+
+\subsection{Absolute continuous functions}
+\label{sub:Absolute continuous functions}
+
+\section{Multi-dimensional Calculus}
+\label{sec:Multi-dimensional Calculus}
+
+In this section we'll generalize the differentiation and integration theory
+to higher dimensions. Recall that Lebesgue integral is already
+defined on higher dimensions, so here we mainly study the differentiation
+of multi-dimensional functions.
+
+\begin{definition}[Absolute continuity]
+	We say a function $F(x)$ is \vocab{absolutely continuous} on
+	interval $[a,b]$, if $\forall \varepsilon>0, \exists \delta>0$,
+	such that for all disjoint intervals $(a_k, b_k), k = 1,\dots,N$ with
+	\[
+	\sum_{k=1}^{N} (b_k - a_k) < \delta,
+	\]
+	we must have
+	\[
+	\sum_{k=1}^{N} |F(b_k) - F(a_k)| < \varepsilon.
+	\]
+
+	The space consisting of all the absolutely continuous functions on $[a,b]$
+	is denoted by $Ac([a,b])$.
+\end{definition}
+
+\begin{example}
+    A $C^1$ function with bounded derivative
+	or a Lipschtiz function is absolutely continuous.
+\end{example}
+
+Some obvious properties of absolutely continuous function $F$:
+\begin{itemize}
+	\item $F$ is continuous;
+	\item $F$ has bounded variation, i.e. $F\in BV$.
+	\item $F$ is differentiable almost everywhere, since $F = F_1 - F_2$,
+		where $F_1,F_2$ are increasing.
+
+		In fact we have
+		\[
+			T_F([a,b]) = \int_{a}^{b} |F'(x)|\dd x.
+		\]
+	\item If $N$ is a null set, then $F(N)$ is also null.
+		In particular $F$ maps measurable sets to measurable sets.
+\end{itemize}
+
+\begin{proof}[Proof of the last property]
+    Take intervals $(a_k,b_k)$ s.t. $N \subset \bigcup_{k=1}^\infty (a_k, b_k)$.
+	Since $F(N) \subset F(\bigcup (a_k,b_k))$,
+	\[
+		|F(N)| \le \sum_{k=1}^{\infty} |F([a_k, b_k])|\le \sum_{k=1}^{\infty}
+		|F(\tilde b_k) - F(\tilde a_k)| < \varepsilon.
+	\]
+\end{proof}
+
+\begin{proposition}
+	The space $Ac([a,b]) \subset BV([a,b])$, moreover it's an algebra,
+	and it's a separable Banach space under the norm induced from $BV$.
+\end{proposition}
+
+Finally we come to the full generalization of Newton-Lebniz formula:
+\begin{theorem}[Fundamental theorem of Calculus]
+	A function $F\in Ac([a,b]) \implies F$ is differentiable almost everywhere,
+	$F'$ is integrable, and
+	\[
+		F(x) - F(a) = \int_{a}^{x} F'(\tilde x)\dd \tilde x, \quad \forall x\in [a,b].
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+	Let $\tilde F(x) = F(a) + \int_{a}^{b} F'(y)\dd y\in Ac([a,b])$
+	(by the absolute continuity of integrals).
+
+	We have $F - \tilde F\in Ac([a,b])$ and $(F-\tilde F)' = 0, a.e.$.
+
+	Thus it suffices to prove the following theorem:
+	\begin{theorem}
+		Let $F\in Ac([a,b])$, and $F'=0,a.e.$, then $F(a)=F(b)$, i.e.
+		$F$ is constant on $[a,b]$.
+	\end{theorem}
+\end{proof}
+
+To prove this, we'll need Vitali covering theorem:
+\begin{definition}[Vitali covering]
+	Let $\mathcal{B} = \{B_\alpha\}$, where $B_\alpha$ is closed balls in $\mathbb{R}^d$.
+	We say $\mathcal{B}$ is a \vocab{Vitali covering} of a set $E$,
+	if  $\forall x\in E, \forall \eta > 0$, exists $B_\alpha\in \mathcal{B}$ s.t.
+	$m(B_\alpha)<\eta$,  $x\in B_\alpha$.
+\end{definition}
+
+\begin{theorem}[Vitali]
+    Let $E \subset \mathbb{R}^{d}$ with $m^*(E)<\infty$, for any Vitali covering
+	$\mathcal{B}$ of $E$ and $\delta>0$,
+	exists disjoint balls $B_1,\dots,B_n\in \mathcal{B}$,
+	such that
+	\[
+	m^*\left(E\backslash \bigcup_{i=1}^n B_i\right) < \delta.
+	\]
+\end{theorem}
+
+\begin{proof}[Proof]
+    For all $\varepsilon > 0$, exists an open set $A$ s.t. $E \subset A$
+	and $m(A)<m^*(E) + \varepsilon < + \infty$.
+
+	Remove all the balls in $\mathcal{B}$ with radius greater than 1.
+	Each time we take a ball $B_i$ with radius greater
+	than $\frac{1}{2}\sup_{B\in \mathcal{B}'} r(B)$, where $\mathcal{B}'$ are
+	the remaining balls, and remove all the balls which intersect with $B_i$.
+
+	If we end up with finitely many balls  $B_1,\dots,B_n$, we must
+	have $E \subset \bigcup_{i=1}^n B_i$, otherwise $x\notin B_i\implies \exists B\ni x$,
+	$B\cap B_i = \emptyset$, contradiction!
+
+	If we take out countably many balls $B_1,B_2,\dots \subset A$,
+	since $ \sum_{i=1}^{\infty} m(B_i) \le m(A) <\infty$,
+	there exists $N$ s.t. $ \sum_{i=N+1}^{\infty} m(B_i) < 5^{-d}\delta$.
+
+	Now we only need to prove
+	\[
+		E\backslash \bigcup_{i=1}^N B_i \subset \bigcup_{i>N}5B_i.
+	\]
+\end{proof}
+
+Let $E = \{x: F'(x) = 0\}$, $\forall x\in E$, $\exists \delta(x)>0$, s.t.
+\[
+|F(y) - F(x)| < \varepsilon |y - x|, \forall |y-x| < \delta(x).
+\]
+Hence $[x-h, x+h], 0<h<\delta(x)$ is a Vitali covering of $E$.
+By Vitali's theorem, there exists finitely many disjoint intervals $[x_k-h_k,x_k+h_k]=I_k$ s.t.
+\[
+m^*(E\backslash\bigcup_{k=1}^N I_k) < \varepsilon.
+\]
+Assmue $a\le a_1<b_1<\dots<a_N<b_N\le b$.
+\[
+F(b) - F(a) \le \sum_{k=1}^{N} |F(b_k)-F(a_k)| + \sum_{k=0}^{N}|F(a_{k+1})-F(b_k)|
+\le \varepsilon(b-a) + \delta.
+\]
+

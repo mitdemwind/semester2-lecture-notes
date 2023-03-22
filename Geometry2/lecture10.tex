@@ -1,0 +1,77 @@
+%! TeX root = ./main.tex
+\begin{example}
+    Consider the Gauss map of a torus, the ``outer'' part
+	and the ``inner'' part of the torus maps to $\mathbb{S}^2$ bijectively.
+	If we compute
+	\[
+	\int _{T^2} K \dd Area_E = \int _{\mathbb{S}^2} (1 + (-1))\dd Area_S
+	= 0 = 2\pi \chi(T^2),
+	\]
+	as Gauss-Bonnet formula implies.
+\end{example}
+
+\subsection{Fundamental equation of surfaces}
+\label{sub:Fundamental equation of surfaces}
+
+Like the Fundamental theorem and Frenet frame in curve theory, we want to develop a
+theorem for describing surfaces using only fundamental forms.
+
+Given a parameter on a surface, there's a natural frame $(\phi_s, \phi_t, \vec{n})$.
+If we take the derivative of the frame, we'll get
+\[
+	(\phi_s, \phi_t, \vec{n})_{st} = (\phi_s, \phi_t, \vec{n})_{ts}.
+\]
+Taking the inner product with $(\phi_s,\phi_t,\vec{n})^T$ and apply the product rule:
+\[
+\left( \begin{pmatrix}\phi_s\\\phi_t\\\vec{n}\end{pmatrix}
+(\phi_s,\phi_t,\vec{n})_s \right)_t
+- \begin{pmatrix}\phi_s\\\phi_t\\\vec{n}\end{pmatrix}_t
+(\phi_s,\phi_t,\vec{n})_s
+= \left( \begin{pmatrix}\phi_s\\\phi_t\\\vec{n}\end{pmatrix}
+(\phi_s,\phi_t,\vec{n})_t \right)_s
+- \begin{pmatrix}\phi_s\\\phi_t\\\vec{n}\end{pmatrix}_s
+(\phi_s,\phi_t,\vec{n})_t
+\]
+This equation will give us some relations between the fundamental quantities.
+In literature these relations are known as Gauss equation and Codazzi equations.
+
+Gauss equation can be written as:
+\[
+	(\phi_s\cdot \phi_{ts})_t - (\phi_s\cdot \phi_{tt})_s
+	= \phi_{st}\cdot \phi_{st} - \phi_{ss}\cdot \phi_{tt}.
+\]
+Codazzi equations are related to $\vec{n}$ and more complicated.
+
+From Gauss equation we can deduce a famous theorem:
+\begin{theorem}[Gauss' Theorema Egregium]
+    The Gauss curvature $K$ is determined by the first fundamental form.
+\end{theorem}
+\begin{proof}[Proof]
+    Note that $(\phi_s\cdot \phi_{ts})_t = \frac{1}{2}E_{tt}$, and
+	$(\phi_s\cdot \phi_{tt})_s = (F_t - \frac{1}{2}G_s)_s = F_{ts} - \frac{1}{2}G_{ss}$.
+
+	Suppose $\phi_{ss} = x\phi_s + y\phi_t + L\vec{n}$,
+	then
+	\[
+		\frac{1}{2}E_s = \phi_s\cdot \phi_{ss} = Ex + Fy,\quad
+		F_s - \frac{1}{2}G_t = \phi_t\cdot \phi_{ss} = Fx + Gy
+	\]
+	So $x,y$ is determined by $E,F,G$.
+
+	Similarly, we get
+	\[
+	\begin{aligned}
+		\phi_{ss} &= *\phi_s + *\phi_t + L\vec{n}\\
+		\phi_{st} &= *\phi_s + *\phi_t + M\vec{n}\\
+		\phi_{tt} &= *\phi_s + *\phi_t + N\vec{n}
+	\end{aligned}
+	\]
+	where $*$ are determined by $E,F,G$.
+
+	By Gauss equation, we get $* = -(LN - M^2) + *$,
+	and $*$ is determined by $E,F,G$ and their partial derivatives.
+\end{proof}
+\begin{remark}
+    The computation looks messy, but in modern mathematics,
+	we have a systematic notation which is more simplified.
+\end{remark}
