@@ -1,0 +1,82 @@
+%! TeX root = ./main.tex
+So far we've proved that $A\sim B \iff A,B$ have the same
+rational canonical form. Note that this canonical form
+does not require any extra properties of the base field $F$.
+
+Next we'll see some applications of it.
+Different from Jordan canonical forms, rational canonical forms
+focus more on theory than computaion.
+
+\begin{proposition}[Rational canonical forms don't depend on fields]
+	Let $A\in F^{n\times n}$ has rational canonical form $A'$,
+	and the invariant factors are $p_1,\dots,p_r\in F[x]$.
+
+	If $K \subset F$ is a smaller field s.t. $A\in K^{n\times n}$,
+	then $A'$ is still the rational canonical form of $A$ in $K$.
+	i.e. $A'\in K^{n\times n}$, and $\exists P\in K^{n\times n}, A' = PAP^{-1}$.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $A''$ be the rational form of $A$ on $K$.
+	By the uniqueness of rational canonical forms,
+	we must have $A' = A''$, since they are both the
+	rational form of $A$ on $F$.
+\end{proof}
+
+\begin{proposition}[Similarity in larger fields implies similarity in smaller fields]
+	Let $A,B$ be matrices on $F$, and $A\sim B$ in $F$.
+	If $A,B\in K^{n\times n}$, where $K$ is a subfield of $F$,
+	then $A\sim B$ in $K$ as well.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $C$ be the rational canonical form of $A,B$,
+	since $A,B\in K^{n\times n}$, by the previous proposition,
+	$C\in K^{n\times n}$ and $A\sim C\sim B$ in $K$.
+\end{proof}
+
+\begin{proposition}
+	$\forall A\in F^{n\times n}$, $A\sim A^t$.
+\end{proposition}
+\begin{proof}[Proof]
+	Firstly when $A = C_f$ for some $f\in F[x]$,
+	$A$ has only one invariant factor $f$.
+	Note that $f_{A^t} = p_{A^t} = f_A = p_A = f$, so
+	the invariant factor of $A^t$ is also $f$,
+	by rational canonical forms we're done.
+
+	Next for generic matrix $A$,
+	just take the rational canonical form $B$.
+	By above we have
+	\[
+	A \sim B\implies A\sim B\sim B^t \sim A^t.
+	\]
+\end{proof}
+
+\begin{example}[How to compute the rational canonical forms (in low dimensions)]
+    Let $A = \begin{pmatrix}
+		5 &-6 &-6\\ -1 &4 &2 \\ 3 &-6 &-4
+    \end{pmatrix}\in \mathbb{Q}^{3\times 3}$.
+	First observe that $f_A = (x-1)(x-2)^2$.
+
+	Since $(x-1)(x-2)$ is the minimal polynomial of $A$,
+	so the invariant factors are $p_1 = (x-1)(x-2), p_2 = (x-2)$.
+	Hence the rational canonical form of $A$ is
+	\[
+	\begin{pmatrix}
+		0 &-2 &0\\ 1 &3 &0\\ 0 &0 &2
+	\end{pmatrix}
+	\]
+
+	Next we'll find vectors $\alpha_1,\alpha_2$ s.t. $p_{\alpha_i} = p_i$.
+	So $P = (\alpha_1, A\alpha_1, \alpha_2)$ will be the transition matrix.
+\end{example}
+
+\begin{proposition}
+	Let $T$ be a diagonalizable map, $\sigma(T)=\{c_1,\dots,c_k\}$.
+	Let $V_1,\dots,V_k$ be the primary decomposition of $V$,
+	\begin{itemize}
+		\item Let $\alpha = \sum_{i=1}^{k} \beta_i, \beta_i\in V_i$,
+			then $R\alpha = \Span\{\beta_1,\dots,\beta_k\}$,
+			$p_\alpha = \prod_{\beta_i\ne 0}(x-c_i) $.
+		\item Let $d_i=\dim V_i$, then $p_j = \prod_{d_i\ge j}(x-c_i)$.
+	\end{itemize}
+\end{proposition}
