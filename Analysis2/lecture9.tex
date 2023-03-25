@@ -24,11 +24,21 @@
 	\]
 
 	Since for $x\ne x_i$,
-	\[
-	\overline{D}(J)(x) = \limsup_{h\to 0} \frac{J(x+h)-J(x)}{h}
-	= \limsup_{h\to 0} \left( \frac{J_N(x+h)-J_N(x)}{h} + \frac{1}{h}
-	\sum_{n=1}^{N} (j_n(x+h) - j_n(x))\right).
-	\]
+	\begin{align*}
+		\overline{D}(J)(x) &= \limsup_{h\to 0} \frac{J(x+h)-J(x)}{h}\\
+		&= \limsup_{h\to 0} \left( \frac{J_N(x+h)-J_N(x)}{h} + \frac{1}{h}
+		\sum_{n=1}^{N} (j_n(x+h) - j_n(x))\right)
+		= \overline{D}(J_N)(x).
+	\end{align*}
+
+	Next we need to control the measure of $E_{\varepsilon,N}$.
+
+	For all $y\in E_{\varepsilon,N}$, there exists sufficiently
+	small $h$ s.t. $J_N(y+h)-J_N(y)>h\varepsilon$.
+	So the intervals $(y-h, y+h)$ is a covering of $E_{\varepsilon,N}$,
+	and it can be controled using the value of $J_N$.
+	Therefore we hope to find some \textit{disjoint} intervals which
+	cover certain ratio of $E_{\varepsilon,N}$.
 
 	\begin{lemma}
 		Let $\mathcal{B}$ be a collection of balls with bounded radius in $\mathbb{R}^{d}$.
@@ -52,8 +62,9 @@
 	&\le 10 \varepsilon^{-1} (J_N(b)-J_N(a)) < \delta.
 	\end{align*}
 
-	Hence $E_{\varepsilon, N}$ is a null set $ \implies E_\varepsilon$ null,
-	and at last $\overline{D}(J) = 0, a.e.$.
+	Hence $m^*(E_\varepsilon)\le m^*(E_{\varepsilon, N})
+	<\delta \implies m^*(E_\varepsilon) = 0$,
+	which gives $\overline{D}(J) = 0, a.e.$.
 \end{proof}
 
 \paragraph{Step 3}
@@ -74,10 +85,11 @@ D^+(F)(x) = \limsup_{h\to 0}\frac{F(x+h)-F(x)}{h}
 \]
 is measurable.
 
-\begin{lemma}[Sunrise lemma]
+\begin{lemma}[Riesz sunrise lemma]
+	\label{lem:sunrise}
 	Let $G(x)$ be a continuous function on $\mathbb{R}$. Define
 	\[
-	E = \{x: \exists h>0, G(x+h)>G(x)\}.
+	E = \{x: \exists h>0, s.t.\ G(x+h)>G(x)\}.
 	\]
 	Then $E$ is open and $E = \bigcup_{i=1}^\infty (a_i, b_i)$,
 	where $(a_i,b_i)$ are disjoint finite intervals s.t. $G(a_i) = G(b_i)$.
@@ -85,9 +97,10 @@ is measurable.
 	When $G$ is defined on finite interval $[a,b]$, we also have $G(a)\le G(b_1)$.
 \end{lemma}
 \begin{proof}[Proof]
-    $E$ is open since $G$ is continuous.
+    Note that $E$ is open since $G$ is continuous.
 
-	Take an interval $(a,b)$, by definition $a,b\notin E$, so $G(a)\ge G(b)$.
+	Take a maximum open interval $(a,b) \subset E$,
+	i.e. $a,b\notin E$, so $G(a)\ge G(b)$.
 
 	Since $b\notin E, G(x)\le G(b), \forall x>b$.
 	If $G(a)>G(b)$,
@@ -98,9 +111,15 @@ is measurable.
 	we must have $c\ne a+\varepsilon, b$.
 	This leads to a contradiction.
 \end{proof}
+\begin{remark}
+    This lemma provides a better estimation than
+	previous covering lemmas, since it directly
+	claims that $E$ can be broken into disjoint
+	intervals.
+\end{remark}
 
 For $x\in E_\gamma$,  $\exists h>0$ s.t. $F(x+h)-F(x) > \gamma h$,
-by Sunrise Lemma on  $F(x)-\gamma x$,
+by \autoref{lem:sunrise} on  $F(x)-\gamma x$,
 \[
 	m(E_\gamma) \le \sum_{k=1}^{\infty} (b_k - a_k)
 	\le \gamma^{-1}\sum_{k=1}^{\infty} (F(b_k)-F(a_k))\le \gamma^{-1}(F(b)-F(a)).
@@ -109,21 +128,25 @@ Therefore when $\gamma\to \infty$, $m(E_\gamma)\to 0$.
 
 The last part is $D^+(F)\le D_-(F),a.e.$.
 
-Similarly let
+Similarly it's sufficient to prove the following set is null
+for all rational numbers $r<R$:
  \[
 E_{r, R} = \{D^+(F)(x)>R, D_-(F)(x)<r\}.
 \]
 
-WLOG $E_{r,R}\subset[c,d]$, and $d-c<\frac{R}{r}m(E_{r,R})$.
+Since $D^+(F)$ is measurable, $E_{r,R}$ is measurable.
+If $m(E_{r,R})>0$, we can restrict it to
+a smaller interval $[c,d] \subset [a,b]$ such that
+$d-c<\frac{R}{r}m(E_{r,R})$.
 
-Let $G(x) = F(-x) + rx$, by Sunrise Lemma on $[-d,-c]$,
+Let $G(x) = F(-x) + rx$, by \autoref{lem:sunrise} on $[-d,-c]$,
  \[
 \{s: \exists h>0, G(x+h)>G(x)\} = \bigcup_k (-b_k, -a_k).
 \]
 Note that $-E_{r,R}$ is contained in the above set,
 and $G(-b_k)\le G(-a_k)\iff F(b_k) - F(a_k)\le r(b_k - a_k)$,
 
-We use Sunrise Lemma again on each $(a_k, b_k)$ and $F(x)-Rx$,
+We use \autoref{lem:sunrise} again on each $(a_k, b_k)$ and $F(x)-Rx$,
  \[
 E_{r,R}\cap (a_k,b_k) \subset \{x: \exists h>0, F(x+h)-F(x)\ge Rh\}
 = \bigcup_{l=1}^\infty (a_{k,l}, b_{k,l}).
@@ -137,3 +160,9 @@ Hence
 	&\le R^{-1} r \sum_{k=1}^{\infty}(b_k - a_k) \le R^{-1}r (d-c),
 \end{align*}
 which gives a contradiction!
+So $m(E_{r,R}) = 0$ for all rationals $r<R$.
+Therefore we're done by
+\[
+m(\{D^+(F)>D_-(F)\})\le \sum_{r,R} m(E_{r,R}) = 0
+\]
+

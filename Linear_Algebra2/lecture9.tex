@@ -53,8 +53,33 @@ this completes the existence part of the theorem.
 \vspace{1ex}
 
 As for the uniqueness part,
-just note that $p_T = lcm(p_1,\dots,p_r) = p_1$ and $f_T = p_1\cdots p_r$,
-the rest can be done with induction. (Details are left to readers)
+note that $p_T = \lcm(p_1,\dots,p_r) = p_1$ and $f_T = p_1\cdots p_r$,
+suppose $q_1,\dots,q_s$ are also invariant factors of $T$,
+we must have $p_1=q_1=p_T$ and $\prod p_i = \prod q_i$.
+
+Assume for contradiction that $\exists 2\le t\le \min\{r,s\}$ s.t.
+$p_t\ne q_t$, but $p_i=q_i$ for all $i<t$.
+
+Multiplying $p_t$ on both sides of $\bigoplus_{i=1}^r R\alpha_i
+= \bigoplus_{i=1}^s R\beta_i$ we get:
+\[
+\bigoplus _{i=1}^{t-1} Rp_t\alpha_i = p_tV
+= \bigoplus _{i=1}^{t-1}Rp_t\beta_i \oplus \bigoplus_{i=t}^s Rp_t\beta_i.
+\]
+Now observe that
+\begin{itemize}
+	\item For monic polynomial $f,g$, if $p_\alpha = fg$,
+		then  $p_{f\alpha} = g$ as $h(f\alpha) = 0\iff (fh)\alpha = 0$.
+\end{itemize}
+
+Hence
+\[
+	\dim Rp_t\alpha_i = \deg p_{p_t\alpha_i} = \deg \frac{p_i}{p_t}
+	= \deg \frac{q_i}{p_t} = \deg Rp_t\beta_i.
+\]
+This implies $\bigoplus_{i=t}^s Rp_t\beta_i = \{0\}$,
+in particular $p_t\beta_t = 0\implies p_t\mid q_t$.
+Similarly $q_t\mid p_t \implies p_t = q_t$, contradiction!
 
 \begin{theorem}
     Let $G$ be a finite abelian group, then $\exists g_1,\dots,g_r\in G\backslash\{0\}$,

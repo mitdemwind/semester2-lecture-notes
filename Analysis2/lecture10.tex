@@ -9,10 +9,14 @@ differentiable almost everywhere, and
 \]
 
 Let $F_n(x) = n(F(x+\frac{1}{n}) - F(x))$,
+where $F(x) = F(b)$ for $x>b$.
 Since $F_n\ge 0$, by Fatou's Lemma,
+(we've already proved $F$ is differentiable almost everywhere and $F'\ge 0$)
 \begin{align*}
-\int_{a}^{b} \liminf F_n \dd x &\le \liminf \int_{a}^{b} F_n \dd x\\
-&= \int_{a}^{b} F'(x)\dd x \le \liminf \int_{a}^{b} n\left(
+\int_{a}^{b} \liminf_{n\to \infty} F_n \dd x
+&\le \liminf_{n\to \infty} \int_{a}^{b} F_n \dd x\\
+\implies \int_{a}^{b} F'(x)\dd x
+&\le \liminf_{n\to \infty} \int_{a}^{b} n\left(
 F\left(x+\frac{1}{n}\right) - F(x)\right)\dd x\\
 &= \liminf_{n \to \infty} n\left(\int_{a+\frac{1}{n}}^{b+\frac{1}{n}} F(x)
 - \int_{a}^{b} F(x)\right)\dd x\\
@@ -22,14 +26,6 @@ F\left(x+\frac{1}{n}\right) - F(x)\right)\dd x\\
 
 \subsection{Absolute continuous functions}
 \label{sub:Absolute continuous functions}
-
-\section{Multi-dimensional Calculus}
-\label{sec:Multi-dimensional Calculus}
-
-In this section we'll generalize the differentiation and integration theory
-to higher dimensions. Recall that Lebesgue integral is already
-defined on higher dimensions, so here we mainly study the differentiation
-of multi-dimensional functions.
 
 \begin{definition}[Absolute continuity]
 	We say a function $F(x)$ is \vocab{absolutely continuous} on
@@ -111,6 +107,7 @@ To prove this, we'll need Vitali covering theorem:
 \end{definition}
 
 \begin{theorem}[Vitali]
+	\label{thm:vitali}
     Let $E \subset \mathbb{R}^{d}$ with $m^*(E)<\infty$, for any Vitali covering
 	$\mathcal{B}$ of $E$ and $\delta>0$,
 	exists disjoint balls $B_1,\dots,B_n\in \mathcal{B}$,
@@ -148,7 +145,8 @@ Let $E = \{x: F'(x) = 0\}$, $\forall x\in E$, $\exists \delta(x)>0$, s.t.
 |F(y) - F(x)| < \varepsilon |y - x|, \forall |y-x| < \delta(x).
 \]
 Hence $[x-h, x+h], 0<h<\delta(x)$ is a Vitali covering of $E$.
-By Vitali's theorem, there exists finitely many disjoint intervals $[x_k-h_k,x_k+h_k]=I_k$ s.t.
+By \autoref{thm:vitali},
+there exists finitely many disjoint intervals $[x_k-h_k,x_k+h_k]=I_k$ s.t.
 \[
 m^*(E\backslash\bigcup_{k=1}^N I_k) < \varepsilon.
 \]

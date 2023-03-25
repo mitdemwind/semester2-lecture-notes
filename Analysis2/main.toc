@@ -1,6 +1,5 @@
-\contentsline {subsection}{\numberline {0.1}Lebesgue Differentiation theorem part 2}{3}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.1}Lebesgue Differentiation theorem for monotone functions}{3}{subsection.0.1}%
 \contentsline {paragraph}{Step 1}{4}{theorem.0.10}%
-\contentsline {paragraph}{Step 2}{5}{theorem.0.11}%
+\contentsline {paragraph}{Step 2}{5}{lemma.0.11}%
 \contentsline {paragraph}{Step 3}{6}{lemma.0.13}%
 \contentsline {subsection}{\numberline {0.2}Absolute continuous functions}{8}{subsection.0.2}%
-\contentsline {section}{\numberline {1}Multi-dimensional Calculus}{8}{section.1}%
