@@ -1,4 +1,130 @@
 %! TeX root = ./main.tex
+There's another version of this thoerem which looks like
+Newton-Lebniz formula more:
+\begin{theorem}
+	Let $F$ be a differentiable function on $[a,b]$,
+	if $F'$ is Lebesgue integrable, then
+	\[
+	F(b) - F(a) = \int_{a}^{b} F'(x)\dd x.
+	\]
+\end{theorem}
+
+We need to prove a lemma first.
+\begin{theorem}
+	Let $F$ be real function on $[a,b]$, if $F$ is differentiable on $E$,
+	and $|F'|\le M$ in $E$, then
+	\[
+	m^*(F(E)) \le Mm^*(E).
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    For all $\varepsilon > 0$, $x\in E$, $\exists \delta > 0$,
+	\[
+	\left| \frac{F(x+h) - F(x)}{h} - M \right| < \varepsilon,\quad
+	\forall |h| < \delta.
+	\]
+	So $[x-h, x+h]$ is a Vitali covering of $E$.
+	By Vitali's theorem (\ref{thm:vitali}), exists disjoint
+	intervals $I_i = [x_i-h_i, x_i+h_i]$ s.t.
+	\[
+	m^*\left(E \backslash \bigcup_{i=1}^\infty I_i\right) = 0,\quad
+	\sum_{i=1}^{\infty} 2h_i \le m^*(E) + \varepsilon.
+	\]
+	But for $y\in I_i$, $|F(y) - F(x_i)| \le (M+\varepsilon)h_i$,
+	thus $m^*(F(I_i)) \le 2(M+\varepsilon)h_i = (M+\varepsilon)|I_i|$.
+	\begin{align*}
+		m^*(F(E)) &\le m^*(F(E\cap \bigcup_{i=1}^\infty I_i))
+		+ m^*(F(E \backslash \bigcup_{i=1}^\infty I_i))\\
+		& \le \sum_{i=1}^{\infty} m^*(F(I_i))
+		+ m^*(F(E \backslash \bigcup_{i=1}^\infty I_i))\\
+		& \le (M+\varepsilon)(m^*(E) + \varepsilon)
+		+ m^*(F(E \backslash \bigcup_{i=1}^\infty I_i))
+	\end{align*}
+
+	So it suffices to prove the case when $E$ is null.
+	Define
+	\[
+	E_n = \left\{x\in E: |F(y) - F(x)|\le (M+\varepsilon)|y - x|,
+	\forall |y - x|<\frac{1}{n}\right\}.
+	\]
+	Observe that $E_n \nearrow E$ and $F(E_n)\nearrow F(E)$.
+	There exists disjoint intervals $J_{n,k}$ s.t.
+	\[
+	E_n \subset \bigcup_{k=1}^\infty J_{n,k},\quad
+	\sum_{k=1}^{\infty} |J_{n,k}| \le \min\left\{\frac{1}{n}, \varepsilon\right\}.
+	\]
+	Thus
+	\[
+	m^*(F(E_n)) \le \sum_{k=1}^{\infty} m^*(F(E_n \cap J_{n,k}))
+	\le \sum_{k=1}^{\infty} (M+\varepsilon) |J_{n,k}|\le \varepsilon(M+\varepsilon).
+	\]
+
+	Taking $\varepsilon \to 0$ we get $F(E_n)$ is null.
+	So $F(E) = \lim_{n\to \infty} F(E_n)$ is null, which completes the proof.
+\end{proof}
+
+Returning to the proof of the theorem,
+in fact we only need to prove
+\[
+|F(b) - F(a)|\le \int_{a}^{b} |F'(x)|\dd x,
+\]
+since this implies $F$ is absolutely continuous.
+For all $\varepsilon > 0$, let
+\[
+	E_n = \{x\in [a,b]: n\varepsilon \le |F'(x)| < (n+1)\varepsilon\}.
+\]
+By our lemma, $m^*(F(E_n))\le (n+1)\varepsilon m(E_n)\le \varepsilon m(E_n)
++ \int_{E_n} |F'(x)|\dd x$.
+
+Hence
+\begin{align*}
+	|F(b) - F(a)| &\le m(F([a,b]))
+	\le \sum_{n=0}^{\infty} m^*(F(E_n))\\
+	&\le \varepsilon(b-a) + \int_{a}^{b} |F'(x)|\dd x.
+\end{align*}
+
+\begin{theorem}
+    A rectifiable curve $\gamma(t) = (x(t), y(t))$ with $x,y$ absolutely
+	continuous has length
+	\[
+	L(\gamma) = \int_{a}^{b} |\gamma'(t)|\dd t.
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    Since $|\gamma(t_i) - \gamma(t_{i-1})| = |\int_{t_{i-1}}^{t_i} \gamma'(t)\dd t|
+	\le \int_{t_{i-1}}^{t_i} |\gamma'(t)|\dd t$,
+	thus $L(\gamma)\le \int_{a}^{b} |\gamma'(t)|\dd t$.
+
+	$\forall \varepsilon>0$, we can take a step function (with vector values)
+	$g$ s.t. $\gamma' = g + h$, and $\int_{a}^{b} |h|\dd x < \varepsilon$.
+
+	Define
+	\[
+	G(x) = G(a) + \int_{a}^{x} g(t)\dd t,\quad
+	H(x) = H(a) + \int_{a}^{x} h(t)\dd t.
+	\]
+	We have $\gamma(t) = G(t) + h(t)$,
+	and $T_\gamma([a,b])\ge T_G([a,b])-T_H([a,b])$.
+	\begin{align*}
+		L(\gamma) =
+		T_\gamma([a,b]) &\ge \int_{a}^{b} |g|\dd t - \int_{a}^{b} |h|\dd t\\
+		&\ge \int_{a}^{b} |\gamma'(t)|\dd t - 2\int_{a}^{b} |h|\dd t\\
+		&\ge \int_{a}^{b} |\gamma'(t)|\dd t - 2 \varepsilon.
+	\end{align*}
+	which gives the opposite inequality.
+\end{proof}
+
+\begin{proposition}[substitution formula]
+	Let $\phi:[a,b]\to [c,d]$ be strictly increasing AC function.
+	For a function $f$ on $[c,d]$, we have
+	\[
+	\int_{c}^{d} f(y)\dd y = \int_{a}^{b} f(\phi(x))\phi'(x) \dd x.
+	\]
+\end{proposition}
+\begin{proof}[Proof]
+    It's equivalent to $m(\phi(E)) = \int_E \phi' \dd x$.
+\end{proof}
+
 \section{Multi-dimensional Calculus}
 \label{sec:Multi-dimensional Calculus}
 

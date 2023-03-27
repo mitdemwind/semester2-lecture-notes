@@ -1,0 +1,128 @@
+%! TeX root = ./main.tex
+\begin{definition}[Isometries]
+	Let $\phi: U\to \mathbb{E}^{3}, \widetilde{\phi}: \widetilde{U}\to \mathbb{E}^{3}$
+	be two surfaces. If a map $\psi: \wt{U}\to U$ satisfies
+	$\psi^*(g) = \wt{g}$, then it's called an \vocab{isometry}.
+\end{definition}
+
+Let $\mathcal{F} = (\phi_s, \phi_t, \vec{n})$.
+Suppose $\mathcal{F}_s = \mathcal{F} A$, and $\mathcal{F}_t = \mathcal{F}B$.
+Taking the second derivative we get $\mathcal{F}_{st} = \mathcal{F} (BA + A_t)$,
+$\mathcal{F}_{ts} = \mathcal{F} (AB + B_s)$.
+Thus we have
+\[
+A_t - B_s = AB - BA.
+\]
+But we want to express things in terms of $E,F,G$, so
+we can compute the dot product of $\mathcal{F}^T$ :
+\[
+P := \mathcal{F}^T \cdot \mathcal{F} = \begin{pmatrix}
+	E &F\\ F& G\\ &&1
+\end{pmatrix}
+,\quad
+P^{-1} = \frac{1}{EG - F^2}
+\begin{pmatrix}
+	G &-F \\ -F &E \\ &&1
+\end{pmatrix}
+\]
+Substituting into $\mathcal{F}_s = \mathcal{F}A$ we get
+\[
+PA = \begin{pmatrix}
+	\frac{E_s}{2} & \frac{E_t}{2} &-L\\
+	F_s - \frac{E_t}{2} & \frac{G_s}{2} &-M\\
+	L &M &0
+\end{pmatrix}
+\]
+\[
+\mathcal{F}^T \mathcal{F}_{st} = (\mathcal{F}^T \mathcal{F}_s)_t - \mathcal{F}^T_t
+\mathcal{F}_s = (PA)_t - B^TPA.
+\]
+\[
+\implies (PA)_t - (PB)_s = (PB)^TP^{-1}(PA) - (PA)^TP^{-1}(PB).
+\]
+
+Gauss equation corresponds to the $(1,2)$ entry of the matrix equation:
+\[
+\frac{1}{2}(E_{tt} - 2F_{st} + G_{ss}) = -(LN-M^2) + \frac{p}{4(EG-F^2)},
+\]
+where $p$ is a polynomial in fundamental quantities and their derivatives.
+
+These equations still looks complicated, so we'll ``package'' them:
+\[
+-(LN - M^2) = R_{1212}.
+\]
+Let
+\[
+A = \begin{pmatrix}
+	\Gamma_{\_11}^1 &\Gamma_{\_12}^1 &h_{\_1}^1\\
+	\Gamma_{\_11}^2 &\Gamma_{\_12}^2 &h_{\_1}^2\\
+	h_{11} &h_{21} &0
+\end{pmatrix}, \quad
+B = \begin{pmatrix}
+	\Gamma_{\_12}^1 &\Gamma_{\_22}^1 &h_{\_2}^1\\
+	\Gamma_{\_12}^2 &\Gamma_{\_22}^2 &h_{\_2}^2\\
+	h_{12} &h_{22} &0
+\end{pmatrix}
+\]
+Here the $\Gamma$'s are called Christoffel notations.
+
+Codazzi equations correspond to the $(1,3),(2,3)$ enties:
+\begin{align*}
+L_t - M_s &= L\Gamma_{12}^1 + M(\Gamma_{12}^2 - \Gamma_{11}^1) - N\Gamma_{11}^2\\
+M_t - N_s &= L\Gamma_{22}^1 + M(\Gamma_{22}^2 - \Gamma_{21}^1) - N\Gamma_{21}^2.
+\end{align*}
+
+\begin{remark}
+    The index notations for computation can be defined as
+	\[
+	\EFFG = (g_{ij}),\quad \EFFG^{-1} = (g^{ij}),
+	\]
+	and $h$ is defined similarly.
+	If we use Einstein summation notation, we can write $g_{ij}g^{jk} = \delta_i^k$.
+
+	Let $\vec{v}_1 := \phi_s, \vec{v}_2 = \phi_t$,
+	and
+	\[
+		\frac{\partial \vec{v}_\alpha}{\partial \vec{u}^\beta}
+		= \sum_{\gamma} \Gamma_{\_\alpha\beta}^\gamma \vec{v}_\gamma
+		+ h_{\alpha\beta}\vec{n},\quad
+		\frac{\partial \vec{n}}{\partial \vec{u}^\beta}
+		= -\sum_{\gamma} h^\gamma_{\_\beta} \vec{v}_\gamma.
+	\]
+
+	Here the upper index is defined as:
+	\[
+	h^\gamma_{\_\beta} := \sum_{\delta} g^{\gamma\delta}h_{\delta\beta}.
+	\]
+
+	From this we can write $\Gamma$ out explicitly:
+	\[
+	\Gamma_{\_\alpha\beta}^\gamma = \sum_{\delta} \frac{g^{\gamma\delta}}{2}
+	\left( \frac{\partial g_{\alpha\delta}}{\partial u^\beta}
+	+ \frac{\partial g_{\delta\beta}}{\partial u^\alpha}
+	- \frac{\partial g_{\alpha\beta}}{\partial u^\delta}\right)
+	\]
+	This is called \textit{Christoffel notations}.
+
+	\[
+	R_{\_\alpha\beta\gamma}^\delta := \frac{\partial \Gamma_{\_\alpha\beta}^\delta}{\partial u^\gamma} - \frac{\partial \Gamma_{\_\alpha\gamma}^\delta}{\partial u^\beta} + \sum_{\eta} (\Gamma_{\_\alpha\beta}^\eta \Gamma_{\_\eta\gamma}^\delta - \Gamma_{\_\alpha\gamma}^\eta\Gamma_{\_\eta\beta}^\delta).
+	\]
+	This is called \textit{Riemann symbols}. Another type is defined as:
+	\[
+	R_{\delta\alpha\beta\gamma} = \sum_{\eta} g_{\delta\eta}R_{\_\alpha\beta\gamma}^\eta.
+	\]
+	In surface theory, only $R_{1212}$ is nontrivial.
+\end{remark}
+
+Using these notations, we can write the equations as:
+\begin{itemize}
+	\item Gauss:
+		\[
+		R_{\delta\alpha\beta\gamma} = -(h_{\delta\beta}h_{\alpha\gamma} - h_{\delta\gamma}h_{\alpha\beta}).
+		\]
+	\item Codazzi:
+		\[
+		\frac{\partial h_{\alpha\beta}}{\partial u^\gamma} - \frac{\partial h_{\alpha\gamma}}{\partial u^\beta} = \sum_{\delta} (h_{\beta\delta}\Gamma_{\_\alpha\gamma}^\delta - h_{\gamma\delta}\Gamma_{\_\alpha\beta}^\delta).
+		\]
+		
+\end{itemize}
