@@ -1,0 +1,85 @@
+%! TeX root = ./main.tex
+\subsection{Primary cyclic decomposition and Jordan canonical forms}
+\label{sub:Primary cyclic decomposition}
+
+\begin{theorem}
+    For $T\in L(V)$, $T$ irreducible $\iff T$ is primary and cyclic.
+\end{theorem}
+\begin{proof}[Proof]
+    If $T$ is irreducible, then both the primary and cyclic decomposition
+	have only one term, i.e. $T$ is primary and cyclic.
+
+	Conversely, if $V = V_1\oplus V_2$ is a nontrivial decomposition.
+	Since $T$ is cyclic and primary, assume $f_T = p_T = p^r$,
+	where $p$ is a irreducible polynomial.
+
+	Suppose $f_{T_1} = p^s, f_{T_2} = p^t$, then $s + t = r$, $s,t < r$.
+	Since $p_{T_1}\mid p^s, p_{T_2}\mid p^t$,
+	\[
+	p_T = \lcm(p_{T_1}, p_{T_2}) \mid p^{\max\{s, t\}},
+	\]
+	contradiction!
+\end{proof}
+
+\begin{theorem}[Primary cyclic decomposition]
+    Let $T\in L(V)$.
+	\begin{itemize}
+		\item There exists a decomposition $V = \bigoplus_{i=1}^s V_i$,
+			each $V_i$ is $T$-invariant, $T_{V_i}$ primary and cyclic.
+			Let $q_i = p_{T_{V_i}}$.
+		\item $q_1,\dots,q_s$ are uniquely determined by $T$ (ignoring the permutation).
+			They are called the \vocab{elementary divisors} of $T$.
+	\end{itemize}
+\end{theorem}
+\begin{proof}[Proof]
+    Existence follows immediately from the previous theorem.
+
+	Uniqueness: Let $V = \bigoplus_{i=1}^t W_i$ s.t. $T_{W_i}$ is primary and cyclic.
+	Let $\{u_1,\dots, u_k\}$ be the set of all the monic prime factors of
+	the minimal polynomials of $T_{W_1},\dots,T_{W_t}$.
+
+	We can group $W_i$'s by $u_i$, and each group can be placed in a row
+	in descending order wrt the degree of $p_{T_{W_i}}$.
+
+	Let $Z_j$ be the direct sum of the $j$-th column, note that $Z_j$ is
+	a cyclic decomposition of $T$.
+
+	Now since the cyclic decomposition and primary decomposition are unique,
+	$p_{T_{W_i}}$'s must be unique as well.
+\end{proof}
+\begin{remark}
+    The elementary factors depend on the base field.
+\end{remark}
+
+Since the invariant subspaces of primary subspace are primary,
+and invariant subspaces of cyclic subspace are cyclic,
+we can apply both decomposition (in any order) to get the primary
+cyclic decomposition of any operators.
+
+For a primary cyclic map $T$, if we choose the base field to
+be \textit{algebraically closed} (e.g. $\mathbb{C}$), we can write
+$f_T = p_T = (x-c)^n$.
+Let $N = T - c\id_V$, then $f_T = p_T = x^n$,
+from rational canonical form we know that $N$ is similar to
+$\begin{pmatrix}
+	0 &0 \\ I_{n-1} &0
+\end{pmatrix}$.
+Hence $T$ is similar to
+ \[
+J_n(c) :=
+\begin{pmatrix}
+	c \\ 1 &c \\ &1 &\ddots \\ &&\ddots &c \\ &&&1 &c
+\end{pmatrix},
+\]
+such matrix is called a \vocab{Jordan block}.
+Jordan matrices are the blocked diagonal matrices with
+each block being a Jordan block.
+
+\begin{theorem}
+    If $f_T$ can be decompose to product of polynomials of degree 1, then
+	 \begin{itemize}
+		 \item $\exists \mathcal{B}$ s.t. $[T]_{\mathcal{B}}$ is a Jordan matrix,
+			 this is called the \vocab{Jordan canonical form} of $T$.
+		\item The canonical form is unique under permutations of each Jordan blocks.
+	\end{itemize}
+\end{theorem}
