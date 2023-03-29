@@ -1,4 +1,5 @@
-\contentsline {subsection}{\numberline {0.1}Outer measure}{1}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Measure extension}{4}{subsection.0.2}%
-\contentsline {subsection}{\numberline {0.3}The completion of measure spaces}{8}{subsection.0.3}%
-\contentsline {subsection}{\numberline {0.4}Distributions}{9}{subsection.0.4}%
+\contentsline {subsection}{\numberline {0.1}The completion of measure spaces}{4}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Distributions}{5}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.3}The convergence of measurable functions}{6}{subsection.0.3}%
+\contentsline {subsection}{\numberline {0.4}Probability space}{8}{subsection.0.4}%
+\contentsline {subsection}{\numberline {0.5}Review of first two sections}{9}{subsection.0.5}%

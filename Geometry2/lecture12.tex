@@ -1,0 +1,107 @@
+%! TeX root = ./main.tex
+Here we explain the above computation a little.
+
+The vector
+\[
+\sum_{\gamma} \Gamma^\gamma_{\_\alpha\beta}v_\gamma
+=: \nabla_\beta \vec{v}_\alpha
+\]
+is called the covariant derivative of $\vec{v}_\alpha$.
+It's projection of the derivative of $\vec{v}_\alpha$ onto
+the tagent space.
+\[
+\pfr{}{u^\beta}\pfr{}{u^\gamma}(v_\alpha)
+= \pfr{}{u^\gamma}\pfr{}{u^\beta}(v_\alpha)
+\]
+\[
+\implies -\nabla_\beta\nabla_\gamma v_\alpha + \nabla_\gamma\nabla_\beta
+v_\alpha = h_{\alpha\beta}\nabla_\gamma \vec{n} - h_{\alpha\gamma}
+\nabla_\gamma \vec{n}.
+\]
+So the covariant derivative is not commutative,
+and the ``curvature'' or the second
+fundamental form basically measures this discommutation.
+
+Now if we look at
+\[
+\pfr{g_{\delta\alpha}}{u^\beta} = \pfr{v_\delta\cdot v_\alpha}{u^\beta}
+= \pfr{v_\delta}{u^\beta}v_\alpha + v_\delta \pfr{v_\alpha}{u^\beta}
+= \sum_{\gamma}g_{\alpha\gamma}\Gamma^\gamma_{\_\delta\beta}
++ \sum_{\gamma} g_{\delta\gamma}\Gamma^\gamma_{\_\alpha\beta},
+\]
+similarly, by symmetry, computing
+\[
+\pfr{g_{\alpha\beta}}{u^\delta}, \quad \pfr{g_{\delta\beta}}{u^\alpha},
+\]
+will yield
+\[
+\Gamma^\gamma_{\_\alpha\beta} = \sum_{\delta} \frac{g^{\gamma\delta}}{2}
+\left(\pfr{g_{\alpha\delta}}{u^\beta} + \pfr{g_{\delta\beta}}{u^\alpha}
+- \pfr{g_{\alpha\beta}}{u^\delta}\right).
+\]
+In fact this is more intuitive in Einstein summation notation.
+
+\subsection{Fundamental theorem of surface theory}
+\label{sub:Fundamental theorem of surface theory}
+
+\begin{theorem}[Fundamental theorem of surface theory]
+    Let $D \subset \mathbb{R}^2$, $u=(u^1,u^2)$ is the coordinate.
+	Let $g_{\alpha\beta}, h_{\alpha\beta}: D\to \mathbb{R}$ be
+	$C^3$ functions, and the matrix $(g_{\alpha\beta})$
+	is symmetrical anf positive definite,
+	$(h_{\alpha\beta})$ is symmetrical.
+
+	Let $g^{\alpha\beta}$ be the inverse matrix of $g_{\alpha\beta}$,
+	and $R_{\delta\alpha\beta\gamma}$ is as above.
+	If these functions satisfies Gauss equation and Codazzi equation,
+	then:
+
+	For all $p\in D$, exists a neighborhood $U = U(p) \subset D$ and
+	a regular surface $\phi: U\to \mathbb{E}^3$, such that
+	$g_{\alpha\beta}, h_{\alpha\beta}$ are the first and second
+	fundamental quantities of $\phi$.
+
+	Furthermore, if $\wt{\phi}: U\to \mathbb{E}^3$ also
+	satisfies above conditions, then $\wt{\phi} = \sigma\circ \phi$,
+	where $\sigma$ is an isometry of $\mathbb{E}^3$.
+\end{theorem}
+
+Basically we need to solve a partial differential equation,
+and we need to consider how to construct this equation.
+
+\begin{proof}[Proof]
+    Let $\phi: U\to \mathbb{E}^3$,
+	$v_\alpha, \vec{n}: D\to V(\mathbb{E}^3)$ be unknown functions
+	satisfying
+	\[
+	\left\{
+	\begin{aligned}
+		v_\alpha &= \pfr{\phi}{u^\alpha}\\
+		\pfr{v_\alpha}{u^\beta} &=
+		\sum_\gamma \Gamma_{\_\alpha\beta}^\gamma v_\gamma
+		+ h_{\alpha\beta}\vec{n}\\
+		\pfr{\vec{n}}{u^\beta} &=
+		- \sum_\gamma h_{\_\beta}^\gamma v_\gamma
+	\end{aligned}\right.
+	\]
+	This is a linear homogeneous PDE of degree 1, and
+	it actually has a unique solution.
+
+	Consider the initial-value problem in the neighborhood of
+	a given point $p\in D$.
+
+	We hope to prove that
+	\begin{itemize}
+		\item The above PDE initial-value problem has a unique
+			solution under the Gauss-Codazzi equations;
+		\item If initially (i.e. at $p$) we have
+			\[
+			\vec{n} = \frac{v_1\times v_2}{\lVert v_1\times v_2 \rVert},
+			\]
+			then it holds for all $p'\in U(p)$.
+	\end{itemize}
+
+	For the second statement, we can compute
+	$\pfr{}{u^\beta}(\vec{n}\cdot v_\alpha) = 0$,
+	so they are constant.
+\end{proof}

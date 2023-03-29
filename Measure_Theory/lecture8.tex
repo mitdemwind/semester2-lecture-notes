@@ -1,0 +1,244 @@
+%! TeX root = ./main.tex
+\subsection{The convergence of measurable functions}
+\label{sub:The convergence of measurable functions}
+
+Let $(X, \mathscr{F}, \mu)$ be a measure space.
+
+For any statement, if there exists null set $N$ s.t. it holds
+for all $x\in N^c$, then we say this statement holds \textit{almost everywhere}.
+(Often abbreviated as \textit{a.e.})
+
+\begin{definition}
+	If a sequence of functions $f_n$ satisfies
+	\[
+	\mu\left(\lim_{n\to \infty} f_n\ne f\right) = 0,
+	\]
+	(here $f$ is finite a.e.)
+	we say $\{f_n\}$ converges to $f$ \vocab{almost everywhere}, denoted by
+	\vocab{$f_n\to f,a.e.$}.
+\end{definition}
+
+\begin{definition}
+	If $\forall \delta>0$,  $\exists A\in \mathscr{F}$ s.t. $\mu(A)<\delta$ and
+	\[
+	\lim_{n\to \infty}\sup_{x\notin A}|f_n(x)-f(x)| = 0,
+	\]
+	then we say $\{f_n\}$ converges to $f$ \vocab{almost uniformly},
+	denoted by \vocab{$f_n\to f,a.u.$}.
+\end{definition}
+
+If $f_n\to f,a.u.$, $\forall \varepsilon>0$, $\exists m=m_k(\varepsilon)$ s.t.
+when  $n\ge m$, $|f_n(x)-f(x)|<\varepsilon, \forall x\in C_k$, but
+we could have $\sup_k m_k(\varepsilon) =  \infty$, thus $f_n\uto f$ doesn't hold.
+e.g. $f_n(x) = x^n, f(x) = 0, x\in [0,1), f(1)=1$.
+
+\begin{proposition}
+	$f_n\to f,a.u.\implies f_n\to f,a.e.$.
+\end{proposition}
+\begin{proof}[Proof]
+    For all $n$, $\exists A_n$ s.t. $\mu(A_n)<\frac{1}{n}$, and $f_n\to f$
+	in $A_n^c$. Let $A := \bigcap_n A_n$.
+
+	Then $\{f_n\not\to f\}\cup \{|f|=\infty\} \subset A$, $\mu(A) = 0$,
+	hence $f_n\to f, a.e.$.
+\end{proof}
+
+\begin{proposition}
+	$f_n\to f, a.e.$ iff $\forall \varepsilon>0$,
+	\[
+	\mu\left(\bigcap_{m=1}^\infty \bigcup_{n=m}^\infty \{|f_m - f|\ge\varepsilon\}\right) = 0.
+	\]
+	Note: If $f(x)-g(x)$ is not defined, we regard it as $+\infty$.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $A_\varepsilon := \bigcap \bigcup \{|f_m-f|>\varepsilon\}$.
+	\[
+	\left\{\lim_{n\to \infty}f_n \ne f\right\}\cup \{|f|=\infty\}
+	= \bigcup_{k=1}^\infty A_{\frac{1}{k}}
+	= \uparrow \lim_{k\to \infty}A_{\frac{1}{k}}.
+	\]
+\end{proof}
+
+\begin{proposition}
+	$f_n\to f, a.u.$ iff  $\forall \varepsilon>0$, we have
+	\[
+	\downarrow \lim_{m\to \infty}\mu
+	\left(\bigcup_{n=m}^\infty \{|f_n-f|\ge \varepsilon\}\right) = 0.
+	\]
+\end{proposition}
+\begin{proof}[Proof]
+    If $f_n\to f, a.u.$, $\forall \delta, \exists A\in \mathscr{F}$ s.t.
+	$\mu(A)<\delta$ and $f_n\uto f, x\in A^c$.
+
+	This means for any fixed $\varepsilon$, $\exists m$ s.t. when $n\ge m$,
+	$x\notin A\implies |f_n(x) - f(x)|<\varepsilon$.
+	Thus $A \supseteq \bigcup_{n=m}^\infty |f_n-f|\ge \varepsilon$.
+
+	Conversely, $\forall \delta > 0$,  $\exists m_k$ s.t.
+	\[
+	\mu\left(\bigcup_{n=m_k}^\infty \{|f_n - f|\ge \frac{1}{k}\}\right)
+	< \frac{\delta}{2^k}.
+	\]
+	Denote the above set by $A_k$, and $A = \bigcup _{k=1}^\infty A_k$,
+	then $\mu(A) < \delta$, and $f_n(x)\uto f(x)$ for $x\in A^c$.
+\end{proof}
+
+\begin{definition}
+	If $\forall \varepsilon>0$,
+	\[
+	\lim_{n\to \infty}\mu(|f_n - f|\ge \varepsilon) = 0,
+	\]
+	then we say $\{f_n\}$ converges to $f$ \vocab{in measure},
+	denoted by  \vocab{$f_n \xrightarrow{\mu} f$}.
+\end{definition}
+
+\begin{theorem}
+	\[
+		f_n \to f, a.u. \implies f_n\to f, a.e.,\quad f_n \xrightarrow{\mu} f.
+	\]
+	If $\mu(X) < \infty$, then
+	\[
+	f_n \to f,a.u. \iff f_n\to f, a.e. \implies f_n \xrightarrow{\mu} f.
+	\]
+\end{theorem}
+
+\begin{theorem}
+    $f_n \to f$ in measure iff for any subsequence of $\{f_n\}$,
+	exists its subsequence $\{f_{n'}\}$ s.t.
+	\[
+		f_{n'}\to f, a.u.
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    When $f_n \to f$ in measure, let $n_0 = 0$.
+	Take $n_k > n_{k-1}$ inductively such that
+	\[
+	\mu\left(\left\{|f_n - f|\ge \frac{1}{k}\right\}\right) \le \frac{1}{2^k}, \quad
+	\forall n\ge n_k.
+	\]
+	Then $\forall \varepsilon>0$, $\exists \frac{1}{m}<\varepsilon$,
+	$\{|f_{n_k} - f|\ge \varepsilon\} \subset \{|f_{n_k} - f|\ge \frac{1}{k}\}$,
+	\[
+	\mu\left(\bigcup_{k=m}^\infty \{|f_{n_k} - f|\ge \varepsilon\}\right)
+	\le \mu\left(\bigcup _{k=m}^\infty
+	\left\{|f_{n_k} - f|\ge \frac{1}{k}\right\}\right)
+	\le \frac{1}{2^{m-1}} \to 0.
+	\]
+
+	Conversely, we assume for contradiction that $\exists \varepsilon>0$ s.t.
+	$\mu(\{|f_n - f|\ge \varepsilon\})\not\to 0$.
+
+	So $\exists \delta>0$ and subsequence  $\{n_k\}$ s.t.
+	$\mu(\{|f_{n_k} - f|\ge \varepsilon\}) > \delta$.
+
+	Hence there doesn't exist a subsequence $\{f_{n'}\}$ of $\{f_{n_k}\}$ s.t.
+	$f_{n'}\to f, a.u.$.
+\end{proof}
+
+\begin{example}
+    Consider measure space $(\mathbb{R}, \mathscr{B}_{\mathbb{R}}, \lambda)$,
+	the Lebesgue measure, $f_n = \ii_{|x|>n}$,
+	then
+	\[
+	f_n \to 0, \forall x\implies f_n \to 0, a.e..
+	\]
+	let $\varepsilon = 1$, it's clear that $f_n$ doesn't converge to
+	$f$ in measure, hence not almost uniformly.
+\end{example}
+\begin{example}
+    Let $f_{k,i} = \ii_{\frac{i-1}{k}<x\le \frac{i}{k}}$, $i=1,\dots,k$.
+	It's clear that $f_{k,i}\to 0$ in measure, but not almost everywhere,
+	and hence not almost uniformly.
+\end{example}
+
+\subsection{Probability space}
+\label{sub:Probability space}
+Let $(\Omega, \mathscr{F}, P)$ be a probability space.
+Here almost everywhere is renamed to almost surely.
+
+Let $F$ be a real function, let $C(F)$ be the continuous points of $F$.
+
+Let $F,F_1,F_2,\dots$ be non-decreasing functions, if
+\[
+\lim_{n\to \infty} F_n(x) = F(x), \quad \forall x\in C(F),
+\]
+then we say $\{F_n\}$ converge to $F$ weakly, $F_n \xrightarrow{w} F$.
+
+Let $F,F_1,F_2,\dots$ be distribution functions, $f_n\sim F_n$,
+ \begin{definition}
+	If $F_n \xrightarrow{w} F$, then we say $\{f_n\}$ converge to $F$
+	in distribution, denoted by $f_n \xrightarrow{d} F$.
+	For $f\sim F$, we can also write  $f_n\xrightarrow{d} f$.
+\end{definition}
+
+\begin{theorem}
+    $f_n \xrightarrow{P} f\implies f_n \xrightarrow{d} f$.
+\end{theorem}
+\begin{proof}[Proof]
+	\begin{align*}
+		P(h\le y) &\le P(h\le y, |h-g|<\varepsilon) + P(h\le y, |h-g|\ge \varepsilon)\\
+		&\le P(g\le y+ \varepsilon) + P(|h-g|\ge \varepsilon).
+	\end{align*}
+	Let $F_n(x) = P_n(f\le x)$
+	Let $h = f_n$,  $g = f$,  $y = x$.
+	\[
+	\limsup_{n\to \infty}F_n(x) \le F(x+\varepsilon), \quad \forall \varepsilon>0.
+	\]
+	Thus $\limsup_{n\to \infty} F_n(x) \le F(x)$.
+	TODO
+\end{proof}
+
+\begin{theorem}[Skorokhod]
+    If $f_n \xrightarrow{d} f$, then exists a probability
+	space $(\wt{X},\wt{\mathscr{F}}, \wt{P})$,
+	with random variables $\{\tilde f_n\}$ and $\tilde f$, such that
+	\[
+	\tilde f_n \overset{d}{=} f_n, \tilde f \overset{d}{=} f,\quad
+	\tilde f_n \to \tilde f, a.s.
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    If $F_n \to F$ weakly, then $F_n^\leftarrow \to F^\leftarrow$ weakly.
+	(Prove this yourself!)
+
+	Since $\mathbb{R} \backslash C(F_n^\leftarrow)$ is countable,
+	TODO
+\end{proof}
+
+If $f$ is defined almost everywhere,
+we can extend it to $\tilde f = f \cdot \ii_{N^c}$.
+So from now on when we talk about $f = g$, we mean $f = g,a.e.$.
+
+\subsection{Review of first two sections}
+\label{sub:Review of first two sections}
+
+Here we list some concepts so that you can recall their definition and properties.
+
+Collections of sets:
+\begin{itemize}
+	\item $\pi$-system
+	\item Semi-ring
+	\item Ring, algebra
+	\item $\sigma$-algebra
+	\item Monotone class, $\lambda$-system
+\end{itemize}
+
+Measure:
+\begin{itemize}
+	\item $\sigma$-finite
+	\item Outer measure
+	\item Caratheodory condition, measurable sets
+	\item Measure extension, semi-ring $\to$ $\sigma$-algebra
+	\item Complete measure space, completion
+	\item For $\mathscr{F} = \sigma(\mathscr{A})$, $\forall F\in \mathscr{F}$,
+		$\varepsilon>0, \exists A\in \mathscr{A}$ s.t.
+		$F = A\Delta N_\varepsilon$, $\mu(N_\varepsilon)\le \varepsilon$.
+\end{itemize}
+
+Functions:
+\begin{itemize}
+	\item Measurable map
+	\item $h \in \sigma(g)\implies h = f\circ g$ for some $f$.
+	\item Typical method, simple non-negative functions $\to$ measurable functions
+	\item Almost uniformly, almost everywhere, converge in measure
+\end{itemize}

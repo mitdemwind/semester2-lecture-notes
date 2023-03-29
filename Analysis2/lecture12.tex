@@ -1,0 +1,188 @@
+%! TeX root = ./main.tex
+\section{Multi-dimensional Calculus}
+\label{sec:Multi-dimensional Calculus}
+
+In this section we'll generalize the differentiation and integration theory
+to higher dimensions, and finally reach the generalized Fundamental
+Theorem of Calculus (Stokes' formula). Recall that Lebesgue integral is already
+defined on higher dimensions, so here we mainly study the differentiation
+of multi-dimensional functions.
+
+\subsection{Directional derivatives}
+\label{sub:Directional derivatives}
+
+Let $\Omega$ be a simply connected open set in $\mathbb{R}^{d}$.
+$f$ is a multi-variable function on $\Omega$.
+Let $(x_1,\dots, x_n)$ be a coordinate system on $\Omega$,
+we can write $f = f(x_1, \dots, x_n)$.
+
+\begin{definition}[Directional derivatives]
+	Let $v \in \mathbb{R}^d$ be a nonzero vector. If
+	\[
+	\lim_{h\to 0} \frac{f(x_0+h)-f(x_0)}{h}
+	\]
+	exists, then we say the \vocab{directional derivative} of $f$ in direction $v$
+	exists at $x_0$, denoted by
+	\[
+		\frac{\partial f}{\partial v}(x_0) = (\nabla_v f) (x_0)
+		= \lim_{h\to 0}\frac{f(x_0+h) - f(x_0)}{h}.
+	\]
+\end{definition}
+\begin{definition}[Partial derivatives]
+	Let $(x_1,\dots, x_n)$ be a coordinate system, let $e_i = (0,\dots,1,\dots,0)$ be
+	the $i$-th vector of the standard basis.
+	The directional derivative in $e_i$
+	\[
+		(\nabla_{e_i} f)(x_0) = \frac{\partial f}{\partial x_i}(x_0)
+		= \lim_{h\to 0}\frac{f(x_1,\dots,x_i+h,\dots,x_n) - f(x_1,\dots,x_n)}{h}.
+	\]
+	is called the $i$-th \vocab{partial derivative} of $f$.
+	Here $\frac{\partial}{\partial x_i}$ is also called a ``vector field''.
+\end{definition}
+\begin{remark}
+    The partial derivatives rely on the coordinate, but the directional
+	derivatives is independent of the coordinate (i.e. geometry quantities).
+\end{remark}
+
+\begin{example}
+    Let $f: \mathbb{R}^2\to \mathbb{R}$, and $f(x,y) = g(x)$ for some $g$.
+	\[
+	\frac{\partial f}{\partial y} = \lim_{h\to 0}\frac{f(x,y+h) - f(x,y)}{h} = 0.
+	\]
+\end{example}
+\begin{example}
+    Consider $f: \mathbb{R}^2\to \mathbb{R}$,
+	\[
+	f(x,y) = \left\{
+	\begin{aligned}
+		&\frac{xy}{x^2+y^2}, &x^2+y^2 \ne 0;\\
+		&0, &x = y =0.
+	\end{aligned}\right.
+	\]
+	The partial derivative
+	\[
+		\frac{\partial f}{\partial x}(0,0) =
+		\lim_{h\to 0} \frac{f(h,0)-f(0,0)}{h} = 0 = \frac{\partial f}{\partial y}(0,0).
+	\]
+	But the directional derivative in $v=(v_1,v_2)$ is
+	\[
+		(\nabla_v f)(0,0) = \lim_{h\to 0}\frac{f(hv_1,hv_2) - f(0,0)}{h}
+		= \lim_{h\to 0}\frac{v_1v_2}{h(v_1^2+v_2^2)},
+	\]
+	which doesn't exist for $v_1v_2\ne 0$.
+\end{example}
+
+The main idea of differentiation in 1 dimensional is to estimate a function
+locally using a straight line. Likely, in higher dimensions, the differentiation
+is also estimating a function locally using a \textit{linear map}.
+
+\begin{definition}[Differentiation]
+	Let $f: \Omega \to \mathbb{R}$, $x_0\in \Omega$.
+	If there exists a linear map $A:\mathbb{R}^{d}\to \mathbb{R}$ s.t.
+	\[
+	f(x_0 + v) = f(x_0) + A(v) + o(|v|)\iff
+	\lim_{|v|\to 0}\frac{|f(x_0+v)-f(x_0)-A(v)|}{|v|} = 0,
+	\]
+	then we say $f$ is \vocab{differentiable} at $x_0$, and the linear map $A$
+	is called the \vocab{differentiation} of $f$ at $x_0$, denoted by
+	\[
+	\dd f\big|_{x_0} = \dd f(x_0) = A: \mathbb{R}^{d} \to \mathbb{R}.
+	\]
+	If $f$ is differentiable everywhere, we say $f$ is a differentiable function.
+\end{definition}
+\begin{remark}
+    In fact this definition can be generalized to any Banach space.
+	Keep in mind that $\dd f(x_0)$ is a \textit{linear map} instead of a number,
+	the reason why the one dimensional differentiation is a number
+	is that a linear map in one dimension is identical to a scalar.
+\end{remark}
+
+\begin{theorem}
+    Let $f$ be a function differentiable at $x_0$, then its directional derivatives exist
+	at $x_0$, $\forall v\in \mathbb{R}^{d}$,
+	\[
+		(\nabla_v f)(x_0) = (\dd f(x_0))(v)
+		= \sum_{i=1}^{d} \frac{\partial f}{\partial x_i}\cdot v_i = \nabla f\cdot v.
+	\]
+	where $\nabla f = (\frac{\partial f}{\partial x_1}, \dots,
+	\frac{\partial f}{\partial x_n})$ is the \vocab{gradient vector} of $f$.
+\end{theorem}
+\begin{proof}[Proof]
+    Note that
+	\[
+	\frac{f(x_0+hv) - f(x_0)}{h} = \frac{\dd f(x_0)(hv) + o(h|v|)}{h} \to \dd f(x_0)(v).
+	\]
+	\[
+	\dd f(x_0)(v) = \dd f(x_0)\left(\sum_{i=1}^{d} v_ie_i\right)
+	= \sum_{i=1}^{d} v_i\dd f(x_0)(e_i).
+	= \sum_{i=1}^{d} v_i \frac{\partial f}{\partial x_i}.
+	\]
+\end{proof}
+
+\begin{example}
+    Let $f: \mathbb{R}^2\to \mathbb{R}$,
+	\[
+	f(x,y) = \left\{
+	\begin{aligned}
+		&\frac{y^2}{x}, &x\ne 0;\\
+		&0, &x = 0.
+	\end{aligned}\right.
+	\]
+	Note that the directional derivatives of $f$ exists at $(0,0)$, but
+	$f$ is not continuous at $x_0$, so not differentiable.
+\end{example}
+
+\begin{theorem}
+    Let $\Omega \subset \mathbb{R}^{d}$.
+	If the partial derivatives of $f$ exists and are continuous at $x_0$,
+	then $f$ is differentiable at $x_0$.
+\end{theorem}
+\begin{proof}[Proof]
+    Let $u_j = (v_1,\dots,v_j,0,\dots,0)$.
+	\begin{align*}
+	f(x_0+v) - f(x_0) - (\nabla f)(x_0)\cdot v
+	&= \sum_{j=1}^{d} f(x_0+u_j) - f(x_0 + u_{j-1})
+	- \frac{\partial f}{\partial x_j}(x_0)v_j\\
+	&= \sum_{j=1}^{d} \frac{\partial f}{\partial x_j}(x_0 + u_{j-1} + \xi_je_j)v_j
+	- \frac{\partial f}{\partial x_j}(x_0)v_j
+	\end{align*}
+	where the last step used Lagrange's theorem.
+	Since $v_j < |v|$ and the partial derivatives are continuous at $x_0$,
+	so when $|v|\to 0$, the above also approach to 0.
+\end{proof}
+
+\begin{corollary}
+    If $f$ is differentiable on $\Omega$, and  $\dd f = 0$, then
+	$f$ is constant on $\Omega$.
+\end{corollary}
+\begin{proposition}
+	Let $f: \Omega \to \mathbb{R}$ be a function differentiable at $x_0$,
+	and $f$ achieves its local extremum at $x_0$, then $\dd f(x_0) = 0$.
+\end{proposition}
+\begin{proof}[Proof]
+    Trivial.
+\end{proof}
+
+\begin{definition}
+	Let $\Omega \subset \mathbb{R}^{d}$, $\Omega' \subset \mathbb{R}^{d'}$,
+	$f: \Omega\to \Omega'$. If there exists a linear map
+	\[
+	\dd f\big|_{x_0} : \mathbb{R}^{d}\to \mathbb{R}^{d'},
+	\]
+	s.t.
+	\[
+	f(x_0+v) = f(x_0) + \dd f(x_0)(v) + o(|v|),
+	\]
+	then we say $f$ is differentiable at $x_0$, the linear map $\dd f(x_0)$ is
+	called the differentiation of $f$ at $x_0$.
+\end{definition}
+
+\begin{proposition}
+	Let $f = (f_1,\dots, f_{d'})$.
+	$f$ is differentiable at $x_0$ is equivalent to $f_i$ is differentiable at $x_0$,
+	and $\dd f(x_0): \mathbb{R}^{d}\to \mathbb{R}^{d'}$ can be represent as the matrix
+	\[
+		\left(\frac{\partial f_i}{\partial x_j}(x_0)\right)_{i,j}
+	\]
+	this is called the \vocab{Jacobi matrix} of $f$ at $x_0$, denoted by $J(f)(x_0)$.
+\end{proposition}
