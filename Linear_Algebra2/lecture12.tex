@@ -1,0 +1,109 @@
+%! TeX root = ./main.tex
+Let's look at the subspaces $V_i$. We know that $T_{V_i}$ is
+primary and cyclic, thus $f_i = p_i = (x-c_i)^{r_i}$.
+Let $N_i = T_{V_i} - \id_{V_i}$, $f_{N_i} = p_{N_i} = x^{r_i}$.
+Let $\mathcal{B}_i = \{\alpha_i, N_i\alpha_i,\dots, N_i^{r_i-1}\alpha_i\}$,
+then $[N_i]_{\mathcal{B}_i} = C_{x^{r_i}} = J_{r_i}(0)$.
+
+We can compute the Jordan canonical forms by computing the invariant factors first,
+and apply the primary decomposition to each factor to get the elementary divisors.
+
+\begin{example}
+    Let $A = \begin{pmatrix}
+		2\\ a &2 \\ b &c &-1
+    \end{pmatrix}
+    \in \mathbb{C}^{3\times 3}$.
+
+	First note that $f_A = (x-2)^2(x+1)$,
+	then $p_A = (x-2)^2(x+1)$ or $(x-2)(x+1)$.
+
+	\begin{itemize}
+		\item If $p_A = (x-2)^2(x+1)$, then $p_1 = (x-2)^2(x+1)$,
+			$q_{11} = (x-2)^2, q_{12} = (x+1)$.
+
+			Hence $A \sim \begin{pmatrix} 2\\1&2\\&&-1 \end{pmatrix}$.
+		\item $p_A = (x-2)(x-1)$, then $p_1 = (x-2)(x+1)$, $p_2 = (x-2)$.
+			The elementary divisors are $x-2, x-2$ and $x+1$.
+
+			Hence $A\sim \begin{pmatrix} 2\\&2\\&&-1 \end{pmatrix}$.
+	\end{itemize}
+
+	Since $p_A = (x-2)(x+1)\iff (A-2I)(A+I) = 0$,
+	i.e. $3a = ac = 0\iff a = 0$.
+\end{example}
+\begin{remark}
+    For generic matrix $A$, the Jordan canonical form can be derived from
+	the \textit{Smith canonical form} of $xI_n - A$.
+\end{remark}
+
+The diagonal of Jordan canonical forms are the eigen values of $T$ with
+\textit{algebraic multiplicy}, and $f_T, p_T$ can be easily written down from it.
+The number of Jordan blocks with eigenvalue $c$ is equal to $\dim\ker(T - c\id)$,
+i.e. the \textit{geometric multiplicy} of $c$.
+
+\begin{example}
+    We'll compute the Jordan canonical form of $J_n(0)^2$.
+	Since its characteristic polynomial is $x^n$, and $\dim \ker J_n(0)^2 = 2$,
+	so it has two Jordan block with eigenvalue 0.
+
+	But note that $(J_n(0)^2)^m = 0$ iff $m\ge \frac{n}{2}$, thus
+	the minimal polynomial is $x^m$, the sizes of the Jordan blocks
+	are $\left\lfloor \frac{n}{2} \right\rfloor, \left\lceil \frac{n}{2} \right\rceil$.
+\end{example}
+
+\begin{proposition}
+	Let $n = \dim V$, TFAE:
+	\begin{enumerate}[(1)]
+		\item $T$ is nilpotent;
+		\item $p_T$ is a power of $x$ ;
+		\item $f_T = x^n$ ;
+		\item $T^n = 0$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}[Proof]
+	Trivial.
+\end{proof}
+
+The nilpotent matrices and diagonalizable matrices are somehow ``independent'':
+If $A$ is both nilpotent and diagonalizable, then $A = 0$.
+
+In light of this idea, we present the following theorem:
+\begin{theorem}[Jordan decomposition]
+    Let $T\in L(V)$, $n = \dim V$, and $F$ is algebraically closed.
+	There exists unique $D,N\in L(V)$ s.t. $T = D+N$, where $D$ diagonalizable and
+	$N$ nilpotent, and $DN = ND$.
+
+	Moreover there exists $f,g\in F[x]$ s.t. $D = f(T), N = g(T)$.
+\end{theorem}
+
+\begin{proof}[Proof]
+    For $A\in F^{n\times n}$, $\exists P\in \GL_n(F)$ s.t. $P^{-1}AP = J$,
+	where $J$ is a Jordan matrix.
+
+	It's clear that we can find $J_1 + J_2 = J$ with $J_1$ diagonal, $J_2$ nilpotent
+	(just exactly as what you think), and we can check $J_1J_2=J_2J_1$.
+
+	Hence $A = PJ_1P^{-1} + PJ_2P^{-1}$ has the desired properties.
+	But now it's hard to prove the uniqueness, so we'll use another approach.
+
+	Let $p_T = \prod_{i=1}^k (x-c_i)^{r_i}$, and the
+	elementary divisors $q_{i} = (x-c_i)^{r_i}$.
+	Let $V_i = \ker(q_i(T))$, so $V = \bigoplus_{i=1}^k V_i$ is the primary decomposition
+	of $T$.
+	\begin{claim}
+		$\exists f\in F[x]$ s.t. $f\equiv c_i (\bmod q_i)$, $i = 1,2,\dots,k$.
+	\end{claim}
+	(This follows from Chinese Remainder Theorem)
+
+	Observe that $f(T)\big|_{V_i} = c_i\id_{V_i}$ in this case, thus
+	$f(T)$ is diagonalizable.
+	Since $(T - f(T))\big|_{V_i}$ is nilpotent, so $N = T - f(T)$ is nilpotent.
+	This proves the existence part and the polynomial part.
+
+	Now it's easy to prove the uniqueness:
+	If $T = D + N = D' + N'$, since $D,N$ are polynomials of $T$,
+	$D$ and $D'$ is commutative, hence can be simutaneously diagonalized.
+
+	Note that $D - D' = N - N'$ is both diagonalizable and nilpotent, thus it must be 0.
+	($N,N'$ is commutative, so $(N+N')^{m+m'} = 0$, here $N^m=N'^{m'}=0$)
+\end{proof}

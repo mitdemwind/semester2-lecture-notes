@@ -1,0 +1,249 @@
+%! TeX root = ./main.tex
+\section{Integrals}
+\label{sec:Integrals}
+
+\subsection{Definition of Integrals}
+\label{sub:Definition of Integrals}
+
+The idea of integration of $f$ over $\mu$ is to
+compute the weighted sum of the values of $f$.
+
+The definition of integrals is another example of typical method.
+
+\begin{itemize}
+	\item For an indicator function $\ii_A$,
+		define $\int \ii_A \dd \mu = \mu(A)$.
+	\item For simple function $f = \sum_{i=1}^{n} a_i\ii_{A_i}$,
+		just let $\int f\dd \mu = \sum_{i=1}^{n} a_i\mu(A_i)$.
+
+	\item For non-negative measurable function $f$,
+		let $\int f\dd \mu = \sup_{g\le f} \int g\dd \mu$, where
+		$g$ is non-negative simple functions.
+	\item For generic function $f$, write $f = f_+ - f_-$,
+		define $\int f = \int f_+ - \int f_-$.
+\end{itemize}
+
+\begin{definition}[Measurable partitions]
+	If a collection of sets $\{A_i\}$ satisfies
+	\[
+	\mu(A_i\cap A_j) = 0,\quad \mu((\bigcup A_i)^c) = 0,
+	\]
+	then we say $\{A_i\}$ is a \vocab{measurable partition} of $X$.
+\end{definition}
+\begin{definition}[Integrals for simple functions]
+	Let $\{A_i\}$ be a partition of $X$, $a_i\ge 0$ are reals.
+	Let
+	\[
+	f = \sum_{i=1}^{n} a_i \ii_{A_i},
+	\]
+	define
+	\[
+	\int_X f\dd \mu := \sum_{i=1}^{n} a_i \mu(A_i).
+	\]
+	Check it's well-defined:
+	if $f = \sum_{j=1}^{m} b_j\ii_{B_j}$, then
+	\[
+	\sum_{i=1}^{n} \sum_{j=1}^{m} a_im(A_i\cap B_j) =
+	\sum_{i=1}^{n} \sum_{j=1}^{m} b_j \mu(A_i\cap B_j).
+	\]
+\end{definition}
+
+\begin{proposition}
+	Let $f,g$ be non-negative simple functions.
+	\begin{enumerate}[(1)]
+		\item $\int_X \ii_A \dd \mu = \mu(A),\quad \forall A\in \mathscr{F}$;
+		\item $\int_X f\dd \mu \ge 0$;
+		\item $\int_X (af)\dd \mu = a\int_X f\dd \mu$;
+		\item $\int_X (f+g)\dd \mu = \int_X f\dd \mu + \int_X g\dd \mu$;
+		\item If  $f\ge g$, then $\int_X f\dd \mu\ge \int_X g\dd \mu$.
+		\item If $f_n\uparrow$ and $ \lim_{n\to \infty} f_n \ge g$,
+			then $ \lim_{n\to \infty}\int_X f_n\dd \mu \ge \int_X g\dd \mu$.
+	\end{enumerate}
+\end{proposition}
+\begin{remark}
+    $f:= \uparrow \lim_{n\to \infty} f_n$ need not be simple function.
+	Even if $f$ is simple, we don't know $\lim \int f_n\dd \mu = \int f\dd \mu$ yet.
+\end{remark}
+\begin{proof}[Proof of (4), (5)]
+    Since $\{A_i\cap B_j\}$ is a partition of $X$, on  $A_i\cap B_j$,
+	\[
+	f + g = a_i +b_j, \quad f = a_i, g = b_j.
+	\]
+\end{proof}
+\begin{proof}[Proof of (6)]
+    For all $\alpha\in (0,1)$, let $A_n(\alpha) := \{f_n \ge \alpha g\}\uparrow X$.
+	Then
+	\[
+	f_n \ii_{A_n(\alpha)} \ge \alpha g\ii_{A_n(\alpha)}.
+	\]
+	Thus if $g = \sum_{j=1}^{m} b_j \ii_{B_j}$,
+	\[
+	\int_X f_n \dd \mu\ge \int_X f_n\ii_{A_n(\alpha)}\dd \mu
+	\ge \alpha \int_X g\ii_{A_n(\alpha)}\dd \mu.
+	\]
+	\[
+	RHS = \alpha \sum_{j=1}^{m} b_j\mu(B_j\cap A_n(\alpha))
+	\uparrow \alpha\int_X g\dd \mu.
+	\]
+	Hence
+	\[
+	\lim_{n\to \infty} \int_X f_n \dd \mu \ge \alpha\int_X g\dd \mu,
+	\quad \forall \alpha<1,
+	\]
+	which completes the proof.
+\end{proof}
+
+\begin{definition}[Integrals for non-negative measurable functions]
+	Let $f$ be a non-negative measurable function.
+	We know that $\exists f_1,f_2,\dots$ s.t. $f_n \uparrow f$.
+	If we define the integral of $f$ to be the limit of $\int f_n\dd \mu$,
+	we still need to prove this is well-defined. Therefore we use another definition:
+
+	\[
+	\int_X f\dd \mu := \sup\left\{\int _X g\dd \mu : g\le f
+	\text{ is simple and non-negative}\right\}.
+	\]
+\end{definition}
+
+\begin{proposition}
+	Let $f$ be a non-negative measurable function.
+	\begin{enumerate}[(1)]
+		\item If $f$ is simple, then the two definition is the same.
+		\item If $\{f_n\}$ is a series of simple non-negative functions,
+			and $f_n\uparrow f$, then
+			\[
+				\lim_{n\to \infty} \int _X f_n\dd \mu
+				= \int _X f\dd \mu.
+			\]
+		\item
+			\[
+		\int_X f \dd \mu = \lim_{n\to \infty} \left[\sum_{k=0}^{n2^n - 1}
+		\frac{k}{2^n}\mu\left(\left\{\frac{k}{2^n}\le f < \frac{k+1}{2^n}\right\}\right)
+		+ n\mu(\{f\ge n\})\right].
+			\]
+	\end{enumerate}
+\end{proposition}
+\begin{proof}[Proof of (2)]
+    By definition, $\int_X f_n \dd \mu \le \int _X f\dd \mu$.
+	Since for all simple function $g$, if $f_n\uparrow f\ge g$,
+	\[
+		\lim_{n\to \infty} \int_X f_n\dd \mu\ge \int_X g\dd \mu.
+	\]
+	Hence  the desired equality holds.
+\end{proof}
+\begin{remark}
+    The integral of $f$ relies only on $\mu\big|_{\sigma(f)}$:
+	if $f\in \mathscr{G}\subset \mathscr{F}$, then the integral of $f$
+	is the same on $(X, \mathscr{G}, \mu\big|_{\mathscr{G}})$
+	and $(X, \mathscr{F}, \mu\big|_{\mathscr{F}})$.
+\end{remark}
+
+\begin{proposition}
+	Continuing on the properties of integrals:
+	\begin{enumerate}[(1)]
+		\item $\int_X f \dd \mu \ge 0$;
+		\item $\int_X (af + g)\dd \mu = a\int_X f\dd \mu + \int_X g\dd \mu$;
+		\item If $f\ge g$, then $\int_X f\dd \mu\ge \int_X g\dd \mu$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}[Proof]
+    Use the previous proposition.
+\end{proof}
+
+\begin{definition}[Integrals for generic functions]
+	Let $f$ be a measurable function, and $f = f^+ - f^-$.
+	If
+	\[
+	\min\left\{\int_X f^+\dd \mu, \int_X f^- \dd \mu\right\} < \infty,
+	\]
+	we say the integral of $f$ exists and define it to be
+	\[
+	\int_X f\dd \mu := \int_X f^+\dd \mu - \int_X f^- \dd \mu.
+	\]
+	If $\int _X f\dd \mu \ne \pm \infty$, we say $f$ is \vocab{integrable}.
+\end{definition}
+
+For any $A\in \mathscr{F}$, $(A, \mathscr{F}_A, \mu_A)$ is a measure space.
+Define  the integral of $f$ on $A$ to be
+\[
+\int_A f\dd \mu := \int_A f\big|_A \dd \mu_A = \int_X f\ii_A \dd \mu.
+\]
+where the latter equality holds since it holds for indicator functions.
+
+\begin{example}[The Lebesgue-Stieljes integral]
+	Let $(\mathbb{R}, \mathscr{B}_{\mathbb{R}}, \mu_F)$ be a measure space,
+	where $F$ is a quasi-distribution function.
+	For a Borel function $g$,
+	\[
+	\int_{\mathbb{R}} g\dd F = \int_{\mathbb{R}} g(x)\dd F(x)
+	= \int_{\mathbb{R}} g(x)F(\dd x) := \int_{\mathbb{R}}g\dd \mu_F.
+	\]
+
+	In particular, when $F(x) = x$, the integral is Lebesgue integral.
+	Let $\lambda$ be Lebesgue measure,
+	\[
+	\int_{\mathbb{R}}g(x)\dd x := \int_{\mathbb{R}}g\dd \lambda.
+	\]
+
+	If $\mu$ is a distribution, $F = F_\mu$,  $g =\id$,
+	we say
+	\[
+	\int_{\mathbb{R}} x\dd F(x) = \int_{\mathbb{R}} x \mu(\dd x)
+	= \int_{\mathbb{R}} \id \dd \mu.
+	\]
+	is the \vocab{expectation} of the distribution $\mu$.
+\end{example}
+
+\begin{example}[The integral on discrete measure]
+	Let $X = \{x_1,x_2,\dots\} = \{1,2,\dots\}$, $\mu(\{x_i\}) = a_i$.
+
+	Let $I^+ = \{i: f(x_i) \ge 0\}, I^- = \{i: f(x_i) < 0\}$.
+
+	Let $I^+_n = I^+ \cap \{1,\dots,n\}$, $f\ii_{I^+_n}$ is a non-negative simple
+	function and converges to $f^+$.
+	Hence
+	\[
+	\int_X f^+ \dd \mu = \sum_{i\in I^+} f(x_i) a_i,\quad
+	\int_X f^- \dd \mu = - \sum_{i\in I^-} f(x_i)a_i.
+	\]
+	\[
+	\int_X f\dd \mu = \sum_{i\in I} \sum_{i=1}^{\infty} f(x_i)a_i.
+	\]
+	So $f$ is integrable iff the series absolutely converges.
+\end{example}
+
+\begin{theorem}
+	Let $f$ be a measurable function.
+	\begin{enumerate}[(1)]
+		\item If $\int_X f\dd \mu$ exists,
+			then $|\int_X f\dd \mu|\le \int_X|f|\dd \mu$.
+		\item $f$ integrable $\iff |f|$ integrable.
+		\item If $f$ integrable, then $|f|<\infty, a.e.$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}[Proof of (3)]
+	WLOG $f\ge 0$, then $f\ge f\ii_{\{f=\infty\}}$.
+	\[
+	\int_X f\dd \mu \ge \int _X f\ii_{\{f=\infty\}}\ge n\mu(\{f=\infty\}),
+	\quad \forall n.
+	\]
+	Thus $\mu(\{f=\infty\})$ must be $0$.
+\end{proof}
+
+\begin{theorem}
+	Let $f,g$ be measurable functions whose integral exists.
+    \begin{itemize}
+		\item $\int_A f \dd \mu = 0$ for all null set $A$;
+		\item If $f\ge g,a.e.$ then $\int_X f\dd \mu \ge \int_X g\dd \mu$.
+		\item If $f=g, a.e.$, then their integrals
+			exist simultanrously, $\int_X f\dd \mu = \int_X g\dd \mu$.
+    \end{itemize}
+\end{theorem}
+\begin{proof}[Proof]
+    By definition, just check them one by one.
+\end{proof}
+
+\begin{corollary}
+    If $f=0,a.e.$, then $\int_X f\dd \mu = 0$;
+	If $f\ge 0, a.e.$ and $\int_X f \dd \mu = 0$, then $f = 0,a.e.$.
+\end{corollary}

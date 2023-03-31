@@ -75,11 +75,14 @@ such matrix is called a \vocab{Jordan block}.
 Jordan matrices are the blocked diagonal matrices with
 each block being a Jordan block.
 
-\begin{theorem}
+\begin{theorem}[Jordan canonical forms]
     If $f_T$ can be decompose to product of polynomials of degree 1, then
-	 \begin{itemize}
+	\begin{itemize}
 		 \item $\exists \mathcal{B}$ s.t. $[T]_{\mathcal{B}}$ is a Jordan matrix,
 			 this is called the \vocab{Jordan canonical form} of $T$.
 		\item The canonical form is unique under permutations of each Jordan blocks.
 	\end{itemize}
 \end{theorem}
+\begin{proof}[Proof]
+    This follows immediately from the primary cyclic decomposition of $T$.
+\end{proof}
