@@ -1,5 +1,3 @@
-\contentsline {paragraph}{Step 2}{1}{Doc-Start}%
-\contentsline {paragraph}{Step 3}{2}{lemma.0.2}%
-\contentsline {subsection}{\numberline {0.1}Absolute continuous functions}{4}{subsection.0.1}%
-\contentsline {section}{\numberline {1}Multi-dimensional Calculus}{8}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Directional derivatives}{8}{subsection.1.1}%
+\contentsline {subsection}{\numberline {0.1}Absolute continuous functions}{1}{subsection.0.1}%
+\contentsline {section}{\numberline {1}Multi-dimensional Calculus}{5}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Directional derivatives}{6}{subsection.1.1}%

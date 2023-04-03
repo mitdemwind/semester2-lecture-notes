@@ -1,0 +1,37 @@
+%! TeX root = ./main.tex
+\begin{example}
+    We can't grant that the global function exists.
+	For example, let $D = \{x^2+y^2\in [a^2, b^2]\}$,
+	and $M$ be a helicoid.
+
+	Since there's a natural map
+	$\phi: D\backslash([a,b]\times \{0\})\to M$ (projection),
+	let $g, h$ be the fundamental forms of $\phi$,
+	by the symmetry we can extend  $g,h$ to entire $D$.
+
+	It's clear that there exists local solutions but
+	the global solutions does't exist.
+	(In theory of differential forms, this is similar to closed forms may
+	not be exact)
+
+	But if the region $D$ is \textit{simply connected},
+	the global solution always exist.
+\end{example}
+\subsection{Isometric, conformal and area-perserving maps}
+\label{sub:Isometric, conformal and area-perserving maps}
+Let $U,\wt{U}\subset \mathbb{R}^2$, and $\phi: U\to \mathbb{E}^3,
+\wt{\phi}: \wt{U}\to \mathbb{E}^3$ be two surfaces.
+Let $f: \wt{U}\to U$ be a map between two surfaces.
+
+Earlier we introduced isometric maps (isometry),
+i.e. $f^*(g) = \wt{g}$.
+Since the length depends only on the first fundamental form,
+the isometry perserves the length, angles and areas on surfaces.
+
+The \vocab{conformal} maps perserves the angles on the surfaces,
+and it's easy to imply this is equivalent to $f^*(g) = \lambda \wt{g}$
+for some $\lambda\in \mathbb{R}$.
+
+As the name suggests, the \vocab{area-perserving} maps
+perserves the areas on two surfaces,
+which is saying $\det f^*(g) = \det \wt{g}$.

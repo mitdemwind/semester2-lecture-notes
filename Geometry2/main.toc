@@ -1,3 +1,3 @@
-\contentsline {subsection}{\numberline {0.1}Gauss map and Weingarten map}{1}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Fundamental equation of surfaces}{2}{subsection.0.2}%
-\contentsline {subsection}{\numberline {0.3}Fundamental theorem of surface theory}{5}{subsection.0.3}%
+\contentsline {subsection}{\numberline {0.1}Fundamental equation of surfaces}{1}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Fundamental theorem of surface theory}{4}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.3}Isometric, conformal and area-perserving maps}{6}{subsection.0.3}%

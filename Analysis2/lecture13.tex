@@ -1,0 +1,154 @@
+%! TeX root = ./main.tex
+For a function $f: \mathbb{R}^{d}\to \mathbb{R}$,
+$\dd f(x_0) = (\nabla f)(x_0)$ is a function $\mathbb{R}^{d}\to \mathbb{R}^{d}$,
+hence $\dd (\dd f)(x_0) = J(\nabla f)$ is a matrix.
+If we look at the higher derivatives, it will become
+an $n$ dimensional array, which is hard to represent.
+
+When we have multiple functions to deal with,
+the differentiation is almost the same as 1 dimensional case:
+\begin{proposition}[Chain rule]
+	Let  $\Omega_i \subset \mathbb{R}^{n_i}, 1\le i\le 3$ be
+	open sets, and $f: \Omega_1\to \Omega_2, g:\Omega_2\to \Omega_3$
+	be differentiable functions.
+	Then $g\circ f: \Omega_1\to \Omega_3$ is differentiable,
+	and
+	\[
+	\dd (g\circ f)(x) = \dd g\big|_{f(x)} \cdot \dd f(x).
+	\]
+	where $\dd g$ is a $n_3\times n_2$ matrix,
+	$\dd f$ is a $n_2\times n_1$ matrix, so $\dd(g\circ f)$ is
+	a $n_3\times n_1$ matrix, as defined above.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $f(x_0) = y_0$,
+	\[
+		f(x_0+v) = y_0 + \dd f(x_0) v + o(|v|),
+	\]
+	and
+	\[
+		g(y_0+w) = g(y_0) + \dd g(y_0) w + o(|w|).
+	\]
+
+	Now we compute
+	\begin{align*}
+	g(f(x_0+v)) &= g(y_0+\dd f(x_0) v + o(|v|))\\
+	&= g(y_0) + \dd g(y_0)(\dd f(x_0)v + o(|v|)) + o(|\dd f(x_0)v + o(|v|)|)\\
+	&= g(y_0) + \dd g(y_0)\dd f(x_0) v + \dd g(y_0)o(|v|)
+	+ o(|\dd f(x_0)v + o(|v|)|),
+	\end{align*}
+	so we only need to verify that
+	\[
+	\lim_{|v|\to 0} \frac{|\dd g(y_0)o(|v|) + o(\dd f(x_0)v + o(v))|}{|v|} = 0.
+	\]
+
+	Note that $|A\cdot v|\le \lVert A \rVert |v|$, where
+	the norm of a matrix is defined as $(\sum A_{ij}^2)^{\frac{1}{2}}$,
+	so it's clear the above limit holds.
+\end{proof}
+
+\begin{corollary}
+    Let $\Omega_1 \subset \mathbb{R}^{n_1}, \Omega \subset \mathbb{R}^{n_2}$,
+	let $f$ be a differentiable map $\Omega_1\to \Omega_2$.
+
+	If $f$ is a bijection and $f^{-1}$ is differentiable, then:
+	\begin{itemize}
+		\item $n_1 = n_2$;
+		\item $\dd f^{-1}(y) = (\dd f)^{-1} (x)$, where $x = f^{-1}(y)$.
+	\end{itemize}
+\end{corollary}
+\begin{proof}[Proof]
+    Consider the composite function $\id = f\circ f^{-1}: \Omega_2\to \Omega_2$,
+	by chain rule,
+	\[
+	I_{n_2} = \dd (f\circ f^{-1}) = \dd f\cdot \dd f^{-1}.
+	\]
+	since $I_{n_2}$ has rank $n_2$, we know that $n_1\ge n_2$.
+	Similarly $n_2\ge n_1$, so $n_1=n_2$.
+
+	Hence the inverse of $\dd f$ exists and is equal to $\dd f^{-1}$.
+\end{proof}
+
+\begin{example}
+    Consider the exponential map:
+	\[
+	\exp: M_n(\mathbb{R}) \to M_n(\mathbb{R}),
+	A \mapsto \sum_{k=0}^{\infty} \frac{A^k}{k!} =: e^A.
+	\]
+	then $\dd \exp (A)$ is a linear map $M_n(\mathbb{R})\to M_n(\mathbb{R})$.
+
+	By definition,
+	\[
+	e^{A+V} - e^A = \dd \exp(A)\cdot V + o(|V|).
+	\]
+	The left hand side is equal to
+	\[
+	\sum_{k=0}^{\infty}\frac{(A+V)^k - A^k}{k!}
+	= \sum_{k=0}^{\infty} \frac{\sum_{l=0}^{k-1} A^lVA^{k-1-l}+O(|V|^2)}{k!}.
+	\]
+	since $\lVert AB \rVert \le \lVert A \rVert \lVert B \rVert$,
+	the $O(|V|^2)$ part has norm
+	at most $2^k \lVert V \rVert ^2\lVert A \rVert ^{k-2}$.
+	\[
+	\implies e^{A+V} - e^A =
+	\sum_{k=0}^{\infty} \frac{\sum_{l=0}^{k-1} A^lVA^{k-1-l}}{k!}
+	+ o(\lVert V \rVert).
+	\]
+
+	In particular,
+	\begin{itemize}
+		\item $\dd \exp(I)(V) = \sum_{k=0}^{\infty} \frac{kV}{k!} = eV$;
+		\item $\dd \exp (0)(V) = V$;
+		\item If  $A$ and $V$ is commutative,
+			$\dd\exp(A)(V) = \exp(A)V$.
+	\end{itemize}
+\end{example}
+
+\begin{theorem}[Substitution formula]
+    Let $\phi: U\to V$ be a bijection, $\phi,\phi^{-1}$ are $C^1$ functions,
+	and Jacobi determinant
+	\[
+		J_\phi(x) := \det(J(\phi)(x))\ne 0, \quad\forall x\in U.
+	\]
+
+	If $f$ is Lebesgue integrable on $f(U)$, then
+	\[
+	\int_{\phi(U)} f(y)\dd y = \int_V f(\phi(x)) |J_\phi(x)|\dd x.
+	\]
+\end{theorem}
+\begin{remark}
+    In fact we only need to check for cuboid $I$,
+	\[
+	m(\phi(I)) = \int_I |J_\phi(x)|\dd x.
+	\]
+	and $\phi$ maps null sets to null sets.
+\end{remark}
+\begin{proof}[Proof]
+    Since $\phi\in C^1$, exists constant $M$ s.t.
+	\[
+	M^{-1}\le \lVert \dd \phi \rVert, \lVert \dd \phi^{-1} \rVert,
+	|J_\phi|\le M.
+	\]
+
+	$\forall \varepsilon>0$, divide $I$ into sufficiently small cuboids $I_j$,
+	such that
+	\[
+	\phi(x) - \phi(x_j) - \dd \phi(x_j)(x - x_j)\le M\varepsilon |x-x_j|,
+	\quad \forall x\in I_j,
+	\]
+	where $x_j$ is the center of $I_j$. 
+
+	Hence there exists $K$ independent of $\varepsilon$,
+	\[
+	m(\phi(I_j))\le (|J_\phi(x_j)| + MK\varepsilon) m(I_j).
+	\]
+	since the image $\phi(I_j)$ is a subset of $\dd \phi(x_j)(I_j)$
+	(which is a parallogram) extending $M\varepsilon |x-x_j|$ on each side.
+
+	By taking sufficiently small $\varepsilon$,
+	\[
+	m(\phi(I))\le \sum_{j} (|J_\phi(x_j)| + MK\varepsilon) m(I_j)
+	\le 2MK\varepsilon m(I) + \int_I |J_\phi(x)|\dd x.
+	\]
+	
+\end{proof}

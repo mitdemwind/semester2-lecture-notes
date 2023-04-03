@@ -104,4 +104,36 @@ and we need to consider how to construct this equation.
 	For the second statement, we can compute
 	$\pfr{}{u^\beta}(\vec{n}\cdot v_\alpha) = 0$,
 	so they are constant.
+
+	For the PDE part, if we want a $C^2$ solution of some linear PDE of degree 1:
+	\[
+		\pfr{y^j}{x^\alpha} = f_\alpha^j(x^1,\dots,x^n,y^1,\dots,y^m)
+	\]
+	There's a necessary condition that the partial derivatives are commutative,
+	i.e.
+	\[
+	\pfr{}{x^\beta}\pfr{y^j}{x^\alpha} = \pfr{}{x^\alpha}\pfr{y^j}{x^\beta}.
+	\]
+	This expands to
+	\[
+	\pfr{f_\alpha^j}{x^\beta} + \sum_{k} f_\beta^k\pfr{f_\alpha^j}{y^k}
+	= \pfr{f_\beta^j}{x^\alpha} + \sum_{k} f_\alpha^k\pfr{f_\beta^j}{y^k}.
+	\]
+	In fact this is also the sufficient condition of the existence local solution.
+	\begin{remark}
+		The proof is beyond the scope of this course,
+		but the basic idea is to build the $y^j$'s
+		dimension by dimension (from curve to surfaces to 3d manifolds \dots).
+		The 1d part can be constructed using solutions of ODE,
+		and the compatibility follows by our condition.
+
+		In the language of differential forms,
+		let $y = (y^1,\dots,y^m)$, we are given $\dd y$,
+		since the condition says $\dd(\dd y) = 0$, i.e. $\dd y$ is
+		a \textit{closed form}, so we always have local solution of $y$.
+	\end{remark}
+
+	Returning to our original problem, this condition is actually
+	what we used to deduce the Gauss-Codazzi equations,
+	so our PDE must have a unique solution on a neighborhood of $p$.
 \end{proof}
