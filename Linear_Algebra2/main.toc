@@ -1,2 +1,2 @@
-\contentsline {subsection}{\numberline {0.1}Rational canonical forms}{2}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Primary cyclic decomposition and Jordan canonical forms}{4}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.1}Primary cyclic decomposition and Jordan canonical forms}{2}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Semisimple transformations}{5}{subsection.0.2}%
