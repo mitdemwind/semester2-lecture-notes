@@ -1,0 +1,93 @@
+%! TeX root = ./main.tex
+\begin{theorem}[Jordan decomposition]
+    Let $T\in L(V)$, $n = \dim V$, and $F$ is perfect.
+	There exists unique $S,N\in L(V)$ s.t. $T = S+N$, where $S$ semisimple and
+	$N$ nilpotent, and $SN = NS$.
+
+	Moreover there exists $f,g\in F[x]$ s.t. $S = f(T), N = g(T)$.
+\end{theorem}
+
+To prove this generalized version, we need the following observation:
+\begin{proposition}
+	Let $F$ be a perfect field, $A\in F^{n\times n}$ is semisimple
+	iff $A$ is diagonalizable in $\overline{F}^{n\times n}$.
+\end{proposition}
+\begin{proof}[Proof]
+	$A$ semisimple $\iff$ $p_A$ has no multiple factors in $F[x]$
+
+	$\iff$ $p_A$ has no multiple roots in $\overline{F}[x]$
+
+	$\iff$ $p_A$ is the product of different monic polynomials of degree 1
+
+	$\iff$ $A$ is diagonalizable in $\overline{F}^{n\times n}$.
+\end{proof}
+
+\begin{proposition}
+	Let $F$ be a perfect field, $a\in \overline{F}$.
+	Then $a\notin F\iff$ exists an automorphism $\sigma$ s.t. $\sigma\big|_F = \id_F$,
+	i.e. $\sigma\in \mathrm{Gal}(\overline{F}/F)$ but $\sigma(a)\ne a$.
+\end{proposition}
+\begin{remark}
+    This proof is beyond the scope of this class, but the idea is similar
+	to the conjugate operation on $ \mathbb{C}/\mathbb{R}$.
+\end{remark}
+
+Now we prove the Jordan decomposition:
+\begin{proof}[Proof]
+    Let $A = S + N$ is the Jordan decomposition on $\overline{F}^{n\times n}$.
+	Then by applying $\sigma$ on this equation,
+	\[
+	A = \sigma(S) + \sigma(N)
+	\]
+	holds for all $\sigma\in \mathrm{Gal}(\overline{F}/F)$.
+	Since $\sigma(S)$ is also diagonalizable, $\sigma(N)$ is nilpotent,
+	as $\sigma$ is an automorphism.
+	So by the uniqueness of Jordan decomposition, $\sigma(S)=S, \sigma(N)=N$.
+
+	This implies $S, N \in F^{n \times n}$.
+\end{proof}
+
+\subsection{Bonus section}
+\label{sub:Bonus section}
+Starting from Galois groups mentioned above,
+let
+\[
+\Aut(E / F) := \left\{\sigma \in \Aut(E)\mid \sigma|_F = \id_F\right\}
+\]
+be the automorphism group of field extension $E / F$.
+\begin{example}
+    Let $F = \mathbb{Q}$, $E = \mathbb{Q}(\sqrt{2})$, then
+	$\sigma: a+b\sqrt{2} \mapsto a-b\sqrt{2}$ is in $\Aut(E / F)$.
+
+	If $E = \mathbb{Q}(\sqrt[3]{2})$, if $\sigma\in \Aut(E / F)$, then
+	$\sigma(\sqrt[3]{2})$ is a root of $x^3 - 2$ $ \implies \sigma = \id$.
+	Thus $E / F$ is not a \textit{Galois extension}.
+\end{example}
+
+When $E / F$ is a Galois extension, we write $\Gal(E / F) = \Aut(E / F)$.
+
+In the history, this concept is used to solve polynomial equations.
+
+Let $f\in \mathbb{Q}[x]$, let $x_1,\dots,x_n$ be all roots of $f$.
+Consider $E = \mathbb{Q}(x_1,\dots,x_n)$, and define $\Gal(f) = \Gal(E / \mathbb{Q})$.
+Back in the times of Galois, the concept of field haven't been developed yet,
+so what he did is to consider the bijections between the roots of $f$.
+
+Galois discovered that $f$ has radical solutions if and only if
+the group $\Gal(f)$ has a property, and he named it ``solvable''.
+Since all the subgroups of $S_4$ are solvable, thus if $\deg f\le 4$,
+$f$ always has radical solutions, but $A_5<S_5$ is not solvable,
+so polynomials of degree greater than 4 may not have radical solutions.
+
+One of the ultimate goal of modern algebra is to comprehend the
+group $\Gal(\overline{\mathbb{Q}}/\mathbb{Q})$.
+
+A tool developed for this goal is \textit{group representation}.
+A representation of a group $G$ is a homomorphism $\varphi: G\to \GL(V)$.
+Since $\GL(V)$ is something people knows very well, so when
+the elements of an abstract group $G$ is viewed as linear maps,
+it's easier to discover more properties of $G$.
+
+When $G = \Gal(\overline{\mathbb{Q}}/\mathbb{Q})$, the representation is
+called a \textit{Galois representation}. Even one dimensional
+Galois representations are very nontrivial.

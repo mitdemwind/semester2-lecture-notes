@@ -88,13 +88,13 @@ Obviously simple maps are always semisimple.
 	s.t. each $T_{V_i}$ is simple.
 \end{corollary}
 
-\begin{proposition}
+\begin{theorem}
 	Let $T\in L(V)$.
 	\begin{itemize}
 		\item $T$ simple $\iff$ $f_T$ is a prime polynomial;
 		\item $T$ semisimple $\iff$ $p_T$ has no multiple factors.
 	\end{itemize}
-\end{proposition}
+\end{theorem}
 \begin{proof}[Proof]
     $T$ simple $ \implies T$ cyclic $ \implies f_T = p_T$,
 	so we only need to prove $p_T$ is a prime.
@@ -159,10 +159,3 @@ We can check that when $F$ is perfect, $f\in F[x]$ has no multiple factors iff
 $f$ has no multiple factors in $\overline{F}[x]$.
 
 Now we can generalize the Jordan decomposition:
-\begin{proposition}[Jordan decomposition]
-    Let $T\in L(V)$, $n = \dim V$, and $F$ is perfect.
-	There exists unique $D,N\in L(V)$ s.t. $T = D+N$, where $D$ semisimple and
-	$N$ nilpotent, and $DN = ND$.
-
-	Moreover there exists $f,g\in F[x]$ s.t. $D = f(T), N = g(T)$.
-\end{proposition}

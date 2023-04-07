@@ -1,0 +1,195 @@
+%! TeX root = ./main.tex
+\subsection{Properties of integrals}
+\label{sub:Properties of integrals}
+\begin{theorem}[Linearity of integrals]
+    Let $f,g$ be functions whose integral exists.
+	\begin{itemize}
+		\item $\forall a\in \mathbb{R}$, the integral of $af$ exists,
+			and $\int_X (af)\dd \mu = a\int_X f\dd \mu$;
+		\item If $\int_X f\dd \mu + \int_X g\dd \mu$ exists,
+			then $f + g\ a.e.$ exists, its integral exists and
+			\[
+			\int_X(f+g)\dd \mu = \int_X f\dd \mu + \int_X g\dd \mu.
+			\]
+	\end{itemize}
+\end{theorem}
+\begin{proof}[Proof]
+    The first one is trivial by definition.
+
+	As for the second,
+	\begin{enumerate}
+		\item First we prove $f+g \ a.e.$ exists.
+			If $|f|<\infty, a.e.$, we're done.
+
+			If $\mu(f = \infty) > 0$, then $\int_X f\dd \mu = \infty$.
+			This means $\int_X g\dd \mu \ne -\infty$, so $\mu(g = - \infty) = 0$.
+			Thus $f + g\ a.e.$ exists.
+			Similarly we can deal with the case $\mu(f = -\infty) > 0$.
+		\item Next we prove the equality.
+			$f + g = (f^+ + g^+) - (f^- + g^-)$.
+			Let $\varphi = f^+ + g^+, \psi = f^- + g^-$.
+			Our goal is
+			\[
+			\int_X (\varphi - \psi)\dd \mu = \int_X \varphi\dd \mu - \int_X \psi\dd \mu.
+			\]
+			Since $f+g \ a.e.$ exists, so $\varphi - \psi$ exists almost everywhere.
+			If $\int_X \varphi \dd\mu = \int_X \psi\dd \mu = \infty$,
+			then the integral of $f,g$ must be $+\infty$ and $-\infty$,
+			which contradicts with our condition.
+			So both sides of above equation exist.
+
+			Since $\max\{\varphi, \psi\} = \psi + (\varphi - \psi)^+
+			= \varphi + (\varphi - \psi)^-$, by the linearity of non-negative integrals,
+			\[
+			\int_X \psi\dd \mu + \int_X (\varphi - \psi)^+\dd \mu
+			= \int_X \varphi\dd \mu + \int_X (\varphi - \psi)^-\dd \mu.
+			\]
+			which rearranges to the desired equality.
+	\end{enumerate}
+	Note: we need to verify that we didn't add infinity to the equation in the last step.
+\end{proof}
+
+\begin{proposition}
+	Let $f,g$ be integrable functions,
+	If $\int_A f\dd \mu \ge \int_A g\dd \mu, \forall A\in \mathscr{F}$,
+	then $f\ge g, a.e.$.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $B = \{ f < g\}$, then $(g - f)\ii_B \ge 0$,
+	\[
+	\int_B (g - f)\dd \mu = \int_B (g - f)\ii_B \dd \mu \ge 0.
+	\]
+	By the linearity of integrals we get $(g - f)\ii_B = 0, a.e.$,
+	i.e. $\mu(B) = 0$.
+\end{proof}
+
+\begin{proposition}
+	If $\mu$ is $\sigma$-finite, the integral of $f,g$ exists,
+	the conclusion of previous proposition also holds.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $X = \sum_{n} X_n$, $\mu(X_n) < \infty$. By looking at $X_n$,
+	we may assume $\mu(X) < \infty$.
+
+	Since $\{ f < g \} = \{-\infty \ne f < g\} + \{f = -\infty < g\}$.
+
+	Let $B_{M, n} = \{|f|\le M, f + \frac{1}{n} < g\}$.
+	By condition,
+	\[
+	\int_{B_{M,n}} f\dd \mu \ge \int_{B_{M,n}} g\dd \mu \ge
+	\int_{B_{M,n}} f\dd \mu + \frac{1}{n}\mu(B_{M,n}).
+	\]
+	Since $\int_{B_{M,n}} f\dd \mu \le M\mu(X)$ is finite, we get $\mu(B_{M,n}) = 0$.
+	This implies $\{-\infty \ne f < g\} = \bigcup B_{M,n}$ is null.
+
+	Let $C_M = \{g > -M\}$, similarly,
+	\[
+	-\infty\cdot\mu(C_M) = \int_{C_M}f \dd \mu \ge\int_{C_M} g\dd \mu = -M \mu(C_M).
+	\]
+	Hence $\mu(C_M) = 0$, $\{-\infty = f < g\} = \bigcup C_M$ is null.
+\end{proof}
+
+\begin{remark}
+	When $\ge$ is replaced by $=$, the conclusion holds as well.
+    This proposition tells us that the integrals of $f$ totally determines $f$.
+	(In calculus, taking the derivative of integrals gives original functions)
+\end{remark}
+
+\begin{theorem}[Absolute continuity of integrals]
+    Let $f$ be an integrable function, $\forall \varepsilon>0$, $\exists \delta>0$,
+	such that $\forall A\in \mathscr{F}$,
+	\[
+	\mu(A) < \delta \implies \int_A |f|\dd \mu < \varepsilon.
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+Take non-negative simple functions $g_n \uparrow |f|$.
+Since $\int |f|\dd \mu < \infty$, $\exists N$ s.t.
+\[
+\int_X (|f| - g_N)\dd \mu = \int_X |f|\dd \mu - \int_X g_N \dd\mu < \frac{\varepsilon}{2}.
+\]
+
+Let $M = \max_{x\in X} g_N(x)$, $\delta = \frac{\varepsilon}{2M}$, so
+\[
+\int_A |f|\dd \mu < \frac{\varepsilon}{2} + \int_A g_N \dd \mu = \frac{\varepsilon}{2}
++ M\mu(A) < \varepsilon.
+\]
+\end{proof}
+
+\begin{example}
+    Fundamental theorem of Calculus, Lebesgue version:
+	Let $g$ be a measurable function, then $g$ is absolutely continuous
+	iff $\exists f: [a,b]\to \mathbb{R}$ Lebesgue integrable, s.t.
+	\[
+	g(x) - g(a) = \int_a^x f(z)\dd z.
+	\]
+	The absolute continuity can be implied by the absolute continuity of
+	integrals.
+\end{example}
+
+\subsection{Convergence theorems}
+\label{sub:Convergence theorems}
+
+Levi, Fatou, Lebesgue.
+
+In this section we mainly discuss the commutativity of
+integrals and limits, i.e. if $f_n \to f$, we care when does the following holds:
+\[
+\lim_{n\to \infty} \int_X f_n \dd \mu = \int_X f\dd \mu.
+\]
+
+\begin{theorem}[Monotone convergence theorem, Levi's theorem]
+    Let $f_n \uparrow f, a.e.$ be non-negative functions, then
+	\[
+	\int_X f_n \dd \mu \uparrow \int_X f\dd \mu.
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    By removing countable null sets, we may assume $0 \le f_n(x)\uparrow f$.
+
+	Take non-negative simple functions $f_{n,k}\uparrow f_n$.
+	Let $g_k = \max_{1\le n\le k}f_{n, k}$ be simple functions.
+	\[
+	g_k = \max_{1\le n\le k}f_{n, k}\le \max_{1\le n\le k+1} f_{n, k+1} = g_{k+1}.
+	\]
+	So $g_k \uparrow$, say $g_k \to g$ for some function $g$.
+	Clearly $g\le f$ as $g_k \le f_k$, $\forall k$.
+
+	Note as $k\to \infty$, $g_k \ge f_{n,k}\implies g\ge f_n, \forall n$.
+	so $g = f$.
+
+	By definition of integrals,
+	\[
+	\int_X f\dd \mu = \lim_{k\to \infty} \int_X g_n\dd \mu,
+	\]
+	and
+	\[
+	\int_X g_n \dd \mu \le \int_X f_n\dd \mu \le \int_X f\dd \mu.
+	\]
+	So the conclusion follows.
+\end{proof}
+\begin{corollary}
+    Let $f_n$ be functions whose integrals exist, if
+	\[
+	f_n \uparrow f, a.e. \quad \int_X f_1^- \dd \mu < \infty,\quad
+	\text{or}\quad
+	f_n \downarrow f, a.e. \quad \int_X f_1^+ \dd \mu < \infty,
+	\]
+	then the integral of $f$ exists, and $\int_X f_n \dd \mu \to \int_X f\dd \mu$.
+\end{corollary}
+\begin{remark}
+    Counter example when $\int_X f_1^+ \dd \mu = \infty$: let $X = \mathbb{R}$,
+	\[
+		f_n = \ii_{[n, \infty)} \downarrow f = 0,\quad
+		\int_X f_n \dd \mu = \infty, \quad \int_X f \dd \mu = 0.
+	\]
+\end{remark}
+
+\begin{corollary}
+    If the integral of $f$ exists, then for any measure partition $\{A_n\}$,
+	\[
+	\int_X f\dd \mu = \sum_{n=1}^{\infty} \int_{A_n}f\dd \mu.
+	\]
+\end{corollary}
+
+If $f\ge 0$, then $\nu: A\mapsto \int_A f\dd \mu$ is a measure on $\mathscr{F}$.
