@@ -111,9 +111,9 @@ the differentiation is almost the same as 1 dimensional case:
 		J_\phi(x) := \det(J(\phi)(x))\ne 0, \quad\forall x\in U.
 	\]
 
-	If $f$ is Lebesgue integrable on $f(U)$, then
+	If $f$ is Lebesgue integrable on $V$, then
 	\[
-	\int_{\phi(U)} f(y)\dd y = \int_V f(\phi(x)) |J_\phi(x)|\dd x.
+	\int_{V} f(y)\dd y = \int_U f(\phi(x)) |J_\phi(x)|\dd x.
 	\]
 \end{theorem}
 \begin{remark}
@@ -136,7 +136,14 @@ the differentiation is almost the same as 1 dimensional case:
 	\phi(x) - \phi(x_j) - \dd \phi(x_j)(x - x_j)\le M\varepsilon |x-x_j|,
 	\quad \forall x\in I_j,
 	\]
-	where $x_j$ is the center of $I_j$. 
+	where $x_j$ is the center of $I_j$, because
+	\begin{align*}
+		\phi(x) - \phi(x_j)
+		&= \int_{0}^{1} \frac{\dd}{\dd t}\phi(tx + (1-t)x_j) \dd t\\
+		&= \int_{0}^{1} \dd \phi (tx + (1-t)x_j) (x-x_j) \dd t\\
+		&= \dd \phi(x_j) (x-x_j) + \int_{0}^{1}
+		(\dd \phi (tx + (1-t)x_j) - \dd \phi(x_j))\dd t \cdot (x - x_j)
+	\end{align*}
 
 	Hence there exists $K$ independent of $\varepsilon$,
 	\[
@@ -148,7 +155,16 @@ the differentiation is almost the same as 1 dimensional case:
 	By taking sufficiently small $\varepsilon$,
 	\[
 	m(\phi(I))\le \sum_{j} (|J_\phi(x_j)| + MK\varepsilon) m(I_j)
-	\le 2MK\varepsilon m(I) + \int_I |J_\phi(x)|\dd x.
+	= 2MK\varepsilon m(I) + \int_I |J_\phi(x)|\dd x.
 	\]
-	
+
+	Therefore
+	\[
+	\int_V f(y)\dd y \le \int_U f(\phi(x))|J_\phi|\dd x.
+	\]
+	apply this to $\phi^{-1}$ we'll get the equality:
+	\[
+	m(E) \le \int_{\phi^{-1}(E)} |J_\phi(x)|\dd x
+	\le \int_E |J_\phi(\phi^{-1}(x))||J_{\phi^{-1}}(x)|\dd x = m(E).
+	\]
 \end{proof}

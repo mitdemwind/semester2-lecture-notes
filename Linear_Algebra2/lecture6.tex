@@ -1,9 +1,8 @@
 %! TeX root = ./main.tex
-
-There may not exist a subspace $W'$ s.t.  $W\oplus W' = V$, so we can instead
+For an invariant subspace $W \subset V$,
+there may not exist a subspace $W'$ s.t.  $W\oplus W' = V$, so we can instead
 study the quotient space.
 
-Let $W \subset V$ be a $T$-invariant subspace.
 Define $T_W = T|_W\in L(W)$, $T_{V/W}\in L(V/W)$:
 $T_{V /W}(\alpha+W) = T(\alpha) + W$. It's clear that $T_{V /W}$ is well-defined.
 
@@ -15,13 +14,13 @@ $T_W$ and $T_{V /W}$ as their matrices are $A, C$ respectively.
 
 Since $\det T = \det T_W \det T_{V /W}$, $f_T = f_{T_W}\cdot f_{T_{V /W}}$.
 The minimal polynomials satisfy
-\[lcm(p_{T_W}, p_{T_{V/W}}) \mid p_T, \quad
+\[\lcm(p_{T_W}, p_{T_{V/W}}) \mid p_T, \quad
 p_T \mid p_{T_W} p_{T_{V /W}}.\]
 
 This follows by the definition of $T_W, T_{V /W}$, readers can check it manually.
 Hint: The image of $p_{T_{V /W}}(T)$ is in $W$.
 So by \autoref{p_t decomposition}, $T$ is diagonalizable $\iff$ $T_W,T_{V /W}$
-are both diagonalizable.
+are both diagonalizable and their minimal polynomials are coprime.
 
 \begin{definition}[Simultaneous diagonalization]
 	Let $\mathcal{F} \subset L(V)$, if there exists $\mathcal{B}$ s.t.
@@ -38,7 +37,7 @@ are both diagonalizable.
 	\end{itemize}
 \end{proposition}
 \begin{proof}[Proof]
-    It's obvious the fisrt statement implies the second.
+    It's obvious the first statement implies the second.
 
 	On the other hand, we proceed by induction on the dimension of the space $V$.
 
@@ -65,7 +64,7 @@ are both diagonalizable.
 
 \begin{proposition}
 	Let $\dim V=n$, for  $T\in L(V)$, TFAE:
-	\begin{enumerate}
+	\begin{enumerate}[(1)]
 		\item $T$ is triangulable;
 		\item $f_T$(or $p_T$) can be decomposed to product of polynomials of degree 1.
 		\item There exists a sequence of $T$-invariant subspaces
@@ -82,7 +81,7 @@ are both diagonalizable.
 \begin{proof}[Proof]
 	It's obvious that $(1) \implies (2)$.
 
-	For $(3)\implies (4)$:
+	For $(2)\implies (3)$:
 	We proceed by induction, for $W_1$ just take the space spanned by
 	one of the eigenvectors of $T$.
 
@@ -98,7 +97,12 @@ are both diagonalizable.
 	\[
 		T_{V / W_i}\circ Q = Q\circ T.
 	\]
-	%TODO: add a commute diagram here.
+	\begin{center}
+	    \begin{tikzcd}
+			V\rar["T"]\dar["Q"] &V\dar["Q"]\\
+			V/W_i\rar["T_{V/W_i}"] &V/W_i
+		\end{tikzcd}
+	\end{center}
 
 	Since $p_{T_{V / W_i}}\mid p_T \implies p_{T_{V /W_i}}$ is product of
 	polynomials of degree 1, $T_{V / W_i}$ must have an eigenvector.

@@ -1,0 +1,71 @@
+%! TeX root = ./main.tex
+It's easy to prove that isometric = conformal + area-perserving.
+These three properties induce Riemann geometry, complex geometry
+and sympletic geometry, respectively (in two dimensional).
+
+\subsubsection{Isometries}
+Firstly by Gauss' Theorema Egregium, Isometries perserves
+Gaussian curvature.
+
+\begin{example}
+    Let $S_{a,b}: \frac{x^2}{a} + \frac{y^2}{b} = 2z$ be a saddle surface.
+	Let $(x,y,z) = (as, bt, \frac{as^2+bt^2}{2})$ be a parametrization.
+
+	We can compute the fundamental forms:
+	\[
+	g = a^2(1+s^2)\dd s^2 + 2abst\dd s\dd t + b^2(1+t^2)\dd t^2,
+	\]
+	\[
+	h = \frac{a\dd s^2 + b\dd t^2}{\sqrt{1+s^2+t^2}}.
+	\]
+	So $K = \frac{1}{ab(1+s^2+t^2)^2}$.
+	In fact the Gaussian curvature of some different surfaces,
+	say $S_{2,3}$ and $S_{1,6}$ are the same.
+
+	But there is not an isometry between them:
+
+	If $\tau: \mathbb{R}^2\to \mathbb{R}^2$ is an isometry, then $\tau$ fixes
+	the circles centered at $(0,0)$ as their Gaussian curvature are the same.
+	Then $\tau_*=\dd \tau: T_{(0,0)}\mathbb{R}^2\to T_{(0,0)}\mathbb{R}^2$ can
+	only be rotation or reflection.
+	(If $\tau_*$ is not orthogonal, it will map small circles to ellipse)
+
+	While $g(0,0) = a ^2\dd s^2 + b^2\dd s^2$, which has eigenvalue $a^2$
+	and $b^2$, and they're fixed under $\tau_*$, so $S_{2,3}$ isn't
+	isometric to $S_{1,6}$.
+\end{example}
+\begin{remark}
+    Given $E,F,G: D\to \mathbb{R}$ s.t. $g = E\dd s^2 + 2F\dd s\dd t + G\dd t^2$
+	positive definite, is there a surface $D\to \mathbb{E}^3$ can have
+	$g$ as its first fundamental form locally?
+
+	When we require $E,F,G$ to be $C^{\omega}$(analytic), the answer is ``yes'',
+	but if we only require $C^{\infty}$, it's still an open problem.
+\end{remark}
+
+Even though we don't know the situation in 3 dimensional space,
+we can study the case in higher dimensions:
+\begin{theorem}
+    It's always possible to construct $\phi: D\to \mathbb{E}^4$ to
+	have $E,F,G$ as its first fundamental form.
+\end{theorem}
+
+Surfaces with Gaussian curvature 0 everywhere
+are called \vocab{developable surfaces}.
+Developable surfaces can only be cylinder, cone, tangent surface of a curve
+and their concatenation.
+
+\begin{example}[Pseudosphere]
+	Let $\phi(x,y) = (\frac{\cos x}{y}, \frac{\sin x}{y},
+	\cosh^{-1}(y) - \frac{\sqrt{y^2-1}}{y})$,
+	where $(x,y)\in (-\pi, \pi)\times [1,+\infty)$.
+
+	It's obtained by rotating a \textit{tractrix} around its asymptote.
+	We can calculate its Gaussian curvature, whichis a constant $-1$.
+	This is where the name comes from.
+
+	Recall that hyperbolic plane also has constant curvature $-1$,
+	in fact they are locally isometric.
+	In 1901, Hilbert proved a theorem that there exists an isometry
+	$\mathbb{H}^2\to \mathbb{E}^3$.
+\end{example}

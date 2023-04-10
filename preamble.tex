@@ -5,12 +5,16 @@
 \usepackage{hyperref}
 \usepackage[margin = 1.3 in]{geometry}
 \usepackage{titlesec}
+\usepackage{tikz-cd}
 %%----section headers----
 \titleformat{\section}{\sffamily\bfseries\Large\centering}
 {\color{purple}\S\thesection\enskip}{0em}{}
 
 \titleformat{\subsection}{\sffamily\bfseries\large}
 {\color{purple}\S\thesubsection\enskip}{0em}{}
+
+\titleformat{\subsubsection}{\sffamily\bfseries}
+{\color{purple}\S\thesubsubsection\enskip}{0em}{}
 
 \hypersetup{
 	colorlinks=true,
@@ -112,7 +116,7 @@ mdframed={style=mdblackbox}
 %Branching here: the option secthm changes theorems to be labelled by section
 
 \declaretheorem[%
-style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
+style=thmbluebox,name=Theorem,numberwithin=subsection]{theorem}
 
 \declaretheorem[style=thmbluebox,name=Lemma,sibling=theorem]{lemma}
 \declaretheorem[style=thmbluebox,name=Proposition,sibling=theorem]{proposition}
