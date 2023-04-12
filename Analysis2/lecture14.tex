@@ -19,9 +19,75 @@
 	\]
 \end{example}
 
+\begin{theorem}[Clairaut-Schwarz]
+    Given an open set $\Omega \subset \mathbb{R}^{n}$ and $f: \Omega\to \mathbb{R}$.
+	Assume $\pfr{f}{x_i}(x), \pfr{f}{x_j}(x), \pfr{}{x_i}(\pfr{f}{x_j})(x)$ exists
+	and are continuous, then
+	$\pfr{}{x_j}(\pfr{f}{x_i})(x)$ exists and
+	\[
+	\pfr{}{x_i}\left(\pfr{f}{x_j}\right)(x)
+	= \pfr{}{x_j}\left(\pfr{f}{x_j}\right)(x).
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    WLOG $n = 2$.
+	We'll just expand and compute:
+	\begin{align*}
+		\pfr{}{y}\pfr{f}{x}(x_0, y_0)
+		&= \lim_{s\to 0}\frac{1}{s}
+		\left(\pfr{f}{x}(x_0,y_0+s) - \pfr{f}{x}(x_0,y_0)\right)\\
+		&= \lim_{s\to 0}\frac{1}{s} \lim_{t\to 0} \frac{1}{t}
+		(f(x_0+t, y_0+s) - f(x_0, y_0+s) - f(x_0+t, y_0) + f(x_0,y_0)).
+	\end{align*}
+
+	Since
+	\[
+		(f(x_0+t, y_0+s) - f(x_0, y_0+s) - f(x_0+t, y_0) + f(x_0,y_0))
+		= \int_{0}^{s} \int_{0}^{t} \pfr{}{x}\pfr{f}{y}
+		(x_0+\tilde t,y_0+\tilde s)\dd \tilde t\dd \tilde s.
+	\]
+	So by Fubini's theorem,
+\end{proof}
+
+Notation:
+Let $\alpha = (\alpha_1,\dots,\alpha_n)$ be a multiple index,
+where $\alpha_i\ge 0$ are integers.
+define
+\[
+\partial^\alpha f = \left(\pfr{f}{x_1}\right)^{\alpha_1}\cdots
+\left(\pfr{f}{x_n}\right)^{\alpha_n}f.
+\]
+or we can write
+\[
+\partial^\alpha = \frac{\partial^{|\alpha|}}{\partial x_1^{\alpha_1}\cdots
+\partial x_n^{\alpha_n}},\quad |\alpha| = \sum_{i=1}^{n} \alpha_i.
+\]
+
+\begin{theorem}[Multi-dimensional Taylor expansion]
+    Let $\Omega \subset \mathbb{R}^{n}$ be a convex open set.
+	Let $f\in C^{k+1}(\Omega)$, for all $x,y\in \Omega$,
+	then $\exists \theta\in (0,1]$ s.t.
+	\[
+	f(y) = \sum_{|\alpha|\le k} \frac{\partial^\alpha f(x)}{\alpha!}(y-x)^{\alpha}
+	+ \sum_{|\alpha|=k+1} \frac{\partial^\alpha f(x+\theta(y-x))}{\alpha!}
+	(y-x)^\alpha.
+	\]
+	where $(y - x)^\alpha = \prod_{i=1}^n(x_i-y_i)^{\alpha_i}$,
+	$\alpha! = \prod_{i=1}^n \alpha_i !$.
+\end{theorem}
+\begin{proof}[Proof]
+    Let $g(t) = f(ty + (1-t)x)$, $g\in C^{k+1}((-1,1))$.
+	By Taylor expansion, there exists $\theta\in [0,1]$,
+	\[
+	g(1) = \sum_{l=0}^{k} \frac{g^{(l)}(0)}{l!} + \frac{g^{(k+1)}(\theta)}{(k+1)!}.
+	\]
+	so it's just a differential formula of composite function,
+	which can be easily proved by induction,
+	and I don't bother to write it down.
+\end{proof}
+
 \subsection{Implicit function theorem}
 \label{sub:Implicit function theorem}
-
 
 As usual let $C^k(\Omega)$ denote the $k$ times continuously differentiable
 functions on $\Omega$.
@@ -62,70 +128,4 @@ Recall that in $\mathbb{R}$ we have the following results:
 	\]
 	Since $f \in C^{n+1}\implies \pfr{f}{y_i}\in C^n$,
 	and $\pfr{\Phi_i}{x_j}$ is smooth, so $\pfr{\Phi^*f}{x_j}\in C^n$.
-\end{proof}
-
-\begin{theorem}[Clairaut-Schwarz]
-    Given an open set $\Omega \subset \mathbb{R}^{n}$ and $f: \Omega\to \mathbb{R}$.
-	Assume $\pfr{f}{x_i}(x), \pfr{f}{x_j}(x), \pfr{}{x_i}(\pfr{f}{x_j})(x)$ exists
-	and are continuous, then
-	$\pfr{}{x_j}(\pfr{f}{x_i})(x)$ exists and
-	\[
-	\pfr{}{x_i}\left(\pfr{f}{x_j}\right)(x)
-	= \pfr{}{x_j}\left(\pfr{f}{x_j}\right)(x).
-	\]
-\end{theorem}
-\begin{proof}[Proof]
-    WLOG $n = 2$.
-	We'll just expand and compute:
-	\begin{align*}
-	    \pfr{}{y}\pfr{f}{x}(x_0, y_0)
-		&= \lim_{s\to 0}\frac{1}{s}
-		\left(\pfr{f}{x}(x_0,y_0+s) - \pfr{f}{x}(x_0,y_0)\right)\\
-		&= \lim_{s\to 0}\frac{1}{s} \lim_{t\to 0} \frac{1}{t}
-		(f(x_0+t, y_0+s) - f(x_0, y_0+s) - f(x_0+t, y_0) + f(x_0,y_0)).
-	\end{align*}
-
-	Since
-	\[
-		(f(x_0+t, y_0+s) - f(x_0, y_0+s) - f(x_0+t, y_0) + f(x_0,y_0))
-		= \int_{0}^{s} \int_{0}^{t} \pfr{}{x}\pfr{f}{y}
-		(x_0+\tilde t,y_0+\tilde s)\dd \tilde t\dd \tilde s.
-	\]
-	So by Fubini's theorem,
-\end{proof}
-
-Notation:
-Let $\alpha = (\alpha_1,\dots,\alpha_n)$ be a multiple index,
-where $\alpha_i\ge 0$ are integers.
-define
-\[
-\partial^\alpha f = \left(\pfr{f}{x_1}\right)^{\alpha_1}\cdots
-\left(\pfr{f}{x_n}\right)^{\alpha_n}f.
-\]
-or we can write
-\[
-\partial^\alpha = \frac{\partial^{|\alpha|}}{\partial x_1^{\alpha_1}\cdots
-\partial x_n^{\alpha_n}},\quad |\alpha| = \sum_{i=1}^{n} \alpha_i.
-\]
-
-\begin{theorem}[Multi-dimensional Taylor expansion]
-    Let $\Omega \subset \mathbb{R}^{n}$ be a convex open set.
-	Let $f\in C^{k+1}(\Omega)$, for all $x,y\in \Omega$, 
-	then $\exists \theta\in (0,1]$ s.t.
-	\[
-	f(y) = \sum_{|\alpha|\le k} \frac{\partial^\alpha f(x)}{\alpha!}(y-x)^{\alpha}
-	+ \sum_{|\alpha|=k+1} \frac{\partial^\alpha f(x+\theta(y-x))}{\alpha!}
-	(y-x)^\alpha.
-	\]
-	where $(y - x)^\alpha = \prod_{i=1}^n(x_i-y_i)^{\alpha_i}$,
-	$\alpha! = \prod_{i=1}^n \alpha_i !$.
-\end{theorem}
-\begin{proof}[Proof]
-    Let $g(t) = f(ty + (1-t)x)$, $g\in C^{k+1}((-1,1))$.
-	By Taylor expansion, there exists $\theta\in [0,1]$,
-	\[
-	g(1) = \sum_{l=0}^{k} \frac{g^{(l)}(0)}{l!} + \frac{g^{(k+1)}(\theta)}{(k+1)!}.
-	\]
-	so it's just a differential formula of composite function,
-	which can be easily proved by induction.
 \end{proof}

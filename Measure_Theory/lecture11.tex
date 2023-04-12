@@ -1,0 +1,224 @@
+%! TeX root = ./main.tex
+\begin{theorem}[Fauto's Lemma]
+    Let $\{f_n\}$ be non-negative measurable functions almost everywhere,
+	then
+	\[
+	\int_X \liminf_{n\to \infty}f_n \dd \mu
+	\le \liminf_{n\to \infty}\int_X f_n \dd \mu.
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    Let $g_k := \inf_{n\ge k} f_n \uparrow g:= \liminf_{n\to \infty} f_n$.
+	By monotone convergence theorem,
+	\[
+	\int_X g\dd \mu = \lim_{k\to \infty}\int_X g_k\dd\mu
+	\le \lim_{k\to \infty}\inf_{n\ge k}\int_X f_n \dd \mu
+	= \liminf_{n\to \infty} \int_X f_n\dd\mu.
+	\]
+\end{proof}
+
+\begin{corollary}
+    If there exists integrable $g$ s.t. $f_n\ge g$,
+	then $\int_X \liminf_{n\to \infty} f_n$
+	exists and
+	\[
+	\int_X \liminf_{n\to \infty}f_n \dd \mu
+	\le \liminf_{n\to \infty} \int_X f_n\dd \mu.
+	\]
+\end{corollary}
+
+\begin{theorem}[Lebesgue]
+    Let $f_n \to f, a.e.$ or $f_n \xrightarrow{\mu} f$,
+	if there exists non-negative integrable function $g$ s.t. $|f_n|\le g, \forall n$,
+	then
+	\[
+	\lim_{n\to \infty}\int_X f_n\dd \mu = \int_X f\dd \mu.
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    When $f_n\to f, a.e.$, by Fatou's lemma,
+	\[
+	\int_X f\dd\mu = \int_X \lim_{n\to \infty}f_n\dd \mu \le
+	\liminf_{n\to \infty} \int_X f_n \dd \mu.
+	\]
+	Since $|f_n|\le g$,
+	\[
+	\int_X f\dd \mu = \int_X \lim_{n\to \infty}f_n\dd \mu
+	\ge \limsup_{n\to\infty} \int_X f_n \dd\mu,
+	\]
+	which gives the desired.
+
+	When $f_n\xrightarrow{\mu} f$, for all subsequence $\{n_k\}$,
+	exists a subsequence $\{n'\}$ s.t.
+	$f_{n'} \to f, a.e.$.
+
+	Thus $\int_X f_{n'}\dd\mu \to \int_X f\dd \mu$, hence
+	$\int_X f_n\dd \mu \to \int_Xf\dd\mu$.(Why?)
+\end{proof}
+
+\begin{corollary}
+    Let $f_n$ be random variable on $(\Omega_n, \mathscr{F}_n, P_n)$,
+	$f_n \xrightarrow{d} f$, then we have
+	\[
+	\lim_{n\to \infty}\int_{X_n} f_n\dd P_n = \int_X f \dd P.
+	\]
+\end{corollary}
+
+\begin{proposition}[Transformation formula of integrals]
+	Let $g: (X,\mathscr{F}, \mu) \to (Y, \mathscr{S})$ be a measurable map.
+	For all measurable $f$ on  $(Y, \mathscr{S})$, then
+	\[
+	\int_Y f\dd \mu\circ g^{-1} = \int_X f\circ g\dd \mu
+	\]
+	if one of them exists.
+\end{proposition}
+\begin{proof}[Proof]
+    By the typical method, we only need to prove for indicator function $f$.
+\end{proof}
+\begin{remark}
+    $\mu$ and $\mu\circ g^{-1}$ are the same measure in different spaces.
+\end{remark}
+
+\subsection{Expectations}
+\label{sub:Expectations}
+Let $\xi$ be a r.v. on $(\Omega, \mathscr{F}, P)$,
+\begin{definition}[Expectations]
+	If $\int_{\Omega} \xi \dd P$ exists, then we call it the \vocab{expectation}
+	of $\xi$, denoted by $E(\xi)$ or $E\xi$.
+\end{definition}
+
+Consider the distribution $\mu_\xi = P\circ \xi^{-1}$,
+$F_\xi(x) = P(\xi\le x)$.
+
+Let $f = \id : \mathbb{R}\to \mathbb{R}$, then $E(\xi) = E(\mu_\xi)$:
+\[
+\int_{\mathbb{R}}x\dd F_\xi(x) = \int_{\mathbb{R}} f\dd \mu_\xi
+= \int_{\mathbb{R}} f\dd P\circ \xi^{-1} = \int_{\mathbb{R}} f\circ \xi\dd P
+= \int_\Omega \xi\dd P = E(\xi).
+\]
+Let $f$ be a measurable function on $(\mathbb{R}, \mathscr{B}_{\mathbb{R}})$,
+then $f(\xi)$ is a measurable function on $(\Omega, \mathscr{F})$, and
+\[
+Ef(\xi) = \int_{\mathbb{R}} f\dd F_\xi.
+\]
+
+Let $\eta = f\circ \xi$, by the transformation formula,
+\begin{align*}
+    Ef(\xi)
+	&= \int_\Omega \eta(\omega) \dd P(\omega)\\
+	&= \int_{\overline{\mathbb{R}}} y \dd P\circ \eta^{-1}(y)
+	= \int_{\overline{\mathbb{R}}} y \dd \mu_\eta(y)
+	= \int_{\overline{\mathbb{R}}} y\dd \mu_\xi\circ f^{-1}(y)\\
+	&= \int_{\mathbb{R}} f(x)\dd \mu_\xi(x) = \int_{\mathbb{R}}f\dd F_\xi.
+\end{align*}
+
+\begin{example}
+    Possion distribution: $P(\xi = i) = \frac{\lambda^i}{i!}e^{-\lambda}=:p_i$.
+	Its expectation is
+	\[
+	\int_{\mathbb{R}} x\dd \mu = \int_{\mathbb{N}} x\dd \mu
+	= \sum_{i=0}^{\infty} ip_i.
+	\]
+
+	For continuous distribution, the density function $p$ is
+	actually a non-negative, integrable function,
+	and $\int_{\mathbb{R}} p(x)\dd x = 1$.
+	So $\mu(B) = \int_B p(x)\dd x$ is a probability measure.
+
+	Since $\mu_\xi\big|_{\mathscr{P}_{\mathbb{R}}} = \mu\big|_{\mathscr{P}_{\mathbb{R}}}$, $\mu_\xi = \mu$.
+	By typical method, we can prove
+	\[
+		Ef(\xi) = \int_{\mathbb{R}} f\dd \mu_\xi = \int_{\mathbb{R}} f(x)p(x)\dd x.
+	\]
+\end{example}
+
+\subsection{$L_p$ spaces}
+\label{sub:$L_p$ spaces}
+\begin{definition}[$L_p$ spaces]
+	Let $1\le p < \infty$.
+	Define
+	\[
+	\lVert f \rVert _p := \left(\int_X |f|^p\right)^{\frac{1}{p}},\quad
+	L_p(X, \mathscr{F}, \mu) := \{f : \lVert f \rVert _p < \infty\}.
+	\]
+	Sometimes we'll simplify the notation as $L_p(\mu), L_p(\mathscr{F})$ or
+	just $L_p$.
+\end{definition}
+
+\begin{itemize}
+	\item $f\in L_1$ iff $f$ integrable, let $ \lVert f \rVert := \lVert f \rVert _1$.
+	\item $f\in L_p \iff f^p \in L_1\implies f$ is finite a.e..
+\end{itemize}
+
+In fact, $L_p$ is a normed vector space under the norm $\lVert \cdot \rVert_p$:
+\begin{lemma}
+	Let $1 \le p < \infty$, let $C_p = 2^{p-1}$, then
+	\[
+	|a+b|^p \le C_p (|a|^p + |b|^p), \quad a,b\in \mathbb{R}.
+	\]
+\end{lemma}
+\begin{proof}[Proof]
+    It's a single-variable inequality, it's obvious by taking the derivative.
+\end{proof}
+Thus by taking integral on both sides,
+ \[
+\int_X |f + g|^p\dd\mu \le C_p \left(\int_X |f|^p\dd\mu + \int_X |g|^p \dd \mu\right).
+\]
+So $L_p$ space is a vector space.
+\begin{lemma}[Holder's inequality]
+	Let $1< p,q < \infty$, and $\frac{1}{p}+\frac{1}{q}=1$.
+	\[
+	\lVert f g \rVert \le \lVert f \rVert _p \lVert g \rVert _q,\quad
+	\forall f\in L_p, g \text{ measurable}.
+	\]
+\end{lemma}
+\begin{proof}[Proof]
+    WLOG $\lVert f \rVert _p > 0$, $0 < \lVert g \rVert_q < \infty$.
+	Let
+	\[
+	a = \left(\frac{|f|}{\lVert f \rVert _p}\right)^p
+	= \frac{|f|^p}{\int_X |f|^p \dd \mu},
+	\quad b = \left(\frac{|g|}{\lVert g \rVert _q}\right)^q
+	= \frac{|g|^q}{\int_X |g|^q\dd \mu}.
+	\]
+	By weighted AM-GM,
+	\[
+	\int_X \frac{|fg|}{\lVert f \rVert _p \lVert g \rVert _q}\dd \mu
+	\le \int_X \left(\frac{a}{p} + \frac{b}{q}\right)\dd \mu
+	= \frac{1}{p} + \frac{1}{q} = 1.
+	\]
+	The equality holds iff $a = b$, i.e. $\exists \alpha, \beta\ge 0$ not all zero
+	s.t. $\alpha|f|^p = \beta|g|^q, a.e.$.
+\end{proof}
+
+\begin{theorem}[Minkowski's inequality]
+    Let $1\le p < \infty$, then
+	\[
+	\lVert f + g \rVert _p \le \lVert f \rVert _p + \lVert g \rVert _p,
+	\quad \forall f,g \in L_p.
+	\]
+	The equality holds iff $(1): p=1, fg\ge 0$;
+	$(2) p>1, \exists \alpha,\beta\ge 0, s.t. \alpha f = \beta g,a.e.$.
+\end{theorem}
+\begin{proof}[Proof]
+    When $p = 1$, it follows by $|f+g|\le |f|+|g|$.
+
+	When $p\ge 1$, let $q = \frac{p}{p-1}$, by Holder's inequality,
+	\[
+	|f+g|^p \le |f||f+g|^{p-1} + |g||f+g|^{p-1},
+	\]
+	\[
+	\implies \lVert f+g \rVert _p^p\le (\lVert f \rVert _p + \lVert g \rVert _p)
+	\cdot \lVert |f+g|^{p-1} \rVert _q.
+	\]
+	Note that
+	\[
+	\lVert |f+g|^{p-1} \rVert _q = \left(\int_X |f+g|^p\dd \mu\right)^{\frac{1}{q}}
+	= \lVert f+g \rVert _p^{\frac{p}{q}}.
+	\]
+	Since $f+g\in L_p$, we can divide both sides
+	by $ \lVert f+g \rVert _p^{\frac{p}{q}}$ to get the result.
+\end{proof}
+
+In $L_p$ space, we view two functions $f=g,a.e.$ as the same function,
+i.e. the original function space modding the equivalence relation out.

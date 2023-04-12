@@ -1,0 +1,123 @@
+%! TeX root = ./main.tex
+Note that the condition $f' \ne 0$ grants that
+$f$ is indeed a bijection locally.
+In higher dimensional spaces, the derivatives are more complex,
+so let's look at some simple cases first.
+\begin{lemma}
+	Let $U, V \subset \mathbb{R}^{d}$ be open regions.
+	Let $f: U\to V$ be a $C^1$ bijection, and $J(f)$ is non-degenerate
+	(i.e. $\det J(f)\ne 0$). Then $f^{-1}: V\to U$ is continuously differentiable.
+\end{lemma}
+\begin{proof}[Proof]
+    Let $x_0\in U$, $y_0 = f(x_0) = V$,
+	\[
+	f(x_0 + v) = y_0 + A\cdot v + o(|v|).
+	\]
+	Let $E(\delta)$ be a function which satisfies
+	\[
+	f^{-1}(y_0+\delta) = x_0 + A^{-1}\delta + E(\delta).
+	\]
+	this can be derived from taking $f^{-1}$ on both sides
+	of the above equation.
+	\[
+	y_0 + \delta = f(x_0 + A^{-1}\delta + E(\delta))
+	= y_0 + \delta + AE(\delta) + o(|A^{-1}\delta + E(\delta)|)
+	\]
+	\[
+	\implies AE(\delta) + o(A^{-1}\delta + E(\delta)) = 0.
+	\]
+	From this we can calculate
+	\begin{align*}
+	\frac{|E(\delta)|}{|\delta|} =
+	\frac{|o(A^{-2}\delta + A^{-1}E(\delta))|}{|\delta|} &\le
+	\frac{|o(A^{-2}\delta + A^{-1}E(\delta))|}{|A^{-2}\delta + A^{-1}E(\delta)|}
+	\cdot \frac{|A^{-2}\delta + A^{-1}E(\delta)|}{|\delta|}\\
+	&\le o(1)\left(C + C \frac{|E(\delta)|}{|\delta|}\right).
+	\end{align*}
+	Hence $ \lim_{|\delta|\to 0}\frac{|E(\delta)|}{|\delta|} = 0$.
+\end{proof}
+
+In this case we are given $f^{-1}$ exists, but generally we need to
+prove this existence.
+\begin{theorem}[Inverse function theorem]
+    Let $f: \Omega \to \mathbb{R}^{d}$ be a $C^1$ map,
+	and $\dd f(x_0)$ is non-degenerate, then $f$ is a $C^1$ differential
+	homeomorphism in some neighborhood of $x_0$.
+
+	This is to say, $\exists U\ni x_0, V\ni f(x_0)$ s.t.
+	$f$ is a bijection from $U$ to $V$ and $f^{-1}: V\to U$ is a $C^1$ map.
+\end{theorem}
+\begin{proof}[Proof]
+    WLOG $x_0 = 0$, $f(x_0) = 0$, also we can apply a linear transformation
+	such that $\dd f(x_0) = I$.
+
+	There exists $\delta > 0$, s.t.
+	\[
+	|f(v) - v| < \varepsilon_0|v|, \quad  \lVert J(f)(v) - I \rVert < \varepsilon_0,
+	\quad \forall |v| < \delta.
+	\]
+	note that
+	\begin{align*}
+	f(v) - f(u) = \int_{0}^{1} \frac{\dd}{\dd t}f(tv + (1-t)u)\dd t
+	&= \int_{0}^{1} \dd f(tv + (1-t)u)\cdot (v-u)\dd t\\
+	&= \int_{0}^{1} (Jf(tv + (1-t)u) - I)\cdot(v-u)\dd t + (u - v).
+	\end{align*}
+	but when $|u|, |v| < \delta$, $|f(v) - f(u) - (v-u)| < \varepsilon_0|v-u|$.
+
+	Hence $f(u) = f(v)\implies u = v$, $f$ is injective in $B_\delta(0)$.
+
+	As for surjectivity, it's sufficient to prove $f(\overline{B_\delta(0)})$
+	contains a neighborhood of $f(0) = 0$.
+	i.e. $\forall |v|<\delta_1, \exists |u|<\delta$ s.t. $f(u) = u + o(u) = v$.
+
+	Since we don't know the non-linear term $o(u)$,
+	we'll iterate to get a solution $u$: let $u_0 = v$.
+	Define $u_{k+1} = v - (f(u_k) - u_k)$.
+	When $\delta_1$ is sufficiently small,
+	\[
+	|u_{k+1}| \le |v| + |f(u_k) - u_k| \le |v| + \varepsilon_0|u_k|
+	\le \delta_1 + \varepsilon_0\delta \le \delta.
+	\]
+	Now we prove the convergency:
+	\begin{align*}
+	|u_{k+2} - u_{k+1}| &= |f(u_{k+1}) - u_{k+1} - f(u_k) + u_k|\\
+	&= |\int_{0}^{1} (J(f)(tu_{k+1} + (1-t)u_k) - I)\dd t (u_{k+1} - u_k)|\\
+	&\le \varepsilon_0 |u_{k+1} - u_k|.
+	\end{align*}
+	by contraction mapping principle we're done.
+\end{proof}
+\begin{remark}
+    This theorem holds for any Banach space.
+\end{remark}
+
+\begin{corollary}
+    Let $k\ge 2$ be an integer, when $f\in C^k$ in the above theorem,
+	we can imply that $f^{-1}\in C^k(V)$.
+\end{corollary}
+\begin{proof}[Proof]
+	Since
+    \[
+	\dd f^{-1}(u) = (\dd f)^{-1} (f^{-1} (u)),
+	\]
+	so $\dd f\in C^{k-1}\implies (\dd f)^{-1} \in C^{k-1}$.
+\end{proof}
+
+\begin{theorem}[Implicit function theorem]
+    Let $f: \Omega \subset \mathbb{R}^n\times \mathbb{R}^p \to \mathbb{R}^p$ be
+	a continuously differentiable function.
+	If $\exists (x^*, y^*)\in \Omega$ s.t. $f(x^*, y^*) = 0$, and
+	$\dd_y f(x^*, y^*)$ is inversible, then there exists an open
+	neighborhood $U \subset \mathbb{R}^n$ of $x^*$,
+	$V \subset \mathbb{R}^p$ of $y^*$, and a $C^1$ map $\phi: U\to V$ such
+	that:
+	\[
+	f(x, \phi(x)) = 0,\quad \dd \phi(x) = -(\dd_y f(x, \phi(x)))^{-1}\cdot
+	\dd_x f(x, \phi(x)).
+	\]
+\end{theorem}
+\begin{remark}
+    This is to say, if $f(x,y) = 0$, $x\in U, y\in V$, then $y = \phi(x)$.
+
+	Also remember that $\dd_y f$ is a $p \times p$ matrix,
+	$\dd_x f$ is a $p \times  n$ matrix.
+\end{remark}
