@@ -1,0 +1,177 @@
+%! TeX root = ./main.tex
+Midterm exam QAQ
+\section{Inner product spaces}
+\label{sec:Inner product spaces}
+In this section we always assume the base field
+to be $\mathbb{R}$ or $\mathbb{C}$.
+
+\subsection{Inner product}
+\label{sub:Inner product}
+
+
+\begin{definition}[Inner product]
+	Let $V$ be a vector space, an \vocab{inner product} on $V$ is
+	a function $\left<\cdot, \cdot\right>: V\times V\to F$,
+	$(\alpha, \beta)\mapsto \left<\alpha, \beta \right>$ such that:
+	\begin{itemize}
+		\item $\left<\alpha+\beta, \gamma \right>
+			= \left<\alpha, \gamma \right> + \left<\beta, \gamma \right>$,
+			$\left<c\alpha, \beta \right> = c\left< \alpha, \beta \right>$,
+			i.e. the linearity of the first entry.
+		\item $ \left<\alpha, \beta \right>
+			= \overline{\left<\beta, \alpha\right>}$.
+			This implies the \textit{conjugate linearity} of the second entry.
+		\item $\alpha \ne 0\implies \left<\alpha, \alpha \right> > 0$.
+	\end{itemize}
+\end{definition}
+\begin{remark}
+    The reason why we require the conjugate property is that we want
+	to make the inner product positive definite:
+	otherwise $ \left<i\alpha, i\alpha \right> = i^2 \left<\alpha, \alpha\right>$.
+\end{remark}
+
+The finite dimensional real inner product space is called \vocab{Euclid space},
+and finite dimensional complex inner product space
+is called \vocab{unitary space}.
+
+In fact the definition of inner space is related to the order in real numbers,
+so this is not a pure algebraic structure.
+
+\begin{example}
+    Let $V = F^{n\times 1}$. Let $\alpha = \colvecs{x_1}{x_n},
+	\beta = \colvecs{y_1}{y_n}$,
+	define $ \left<\alpha,\beta\right> = \sum_{j=1}^{n} x_j\overline{y_j}
+	= \alpha^t \overline{\beta}$ to be the \vocab{standard inner product}.
+
+	Denote $\beta^* = \overline{\beta^t}$,
+	then $\left<\alpha, \beta \right> = \beta^* \alpha$.
+
+	Similarly when $V = F^{m\times n}$, $ \left<A, B \right> =
+	\sum_{j,k} A_{jk}\overline{B_jk} = \tr(B^* A) = \tr(A B^*)$.
+\end{example}
+
+\begin{definition}[Hermite matrices]
+	Let $A \in F^{n\times n}$, we say $A$ is \vocab{Hermite} if
+	$A^* = A$, and \vocab{anti-Hermite} if $A^* = -A$.
+
+	When $F = \mathbb{R}$, Hermite matrices are symmetrical matrices.
+
+	If we also have $\forall X\in F^{n\times 1}\backslash\{0\}$, $X^*AX > 0$,
+	then we say $A$ is \vocab{positive definite}.
+\end{definition}
+
+\begin{example}
+    For all $Q \in \GL_n(F)$, $A = Q^*Q$ is positive definite.
+\end{example}
+
+\begin{proposition}
+	Let $V$ be an $n$ dimensional vector space,
+	let $\mathcal{B} = \{\alpha_1,\dots,\alpha_n\}$ be a basis.
+	For $\alpha, \beta\in V$, let $X = [\alpha]_{\mathcal{B}}$,
+	$Y = [\beta]_{\mathcal{B}}$.
+	\begin{itemize}
+		\item If $A\in F^{n\times n}$ is positive definite, then
+			\[
+			\left<\alpha,\beta \right> = Y^*AX
+			= \sum_{j,k=1}^{n} A_{kj}x_j \overline{y_k}
+			\]
+			is an inner product.
+		\item For any inner product $ \left<\cdot,\cdot \right>$,
+			there exists a unique positive definite matrix $A$ such
+			that the above relations holds.
+	\end{itemize}
+\end{proposition}
+\begin{proof}[Proof]
+    It's clear that $Y^*AX$ is an inner product. (just check the definition)
+
+	For the latter part, let $A_{kj} = \left<\alpha_j, \alpha_k\right>$,
+	so $A$ must be unique.
+	By the conjugate linearity of inner product, so $A$ constructed
+	above indeed satisfies desired condition:
+	\[
+	\left<\alpha, \beta \right>
+	= \left<\sum_{j=1}^{n} x_j\alpha_j, \sum_{k=1}^{n} y_k\alpha_k \right>
+	= \sum_{j,k=1}^{n} x_j \overline{y_k} \left<\alpha_j, \alpha_k \right>
+	\]
+\end{proof}
+
+Let $T: V\to W$ be an injective linear map, and $ \left<\cdot, \cdot \right>_0$
+is an inner product on $W$. Then $T$ induces an inner product on $V$:
+\[
+\left<\alpha, \beta \right> = \left<T\alpha, T\beta \right>_0,
+\quad \alpha, \beta\in V.
+\]
+Since $T$ injective, so $T$ actually realizes $V$ as a subspace of $W$,
+this inner product is just the original one restricted on the subspace.
+
+\begin{example}
+    Let $V = W = F^{n\times 1}$, $ \left<\cdot, \cdot \right>_0$ is
+	the standard inner product, $Q\in \GL_n(F)$.
+	Then
+	\[
+	\left<\alpha, \beta \right> = \left<Q\alpha, Q\beta \right>_0
+	= \beta^*(Q^*Q)\alpha.
+	\]
+\end{example}
+
+With an inner product, we can assign a ``length''
+to each vector: $ \lVert \alpha \rVert = \sqrt{\left<\alpha,\alpha \right>}$.
+It's clear that:
+\[
+\lVert c\alpha \rVert = |c|\lVert \alpha \rVert, \quad
+\lVert \alpha \rVert > 0, \forall \alpha \ne 0.
+\]
+
+\begin{proposition}[Polarization identity]
+	When $F = \mathbb{R}$,
+	\[
+	\left<\alpha, \beta \right> = \frac{1}{4}\left(\lVert \alpha + \beta \rVert^2
+	- \lVert \alpha - \beta \rVert^2\right).
+	\]
+	When $F = \mathbb{C}$,
+	\[
+	\left<\alpha, \beta \right> = \frac{1}{4} \sum_{k=1}^{4} i^k
+	\lVert \alpha + i^k \beta \rVert ^2.
+	\]
+\end{proposition}
+\begin{remark}
+    This means, \textit{inner product is totally determined by length function}.
+\end{remark}
+
+\begin{proposition}[Cauchy-Schwarz inequality]
+	\[
+	|\left<\alpha, \beta \right>| \le \lVert \alpha \rVert \lVert \beta \rVert.
+	\]
+	The equality holds iff $\alpha, \beta$ linearly dependent.
+\end{proposition}
+\begin{proof}[Proof]
+    WLOG $\alpha, \beta \ne 0$.
+	Let $\gamma = \beta -
+	\frac{\left<\beta, \alpha \right>}{\lVert \alpha \rVert ^2}\alpha$ be
+	the orthogonal projection of $\beta$ on $\alpha^{\perp}$.
+
+	We can check that $ \left<\alpha, \gamma \right> = 0$, so
+	\[
+	0 \le \lVert \gamma \rVert^2 = \left<\gamma, \beta\right>
+	= \lVert \beta \rVert ^2 -
+	\frac{\left<\alpha, \beta \right>^2}{\lVert \alpha \rVert ^2},
+	\]
+	which gives the desired inequality,
+	equality iff $\gamma = 0$ iff $\alpha, \beta$ linearly dependent.
+\end{proof}
+
+\begin{proposition}[Triangle inequality]
+	\[
+	\lVert \alpha + \beta \rVert \le \lVert \alpha \rVert + \lVert \beta \rVert.
+	\]
+\end{proposition}
+\begin{proof}[Proof]
+    Square both sides and use Cauchy-Schwarz.
+\end{proof}
+
+This means our ``length'' function is in fact a \vocab{norm}.
+
+\begin{definition}[Orthogonality]
+	Let $\alpha,\beta\in V$, we say $\alpha \perp \beta$ if
+	$\left<\alpha, \beta \right> = 0$.
+\end{definition}
