@@ -1,0 +1,127 @@
+%! TeX root = ./main.tex
+\begin{proof}[Proof]
+    By the inverse function theorem,
+	let $F(x,y):= \mathbb{R}^{n+p}\to \mathbb{R}^{n+p}$ with
+	\[
+		(x,y)\mapsto (x, f(x,y))
+	\]
+	So $F(x^*, y^*) = (x^*, 0)$, and
+	\[
+	\dd F(x^*, y^*) = \begin{pmatrix}
+		I_n &0 \\ \dd_x f(x^*, y^*) &\dd_y f(x^*, y^*)
+	\end{pmatrix}.
+	\]
+
+	Since $\dd_y f(x^*, y^*)$ is inversible, $\dd F(x^*, y^*)$ is
+	inversible as well.
+	Hence there exists neighborhoods of $(x^*, y^*)$ and $(x^*, 0)$,
+	say $\wt{\Omega}$ and $\wt{\Omega}_1$, such that
+	$F$ is a $C^1$ homeomorphism $\wt{\Omega}\to \wt{\Omega}_1$.
+
+	We can find $U\ni x^*, V\ni y^*$ s.t. $U\times V \subset \wt{\Omega}$.
+	Let $T$ be the $C^1$ map s.t.
+	\[
+	F^{-1}(x, z) = (x, T(x, z)).
+	\]
+	Let $\phi(x) = T(x, 0)$, we have
+	\[
+	F(x, \phi(x)) = F(x, T(x, 0)) = (x, 0) \implies f(x, \phi(x)) = 0.
+	\]
+
+	Since $F$ is a bijection, clearly $f(x, y) = 0\implies y=\phi(x)$.
+	By taking the differentiation of $f(x, \phi(x)) = 0$,
+	\[
+		(\dd_x f, \dd_y f) \cdot \colvec{I_n}{\dd \phi(x)} = 0\implies
+		\dd_x f(x, \phi(x)) + \dd_y f(x, \phi(x))\cdot \dd\phi(x) = 0.
+	\]
+\end{proof}
+
+\subsection{Submanifolds in Euclid space}
+\label{sub:Submanifolds in Euclid space}
+The implicit function theorem actually gives an example
+of manifolds: the preimage of $f(x, y) = 0$ is an $n$-dimensional manifold
+in $\mathbb{R}^{n+p}$.
+
+\begin{definition}[Manifolds]
+	Let $M \subset \mathbb{R}^{n}$ be a nonempty set.
+	If $\exists d\ge 0$, $\forall x\in M$ exists open sets $U$ and $V$
+	in $\mathbb{R}^{n}$, and a differential
+	homeomorphism $\Phi: U\to V$, such that
+	\[
+		\Phi(U\cap M) = V\cap \{\mathbb{R}^{d}\times \{0\}\},
+	\]
+	we say $M$ is a \vocab{$d$-dimensional differential manifold}.
+	Denote $\dim M = d$, and $n - d$ is called the \vocab{codimension} of $M$.
+\end{definition}
+
+\begin{corollary}[Regular value theorem]
+    Let $f: \Omega \to \mathbb{R}^{p}$ be a smooth map, where
+	$\Omega \subset \mathbb{R}^{n}$ is an open set, $n\ge p$.
+	For all $c\in \mathbb{R}^{p}$, we call the \vocab{fibre} of
+	$c$ to be its preiamge:
+	\[
+	f^{-1}(c) = \{x\in \mathbb{R}^{n} \mid f(x) = c\}.
+	\]
+	If $\forall x\in f^{-1}(c)$, $\rank \dd f(x) = p$,
+	then $f^{-1}(c)$ is a manifold with codimension $p$.
+\end{corollary}
+
+\begin{example}
+    Let $S^{n-1}$ be the unit sphere in $\mathbb{R}^{n}$.
+	Let $f: \mathbb{R}^{n}\to \mathbb{R}$ with $x\mapsto |x|^2 - 1$,
+	then $S^{n-1} = f^{-1}(0)$.
+
+	Since $\dd f = (2x_1, 2x_2, \dots, 2x_n)$, clearly $\rank \dd f = 1$ for
+	all $x\in S^{n-1}$, so $S^{n-1}$ is a manifold with codimension 1.
+\end{example}
+\begin{example}
+    Consider a surface in $\mathbb{R}^{4} = \mathbb{C}^2$:
+	\[
+	T^2 = \{(z_1, z_2)\mid |z_1| = 1, |z_2| = 1\}.
+	\]
+	Let $f(x,y,z,w) = x^2+y^2-1, g(x,y,z,w) = z^2+w^2-1$,
+	then $T^2 = \colvec{f}{g}^{-1}(0)$.
+
+	The differentiation is
+	\[
+	\dd \colvec{f}{g} = \begin{pmatrix}
+		2x &2y &0 &0 \\ 0 &0 &2z &2w
+	\end{pmatrix},
+	\]
+	so $T^2$ is a manifold with codimension 2.
+\end{example}
+
+\begin{definition}
+	Let $M \subset \mathbb{R}^{n}$ be a manifold. If $\dim M = 1$,
+	we say $M$ is a curve; if $\dim M = 2$, $M$ is a surface;
+	and if $\dim M = n-1$, we say $M$ is a hyperplane.
+\end{definition}
+
+\begin{lemma}
+	Let $f: \mathbb{R}^{n}\to \mathbb{R}$ is a smooth function,
+	if $\forall x_0\in f^{-1}(0)$, $\dd f(x_0)\ne 0$,
+	then $f^{-1}(0)$ is a smooth hyperplane, it is called the
+	hyperplane globally determined by an equation.
+\end{lemma}
+\begin{example}
+    In $\mathbb{R}^{3}$, $f,g$ are smooth functions.
+	If for all $x\in \mathbb{R}^{3}$ with $f(x) = g(x) = 0$ we have
+	$\nabla f, \nabla g$ are linearly independent,
+	then $\{f = g = 0\}$ is a smooth curve.
+\end{example}
+
+\begin{theorem}[Parametrization of manifolds]
+    Let $\Omega$ be an open set in $ \mathbb{R}^{n}$,
+	$f: \Omega\to \mathbb{R}^{n+p}$ is a smooth map.
+	If $\forall x^*\in \Omega$, $\rank \dd f(x^*) = n$,
+	then there exists an open set $U$, $x^*\in U$ s.t.
+	$f(U) \subset \mathbb{R}^{n+p}$ is an $n$-dimensional manifold.
+\end{theorem}
+\begin{proof}[Proof]
+    Let $x_i$ be a coordinate in $\mathbb{R}^{n}$, $y_j$ be
+	a coordinate in $\mathbb{R}^{p}$.
+
+	WLOG $(\pfr{f_i}{x_j})_{1\le i,j\le n}$ is non-degenerate,
+	let $F = (f_1,\dots, f_n)$, $G = (f_{n+1},\dots, f_{n+p})$ 
+	and apply inverse function theorem on $F$,
+\end{proof}

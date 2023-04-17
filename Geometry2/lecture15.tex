@@ -1,0 +1,59 @@
+%! TeX root = ./main.tex
+At last we'll prove an interesting fact:
+\begin{proposition}[The local existence of isothermal parameters]
+	Let $\phi: U\to \mathbb{E}^{3}$, for all $\hat{u}\in U$, there exists
+	a neighborhood $\wt{U}$ and a reparametrization $u = u(\wt{u})$,
+	such that
+	\[
+	g(\wt{u}) = \rho^2(\wt{u})(\wt{E}\dd \wt{s}^2 + \wt{G}\dd \wt{t}^2).
+	\]
+\end{proposition}
+\begin{remark}
+    Note that the right hand side is clearly conformal to regions in $\mathbb{E}^2$,
+	so this in fact implies that any surfaces is locally conformal to
+	$\mathbb{E}^2$.
+\end{remark}
+\begin{proof}[Proof]
+    The critical idea is to realize $\mathbb{R}^2$ as $\mathbb{C}$.
+	To be more precise, we'll follow the steps below:
+	\begin{itemize}
+		\item Find a way to express $E\dd s^2 + 2F\dd s\dd t + G\dd t^2$
+			as $(a\dd s + b\dd t)(\overline{a}\dd s + \overline{b}\dd t)$,
+			where $a,b$ are functions with complex value.
+
+		\item If there exists a complex function $f$ s.t.
+			$\dd f(s+it) = \rho(a\dd s+b\dd t)$,
+			then $g = \frac{1}{|\rho|^2}\dd f\dd \overline{f}$.
+
+		\item Assume further that $f$ is \textit{holomorphic} and non-degenerate,
+			then $f(u) = \wt{x}(u) + i\wt{y}(u)$ is locally inversible,
+			i.e. exists $u = u(\wt{x}, \wt{y})$, then
+			\[
+			g = \frac{1}{|\rho|^2}(\dd \wt{x} + i\dd \wt{y})(\dd \wt{x} - i\dd \wt{y})
+			= \frac{1}{|\rho|^2}(\dd \wt{x}^2 + \dd \wt{y}^2).
+			\]
+	\end{itemize}
+
+	Let $a = \sqrt{E}$, $b = \frac{-F + i\sqrt{EG - F^2}}{\sqrt{E}}$.
+	(Note $EG - F^2>0$ as $g$ is positive definite)
+
+	Next we'll choose suitable $f,\rho$.
+	Consider the differential equation $T = T(s,t)$ :
+	\[
+	\pfr{T}{s} = - \frac{a(s,T)}{b(s,T)},\quad T(\hat{s}, t) = t.
+	\]
+	From the relation $f(s, T(s,t)) = t - \hat{t}$ and implicit function theorem
+	we can uniquely determine $f$.
+	\begin{remark}
+	    The detail of the solution to this equation in complex functions is
+		beyond the scope of this class.
+	\end{remark}
+	Such $f$ satisfies $\dd f = \rho(a\dd s + b\dd t)$.
+
+	When $f(s,t) = (\wt{x}, \wt{y})$, the Jacobian determinant is
+	\[
+	\wt{x}_s\wt{y}_t - \wt{x}_t\wt{y}_s
+	= - |\rho|^2(a\overline{b} - b\overline{a}) = |\rho|^2\sqrt{EG-F^2}>0.
+	\]
+	so $f$ must be non-degenerate.
+\end{proof}
