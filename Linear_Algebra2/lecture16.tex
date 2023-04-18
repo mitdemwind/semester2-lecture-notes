@@ -1,0 +1,134 @@
+%! TeX root = ./main.tex
+We can introduce ``angles'' as well:
+\begin{definition}[Angles]
+	When $F = \mathbb{R}$, for $\alpha, \beta\in V \backslash\{0\}$,
+	define
+	\[
+	\angle (\alpha,\beta) = \arccos
+	\frac{\left<\alpha, \beta\right>}{\lVert \alpha \rVert \lVert \beta \rVert}
+	\in [0,\pi].
+	\]
+	We can see that $\alpha\perp \beta \iff \angle (\alpha,\beta) = \frac{\pi}{2}$.
+\end{definition}
+When $F = \mathbb{C}$, the angle above can be complex, which doesn't make
+sense, so we won't talk about the angle in $\mathbb{C}$.
+
+\begin{definition}[Orthonormal basis]
+	Let $V$ be an inner product space, let $S \subset V$ be a subset,
+	\begin{itemize}
+		\item If the vectors in $S$ are pairwise orthogonal,
+			we say $S$ is an \vocab{orthogonal set}.
+			Futhermore, if $ \lVert \alpha \rVert = 1$ for all $\alpha\in S$,
+			we say $S$ is \vocab{orthonormal}.
+		\item If $S$ is a basis as well, then $S$ is called an
+			\vocab{orthogonal basis} or \vocab{orthonormal basis}, respectively.
+	\end{itemize}
+	Note that an orthogonal set can contain the zero vector.
+\end{definition}
+
+\begin{proposition}
+	If $S$ is an orthogonal set, and $0\notin S$, then $S$ is linearly independent.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $S = \{\alpha_1,\dots,\alpha_n\}$, if
+	\[
+	\sum_{j=1}^{n} c_j\alpha_j = 0,
+	\]
+	take the inner product with $\alpha_j$ for $j=1,\dots,n$
+	we get $c_j=0$, $\forall j$.
+\end{proof}
+
+\begin{proposition}
+	If $S = \{\alpha_1,\dots,\alpha_m\}$ is an orthogonal set, then:
+	\[
+		\left\lVert \sum_{j=1}^{m} \alpha_j\right\rVert^2 =
+		\sum_{j=1}^{m} \lVert \alpha \rVert^2,\quad
+		\left<\sum_{j=1}^{m} x_j\alpha_j, \sum_{j=1}^{m} y_j\alpha_j \right> =
+		\sum_{j=1}^{m} x_j \overline{y_j} \lVert \alpha_j \rVert ^2.
+	\]
+\end{proposition}
+
+Now we will prove the existence of orthogonal basis,
+We'll start from a basis $\{\beta_1,\beta_n\}$ to construct an orthogonal basis,
+and this process is called \textit{Schmidt orthogonalization}.
+
+\begin{theorem}
+    Let $V$ be an $n$-dimensional inner product space, $\{\beta_1,\dots,\beta_n\}$
+	is a basis of $V$.
+	Then there exists a unique orthogonal basis $\{\alpha_1,\dots,\alpha_n\}$,
+	such that
+	\[
+		(\beta_1,\dots,\beta_n) = (\alpha_1,\dots,\alpha_n)N,
+	\]
+	where $N$ is an upper triangular matrix with diagonal entries equal to 1.
+\end{theorem}
+\begin{proof}[Proof]
+    The idea is to ``project'' $\beta_j$ to the subspace spanned
+	by $\beta_1,\dots,\beta_{j-1}$, and let $\alpha_j$ be the orthogonal part.
+
+	By induction, let $\beta_1 = \alpha_1$.
+	\[
+	\alpha_j = \beta_j - \sum_{k=1}^{j-1} \frac{\left<\beta_j, \alpha_k\right>}
+	{\lVert \alpha_k \rVert ^2}\alpha_k.
+	\]
+	It's obvious that $\alpha_j \perp \alpha_k, \forall k=1,\dots,j-1$,
+	and $\Span\{\alpha_1,\dots,\alpha_j\} = \Span\{\beta_1,\dots,\beta_j\}$.
+
+	Thus $\{\alpha_1,\dots,\alpha_n\}$ is the desired orthogonal basis.
+
+	As for the uniqueness, actually $\alpha_j$ can be solved from $\beta_j$'s:
+	clearly $\alpha_1 = \beta_1$, and
+	\[
+	\left<\beta_j, \alpha_k \right> = N_{jk} \left<\alpha_k, \alpha_k \right>
+	\implies N_{jk} =
+	\frac{\left<\beta_j, \alpha_k \right>}{\lVert \alpha_k \rVert^2}\implies
+	\alpha_j = \beta_j - \sum_{k=1}^{j-1} \frac{\left<\beta_j, \alpha_k\right>}
+	{\lVert \alpha_k \rVert ^2}\alpha_k.
+	\]
+	So $\alpha_j$ is uniquely determined by $\beta_j$'s.
+\end{proof}
+\begin{remark}
+    The above orthogonal basis can be converted to an orthonormal basis
+	$\{\alpha_1',\dots,\alpha_n'\}$ s.t. $N'$ is an upper triangular
+	matrix with positive diagonal entries.
+\end{remark}
+
+\begin{corollary}
+    Let $S \subset V\backslash\{0\}$ be orthogonal(-normal), then
+	$S$ can be extended to an orthogonal(-normal) basis.
+\end{corollary}
+\begin{proposition}
+	Let $S = \{\alpha_1,\dots,\alpha_m\} \subset V\backslash\{0\}$ be
+	an orthogonal set, then for all $\beta\in \Span S$ we have:
+	\[
+	\beta = \sum_{k=1}^{m} \frac{\left<\beta, \alpha_k\right>}
+	{\lVert \alpha_k \rVert ^2}\alpha_k.
+	\]
+\end{proposition}
+\begin{proposition}[Bessel's inequality]
+	Conditions as above, then $\forall \beta\in V$,
+	\[
+	\sum_{k=1}^{m} \frac{|\left<\beta,\alpha_k\right>|^2}{\lVert \alpha_k \rVert ^2}
+	\le \lVert \beta \rVert ^2.
+	\]
+	Equality iff $\beta\in \Span S$.
+\end{proposition}
+\begin{proof}[Proof]
+    Complete $S$ to an orthogonal basis, by previous propositions,
+	the rest is trivial.
+\end{proof}
+
+Let $S \subset V$, define $S^\perp := \{\alpha\in V\mid \alpha\perp\beta,
+\forall\beta\in S\}$, $S^\perp$ is a vector space and
+$S^\perp = \Span (S)^\perp$.
+
+ \begin{proposition}
+	Let $V$ be a finite dimensional inner product space, $W \subset V$ is a subspace,
+	we have $\dim W + \dim W^\perp = \dim V$.
+\end{proposition}
+\begin{proof}[Proof]
+    Take an orthogonal basis $B_1$ of $W$,
+	and complete it to an orthogonal basis $B$ of $V$,
+	then we claim that $B_2 := B \backslash B_1$ is a basis of $W^\perp$.
+	Hence the conclusion follows.
+\end{proof}
