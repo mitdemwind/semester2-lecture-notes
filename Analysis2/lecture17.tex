@@ -1,0 +1,73 @@
+%! TeX root = ./main.tex
+\begin{theorem}[Parametrization of manifolds]
+    Let $\Omega$ be an open set in $ \mathbb{R}^{n}$,
+	$f: \Omega\to \mathbb{R}^{n+p}$ is a smooth map.
+	If $\forall x^*\in \Omega$, $\rank \dd f(x^*) = n$,
+	then there exists an open set $U$, $x^*\in U$ s.t.
+	$f(U) \subset \mathbb{R}^{n+p}$ is an $n$-dimensional manifold.
+\end{theorem}
+\begin{proof}[Proof]
+    Let $x_i$ be a coordinate in $\mathbb{R}^{n+p}$.
+
+	WLOG $(\pfr{f_i}{x_j})_{1\le i,j\le n}$ is non-degenerate,
+	let $F = (f_1,\dots, f_n)$, $G = (f_{n+1},\dots, f_{n+p})$
+	and apply inverse function theorem on $F$,
+	there exists open neighborhoods $U\ni x, V\ni F(x)=:y$,
+	s.t. $F: U\to V$ is a smooth homeomorphism.
+	\begin{equation*}
+		\begin{tikzcd}
+			U \subset \Omega\dar["f"]\rar["F"] &V \subset \mathbb{R}^{n}\dlar["\phi"]
+			\\\mathbb{R}^{n+p}
+		\end{tikzcd}
+	\end{equation*}
+
+	So $f(x) = (F(x), G(x)) = (y, GF^{-1}(y))$.
+	Let
+	\[
+		\phi: V\to \mathbb{R}^{n},\quad
+		y\mapsto (y, GF^{-1}(y)).
+	\]
+	We can see that $\phi$ is a homeomorphism $V \to f(U)$.
+	(Indeed it's a bijection)
+	So by definition we know $f(U)$ is a manifold.
+\end{proof}
+\begin{example}
+    Let
+	\[
+	\phi(\theta,r) = \left\{
+	\begin{aligned}
+		x &= \left(1 + r\cos\frac{\theta}{2}\right)\cos\theta\\
+		y &= \left(1 + r\cos\frac{\theta}{2}\right)\sin\theta\\
+		z &= r\sin\frac{\theta}{2}
+	\end{aligned}\right., \quad
+	I = [0, 2\pi] \times (-1, 1).
+	\]
+	Then $M = \phi(I)$ is a Mobius strip, which is a
+	two dimensional smooth manifold in $\mathbb{R}^{3}$,
+	as $\dd \phi$ has rank 2 everywhere.
+
+	Besides, there doesn't exist a function $f: \mathbb{R}^{3}\to \mathbb{R}$
+	s.t. $M = f^{-1}(0)$. Basically this is because $M$ is not
+	orientable, but $\nabla f$ and $-\nabla f$ are ``normal'' directions
+	of $M$, which makes it orientable.
+	Below we give a sketch:
+	\begin{proof}[Proof]
+		Let $v(\theta) = \cos\frac{\theta}{2}e_2(\theta) -
+		\sin\frac{\theta}{2}e_1(\theta)$, where
+		$e_2(\theta) = (0,0,1), e_1(\theta) = (\cos\theta, \sin\theta, 0)$.
+
+		Note that $e_1\perp e_2$, consider the curve $\beta: [0,2\pi]\to \mathbb{R}^{3}$
+		\[
+		\theta\mapsto (\cos\theta, \sin\theta, 0) + \varepsilon v(\theta).
+		\]
+		Let $\varepsilon$ be sufficiently small, when $\varepsilon\ne 0$ we
+		can check $\beta$ and $M$ do not intersect.
+		We can take $\varepsilon$ s.t. $f(\beta(0)) > 0$ as $\dd f\ne 0$.
+		($\varepsilon$ can be negative)
+
+		Since $\beta(0) = (1,0,\varepsilon), \beta(2\pi) = (1,0,-\varepsilon)$,
+		when $f(\beta(0)) > 0$, we must have $f(\beta(2\pi)) < 0$.
+		By continuity, $\exists \theta_0$ s.t. $f(\beta(\theta_0)) = 0$,
+		which means $\beta(\theta_0) \in M$, contradiction!
+	\end{proof}
+\end{example}

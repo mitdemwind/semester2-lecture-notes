@@ -1,0 +1,73 @@
+%! TeX root = ./main.tex
+\subsection{A bit of manifold}
+\label{sub:Intro}
+
+First we'll introduce a few concepts before we move on.
+\begin{itemize}
+	\item We say a topological space is an $n$-dimensional \vocab{topological manifold}
+	if it's Hausdorff and locally homeomorphic to $\mathbb{R}^{n}$.
+	Sometimes we also require manifolds to be compact / paracompact / $C_2$.
+	Here paracompact means that any open covering has a locally finite subcovering.
+
+	\item Manifolds with boundary:
+		locally homeomorphic to $\mathbb{R}^{n-1}\times [0, +\infty)$.
+
+	\item When we talk about the regularity of manifolds, we must
+		appoint an atlas first.
+		Let $\phi_i: U_i \to E_i \subset \mathbb{R}^{n}$ be
+		homeomorphisms mentioned above,
+		then each $\phi_i$ is a \vocab{chart}, and $\{(U_i, \phi_i)\}_{i\in I}$ is
+		the \vocab{atlas}. The map
+		\[
+			\phi_j\circ\phi_i^{-1}: \phi_i(U_i\cap U_j)\to \phi_j(U_i\cap U_j)
+		\]
+		is called \vocab{transition functions}.
+
+		The regularity of the manifold is actually the regularity of
+		transition functions, such as $C^r, C^\infty$, piecewise linear, etc.
+\end{itemize}
+\begin{example}
+    The sphere $\mathbb{S}^2$ and projective plane $\mathbb{R}P^2$ are 2d manifolds.
+	But they're different since $\mathbb{R}P^2$ is not \textit{orientable}.
+	In fact $\mathbb{R}P^2$ can be obtained by fusing the edge of a Mobius band
+	to a disk(keep in mind that Mobius band has only one edge!).
+\end{example}
+There are many manifolds which looks wired, but I can't draw them on the computer ;)
+
+\begin{example}[Projective curves]
+    Consider a quadratic equation
+	\[
+	C: z^2 + w^2 = 1,\quad (z, w)\in \mathbb{C}^2.
+	\]
+	What does this surface look like?
+
+	Let $Z = z+iw, W = z-iw$, the equation becomes $ZW = 1$,
+	hence the surface is $(\zeta, \frac{1}{\zeta}), \zeta\in \mathbb{C}\backslash\{0\}$.
+	So $C$ is homeomorphic to $\mathbb{C}\backslash\{0\}$.
+
+	We can also discuss this in $\mathbb{C}P^2 = \mathbb{C}P^1 \cup \mathbb{C}^2$,
+	where $\mathbb{C}P^1 = \{\infty\} \cup \mathbb{C}\cong \mathbb{S}^2$.
+
+	So in homogeneous coordinate, the equation can be written as $ZW = T^2$.
+	The surface is consisting of $(1,0,0), (0,1,0), (\zeta, \frac{1}{\zeta}, 0)$.
+	Thus the projective completion of $C$ is homeomorphic
+	to $\mathbb{S}^2$, which is $\mathbb{C}\backslash\{0\}$
+	appending with two points.
+\end{example}
+
+\begin{example}[Elliptic curves]
+    Let $\lambda_1, \lambda_2, \lambda_3\in \mathbb{C}$ pairwise different.
+	\[
+	E: w^2 = (z-\lambda_1)(z-\lambda_2)(z-\lambda_3).
+	\]
+	What does $E$ looks like in $\mathbb{C}P^2$?
+
+	Observe that for $z\in \mathbb{C}\backslash\{\lambda_1,\lambda_2,\lambda_3\}$,
+	there're 2 values for $w$.
+	So the image of $E$ is two planes($\mathbb{C}$) fused together
+	at $\lambda_1, \lambda_2, \lambda_3$ and $\infty$ with some adjust.
+
+	In fact this can be realized as two cylinder fused together at their edges.
+
+	$E\cong T^2 \backslash \{pt\}$ in $\mathbb{C}^2$, and $T^2$ in $\mathbb{C}P^2$.
+\end{example}

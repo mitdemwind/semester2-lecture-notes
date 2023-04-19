@@ -44,15 +44,22 @@ in $\mathbb{R}^{n+p}$.
 
 \begin{definition}[Manifolds]
 	Let $M \subset \mathbb{R}^{n}$ be a nonempty set.
-	If $\exists d\ge 0$, $\forall x\in M$ exists open sets $U$ and $V$
-	in $\mathbb{R}^{n}$, and a differential
+	If $\exists d\ge 0$, $\forall x\in M$ exists open sets $U \subset \mathbb{R}^{n}$,
+	$V \subset \mathbb{R}^{d}$, and a differential
 	homeomorphism $\Phi: U\to V$, such that
 	\[
-		\Phi(U\cap M) = V\cap \{\mathbb{R}^{d}\times \{0\}\},
+		\Phi(U\cap M) = V,
 	\]
 	we say $M$ is a \vocab{$d$-dimensional differential manifold}.
 	Denote $\dim M = d$, and $n - d$ is called the \vocab{codimension} of $M$.
 \end{definition}
+
+\begin{remark}
+    There might be different maps $\phi_1: U_1\to V_1, \phi_2: U_2\to V_2$,
+	when $U_1\cap U_2 \cap M \ne \emptyset$, we must have $\phi_2\circ \phi_1^{-1}$
+	is a differential map from $V_1$ to $V_2$. In fact when $M$ isn't a subset
+	of $\mathbb{R}^{n}$, this is the original definition of differential manifolds.
+\end{remark}
 
 \begin{corollary}[Regular value theorem]
     Let $f: \Omega \to \mathbb{R}^{p}$ be a smooth map, where
@@ -63,7 +70,7 @@ in $\mathbb{R}^{n+p}$.
 	f^{-1}(c) = \{x\in \mathbb{R}^{n} \mid f(x) = c\}.
 	\]
 	If $\forall x\in f^{-1}(c)$, $\rank \dd f(x) = p$,
-	then $f^{-1}(c)$ is a manifold with codimension $p$.
+	then $f^{-1}(c)$ is a manifold with \vocab{codimension} $p$.
 \end{corollary}
 
 \begin{example}
@@ -109,19 +116,3 @@ in $\mathbb{R}^{n+p}$.
 	$\nabla f, \nabla g$ are linearly independent,
 	then $\{f = g = 0\}$ is a smooth curve.
 \end{example}
-
-\begin{theorem}[Parametrization of manifolds]
-    Let $\Omega$ be an open set in $ \mathbb{R}^{n}$,
-	$f: \Omega\to \mathbb{R}^{n+p}$ is a smooth map.
-	If $\forall x^*\in \Omega$, $\rank \dd f(x^*) = n$,
-	then there exists an open set $U$, $x^*\in U$ s.t.
-	$f(U) \subset \mathbb{R}^{n+p}$ is an $n$-dimensional manifold.
-\end{theorem}
-\begin{proof}[Proof]
-    Let $x_i$ be a coordinate in $\mathbb{R}^{n}$, $y_j$ be
-	a coordinate in $\mathbb{R}^{p}$.
-
-	WLOG $(\pfr{f_i}{x_j})_{1\le i,j\le n}$ is non-degenerate,
-	let $F = (f_1,\dots, f_n)$, $G = (f_{n+1},\dots, f_{n+p})$ 
-	and apply inverse function theorem on $F$,
-\end{proof}
