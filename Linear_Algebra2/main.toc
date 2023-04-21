@@ -1,5 +1,4 @@
-\contentsline {subsection}{\numberline {0.1}Semisimple transformations}{1}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Bonus section}{4}{subsection.0.2}%
-\contentsline {section}{\numberline {1}Inner product spaces}{5}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Inner product}{5}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Orthogonality}{7}{subsection.1.2}%
+\contentsline {subsection}{\numberline {0.1}Bonus section}{2}{subsection.0.1}%
+\contentsline {section}{\numberline {1}Inner product spaces}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Inner product}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Orthogonality}{5}{subsection.1.2}%

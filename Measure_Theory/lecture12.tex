@@ -1,0 +1,187 @@
+%! TeX root = ./main.tex
+Hence $(L_p / \sim, \lVert \cdot \rVert _p)$ is a normed vector space.
+
+When $p = \infty$, define
+\[
+\lVert f \rVert _{\infty} := \inf \{a\in \mathbb{R}: \mu(|f|>a) = 0\},\quad
+L_\infty := \{f: \lVert f \rVert _\infty < \infty\}.
+\]
+We call the functions in $L_\infty$ \vocab{essentially bounded}.
+
+Let $\mu(X)< \infty$, then $f\in L_\infty \implies f\in L_p$,
+and $ \lim_{p\to \infty} \lVert f \rVert _p = \lVert f \rVert _\infty$:
+For all $0 < a < \lVert f \rVert _\infty$,
+\[
+a^p \mu(|f|>a) \le \int_X |f|^p\ii_{|f|>a} \dd \mu
+\le \int_X |f|^p\dd \mu \le \lVert f \rVert _\infty^p \mu(X),
+\]
+So taking the exponent $\frac{1}{p}$,
+\[
+a \leftarrow
+a \mu(|f|>a)^{\frac{1}{p}}\le \lVert f \rVert _p \le \lVert f \rVert _\infty
+\]
+But when $\mu(X) = \infty$, let $f \equiv 1$, then $f\in L_\infty$ but
+$f \notin L_p$.
+
+ \begin{theorem}
+	Let $f, g\in L_\infty$,
+    \[
+    \lVert fg \rVert \le \lVert f \rVert \lVert g \rVert _\infty,
+    \]
+    \[
+    \lVert f+g \rVert _\infty \le \lVert f \rVert _\infty + \lVert g \rVert _\infty.
+    \]
+\end{theorem}
+\begin{proof}[Proof]
+    \[
+    \int_X |fg|\dd \mu \le \int_X |f|\lVert g \rVert _\infty\dd\mu
+	= \lVert f \rVert \lVert g \rVert _\infty.
+    \]
+    Since $|f(x)+g(x)|\le |f(x)| + |g(x)| \le \lVert f \rVert _\infty
+	+ \lVert g \rVert _\infty, a.e.$, we get the second inequality.
+\end{proof}
+Similarly we get $(L_\infty, \lVert \cdot \rVert _\infty)$ is a normed vector space.
+
+The norm can deduce a \textit{distance}:
+\[
+\rho(f, g):= \lVert f - g \rVert .
+\]
+
+\begin{theorem}[$L_p$ space is complete]
+    Let $1\le p\le \infty$. If $\{f_n\} \subset L_p$ satisfying
+	$ \lim_{n,m\to \infty} \lVert f_n - f_m \rVert _p = 0$,
+	then there exist $f\in L_p$ s.t.
+	$\lim_{n\to \infty} \lVert f - f_n \rVert _p = 0$.
+\end{theorem}
+\begin{proof}[Proof]
+    Take $n_1<n_2<\cdots$ such that
+	\[
+	\lVert f_m - f_n \rVert _p \le \frac{1}{2^k},\quad \forall n,m\ge n_k.
+	\]
+	Let $g = \uparrow \lim_{k \to \infty}g_k$, where
+	\[
+	g_k := |f_{n_1}| + \sum_{i=1}^{k} |f_{n_{i+1}} - f_{n_i}| \in L_p,\quad
+	g_k \ge 0.
+	\]
+	Since
+	\[
+	\lVert g_k \rVert _p \le \lVert f_{n_1} \rVert _p +
+	\sum_{i=1}^{k} \lVert f_{n_{i+1}} - f_{n_i} \rVert _p
+	\le \lVert f_{n_1} \rVert _p +1.
+	\]
+	\[
+	\implies \lVert g \rVert _p = \uparrow \lim_{k\to \infty}\lVert g_k \rVert _p
+	\le \lVert f_{n_1} \rVert _p + 1.
+	\]
+	Here we use the monotone convergence theorem.
+	We can check the above also holds for $p = \infty$.
+
+	Therefore $g \in L_p\implies g < \infty, a.e.$.
+	We have
+	\[
+	f := f_{n_1} + \sum_{i=1}^{\infty} (f_{n_{i+1}} - f_{n_i})
+	= \lim_{k \to \infty} f_k, a.e.
+	\]
+	the series is absolutely convergent, so $f$ exists a.e. and $|f| \le g,a.e.$.
+
+	Lastly we can check:
+	when $p = \infty$,
+	\[
+	\lVert f_n - f \rVert _\infty \le \lVert f_n - f_{n_k} \rVert _\infty
+	+ \lVert f_{n_k} - f \rVert _\infty,
+	\]
+	where the both term approach to 0 as $n\to \infty$.
+
+	When $p < \infty$, by Fatou's lemma,
+	\[
+	\lVert f_n - f \rVert _p^p = \int_X |f_n - f|^p\dd\mu
+	= \int_X \lim_{k\to \infty}|f_n - f_{n_k}|^p\dd \mu
+	\le \liminf_{k\to \infty} \int_X |f_n - f_{n_k}|^p\dd \mu \le \varepsilon.
+	\]
+\end{proof}
+
+\begin{remark}
+    Using the same technique we can prove that if $f_n$ is Cauchy in measure,
+	then $f_n$ converge to some $f$ in measure:
+
+	Let $A_i = \{|f_{n_{i+1}} - f_{n_i}|>2^{-i}\}$ s.t. $\mu(A_i) < 2^{-i}$.
+
+	Define $f = f_{n_1}+\sum_{i\ge 1}(f_{n_{i+1}} - f_{n_i})$ on the
+	set $\bigcup_{k\ge 1}\bigcap_{i\ge k} A_i^c$.
+\end{remark}
+
+This theorem implies that $(L_p, \lVert \cdot \rVert _p)$ is a Banach space.
+So we can try to define an \textit{inner product} on $L_p$ space:
+\[
+\left<x, y\right> = \frac{1}{4} (\lVert x+y \rVert ^2 - \lVert x-y \rVert ^2).
+\]
+We can check $ \left<\cdot, \cdot \right>$ is bilinear only if $p = 2$,
+so $L_2$ is actually a Hilbert space.
+
+When $0< p <1$, let
+\[
+\lVert f \rVert _p := \int_X |f|^p\dd\mu, \quad
+L_p = \{f: \lVert f \rVert _p < \infty\}.
+\]
+\begin{lemma}
+	Let $0<p<1$, $C_p = 1$, then
+	\[
+	|a+b|^p \le C_p(|a|^p + |b|^p), \quad \forall a,b\in \mathbb{R}.
+	\]
+\end{lemma}
+So $L_p$ is a vector space.
+\begin{theorem}[Minkowski]
+    Let $0<p<1$ then
+	\[
+	\lVert f+g \rVert _p \le \lVert f \rVert _p + \lVert g \rVert _p.
+	\]
+\end{theorem}
+\begin{remark}
+    When $ \lVert f \rVert _p = (\int_X |f|^p \dd \mu) ^{\frac{1}{p}}$, $0<p<1$.
+	then it won't satisfy Minkowski's inequality.
+\end{remark}
+Thus $L_p$ is only a metric space but not a normed vector space.
+Using the same method we can prove $L_p$ is a complete metric space.
+
+\subsection{Convergence in $L_p$ space}
+\label{sub:Convergence in $L_p$ space}
+\begin{definition}
+	Let $0<p\le \infty$, $f,f_1,f_2,\dots\in L_p$.
+	When $ \lVert f_n - f \rVert _p \to 0$, then we write $f_n \xrightarrow{L_p} f$,
+	called \vocab{average converge of order $p$}.
+\end{definition}
+
+\begin{theorem}
+    Let $0<p<\infty$, $f,f_1,\dots\in L_p$,
+	\begin{itemize}
+		\item If $f_n \xrightarrow{L_p} f$, then $f_n\xrightarrow{\mu} f$,
+			and $ \lVert f_n \rVert _p\to \lVert f \rVert _p$.
+		\item If $f_n\to f, a.e.$ or in measure, then
+			$ \lVert f_n \rVert _p\to \lVert f \rVert _p\iff f_n\xrightarrow{L_p} f$.
+	\end{itemize}
+\end{theorem}
+\begin{proof}[Proof]
+	When $f_n \xrightarrow{L_p} f$,
+    let $A:=\{|f_n - f|>\varepsilon\}$,
+	\[
+	\mu(A) \le \frac{1}{\varepsilon^p} \int_X |f_n - f|^p \ii_A \dd\mu
+	\le \frac{1}{\varepsilon^p}\lVert f_n - f \rVert _p^p \to 0.
+	\]
+	and obviously $ \lVert f_n \rVert _p\to \lVert f \rVert _p$
+
+	On the other hand, when $f_n \to f,a.e.$ and $ \lVert f_n \rVert _p
+	\to \lVert f \rVert _p$,
+	From $|a+b|^p \le C_p (|a|^p + |b|^p)$,
+	\[
+	g_n := C_p (|f_n|^p + |f|^p) - |f_n - f|^p\ge 0.
+	\]
+	$g_n \to 2C_p |f|^p, a.e.$, so
+	\[
+	\int_X 2C_p|f|^p \dd \mu \le \liminf_{n\to \infty}\int_X g_n\dd \mu
+	= 2C_p \int_X |f|^p\dd\mu - \limsup_{n \to \infty} \int_X|f_n - f|^p\dd\mu.
+	\]
+
+	When $f_n \to f$ in measure, for any subsequence there exist its subsequence
+	$f_{n'} \to f, a.e.$, so $ \lVert f_{n'}-f \rVert _p \to 0$,
+	hence $ \lVert f_n - f \rVert _p \to 0$.
+\end{proof}

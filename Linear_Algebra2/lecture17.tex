@@ -1,0 +1,73 @@
+%! TeX root = ./main.tex
+This means we always have $W\oplus W^\perp = V$.
+
+The orthogonal completion is similar to the annihiltor we studied
+last semester, in fact, when we view $\left<\cdot,\beta \right>$ as
+a function $f_\beta\in V^*$, $f_\beta \in S^0 \iff \beta\in S^\perp$.
+(Note that the inner product is linear with respect to only the first entry)
+
+This process induces a map $\phi: V\to V^*$ by $\beta \mapsto f_\beta$.
+It's clear that $\phi$ is conjugate-linear.
+So $\phi$ is a linear map between \textit{real} vector space $V\to V^*$,
+i.e. $\phi \in \Hom_{\mathbb{R}}(V, V^*)$.
+thus $\ker \phi = \{0\}$ implies $\phi$ is an isomorphism on $\mathbb{R}$,
+so $\phi$ is a bijection, $\phi(S^\perp) = S^0$.
+
+For $E \subset V^*$, then $E^0 \subset V$, this corresponds
+to $\phi(S)^0 = S^\perp$. Indeed, $\alpha\in \phi(S)^0
+\iff \forall \beta\in S, \left<\alpha, \beta \right> = 0
+\iff \alpha\in S^\perp$.
+Hence
+\[
+	\dim_{\mathbb{C}}W^\perp = 2\dim_{\mathbb{R}}\phi(W^\perp)
+	= 2\dim_{\mathbb{R}}W^0 = \dim_{\mathbb{C}} W^0.
+\]
+The above proposition can be derived directly by $\dim W + \dim W^0 = \dim V$.
+
+We can also get $W=(W^0)^0 = \phi(W^\perp)^0 = (W^\perp)^\perp$.
+
+\begin{definition}[Orthogonal projection]
+	Since $V = W \oplus W^\perp$, for all  $\alpha\in V$,
+	there exists unique $\beta\in W, \gamma\in W^\perp$ s.t. $\alpha = \beta+\gamma$.
+	Let $p_W : V\to W$ be the map $\alpha\mapsto \beta$, this
+	is called the \vocab{orthogonal projection} from $V$ to $W$.
+\end{definition}
+
+Let $\{\alpha_1,\dots,\alpha_m\}$ be an orthonormal basis of $W$,
+then $p_W(\beta) = \sum_{j=1}^{m} \left<\beta, \alpha_j \right>\alpha_j$.
+So $p_W$ is a linear map. Moreover $p_W + p_{W^\perp} = \id_V$,
+$p_W^2 = p_W$. By our geometry intuition,
+$p_W\beta = \arg\min_{\alpha} \lVert \alpha - \beta \rVert$,
+this fact is useful in funtional analysis.
+
+Recall that for $T\in L(V)$, $T^t \in L(V^*)$, then what's
+the map $\phi^{-1}\circ T^t\circ \phi$?
+Unluckily it's not $T$, but another map denoted by $T^*$, the \vocab{adjoint map}
+of $T$. Keep in mind that $T^*$ depends on the inner product.
+\begin{equation*}
+\begin{tikzcd}
+	V^*\rar["T^t"] &V^*\\
+	V\uar["\phi"]\rar["T^*"] &V\uar["\phi"]
+\end{tikzcd}
+\end{equation*}
+
+Since $T^t \circ \phi = \phi \circ T^* \iff  \left<T\alpha, \beta \right>
+= \left<\alpha, T^*\beta \right>$, $\forall \alpha, \beta\in V$,
+so $T^*$ can be described as the map satisfying this relation.
+\begin{proposition}
+	When $\mathcal{B}$ is an orthonormal basis,
+	we have $[T^*]_{\mathcal{B}} = [T]_{\mathcal{B}}^*$.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $\mathcal{B} = \{\alpha_1,\dots, \alpha_n\}$,
+	then $\phi(\mathcal{B})$ is the dual basis of $\mathcal{B}$.
+	i.e. $\phi(\alpha_j)(\alpha_k) = \delta_{jk}$.
+
+	Hence $[T^t]_{\phi(\mathcal{B})} = [T]_{\mathcal{B}}^t$.
+	Let $[T^*]_{\mathcal{B}} = A$, then
+	\[
+	T^*\alpha_k = \sum_{j=1}^{n} A_{jk}\alpha_j
+	\implies \phi(T^*\alpha_k) = \sum_{j=1}^{n} \overline{A_{jk}}\phi(\alpha_j).
+	\]
+	So $[T^t]_{\phi(\mathcal{B})} = \overline{A}$, which completes the proof.
+\end{proof}
