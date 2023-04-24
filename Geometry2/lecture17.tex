@@ -1,0 +1,60 @@
+%! TeX root = ./main.tex
+In fact $\mathbb{C}P^2$ is a 4-dimensional closed manifold,
+and it's also a 2-dimensional complex manifold.
+$PSL(3, \mathbb{C})$ acts transitively on $\mathbb{C}P^2$.
+
+\begin{example}
+    We can fuse the edges of polygons to get manifolds:
+	%% TODO: pictures
+	By fusing together opposite edges of a square,
+	we can get torus or Klein bottle.
+\end{example}
+
+We'll use the word ``fuse'' frequently in the future,
+so here we'll make it clear what we mean by ``fusing'' things together.
+
+\begin{definition}[Quotient maps]
+	A continuous map $f: X\to Y$ is called a \vocab{quotient map},
+	if it's surjective, and $\forall B \subset Y$,
+	$f^{-1}(B)$ open $\implies B$ open.
+
+	This is saying that the topology on $Y$ is the ``largest''
+	topology (or quotient topology) while keeping $f$ continuous.
+\end{definition}
+
+So when we ``fusing'' things together, we're actually giving an
+equivalence relation on the original space, and the result
+is the quotient topology induced from the natural projection map.
+
+Now we look at the elliptic curves again,
+let $U = \mathbb{C} \backslash ([\lambda_1,\lambda_2]\cup [\lambda_3, \infty])$.
+Let $X$ be the path end compactification of $U$, then $X\simeq S^1\times [0,1]$.
+
+Let $X_1, X_2$ be two copies of $X$, and fusing the corresponding circles
+at the end in the reversed direction, we'll get a torus without 4 points,
+by adding $\lambda_1, \lambda_2, \lambda_3$ back we'll get $T^2\backslash\{pt\}$.
+
+\begin{remark}
+    The quotient topology may have some bad properties, like not being Hausdorff:
+	Consider $\mathbb{R}^2\backslash\{(0,0)\}$ with connected vertical lines
+	as equivalence class, then we'll get a line with 2 points at the origin,
+	which is a typical non-Hausdorff space.
+\end{remark}
+
+A closed surface is a connected compact 2-dimensional manifold with no edges.
+We have the following classification theorem:
+\begin{theorem}
+    All the closed surfaces must be homeomorphic to $nT^2 (n\ge 0)$ or $mP^2 (m\ge 1)$.
+	Here $n$ is called the \vocab{genus} of orientable surfaces.
+
+	$nT^2$ can be viewed as $S^2$ fused with $n$ handles (torus),
+	and $mP^2$ can be viewed as $S^2$ fused with $m$ crosscaps (Mobius strip).
+\end{theorem}
+In this course we mainly talk about surfaces with triangulation, i.e.
+we take it for granted that all surfaces has triangulation.
+
+Here we'll prove part of this theorem (since the other part needs further knowledge).
+\begin{proof}[Proof]
+    Observe that given a triangulation, we can get a polygon fusing expression
+	of the surface by adding the triangles one by one, fusing only one edge each time.
+\end{proof}
