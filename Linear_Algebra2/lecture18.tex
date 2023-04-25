@@ -1,0 +1,105 @@
+%! TeX root = ./main.tex
+\begin{proposition}
+	$\ker(T^*) = \Img(T)^\perp$, $\Img(T^*) = \ker(T)^\perp$.
+	$(cT+U)^* = \overline{c}T^* + U^*$, $(TU)^* = U^*T^*$, $T^{**} = T$.
+
+	This means the map $T\mapsto T^*$ is a conjugate anti-automorphism of $L(V)$,
+	and it's an involution.
+\end{proposition}
+
+If $T^* = T$, then we say $T$ is \vocab{self-adjoint},
+and if $T^* = -T$, we say $T$ is \vocab{anti self-adjoint}.
+
+Let $F = \mathbb{C}$, $T$ is self-adjoint iff $iT$ is anti self-adjoint.
+Like a function can be written as a sum of odd and even functions,
+$\forall T\in L(V)$, there exists unique self-adjoint $T_1, T_2$
+s.t. $T = T_1 + iT_2$. In fact, $T_1 = \frac{T+T^*}{2}, T_2 = \frac{T-T^*}{2i}$.
+
+Let $\mathcal{B}$ be an orthonormal basis,
+obviously $T$ self-adjoint $\iff [T]_{\mathcal{B}}$ Hermite.
+
+\begin{example}
+    Let $W \subset V$, $p_W$ be the orthogonal projection.
+	then $p_W$ is self-adjoint as we can choose an orthonormal basis $\mathcal{B}$,
+	such that $[p_W]_{\mathcal{B}} = \diag\{I_k, 0\}$, where $k=\dim W$.
+\end{example}
+
+Let $V, W$ be inner product spaces, we'll study the linear maps $T: V\to W$
+which preserves the inner products, i.e.
+\[
+	\left<\alpha,\beta \right>_V = \left<T\alpha, T\beta \right>_W.
+\]
+If $T$ is an isomorphism, then we say $T$ is the isomorphism between
+inner product spaces.
+\begin{proposition}
+	$T$ preserves inner product $\iff T$ is an isometry, i.e. preserves length.
+
+	In particular, isometry is always injective implies that
+	inner product presering maps are always injective.
+\end{proposition}
+\begin{proof}[Proof]
+    Trivial by polarization identity.
+\end{proof}
+\begin{proposition}
+	Let $V,W$ be finite dimensional inner product spaces, $\dim V = \dim W$,
+	$T \in \Hom(V, W)$, the followings are equivalent:
+	\begin{enumerate}[\indent(1)]
+		\item $T$ preserves inner product;
+		\item  $T$ is an isomorphism between inner product spaces;
+		\item $T$ maps all the orthonormal bases in $V$ to
+			orthonormal bases in $W$ ;
+		\item $T$ maps \textit{one} orthonormal basis in $V$ to a
+			orthonormal basis in $W$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}[Proof]
+    It's clear that $(1)\implies (2)\implies (3)\implies (4)$,
+	since $T$ injective $ \implies T$ is an isomorphism of vector space.
+
+	As for $(4)\implies (1)$, just expand everything using this orthonormal basis.
+\end{proof}
+\begin{corollary}
+    Inner product spaces with same dimensions are always isomorphic
+	as inner product spaces.
+\end{corollary}
+
+\begin{definition}[Orthogonal maps]
+	Let $V$ be a real inner product space, the automorphisms of $V$
+	(as inner product space) are
+	called \vocab{orthogonal maps}, denoted the set by $\mathrm{O}(V)$.
+
+	When $V$ is a complex inner product space,
+	we use \vocab {unitary maps} and $\mathrm{U}(V)$ instead.
+\end{definition}
+
+\begin{proposition}
+	Let $V$ be an inner product space,
+	\[
+		T\in \mathrm{O}(V)\iff T^* = T^{-1}.
+	\]
+\end{proposition}
+\begin{proof}[Proof]
+    \[
+    T\in \mathrm{O}(V) \iff \left<\alpha, \beta \right> =
+	\left<T\alpha, T\beta \right> = \left<\alpha, T^*T\beta \right>,
+	\quad \forall \alpha, \beta \in V.
+    \]
+	This also holds for $\mathrm{U}(V)$.
+\end{proof}
+\begin{proposition}
+	Let $A\in \mathbb{R}^{n\times n}$, TFAE:
+	\begin{itemize}
+		\item $A^tA = I_n$ ;
+		\item The column (row) vectors of $A$ form
+			an orthonormal basis of $\mathbb{R}^n$.
+	\end{itemize}
+\end{proposition}
+\begin{proof}[Proof]
+    Since $A$ maps the standard basis to the column vectors of $A$,
+	so the conclusion follows immediately (use $A^t$ to get the row vectors).
+\end{proof}
+
+Let $\mathrm{O}(n) = \{A\in \mathbb{R}^{n\times n}\mid A^tA = I_n\}$,
+and $\mathrm{U}(n) = \{A\in \mathbb{C}^{n\times n} \mid A^*A = I_n\}$.
+We can see that $A^tA = I_n \implies \det(A) = \pm 1$,
+and $A^*A = I_n \implies |\det(A)| = 1$.
