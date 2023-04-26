@@ -1,2 +1,1 @@
-\contentsline {subsection}{\numberline {0.1}Implicit function theorem}{2}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Submanifolds in Euclid space}{5}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.1}Submanifolds in Euclid space}{3}{subsection.0.1}%

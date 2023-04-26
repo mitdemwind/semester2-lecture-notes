@@ -1,0 +1,260 @@
+%! TeX root = ./main.tex
+\begin{remark}
+	This theorem implies for any $L_p$ function $f$, we can take
+	simple functions $f_1,f_2,\dots\to f$ and $|f_n|\uparrow |f|$,
+	so $f_n\xrightarrow{L_p} f$.
+\end{remark}
+
+\begin{definition}[Weak convergence]
+	Let $1<p<\infty$, and $f_1,f_2\dots\in L_p$. If
+	\[
+	\lim_{n\to \infty}\int_X f_n g\dd\mu = \int_X fg\dd \mu,\quad
+	\forall g\in L_q.
+	\]
+	Then we say $f_n$ \vocab{weak convergent} to $f$, denoted by
+	$f_n \xrightarrow{(w)L_p} f$.
+
+	When $p = 1$ and $(X, \mathscr{F}, \mu)$ is a $\sigma$-finite
+	measure space, and the condition also holds,
+	we say  $\{f_n\}$ weak convergent to $f$ in $L_1$.
+\end{definition}
+
+\begin{corollary}
+    Let $1\le p < \infty$, then
+	\[
+		f_n \xrightarrow{L_p} f\implies f_n \xrightarrow{(w)L_p} f.
+	\]
+\end{corollary}
+\begin{proof}[Proof]
+    By Holder's inequality,
+	\[
+	\left| \int_X (f_n - f)g\dd \mu \right|\le \lVert f_n - f \rVert _p
+	\lVert g \rVert _q \to 0.
+	\]
+\end{proof}
+
+If $\sup_{t\in T} \lVert f_t \rVert _p =: M < \infty$,
+then we say $\{f_t, t\in T\}$ is \vocab{bounded in $L_p$}.
+
+\begin{theorem}
+    Let $1<p<\infty$, $\{f_n\}\subset L_p$, there exists $M$ s.t.
+	$ \lVert f_n \rVert _p \le M$, $\forall n$.
+	If $f_n \to f, a.e.$ or in measure, then $f\in L_p$
+	and $f_n \to f$ weakly.
+\end{theorem}
+\begin{proof}[Proof]
+    First $ \lVert f \rVert _p \le M$:
+	\[
+	\int_X |f|^p\dd \mu\le \liminf_{n\to \infty}\int_X |f_n|^p\dd\mu \le M^p.
+	\]
+
+	Next we prove the weak convergence:
+	For all $g\in L_q$, recall the bounded convergence theorem in probability,
+	we can view  $M$ as a bound of $f_n$, and $ \lVert g \rVert _q$	as $P$.
+
+	Let $B = \{|f_n - f|\le \hat{\varepsilon}\}$, consider
+	\[
+	a := \int_B (f_n - f)g \dd\mu, \quad
+	b:= \int_{B^c}(f_n - f)g\dd \mu.
+	\]
+	Note that
+	\[
+	|a| \le \hat{\varepsilon}\int_X |g|\dd \mu.
+	\]
+	But $\int_X |g|\dd \mu$ might be infinity, so
+	let $A_k := \{\frac{1}{k}\le |g|^q \le k\}$, we have
+	\[
+	\int_{A_k}|g|\dd \mu \le k^{\frac{1}{q}}\mu(A_k) < \infty.
+	\]
+	($\frac{1}{k}\mu(A_k) < \int_{A_k} |g|^q\dd \mu < \infty$ since $g\in L_q$).
+
+	Now we can proceed:
+	\[
+	a:= \int_{A_kB} (f_n - f)g\dd\mu,\quad
+	b:= \int{A_k^c\cup B^c} (f_n - f)g\dd \mu.
+	\]
+	Now $|a| \le \hat{\varepsilon} k^{\frac{1}{q}}\mu(A_k) < \varepsilon$.
+	\[
+	\left| \int_X (f_n - f)g \ii_{A_k^c\cup B^c}\dd \mu \right|
+	\le \lVert f_n-f \rVert _p \lVert g\ii_{A_k^c\cup B^c} \rVert _q
+	\le 2M \left( \int_{A_k^c}|g|^q\dd \mu +
+	\int_{A_k\backslash B}|g|^q\dd\mu \right).
+	\]
+	By LDC(Dominated convergence), $A_k^c \to \{g = 0, \infty\}$,
+	so $\int_{A_k^c} |g|^q\dd \mu < \varepsilon$.
+
+	Since $\mu(A_k) < \infty$, $f_n \to f, a.e.\implies f_n\xrightarrow{\mu} f$.
+	By the continuity of integrals, $\mu(A_k \backslash B) \le \mu(B^c)
+	< \delta\implies \int_{A_k \backslash B} |g|^q \dd\mu < \varepsilon$.
+
+	Now we can conclude: $\forall \varepsilon>0$,
+	first choose $k$ large, then $\hat{\varepsilon}$ small, we get
+	\[
+	\int_X (f_n - f)g\dd \mu \le \varepsilon + 4M \varepsilon \implies
+	f_n \xrightarrow{(w)L_p} f.
+	\]
+\end{proof}
+\begin{remark}
+    The proof is a little complicated, we divide the entire integral to
+	three part, and estimate them respectively.
+\end{remark}
+
+When $p = 1$, $f_n$ bounded in $L_p$ \textit{cannot} imply weak convergence.
+\begin{example}
+    Let $X = \mathbb{N}$, $\mu(\{k\}) = 1, \forall k$,
+	clearly it's $\sigma$-finite.
+
+	Let $f_n(k) = \ii_{k=n}$, then $ \lVert f_n \rVert = \sum_k \mu(k)|f_n(k)| = 1$,
+	and $f_n \to 0, a.e.$.
+
+	But let $g = 1\in L_\infty$, $\int_X (f_n - f)g\dd \mu = 1\not \to 0$.
+\end{example}
+\begin{proposition}
+	Let $f_1,f_2,\dots\in L_1$, then:
+	\[
+		\lVert f_n \rVert \to \lVert f \rVert \& f_n\to f, a.e.
+		\implies f_n\xrightarrow{L_1} f \implies f_n\xrightarrow{(w)L_1}f
+		\implies \int_A f_n\dd \mu \to \int_A f\dd \mu, \forall A.
+	\]
+\end{proposition}
+\begin{proof}[Proof]
+    For the last part let $g = \ii_A$, the rest is trivial.
+\end{proof}
+
+\subsection{Integrals in probability space}
+\label{sub:Integrals in probability space}
+
+We can also consider $L_p$ space in probability space  $(\Omega, \mathscr{F}, P)$.
+\begin{theorem}
+    Let $0<s<t<\infty$. Then $L_t \subset L_s$.
+	If $s\ge 1$, we have $ \lVert f \rVert _s \le \lVert f \rVert _t$,
+	with equality $f$ constant.
+\end{theorem}
+\begin{proof}[Proof]
+    When $f\in L_t$, let $p = \frac{t}{s}, q = \frac{t}{t-s}$.
+	\[
+	\int_\Omega |f|^s \cdot 1\dd P \le \lVert |f|^s \rVert _p \lVert 1 \rVert _q
+	= (E|f|^{sp})^{\frac{1}{p}} = (E|f|^t)^{\frac{1}{p}}.
+	\]
+	So $f\in L_s\implies L_t \subset L_s$.
+	When $s\ge 1$,
+	\[
+	\lVert f \rVert _s^s\le (\lVert f \rVert _t)^{\frac{t}{p}}
+	= \lVert f \rVert _t^s \implies \lVert f \rVert _s\le \lVert f \rVert _t.
+	\]
+\end{proof}
+
+From this we know $L_\infty \subset L_p$,
+and $ \lVert f \rVert _p \uparrow \lVert f \rVert _\infty$.
+
+\begin{remark}
+    This theorem does not hold for general space.
+	Let $X = \mathbb{N}$, $\mu(\{n\}) = 1$, $f(n) = \frac{1}{n}$,
+	then $f\in L_2\backslash L_1$.
+\end{remark}
+
+The expectation $Ef^k$ is called \vocab{$k$-order moment} of random variable $f$.
+
+\begin{definition}[Uniformly integrable]
+	Let $ \{f_t, t\in T\}$ be r.v.'s,
+	if $\forall \varepsilon >0, \exists \lambda >0$, such that
+	\[
+		E|f_t|\ii_{\{|f_t| > \lambda\}} < \varepsilon, \quad \forall t\in T,
+	\]
+	then we say $\{f_t, t\in T\}$ \vocab{uniformly integrable}.
+\end{definition}
+
+If $\forall \varepsilon>0, \exists \delta>0$ s.t $\forall A\in \mathscr{F}$,
+\[
+P(A)<\delta \implies E|f_t|\ii_A < \varepsilon, \forall t\in T,
+\]
+we say $\{f_t\}$ is uniformly absolutely continuous, which is abbreviated as
+absolutely continuous.
+
+\begin{theorem}
+    Uniformly integrable $\iff$ absolute continuity and bounded in $L_1$.
+\end{theorem}
+\begin{proof}[Proof]
+    Firstly when $\{f_t\}$ uniformly integrable,
+	$\forall A\in \mathscr{F}, \lambda>0$,
+	\begin{align*}
+	E|f_t|\ii_A &= E|f_t|\ii_{A\cap \{|f_t|\le \lambda\}}
+	+ E|f_t|\ii_{A\cap \{|f_t|>\lambda\}}\\
+	&\le \lambda P(A) + E|f_t|\ii_{\{|f_t|>\lambda\}}
+	\end{align*}
+	Let $A = X$ we know $E|f_t| \le \lambda + \frac{\varepsilon}{2},
+	\forall t\in T$.
+	Now let $\delta = \frac{\varepsilon}{2\lambda}$ we get AC property.
+
+	On the other hand,
+	\[
+	\lambda P(|f_t|>\lambda) \le E|f_t|\ii_{\{|f_t|>\lambda\}}\le E|f_t|\le M,
+	\forall t\in T.
+	\]
+	So when $\lambda > \frac{M}{\delta}$, $P(|f_t|>\lambda) < \delta$,
+	hence $E|f_t|\ii_{\{|f_t|>\lambda\}}\le \varepsilon$, $\forall t\in T$.
+\end{proof}
+
+\begin{theorem}
+    Let $0<p<\infty$, and $f_n\to f$ in probability. TFAE:
+	\begin{enumerate}[\indent (1)]
+		\item $\{|f_n|^p\}$ uniformly integrable;
+		\item $f_n \xrightarrow{L_p} f$;
+		\item $f\in L_p$ and $ \lVert f_n \rVert _p \to \lVert f \rVert _p$.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}[Proof]
+    $(1)\implies (2)$: Take subsequence $f_{n'} \to f, a.s.$,
+	\[
+	E|f|^p \le \liminf_{n\to \infty} E|f_n|^p < \infty,
+	\]
+	since $\{|f_n|^p\}$ is bounded in $L_1$. This means $f\in L_p$.
+
+	Let $A_n = \{|f_n - f|> \varepsilon\}$, now we compute
+	\[
+	E|f_n - f|^p \le \varepsilon^p + E|f_n - f|^p \ii_{A_n}
+	\le \varepsilon^p + C_p E|f_n|^p \ii_{A_n} + C_p E|f|^p\ii_{A_n}
+	\]
+	Since $P(A_n) \to 0$ and $\{|f_n|^p\}$ absolutely continuous
+	(also note $E|f|^p \ii_{A_n} \to 0$), RHS converges to 0.
+	Therefore $f_n \xrightarrow{L_p} f$.
+
+	As for $(3)\implies (1)$, we'll prove a lemma:
+	\begin{lemma}
+		If $f_n \xrightarrow{P} f$, then $\forall 0<p<\infty$,
+		\[
+		|f_n|^p \ii_{\{|f_n|\le \lambda\}} \xrightarrow{P}
+		|f|^p \ii_{\{|f|\le \lambda\}}, \quad \forall \lambda \in C(F_{|f|}).
+		\]
+	\end{lemma}
+
+	By lemma and bounded convergence theorem, their expectation also converges.
+	Note that $ \lVert f_n \rVert _p \to \lVert f \rVert _p$, so
+	\[
+	E|f_n|^p\ii_{\{|f_n|>\lambda\}} \to E|f|^p\ii_{\{|f|>\lambda\}},
+	\]
+	thus $\forall \varepsilon>0, \exists \lambda_0\in C(F_{|f|})$, s.t.
+	$E|f|^p\ii_{\{|f|>\lambda_0\}}$ TODO!
+
+	\begin{proof}[Proof of the lemma]
+	    Since $|f_n| \to |f|$ in probability, WLOG $f_n ,f \ge 0$.
+		Define
+		\[
+		A_n := \{f_n \le \lambda\}\Delta\{f\le \lambda\} \cap
+		\{|f_n^p-f^p|<\varepsilon\}
+		\]
+		\[
+		B_n := \{f_n, f\le \lambda, |f_n^p - f^p| < \varepsilon\}.
+		\]
+		Since $x^p$ is uniformly continuous in $[0, \lambda]$,
+		$B_n \subset \{|f_n - f| > \kappa_{\varepsilon, \lambda}\}$,
+		$P(B_n) \to 0$.
+
+		Also $P(A_n) \to 0$ as
+		\[
+		A_n \subset \{\lambda-\delta<f\le \lambda+\delta\}
+		\cup \{|f_n - f|\ge \delta\},
+		\]
+		and $F_{|f|}$ continuous at $\lambda$.
+	\end{proof}
+\end{proof}

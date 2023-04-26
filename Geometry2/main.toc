@@ -1,3 +1,2 @@
-\contentsline {subsubsection}{\numberline {0.0.1}Isometries}{1}{subsubsection.0.0.1}%
-\contentsline {section}{\numberline {1}Algebraic topology}{3}{section.1}%
-\contentsline {subsection}{\numberline {1.1}A bit of manifold}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {1}Algebraic topology}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}A bit of manifold}{2}{subsection.1.1}%

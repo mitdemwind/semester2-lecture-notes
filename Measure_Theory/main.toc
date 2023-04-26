@@ -1,5 +1,4 @@
-\contentsline {subsection}{\numberline {0.1}Properties of integrals}{1}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Convergence theorems}{3}{subsection.0.2}%
-\contentsline {subsection}{\numberline {0.3}Expectations}{5}{subsection.0.3}%
-\contentsline {subsection}{\numberline {0.4}$L_p$ spaces}{6}{subsection.0.4}%
-\contentsline {subsection}{\numberline {0.5}Convergence in $L_p$ space}{9}{subsection.0.5}%
+\contentsline {subsection}{\numberline {0.1}Expectations}{2}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}$L_p$ spaces}{3}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.3}Convergence in $L_p$ space}{6}{subsection.0.3}%
+\contentsline {subsection}{\numberline {0.4}Integrals in probability space}{9}{subsection.0.4}%

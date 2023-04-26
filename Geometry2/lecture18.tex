@@ -1,0 +1,84 @@
+%! TeX root = ./main.tex
+Here we'll prove part of this theorem (since the other part needs further knowledge).
+\begin{remark}
+    $X$ has a triangulation means that $X$ is homeomorphic to finitely many
+	$n$-simplex fused together at the boundary linearly, and the \textit{link} of
+	each vertical is a triangulation of $S^{n-1}$.
+\end{remark}
+
+\begin{proof}[Proof]
+    Observe that given a triangulation, we can get a polygon fusing presentation
+	of the surface by adding the triangles one by one, fusing only one edge each time.
+
+	If we write down the edges of this polygon at a certain order,
+	using letters to indicate differet edges and bars for direction,
+	we can get something like $ab\overline{a}\overline{b}$ for a torus.
+
+	%%%%%%%%%%%%%%%%
+	TODO: pictures!
+
+	In fact, $nT^2$ can be presented as $[a_1,b_1][a_2,b_2]\dots[a_n, b_n]$,
+	where $[a, b] = ab\overline{a}\overline{b}$.
+	Likely, $mP^2$ is $c_1^2c_2^2\dots c_m^2$ since $P^2$ is $c^2$.
+	So our goal is to say that any given ``edge words'' can be reformed
+	to one of the above standard forms.
+
+	Note that $(A): Wa\overline{a} = W$,
+	and $(B): aUV\overline{a}U'V' = bVU\overline{b}V'U'$.
+	The second operation is cut the polygon in the middle to get $b$, and
+	fuse two parts together to eliminate $a$. There's also a reversed version:
+	$aUVaU'V' = bV'VbUU'$.
+	Also note that the word is cyclic, so $(C): UV = VU$.
+
+	%%%%%%%%%%%%%%%%%%%
+	TODO: pictures!
+
+	This is kind of like Olympiad combinatorics problem.
+	So we need techniques like:
+	\begin{itemize}
+		\item A ``complexity'' to measure how close we are to destination:
+
+			vertical numbers(verticals fused together are regarded as one)
+			and egde pair numbers
+		\item Some labels to control different branches:
+
+			whether it has edges with the same direction
+		\item Some efficient ``combo moves''
+	\end{itemize}
+
+	Observe that
+	\begin{itemize}
+		\item $(A)$ will reduce vetical and edge pair by 1,
+		\item $(B)$ won't effect edge pairs, but may change vertical numbers,
+		\item $(C)$ won't change anything.
+	\end{itemize}
+
+	In fact we can reduce the vertical number to 1, i.e. all the verticals are
+	fused to one point in the surface.
+	If we have at least 2 verticals, say $P$ and $Q$, and $PQ$ is an edge.
+	There must be another edge connecting $P,Q$,
+	If those two $P$ are different in the polygon, we can use $(B)$ to eliminate
+	one $P$ vertical (by adding edge pair of $QQ$),
+	and use $(A)$ to eliminate they're the same.
+
+	%%%%%%%%%%%%%%%%%%
+	TODO: pictures!!!
+
+	Repeating above process we can make the vertical number become $1$.
+
+	If we have $aUbV\overline{a}U'\overline{b}V'$, we can use $(B)$ twice to
+	reform it to $cd\overline{c}\overline{d}W$.
+
+	%%%%%%%%%%%%%%%%%%%
+	TODO: pictures!!!
+
+	So we can achive $nT^2$ from a word with no same-direction-pairs. Techniquely
+	we still need to prove that we can always
+	find $a\dots b\dots \overline{a}\dots \overline{b}$ in original word,
+	but this can be proved easily otherwise we can perform $(A)$ to reduce edges.
+
+	Now for $mP^2$ :
+
+	After some fancy operations we're done.
+\end{proof}
+
