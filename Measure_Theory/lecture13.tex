@@ -234,17 +234,24 @@ absolutely continuous.
 	E|f_n|^p\ii_{\{|f_n|>\lambda\}} \to E|f|^p\ii_{\{|f|>\lambda\}},
 	\]
 	thus $\forall \varepsilon>0, \exists \lambda_0\in C(F_{|f|})$, s.t.
-	$E|f|^p\ii_{\{|f|>\lambda_0\}}$ TODO!
+	$E|f|^p\ii_{\{|f|>\lambda_0\}} < \frac{\varepsilon}{2}$, thus
+	\[
+	\exists N,\quad E|f_n|^p \ii_{\{|f_n|>\lambda_0\}} < \varepsilon, \quad
+	\forall n>N.
+	\]
+	Now we can take $\lambda > \lambda_0$ such
+	that $\max_{n\le N} E|f_n|^p\ii_{\{|f_n|^p > \lambda\}} < \varepsilon$,
+	and we're done.
 
 	\begin{proof}[Proof of the lemma]
 	    Since $|f_n| \to |f|$ in probability, WLOG $f_n ,f \ge 0$.
 		Define
 		\[
-		A_n := \{f_n \le \lambda\}\Delta\{f\le \lambda\} \cap
-		\{|f_n^p-f^p|<\varepsilon\}
+		A_n := (\{f_n \le \lambda\}\Delta\{f\le \lambda\}) \cap
+		\{|f_n^p-f^p|>\varepsilon\}
 		\]
 		\[
-		B_n := \{f_n, f\le \lambda, |f_n^p - f^p| < \varepsilon\}.
+		B_n := \{f_n, f\le \lambda, |f_n^p - f^p| > \varepsilon\}.
 		\]
 		Since $x^p$ is uniformly continuous in $[0, \lambda]$,
 		$B_n \subset \{|f_n - f| > \kappa_{\varepsilon, \lambda}\}$,
@@ -253,7 +260,7 @@ absolutely continuous.
 		Also $P(A_n) \to 0$ as
 		\[
 		A_n \subset \{\lambda-\delta<f\le \lambda+\delta\}
-		\cup \{|f_n - f|\ge \delta\},
+		\cup \{|f_n - f|>\delta\},
 		\]
 		and $F_{|f|}$ continuous at $\lambda$.
 	\end{proof}

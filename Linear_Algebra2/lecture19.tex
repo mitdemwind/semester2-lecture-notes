@@ -1,0 +1,68 @@
+%! TeX root = ./main.tex
+
+Let $\SO(n) = \{A\in \mathrm{O}(n) \mid \det A = 1\}$,
+and $\SU(n) = \{A\in \mathrm{U}(n)\mid \det A = 1\}$.
+In the language of groups, $\SO(n)$ has only 2 coset in $\mathrm{O}(n)$,
+while the structure of the cosets of $\SU(n)$ in $\mathrm{U}(n)$ look like $S^1$.
+
+\begin{example}
+    Let's look at some low dimensional orthogonal groups.
+	$\mathrm{O}(1) = \{1, -1\}$, $\SO(1) = \{1\} = \SU(1)$,
+	$\mathrm{U}(1) = \{z\mid |z| = 1\}$.
+
+	The group $\SO(2)$ is the rotations of $\mathbb{R}^2$:
+	\[
+		\SO(2) = \left\{
+		\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}
+		\mid \theta\in [0, 2\pi)\right\}.
+	\]
+	While $\mathrm{O}(2)$ also consisting of reflections.
+	\[
+	\SU(2) = \left\{
+	\begin{pmatrix} z &-\overline{w}\\w &\overline{z}\end{pmatrix}
+	\mid z,w \in \mathbb{C}, |z|^2+|w|^2 = 1\right\}.
+	\]
+
+	In fact these groups are \textit{lie groups}, which means they have
+	the structure of differential manifolds. It's clear that
+	$\mathrm{U}(1) \simeq \SO(2) \simeq S^1$, and we can see $\SU(2)\simeq S^3$.
+\end{example}
+
+\begin{theorem}[QR-decomposition]
+    Any invertible matrix $A$ can be uniquely decomposed to $Q\cdot R$,
+	where $Q\in \mathrm{O}(n)$, $R$ is an upper triangular matrix with positive
+	diagonal entries. When $F = \mathbb{C}$, $\mathrm{O}(n)$ is replaced
+	by $\mathrm{U}(n)$.
+\end{theorem}
+\begin{proof}[Proof]
+    This is essentially Schmidt orthogonalozation.
+\end{proof}
+
+\begin{corollary}[Ivasawa decomposition, KAN decomposition]
+    For all $A\in \GL_n(\mathbb{R})$, it has a unique decomposition
+	$A = A_kA_aA_n, A_k\in \mathrm{O}(n)$, $A_a$ is diagonal, $A_n$ is upper triangular
+	matrix with diagonal entries 1. It also holds for $\mathbb{C}$.
+\end{corollary}
+
+Let $\mathcal{B}, \mathcal{B}'$ be orthonormal bases of $V$, $T\in L(V)$.
+We know that $[T]_{\mathcal{B}'} = P^{-1}[T]_{\mathcal{B}}P$ for some $P\in \GL(V)$.
+By orthogonality, $P$ must be an orthogonal matrix, wich means $P^t = P^{-1}$.
+
+\begin{definition}
+	Let $A, B\in \mathbb{R}^{n\times n}$, we say they are \vocab{orthogonally similar}
+	if $A = P^{-1}BP$ for some $P\in \mathrm{O}(n)$. The name is changed to
+	\vocab{unitarily similar} for complex matrices.
+\end{definition}
+
+\begin{theorem}[Schur triangularization theorem]
+    Let $F = \mathbb{C}$, $T\in L(V)$. There exists an orthonormal basis $\mathcal{B}$,
+	such that $[T]_{\mathcal{B}}$ is upper triangular.
+\end{theorem}
+\begin{proof}[Proof]
+    Recall that $T$ is triangulable (which is always true in $\mathbb{C}$)
+	iff there exists a $T$-invariant flag
+	$\{0\} = W_0 \subset W_1 \subset\dots \subset W_n = V$. We can take an
+	orthonormal basis s.t. $W_k = \Span \{\alpha_1, \dots, \alpha_k\}$.
+
+	Obviously $T$ is upper triangular under this basis.
+\end{proof}

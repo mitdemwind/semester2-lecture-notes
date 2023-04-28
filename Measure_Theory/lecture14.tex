@@ -1,0 +1,241 @@
+%! TeX root = ./main.tex
+\section{Signed measure}
+\label{sec:Signed measure}
+\subsection{Definitions}
+\label{sub:Definitions}
+
+Let $(X, \mathscr{F}, \mu)$ be a measure space, consider
+\[
+\varphi(A) := \int_A f\dd\mu, \quad \forall A\in \mathscr{F}.
+\]
+If the integral of $f$ exists, then $\varphi$ has countable additivity.
+Also note $\varphi(\emptyset) = 0$, so $\varphi$ looks like a measure,
+except it can take negative values.
+
+In fact, denote  $X^+ = \{f\ge 0\}, X^- = \{f < 0\}$, then
+$\varphi(A) = \varphi(AX^+) + \varphi(AX^-)$.
+
+\begin{definition}[Signed measure]
+	If a set function $\varphi : \mathscr{F} \to \overline{\mathbb{R}}$ which
+	satisfies countable additivity and $\varphi(\emptyset) = 0$,
+	then we call $\varphi$ a \vocab{signed measure}.
+
+	If $|\varphi(A)| < \infty, \forall A\in \mathscr{F}$, then $\varphi$ is
+	\vocab{finite}; Similarly we define \vocab{$\sigma$-finite}.
+\end{definition}
+
+Since $\int_A f\dd \mu$ can't reach both $\pm \infty$(otherwise the integral
+doesn't exist), so
+\begin{proposition}
+	Let $\varphi$ be a signed measure, then:
+	\[
+	\varphi(A) < \infty, \quad \forall A\in \mathscr{F},
+	\quad or \quad \varphi(A) > -\infty, \quad \forall A\in \mathscr{F}.
+	\]
+\end{proposition}
+\begin{proof}[Proof]
+    Assume that $\varphi(A) = \infty, \varphi(B) = -\infty$,
+	then:
+	\[
+	\varphi(A\cup B) = \varphi(A) + \varphi(A\backslash B) = +\infty,
+	\]
+	and similarly $\varphi(A\cup B) = -\infty$, contradiction!
+\end{proof}
+\begin{remark}
+    From now on we may assmue $\varphi(A) > -\infty$.
+\end{remark}
+
+\begin{proposition}
+	If $A\supseteq B$, and $|\varphi(A)| < \infty$, then $|\varphi(B)| < \infty$.
+\end{proposition}
+\begin{proof}[Proof]
+    Trivial, same as above proposition.
+\end{proof}
+
+\begin{proposition}
+	Let $A_1, A_2,\dots$ be pairwise disjoint sets,
+	and $|\varphi(\sum_{n=1}^\infty A_n)| < \infty$, then
+	\[
+	\sum_{n=1}^{\infty} |\varphi(A_n)| < \infty.
+	\]
+\end{proposition}
+\begin{proof}[Proof]
+    Let $I = \{n: \varphi(A_n) > 0\}$, $J = \{n: \varphi(A_n) < 0\}$,
+	\[
+	B = \sum_{n\in I}A_n,\quad C = \sum_{n\in J} A_n,
+	\]
+	since $B,C \subset \sum_{n=1}^\infty A_n$,
+	thus $\varphi(B), \varphi(C) \in \mathbb{R}$.
+
+	Note that $\sum_{n\in I} |\varphi(A_n)| = |\varphi(B)|$,
+	$\sum_{n\in J}\varphi(A_n) = |\varphi(C)|$, and we're done.
+\end{proof}
+
+\subsection{Hahn decomposition and Jordan decomposition}
+\label{sub:Hahn decomposition and Jordan decomposition}
+Let's look at the indefinite integral again, notice that
+\[
+\varphi(A) = \int_{A\cap \{f>0\}} f\dd\mu + \int_{A\cap \{f<0\}}f\dd\mu
+= \int_A f^+ \dd\mu - \int_A f^-\dd \mu.
+\]
+It turns out that this property holds for any signed measure.
+
+\begin{definition}[Hahn decomposition]
+	If a patition $\{X^+, X^-\}$ of $X$ satisfies:
+	\[
+	\varphi(A) \ge 0, \forall A \subset X^+, \quad
+	\varphi(A) \le 0, \forall A \subset X^-,
+	\]
+	then $\{X^+, X^-\}$ is called a \vocab{Hahn decomposition} of $\varphi$.
+\end{definition}
+
+\begin{definition}[Jordan decomposition]
+	Let $\varphi^{\pm} = \int_A f^{\pm} \dd\mu$ be measures, if
+	\[
+	\varphi = \varphi^+ - \varphi^-,
+	\]
+	then it's called a \vocab{Jordan decomposition} of $\varphi$.
+\end{definition}
+
+We're going to find $X^+$, or equivalently, find $\varphi^+$.
+Let $\varphi^*(A) := \sup\{\varphi(B): B \subseteq A\}$.
+
+It's clear that $\varphi^*$ is non-negative, monotone, and $\varphi^*(\emptyset) = 0$.
+
+Consider $\mathscr{F}^- = \{A: \varphi^*(A) = 0\}$. Intuitively, this
+is all the subsets of $X^-$, unioned with ``null sets'' in $X^+$.
+
+\begin{theorem}[Hahn decomposition]
+	\label{Hahn decomposition}
+    Let $X^-$ be a set with maximum $|\varphi|$ in $\mathscr{F}^-$,
+	(since $\varphi > -\infty$, $X^-$ must exist)
+	and $X^+ = X \backslash X^-$ doesn't contain any set $A$ with $\varphi(A) < 0$.
+
+	Furthermore, the Hahn decomposition is unique:
+	\[
+	\varphi(A) = 0, \quad \forall A\in X_1^+\Delta X_2^+
+	= X_1^- \Delta X_2^-.
+	\]
+\end{theorem}
+The critical part of this theorem is:
+\begin{lemma}
+	\label{lem:Hahn1}
+	If $\varphi(A) < 0$, then we can find $A_0 \subset A$ s.t. $\varphi^*(A_0) = 0$,
+	$\varphi(A_0) < 0$.
+\end{lemma}
+
+To prove this lemma, we need another lemma:
+\begin{lemma}
+	If $\varphi(A) < \infty$, then $\forall \varepsilon>0$,
+	$\exists A_\varepsilon \subset A$ s.t.
+	\[
+		\varphi(A_\varepsilon) \ge 0,\quad
+		\varphi^*(A \backslash A_\varepsilon) \le \varepsilon.
+	\]
+\end{lemma}
+\begin{proof}[Proof]
+    Assume by contradiction that $\exists \varepsilon_0\ge 0$ s.t.
+	$\forall A_0 \subset A$, $\varphi(A_0)<0$ or
+	$\varphi^*(A \backslash A_0) > \varepsilon_0$,
+	this means,
+	\[
+		\varphi(A_0)\ge 0\implies \varphi^*(A \backslash A_0) > \varepsilon_0.
+	\]
+	This will clearly yield a contradiction:
+
+	Take any $\varphi(A_0) \ge 0$(say $A_0=\emptyset$),
+	then exists $A_1 \subset A\backslash A_0$ s.t.
+	$\varphi(A_1) > \varepsilon_0$, and $\varphi(A_0\cup A_1) \ge 0$,
+	continuing this process we can get infinitely many pairwise disjoint
+	sets $A_1, A_2,\dots$, with $\varphi(A_n) > \varepsilon_0$,
+	so $\varphi(\sum_{i=1}^\infty A_n) = \infty\implies \varphi(A) = \infty$,
+	contradiction!
+\end{proof}
+
+\begin{proof}[Proof of \autoref{lem:Hahn1}]
+    Applying above lemma repeatedly and take a limit:
+
+	Take $C_1 \subset A$ s.t. $\varphi(C_1) \ge 0$ and
+	$\varphi^*(A \backslash C_1)\le 1$.
+	Let $A_1 = A \backslash C_1$, $\varphi(A_1) < 0$.
+
+	Again take
+	\[
+		C_{k+1} \subset A_k, A_{k+1} = A_k \backslash C_{k+1}
+		\implies \varphi^*(A_{k+1}) \le \frac{1}{k+1}, \varphi(A_{k+1}) < 0.
+	\]
+	Since $A_k \downarrow$, let $A_0 = \lim_{k\to \infty} A_k$,
+	note $\varphi^*(A_k) \downarrow 0$, we must have $\varphi^*(A_0) = 0$.
+
+	Also $\varphi(\sum C_k) = \sum \varphi(C_k) \ge 0$, so $\varphi(A_0) < 0$.
+\end{proof}
+
+\begin{proof}[Proof of \autoref{Hahn decomposition}]
+    First we prove that $\mathscr{F}^-$ is a $\sigma$-ring:
+	$\emptyset\in \mathscr{F}^-$, if $A_1, A_2\in \mathscr{F}^-$,
+	\[
+	0 \le \varphi^*(A_1 \backslash A_2)\le \varphi(A_1) = 0.
+	\]
+	Thus $A_1 \backslash A_2 \in \mathscr{F}^-$.
+
+	If $A_1, A_2,\dots \in \mathscr{F}^-$ pairwise disjoint,
+	\[
+	\varphi(B) = \sum_{n=1}^{\infty} \varphi(B\cap A_n) \le 0, \quad
+	\forall B \subset \sum_{n=1}^{\infty} A_n.
+	\]
+	Hence $\sum_{n=1}^\infty A_n \in \mathscr{F}^-$.
+
+	Next we'll prove Hahn decomposition exists:
+
+	Let $\alpha := \inf \{\varphi(A) : A\in \mathscr{F}^-\}$, $\alpha \le 0$.
+
+	Let $\{A_n\}\in \mathscr{F}^-$ s.t. $\varphi(A_n) \to \alpha$,
+	then $X^- := \bigcup_{n=1}^\infty A_n \in \mathscr{F}^-$.
+	\[
+	\varphi(X^-) = \varphi(A_n) + \varphi(X^- \backslash A_n)
+	\le \varphi(A_n) + \varphi^*(X^- \backslash A_n) = \varphi(A_n) \to \alpha.
+	\]
+	Therefore $-\infty < \varphi(X^-) = \alpha$.
+
+	Hence $\forall A, \varphi(AX^-) \le \varphi^*(X^-) = 0$.
+	By \autoref{lem:Hahn1} we get $\forall A, \varphi(AX^+) \ge 0$,
+	otherwise $\exists A_0 \subset A$ s.t. $\varphi^*(A_0) = 0, \varphi(A_0) < 0$.
+	Then $\varphi(X^- \cup A_0) = \alpha + \varphi(A_0) < \alpha$, contradiction!
+
+	At last we'll prove the uniqueness:
+
+	If $X_1^{\pm}, X_2^{\pm}$ are both Hahn decompositions,
+	then $A \in X_1^+\cap X_2^- + X_1^- \cap X_2^+$, it's clear $\varphi(A) = 0$.
+\end{proof}
+
+\begin{theorem}[Jordan decomposition]
+    The Jordan decomposition exists and is unique:
+	\[
+	\varphi = \varphi^+ - \varphi^-, \quad
+	\varphi^+ = \varphi^*, \varphi^- = (-\varphi)^*.
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    Let $\varphi^{\pm}$ be measures with $\varphi^{\pm} = \pm\varphi(A\cap X^{\pm})$.
+	It's clear that this is a Jordan decomposition.
+
+	Now given any Jordan decomposition $\varphi^{\pm}$.
+
+	Since
+	\[
+		\forall B \subset A, \varphi(B)\le \varphi^+(B) \le \varphi^+(A),
+	\]
+	so $\varphi^* \le \varphi^+$.
+	But $A \cap X^+ \subset A$, so $\varphi^* \ge \varphi^+$,
+	which proves the result.
+
+	Similarly $\varphi^- = (-\varphi)^*$, so it is unique.
+\end{proof}
+\begin{remark}
+    The support of $\varphi^{\pm}$ are disjoint, but if $\phi \ne 0$,
+	then the support of $\varphi^{\pm} + \phi$ intersects.
+	$\varphi^{\pm}$ are called the \vocab{upper variation}
+	and \vocab{lower variation},
+	respectively, and $|\varphi| = \varphi^+ + \varphi^-$ is called the
+	\vocab{total variation}.
+\end{remark}

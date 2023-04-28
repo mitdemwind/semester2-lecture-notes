@@ -1,4 +1,5 @@
-\contentsline {subsection}{\numberline {0.1}Expectations}{2}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}$L_p$ spaces}{3}{subsection.0.2}%
-\contentsline {subsection}{\numberline {0.3}Convergence in $L_p$ space}{6}{subsection.0.3}%
-\contentsline {subsection}{\numberline {0.4}Integrals in probability space}{9}{subsection.0.4}%
+\contentsline {subsection}{\numberline {0.1}Convergence in $L_p$ space}{3}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Integrals in probability space}{5}{subsection.0.2}%
+\contentsline {section}{\numberline {1}Signed measure}{7}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Definitions}{7}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Hahn decomposition and Jordan decomposition}{8}{subsection.1.2}%

@@ -63,6 +63,25 @@ inner product spaces.
 	as inner product spaces.
 \end{corollary}
 
+Recall the positive definite matrices we defined earlier,
+we can also define \textit{positive definite maps}:
+Let $T$ be a \textit{self-adjoint map}, if
+\[
+	\forall \alpha\in V \backslash \{0\},\quad \left<T\alpha, \alpha \right> > 0,
+\]
+then we say $T$ is positive definite.
+
+The reason why we require $T$ self-adjoint is that,
+\[
+\left<T\alpha, \alpha \right> = \left<\alpha, T\alpha \right>
+= \overline{\left<T\alpha, \alpha \right>}\implies \left<T\alpha, \alpha \right>\in
+\mathbb{R}.
+\]
+so we can talk about ``positive'' safely.
+
+\subsection{Orthogonal maps and Unitary maps}
+\label{sub:Orthogonal maps and Unitary maps}
+
 \begin{definition}[Orthogonal maps]
 	Let $V$ be a real inner product space, the automorphisms of $V$
 	(as inner product space) are
