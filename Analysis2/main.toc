@@ -1,1 +1,2 @@
-\contentsline {subsection}{\numberline {0.1}Submanifolds in Euclid space}{3}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.1}Submanifolds in Euclid space}{1}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Tangent space}{4}{subsection.0.2}%

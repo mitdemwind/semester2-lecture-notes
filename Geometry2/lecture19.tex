@@ -1,0 +1,95 @@
+%! TeX root = ./main.tex
+\begin{remark}
+    On the existence of triangulation
+\end{remark}
+\subsection{Homotopy}
+\label{sub:Homotopy}
+\begin{definition}[Homotopy]
+	Given two continuous maps $f, g: X\to Y$, if there exists a continuous map
+	\[
+		H: X\times [0,1]\to Y
+	\]
+	such that $f = H_0, g = H_1$, where $H_t = H\big|_{X \times \{t\}}$,
+	then we say $f$ and $g$ are \vocab{homotopic}, denoted by $f\simeq g$, and
+	the map $H$ is a \vocab{homotopy}.
+\end{definition}
+\begin{definition}[Relative homotopy]
+	Let $A \subset X$, $f, g: X\to Y$, and $f\big|_A = g\big|_A$.
+	We say $f$ and $g$ are homotopic relative to $A$ ($f\simeq g \ rel\ A$),
+	if $H$ satisfies $H_t \big|_A = f\big|_A$.
+\end{definition}
+
+More often we'll talk about homotopy between paths, here by path
+we mean a map $\gamma: [0, 1]\to X$. We say two paths are homotopic
+if they are homotopic relative to the endpoints($i.e. \{0, 1\}$)
+
+\begin{proposition}
+	The homotopic relation is an equivalence relation.
+\end{proposition}
+
+Besides studying the homotopy of maps, we can also consider the homotopy between spaces:
+\begin{definition}
+	We say two topological spaces $X, Y$ are \vocab{homotopy equivalent}
+	or have the same \vocab{homotopy type}, if there exists $f:X\to Y$, $g:Y\to X$,
+	such that
+	\[
+		f\circ g = \id_Y,\quad g\circ f = \id_X.
+	\]
+\end{definition}
+\begin{example}
+    The following spaces are homotopy equivalent:
+
+	\begin{center}
+	\begin{asy}
+	    pair A = (-0.1, 0), B = (0.2, 0);
+		draw(circle(A, 0.08));
+		draw(circle(B, 0.08));
+		draw((-0.02, 0) -- (0.12, 0));
+
+		pair C = (0.5, 0), D = (0.8, 0);
+		draw(circle(C, 0.07), grey+linewidth(7));
+		draw(circle(D, 0.07), grey+linewidth(7));
+		draw((0.59, 0)--(0.71, 0), grey+linewidth(7));
+
+		draw(circle((1.1, 0), 0.1)); draw((1.1, 0.1)--(1.1, -0.1));
+	\end{asy}
+	\end{center}
+
+\end{example}
+
+\begin{definition}[Fundamental groups]
+	Let $\Omega(X, x_0)$ denote all the loops starting at $x_0$, i.e.
+	$\gamma: [0, 1]\to X$ with $\gamma(0) = \gamma(1) = x_0$.
+
+	Define the \vocab{fundamental group} of $X$ to be:
+	\[
+	\pi_1(X, x_0) = \Omega(X, x_0) / \simeq,
+	\]
+	where $\simeq$ is the homotopy relative to $x_0$.
+
+	We define the group operation to be the \textit{concatenation} of paths,
+	denoted by $(a, b)\mapsto ab$, where
+	 \[
+	ab(t) = \left\{\begin{aligned}
+			&a(2t), & t\in [0, \frac{1}{2}];\\
+			&b(2t - 1), & t\in [\frac{1}{2}, 1].
+	\end{aligned}
+	\right.
+	\]
+\end{definition}
+
+\begin{proposition}
+	The concatenation descends to a well-defined group operation:
+	\[
+	\pi_1(X, x_0) \times \pi_1(X, x_0) \to \pi_1(X, x_0).
+	\]
+\end{proposition}
+\begin{proof}[Proof]
+    Just some trivial checking.
+	Note that the inverse of $a$ is just $\overline{a}(t) := a(1-t)$.
+\end{proof}
+
+\begin{proposition}
+	An homeomorphism $f: (X, x_0)\to (Y, y_0)$ will induce a group
+	homomorphism $f_\#: \pi_1(X, x_0) \to \pi_1(Y, y_0)$.
+\end{proposition}

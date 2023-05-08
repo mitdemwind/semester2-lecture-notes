@@ -1,0 +1,148 @@
+%! TeX root = ./main.tex
+\begin{proposition}
+	Let $\Omega \subset \mathbb{R}^{n}$, and $f: \Omega \to \mathbb{R}^{m}$ is
+	a smooth map. Let $S \subset \mathbb{R}^{m}$ be a differential manifold,
+	if for all $x\in f^{-1}(S)$, we have $\rank\dd f(x) = m$, then $f^{-1}(S)$ is
+	a differential manifold with codimension same as $S$.
+\end{proposition}
+\begin{proof}[Proof]
+    For any $x\in S$, let $\Phi$ be the homeomorphism
+	from an open neighborhood of $x$ to $\mathbb{R}^{m}$.
+
+	Suppose $\dim S = d$,
+	let
+	\[
+	F(x) = ((\Phi \circ f)_{d+1}, \dots, (\Phi\circ f)_{m}).
+	\]
+	Note that $\dd (\Phi \circ f)$ is an $m\times n$ matrix,
+	and its rank is $m$. Since
+	\[
+	\dd (\Phi\circ f) = \begin{pmatrix}
+		\dd(\Phi\circ f)_1\\\vdots\\\dd(\Phi\circ f)_d\\\dd F
+	\end{pmatrix}
+	\]
+	Thus $\dd F$ is a $(m-d)\times n$ matrix with rank $m - d$.
+	So $F^{-1}(0) = f^{-1}(S)$ is a manifold with dimension $n - (m - d)$.
+\end{proof}
+
+\subsection{Tangent space}
+\label{sub:Tangent space}
+Since the differentiation relies on the choice of coordinates, if we
+want to study the manifold more geometrically, we should look at the tangent lines
+or tangent planes of the manifold.
+\begin{definition}[Tangent vectors]
+	Let $M$ be a differential manifold. Let $p\in M$,
+	for all parametrized curve $\gamma: (-\varepsilon, \varepsilon)\to M$
+	with $\gamma(0) = p$, we say the vector $\gamma'(0)\in \mathbb{R}^{n}$ is
+	the \vocab{tangent vector} of $\gamma$ at point $p$.
+
+	Let $T_pM$ denote the \vocab{tangent space} at $p$, which is defined as
+	\[
+	T_pM = \{\gamma'(0)\in \mathbb{R}^{n} \mid \gamma(0) = p\}.
+	\]
+\end{definition}
+It's clear that $T_pM$ should be a vector space of dimension $\dim M$,
+next we'll prove this fact.
+
+\begin{proposition}[Push forward of tangent spaces under differential homeomorphism]
+	Let $\Phi: U\to V$ be a differential homeomorphism, $M \subset U$ be
+	a manifold, then
+	\[
+		T_{\Phi(p)}\Phi(M) = (\dd \Phi)\big|_{p} \cdot T_pM.
+	\]
+\end{proposition}
+\begin{proof}[Proof]
+    Let $\gamma$ be a parametrized curve on $M$ with $\gamma(0) = p$.
+	Note that $\Phi\circ \gamma$ is a curve on  $\Phi(M)$ passing through $\Phi(p)$.
+	Since
+	\[
+	\frac{\dd}{\dd t} \Phi\circ \gamma(t)\Big|_{t=0} = \dd \Phi(p) \cdot \gamma'(0).
+	\]
+	Thus $\dd \Phi(p)\cdot T_p M \subset T_{\Phi(p)}\Phi(M)$.
+
+	Now we do the same thing for $\Phi^{-1}$, we can get the desired equality.
+\end{proof}
+
+Now we can easily calculate the tangent space:
+since $M$ is locally homeomorphic to $\mathbb{R}^{d}$, and obviously
+$T_{\Phi(p)}(\mathbb{R}^{d}\times \{0\}) = \mathbb{R}^{d} \times \{0\}$,
+by above proposition,
+$T_p M = (\dd \Phi)\cdot T_{\Phi(p)}(\mathbb{R}^{d} \times \{0\})$ is
+a vector space of dimension $d$.
+
+\begin{theorem}
+    Let $M$ be a manifold, $T_p M$ is a vector space of dimension $\dim M$.
+\end{theorem}
+\begin{proposition}
+	Let $f: \mathbb{R}^{n+d}\to \mathbb{R}^{n}$ be a smooth map,
+	$\rank \dd f = n$. Let $M = f^{-1}(f(p))$, then $T_pM = \ker \dd f(p)$.
+\end{proposition}
+\begin{proof}[Proof]
+    Let
+	\[
+		F(x, y) = (x, f(x, y)), x\in \mathbb{R}^{d}, y\in \mathbb{R}^{n}.
+	\]
+	$F$ is a homeomorphism, so $T_pM = (\dd F^{-1}) T_{F(p)}F(M)$.
+
+	Note that $F(M) = \{(x, p)\mid \exists y, f(x, y) = f(p)\}$, it must
+	be a vector space of dimension $d$,
+	so $T_{F(p)} F(M) = \mathbb{R}^{d}\times \{0\}$,
+	\[
+	T_p M = (\dd F^{-1}) T_{F(p)}F(M) = \ker \dd f(p).
+	\]
+\end{proof}
+\begin{example}
+    Let $M$ be a manifold determined by $f: \mathbb{R}^{n}\to \mathbb{R}$,
+	\[
+	T_p M = \ker \dd f = \{v\in \mathbb{R}^{n}\mid \dd f(p) v = 0\}.
+	\]
+	Here $\dd f = (\pfr{f}{x_1}, \dots, \pfr{f}{x_n}) = \nabla f$.
+	So $v\in T_p M \iff \nabla f \cdot v = 0$, the dot means the inner product.
+	In this case the vector $\nabla f$ is called \vocab{normal direction vector}.
+\end{example}
+
+Next we'll briefly introduce the differential maps between manifolds.
+Since the differentiation on manifolds is hard to define, so what we
+do is actually regarding manifolds as $\mathbb{R}^{d}$ locally and
+define the differentiablity using the maps between Eucild spaces.
+\begin{definition}
+	Let $M, N$ be manifolds in $\mathbb{R}^{m}, \mathbb{R}^{n}$, respectively.
+	$f: M\to N$ is a map, if $\forall p\in M$,
+	there exists $p\in U \subset \mathbb{R}^m,
+	V \subset \mathbb{R}^d$, $\Phi: U\to V$ s.t.
+	\[
+	f_\Phi = f\circ \Phi^{-1}
+	\]
+	is a smooth map from $V$ to $N$.
+	We say $f$ is a smooth map from $M$ to $N$.
+\end{definition}
+We need to check this definition is well-defined:
+if there's another homeomorphism $\Phi'$,
+$f \circ \Phi' = (f\circ \Phi^{-1})\circ(\Phi \circ \Phi'^{-1})$ is indeed
+a smooth map.
+
+\begin{lemma}[Smooth maps are locally restrictions of smooth maps in Eucild spaces]
+	Let $f: M\to N$ be a map,
+	then $f$ is smooth $\iff$ $\forall p\in M,
+	\exists p\in U \subset \mathbb{R}^{m}$ and
+	a smooth map $F: U\to \mathbb{R}^{n}$ s.t.
+	\[
+	f\big|_{U\cap M} = F\big|_{U\cap M}.
+	\]
+\end{lemma}
+\begin{proof}[Proof]
+    Let $\tau$ denote the embedding from $M\cap U$ to $U$.
+	Since $f\circ \Phi^{-1} = F\circ \tau\circ \Phi^{-1}$,
+	so $F$ smooth $ \implies f_\Phi$ smooth $ \implies f$ smooth.
+	\begin{equation*}
+	\begin{tikzcd}
+		V \subset \mathbb{R}^{d}\drar["f\circ \Phi^{-1}"']
+		& M\cap U\rar["\tau"]\lar["\Phi"']\dar["f"]
+								& U\dlar["F"]\\
+		& N \subset \mathbb{R}^{n}
+	\end{tikzcd}
+	\end{equation*}
+	
+
+	On the other hand,
+\end{proof}
