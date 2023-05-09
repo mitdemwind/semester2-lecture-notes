@@ -1,2 +1,3 @@
-\contentsline {subsection}{\numberline {0.1}Adjoint maps}{3}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Orthogonal maps and Unitary maps}{5}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.1}Adjoint maps}{1}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Orthogonal maps and Unitary maps}{3}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.3}Normal maps}{5}{subsection.0.3}%

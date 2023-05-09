@@ -1,0 +1,206 @@
+%! TeX root = ./main.tex
+\subsection{Normal maps}
+\label{sub:Normal maps}
+Recall that we say two matrices $A, B$ are orthogonally
+similar, if there exist $P\in \mathrm{O}(n)$ s.t. $B = P^{-1} A P$.
+Again, we want to find the ``simpliest'' matrix in each orthogonal
+equivalent class.
+
+Let $T\in L(V)$ be a linear map, if there exists an orthonomal basis
+of $V$ s.t. $[T]_{\mathcal{B}}$ is diagonal, then we say $T$ is
+orthogonally (or unitarily) diagonalizable.
+
+\begin{definition}[Normal maps]
+	Let $V$ be an inner product space, $T\in L(V)$.
+	If $TT^* = T^*T$, then we say $T$ is a \vocab{nomal map}.
+\end{definition}
+
+It turns out that these concepts has close relations:
+\begin{theorem}
+	\label{thm:3.2}
+    Let $V$ be a finite dimentional inner product space,
+	\begin{itemize}
+		\item If $F = \mathbb{R}$, then $T$ orthogonally diagonalizable
+			$\iff T$ self-adjoint;
+		\item If $F = \mathbb{C}$, then $T$ unitarily diagonalizable
+			$\iff T$ normal.
+	\end{itemize}
+\end{theorem}
+
+\begin{lemma}
+	Let $F = \mathbb{C}$, then $T$ normal $\iff$ there exists self-adjoint commutative
+	maps $T_1, T_2$ s.t. $T = T_1 + iT_2$.
+\end{lemma}
+\begin{proof}[Proof]
+    If $T = T_1 + iT_2$, then $T^* = T_1 - iT_2$,
+	so $T^* T = TT^*$ since $T_1, T_2$ commutative.
+
+	On the other hand, let $T_1 = \frac{T+T^*}{2}$, $T_2 = \frac{T-T^*}{2i}$.
+	We can check that $T_1, T_2$ self-adjoint and are commutative.
+\end{proof}
+
+\begin{proof}[Proof of \autoref{thm:3.2}]
+    For the ``$\implies$'' part,
+	let $\mathcal{B}$ be an orthonomal basis
+	such that $[T]_{\mathcal{B}} = \diag\{c_1,\dots, c_n\}$.
+	Then we have
+	\[
+		[T^*]_{\mathcal{B}} = [T]_{\mathcal{B}}^* =
+		\diag\{\overline{c}_1, \dots, \overline{c}_n\}.
+	\]
+	If $F = \mathbb{R}$, then $T^* = T$, i.e. $T$ self-adjoint.
+
+	If $F = \mathbb{C}$, clearly $TT^* = T^*T$, so $T$ is normal.
+
+	As for the other part, we need a lemma first.
+	\begin{lemma}
+		Let $V$ be a f.d. inner product space, $T\in L(V)$.
+		If $W \subset V$ is a $T$-invariant space, then $W^\perp$ is
+		$T^*$-invariant.
+	\end{lemma}
+	\begin{proof}[Proof of the lemma]
+	    For all $\alpha\in W^\perp$,
+		 \[
+		0 = \left<\alpha, T\beta \right> = \left<T^*\alpha, \beta \right>,\quad
+		\forall \beta\in W.
+		\]
+		Thus $T^*\alpha\in W^\perp$.
+	\end{proof}
+
+	\begin{corollary}
+	    If $T$ is self-adjoint, $W \subset V$ is $T$-invariant
+		will imply $W^\perp$ is also $T$-invariant, so $T$ is semisimple.
+	\end{corollary}
+
+	\begin{lemma}
+		Let $V$ be a f.d. inner product space, $T\in L(V)$ is self-adjoint.
+		We must have $f_T\in \mathbb{R}[x]$, and it can be decomposed to
+		products of polynomials of degree 1.
+
+		In particular, $\sigma(T) \subset \mathbb{R}$.
+	\end{lemma}
+	\begin{proof}[Proof]
+	    Let $f_T = \prod_{j=1}^n (x - c_j), c_j \in \mathbb{C}$.
+
+		Let $\mathcal{B}$ be an orthonomal basis of $V$,
+		then $A := [T]_{\mathcal{B}}$ is Hermite.
+		Let $X$ be a nonzero vector s.t. $AX = c_j X$, then
+		\[
+		c_j X^*X = X^*AX = (AX)^*X = \overline{c}_j X^*X.
+		\]
+		So $c_j\in \mathbb{R}$, and we're done.
+	\end{proof}
+
+	\begin{lemma}
+		If $T$ is a self-adjoint map, then all the eigenspaces of $T$ are
+		pairwise orthogonal.
+	\end{lemma}
+	\begin{proof}[Proof]
+	    Let $c_1, c_2\in \mathbb{R}$ be two eigenvalues of $T$.
+		Let $\alpha\in V_{c_1}, \beta \in V_{c_2}$.
+		\[
+		c_1 \left<\alpha, \beta \right> = \left<c_1\alpha, \beta \right>
+		= \left<T\alpha, \beta \right> = \left<\alpha, T\beta \right>
+		= \overline{c}_2 \left<\alpha, \beta \right> = c_2 \left<\alpha, \beta \right>.
+		\]
+		Since $c_1\ne c_2$, we must have $\alpha\perp \beta$, as desired.
+	\end{proof}
+
+	Returning back to \autoref{thm:3.2}, when $T$ is self-adjoint,
+	let $\sigma(T) = \{c_1, \dots, c_r\}$.
+	\begin{claim}
+	    $V = \bigoplus_{i=1}^r V_{c_i}$, i.e. $T$ is diagonalizable.
+	\end{claim}
+	Let $W = \bigoplus_{i=1}^r V_{c_i}$, if $W^\perp \ne \{0\}$,
+	then $W^\perp$ is $T$-invariant.
+
+	When $F = \mathbb{C}$, then $T_{W^\perp}$ has eigenvectors;
+	when $F = \mathbb{R}$, then $T_{W^\perp}$ is self-adjoint,
+	so it must have a eigenvector (by lemma).
+	\bigskip
+
+	Since $V_{c_i}$ are pairwise orthogonal, so we can actually take an orthonomal
+	basis of $V_{c_i}$ to get an orthonomal basis of $V$.
+	Hence $T$ is orthogonally diagonalizable.
+
+	Now for the case when $T$ is normal, let $T_1, T_2$ be self-adjoint maps s.t.
+	$T = T_1 + iT_2$.
+	Since $T_1, T_2$ commute, the proof is nearly identical to the simutaneously
+	diagonalizable property.
+
+	Let $V = \bigoplus_{i=1}^r V_{c_i}$ be the eigenspace decomposition of $T_1$.
+	Note that $V_{c_i}$ are also $T_2$-invariant.
+
+	Since $(T_2)_{V_{c_i}}$ self-adjoint, $(T_2)_{V_{c_i}}$ is
+	unitarily diagonalizable.
+	Therefore we can concatenate those basis to get a basis of $V$,
+	and $T_1, T_2$ are both diagonal under this basis.
+\end{proof}
+
+There's another proof of ``$ \impliedby$'' part of the theorem:
+\begin{proposition}
+	Let $V$ be an inner product space, $T\in L(V)$ normal.
+	Let $W \subset V$ be a $T$-invariant space, then $W^\perp$ is $T$-invariant,
+	and $W$ is $T^*$-invariant.
+\end{proposition}
+\begin{proof}[Proof]
+	Take an orthonomal basis of $W, W^\perp$, so $A:= [T]_{\mathcal{B}}$ normal.
+
+	Since $W$ is $T$-invariant,
+	$A = \begin{pmatrix}
+		B & C\\ 0 & D
+	\end{pmatrix}$. Note that:
+	\[
+	AA^* = \begin{pmatrix}
+		BB^* + CC^* & * \\ * & *
+	\end{pmatrix},\quad
+	A^*A = \begin{pmatrix}
+		B^*B &* \\ * &*
+	\end{pmatrix}.
+	\]
+
+	As $A$ normal, $BB^*+CC^* = B^*B$, by looking at the trace of both sides,
+	we get $\tr(CC^*) = 0\implies C = 0$, the conclusion follows.
+\end{proof}
+\begin{corollary}
+    Let $A \in \mathbb{C}^{n\times n}$ be an upper triangular martix,
+	then $A$ normal $\iff$ $A$ diagonal.
+\end{corollary}
+
+\begin{proposition}
+	Let $T$ be a normal map, then the eigenspaces of $T$ are pairwise orthogonal.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $\alpha\in V_{c_1}, \beta\in V_{c_2}$, since $\Span\{\beta\}$ is
+	a $T$-invariant space, so $T^*\beta \in \Span\{\beta\}$,
+	\[
+	\left<T^*\beta, \beta \right> = \left<\beta, T\beta \right>
+	= \overline{c}_2 \left<\beta, \beta \right>.
+	\]
+	Thus $T^*\beta = \overline{c}_2 \beta$.
+	\[
+	c_1\left<\alpha, \beta \right> = \left<T\alpha, \beta \right>
+	= \left<\alpha, T^*\beta \right> = c_2 \left<\alpha, \beta \right>.
+	\]
+	But $c_1\ne c_2$, we have $\alpha\perp\beta$.
+\end{proof}
+
+When $F = \mathbb{C}$:
+Let $W = \bigoplus_{i = 1}^r V_{c_i}$. Since $W^\perp$ is $T$-invariant,
+so when $W\perp \ne \{0\}$, $T$ must have eigenvalues in $W^\perp$, contradiction!
+
+Now we've proved that $V_{c_i}$ are pairwise orthogonal, so $T$ is
+unitarily diagonalizable.
+
+\begin{proposition}
+	Let $V$ be a complex inner product space, $T\in L(V)$ normal,
+	\begin{itemize}
+		\item $T$ self-adjoint $\iff \sigma(T) \subset \mathbb{R}$;
+		\item $T$ anti self-adjoint $\iff \sigma(T) \subset i \mathbb{R}$;
+		\item $T$ unitary $\iff \sigma(T) \subset \{z: |z| = 1\}$.
+	\end{itemize}
+\end{proposition}
+\begin{proof}[Proof]
+	Take an orthonomal basis s.t. $[T]_{\mathcal{B}}$ diagonal.
+	The rest is trivial.
+\end{proof}
