@@ -101,6 +101,8 @@ a vector space of dimension $d$.
 	In this case the vector $\nabla f$ is called \vocab{normal direction vector}.
 \end{example}
 
+\subsection{Smooth maps between manifolds}
+\label{sub:Smooth maps between manifolds}
 Next we'll briefly introduce the differential maps between manifolds.
 Since the differentiation on manifolds is hard to define, so what we
 do is actually regarding manifolds as $\mathbb{R}^{d}$ locally and
@@ -142,7 +144,16 @@ a smooth map.
 		& N \subset \mathbb{R}^{n}
 	\end{tikzcd}
 	\end{equation*}
-	
+	TODO: fix this
 
 	On the other hand,
+	let $\wt{\tau}$ be the projection from $U$ to $V$,
+	then $F = f\circ \Phi^{-1}\circ \wt{\tau}\circ \Phi$ satisfies
+	the desired condition.
 \end{proof}
+
+\begin{example}
+    Let $A$ be an orthogonal map in $\mathbb{R}^{3}$,
+	then $A$ can be restricted to $S^2 \to S^2$.
+\end{example}
+

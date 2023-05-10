@@ -1,2 +1,3 @@
-\contentsline {subsection}{\numberline {0.1}Submanifolds in Euclid space}{1}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Tangent space}{4}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.1}Tangent space}{2}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Smooth maps between manifolds}{4}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.3}Conditional extremum problem}{6}{subsection.0.3}%

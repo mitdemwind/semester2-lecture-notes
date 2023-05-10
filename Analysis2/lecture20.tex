@@ -1,0 +1,153 @@
+%! TeX root = ./main.tex
+\begin{definition}[Tangent map]
+	Let $f: M\to N$ be a map between manifolds, $v\in T_pM$.
+	Let  $\gamma: (-\varepsilon, \varepsilon)\to M$ be a parametrized curve with
+	$\gamma(0) = p, \gamma'(0) = v$,
+	then $f(\gamma(t))$ is a curve on $N$.
+	\[
+	\dd f(p)(v) = \frac{\dd}{\dd t}f(\gamma(t)) \Big|_{t=0}\in T_{f(p)}N.
+	\]
+	Thus $\dd f(p): T_p M\to T_{f(p)}N$ is a map between tangent spaces.
+
+	In fact, if $f = F\big|_{M}$, then $\dd f(p)(v) = \dd F(p) \cdot v$.
+\end{definition}
+
+\begin{definition}[Tangent bundle]
+	Let $M$ be a manifold, $\forall p\in M$, there's a tangent space $T_p M$.
+	Define the \vocab{tangent bundle} of $M$ to be
+	\[
+	TM = \bigsqcup_{p\in M}T_pM.
+	\]
+	If $X$ is a map $M \to TM$: $p\mapsto X(p)$,
+	with $X(p)\in T_pM$, then
+	it's called a \vocab{tangent vector field}.
+
+	In other words, a tangent vector field is just to assign a tangent vector
+	to every point in $M$.
+\end{definition}
+
+\begin{proposition}
+	Let $M \subset \mathbb{R}^{n}$ be a manifold, all its tangent vector
+	field form a $C^\infty$ module $T(M, TM)$, i.e.
+	$\forall f\in C^\infty(M)$, $X, Y$ are smooth vector fields,
+	then $fX, X+Y$ are both smooth vector fields.
+\end{proposition}
+
+\begin{proposition}
+	Let $M \subset \mathbb{R}^{n}$ be a smooth manifold, we have
+	\[
+	TM = \{(x, v)\mid x\in M, v\in T_xM\}
+	\]
+	is a smooth manifold in $\mathbb{R}^{2n}$, and $\dim TM = 2\dim M$.
+\end{proposition}
+\begin{proof}[Proof]
+    There exists a local homeomorphism $\phi: V\to U \subset\mathbb{R}^n$ s.t.
+	$V \subset \mathbb{R}^d$, $\phi(V) = M\cap U$.
+
+	Define map $T\phi: V \times  \mathbb{R}^n \to U \times \mathbb{R}^n$,
+	$(x, v)\mapsto (\phi(x), \dd \phi(x)\cdot v)$.
+	Since $T\phi$ is injective($\phi$ is homeomorphism), and
+	\[
+	\dd T\phi = \begin{pmatrix}
+		\dd \phi & 0\\ \dd(\dd \phi)(v) & \dd \phi
+	\end{pmatrix}
+	\]
+	is non-degenerate, so $T\phi$ is a bijection and hence differential homeomorphism.
+
+	Since the tangent space of $V$ is just $\mathbb{R}^{d}$,
+	so $T(U\cap M)$ is the image of $T\phi$ restricted on $V \times \mathbb{R}^{d}$.
+	(Note that $\dd \phi(x) \cdot v\in T_{\phi(x)} M$)
+	Thus $T M$ is a manifold in $\mathbb{R}^{2n}$ with dimension $2d$.
+\end{proof}
+\begin{definition}[Tangent maps]
+	Earlier we know that $\dd f (p)$ is a map $T_p M\to T_{f(p)}N$,
+	combined with tangent bundle we can write $\dd f: TM \to TN$,
+	this map is called the \vocab{tangent map} or the \vocab{differentiation} of $f$.
+\end{definition}
+
+If we have a vector field $X$ and a smooth function $f: M\to \mathbb{R}^n$,
+consider
+\[
+X(f)(p) = \dd f(X)(p) := \frac{\dd}{\dd t}f(\gamma(t))\Big|_{t=0},\quad
+\gamma(0) = p, \gamma'(0) = X(p).
+\]
+So $X$ induces a smooth map $C^\infty(M) \to C^\infty(M)$.
+
+Now we can generalize a well known result to manifolds:
+\begin{proposition}
+	Let $M \subset \mathbb{R}^{n}$ be a smooth manifold, $f\in C^\infty(M)$.
+	If $f$ achieves a local extremum at $p\in M$,
+	we must have $\dd f(p) = 0$.
+\end{proposition}
+\begin{proof}[Proof]
+    It suffices to prove $\dd f(p)(v) = 0$, $\forall v\in T_pM$.
+	Take  $\gamma$ s.t. $\gamma(0) = p, \gamma'(0) = v$,
+	then $f(\gamma(t))$ achieves its extremum at $t = 0$,
+	so $\frac{\dd}{\dd t} f(\gamma(t))\big|_{t = 0} = 0 = \dd f(p) (v)$.
+\end{proof}
+
+\subsection{Conditional extremum problem}
+\label{sub:Conditional extremum problem}
+Consider a function $f(x_1, \dots, x_n): \mathbb{R}^{n}\to \mathbb{R}$ and
+some constraint conditions
+\[
+\left\{\begin{aligned}
+		g_1(x_1,&\dots, x_n) = 0\\ &\vdots\\ g_m(x_1,&\dots, x_n) = 0
+\end{aligned}
+\right.
+\]
+We want to compute the extremum of $f$ under these conditions.
+
+Well, you probably heard of \textit{Lagrange multipliers},
+i.e. let
+\[
+L(x_1,\dots,x_n,\lambda_1,\dots,\lambda_m) = f(x) -
+\sum_{j=1}^{m} \lambda_jg_j(x).
+\]
+
+But here we'll provide a different point of view.
+Let $M$ be the manifold in $\mathbb{R}^n$ under those conditions,
+Suppose $p\in M$ is a local extremum of $f$, then $T_pM \subset \ker\dd f(p)$.
+
+Also recall that $T_p M = \ker \dd g(p) = \bigcap_{j=1}^m \ker \dd g_j(p)$.
+This means that, $\exists \lambda_1,\dots,\lambda_m$ s.t.
+\[
+\dd f(p) = \sum_{j=1}^{m} \lambda_j \dd g_j(p).
+\]
+Surprisingly, we get the same result of Lagrange multipliers!
+Hence what we've done is to give a geometrical comprehension of
+Lagrange multipliers.
+
+\begin{example}
+    Let $g: \mathbb{R}^n\to \mathbb{R}$ be the constraint function,
+	then $f$ can achieve its extremum only if $\dd f = \lambda \dd g$.
+
+	For example, let $f(x) = d(x, z)^2$, $\dd f(x) = 2(x_1-z_1,\dots, x_n-z_n)$,
+	so $\dd f = \lambda \dd g$ means the vector $\dd f(p)$ is orthogonal
+	to the tangent plane of $M = \{g = 0\}$.
+\end{example}
+
+\begin{proposition}[Hadamaid's inequality]
+	Let $v_1,\dots,v_n\in \mathbb{R}^{n}$, then
+	\[
+	|\det(v_1,\dots,v_n)|\le |v_1|\cdots|v_n|.
+	\]
+\end{proposition}
+\begin{proof}[Proof]
+	Let $f : \mathbb{R}^{n^2}\to \mathbb{R}$,
+	$(v_1,\dots,v_n)\mapsto \det(v_1,\dots,v_n)$ with constraint $|v_i| = 1$.
+    Let $v_{ij}\in \mathbb{R}$,
+	\[
+	g_i(V) = -1 + \sum_{j=1}^{n} v_{ij}^2.
+	\]
+	The manifold determined by $g_i$ is $M = (S^{n-1}) ^n$.
+	The extremum point of $f$ in $M$ must satisfy:
+	\[
+		\pfr{f}{v_{i_0j}} - \lambda_{i_0}\pfr{g_{i_0}}{v_{i_0j}} = 0.
+	\]
+	This implies $v_{i_0j}^* = 2\lambda_{i_0}v_{i_0j}$, where
+	$v_{i_0j}^*$ is the \textit{cofactors} of $v_{i_0j}$.
+
+	This means that $\sum_{j=1}^n v_{i_0j} v_{kj} = 0$,
+	so $V$ must be an orthogonal matrix, so $|f|\le 1$.
+\end{proof}

@@ -1,0 +1,178 @@
+%! TeX root = ./main.tex
+\begin{lemma}
+	$|\varphi|(A) = 0\iff \varphi(B) = 0, \forall B \subset A$.
+\end{lemma}
+\begin{proof}[Proof]
+    Just write $|\varphi| = \varphi^+ + \varphi^-$,
+	we know $\varphi(B) = 0$.
+
+	Conversely, $\varphi(X^\pm \cap A) = 0\implies |\varphi|(A) = 0$.
+\end{proof}
+
+\subsection{Radon-Nikodym theorem}
+\label{sub:Radon-Nikodym theorem}
+We assume the functions and sets below are all measurable.
+Let $(X, \mathscr{F})$ be a measurable space, $\varphi$ a signed measure.
+
+\begin{definition}[R-N derivative]
+	If there exists a a.e. unique function $f$ s.t.
+	\[
+	\varphi(A) = \int_A f\dd \mu, \quad \forall A\in \mathscr{F},
+	\]
+	we say $f$ is the \vocab{Radon-Nikodym derivative} of $\varphi$
+	with respect to $\mu$, abbreviated by R-N derivative or derivative,
+	denoted by $\frac{\dd\varphi}{\dd \mu}$.
+\end{definition}
+\begin{remark}
+    When $\mu$ is $\sigma$-finite, then $f$ must be unique a.e..
+\end{remark}
+
+\begin{definition}[Absolute continuity]
+	If $\forall A\in \mathscr{F}$,
+	\[
+	\mu(A) = 0 \implies \varphi(A) = 0,
+	\]
+	then we say $\varphi$ is \vocab{absolutely continuous} with
+	respect to $\mu$, denoted by $\varphi\ll \mu$.
+\end{definition}
+Observe that
+\[
+\mu(A) = 0\implies \mu(A\cap X^\pm) = 0\implies \varphi^\pm(A) = 0,
+\]
+so $\varphi\ll\mu \iff \varphi^\pm\ll \mu \iff |\varphi|\ll\mu$.
+
+It's obvious that $\frac{\dd\varphi}{\dd\mu}$ exists only if $\varphi\ll\mu$,
+but it turns out that this is also the sufficient condition
+when $\mu$ is a $\sigma$-finite measure.
+
+We can't prove this directly, so we'll prove some easy cases first.
+\begin{lemma}
+	Let $\varphi, \mu$ be finite measures. Then
+	\[
+	\exists f\in \mathscr{L}:= \left\{g\in L_1: g\ge 0,
+	\int_A g\dd\mu\le \varphi(A), \forall A\right\},
+	\]
+	such that $\int_X f\dd\mu = \sup \int_X g\dd \mu$.
+\end{lemma}
+\begin{proof}[Proof]
+    This is somehow similar to find simple functions
+	approaching non-negative measurable functions.
+
+	First let $\beta = \sup\int_X g\dd \mu$, and choose $g_k$ s.t.
+	$\int_X g_k\dd \mu \to \beta$.
+
+	Let $f_n := \max_{k\le n}g_k$, and $f_n \uparrow f$.
+	By Levi's theorem, $\int_A f\dd\mu = \lim_{n\to \infty}f_n\dd \mu$,
+	so if $f_n\in \mathscr{L}$, $f\in \mathscr{L}$ as well.
+	Let $A_k = A\cap \{f_n = g_k, f_n\ne g_j, j< k\}$ be a partition of $A$,
+	\[
+	\int_A f_n\dd\mu = \sum_{k=1}^{n} \int_{A_k} g_k\dd\mu
+	\le \sum_{k=1}^{n} \varphi(A_k) = \varphi(A).
+	\]
+	Thus $f_n\in \mathscr{L}$, we have $\int_X f \dd\mu = \beta\ge \int_Xg\dd\mu$,
+	for all $g\in \mathscr{L}$.
+\end{proof}
+\begin{proposition}
+	Suppose $\varphi, \mu$ are both finite, then $\varphi\ll \mu\implies
+	\frac{\dd\varphi}{\dd \mu}$ exists.
+\end{proposition}
+\begin{proof}[Proof]
+	Decompose $\varphi$ to $\varphi^+ - \varphi^-$, we may assume $\varphi\ge 0$.
+
+    Starting from previous lemma, we'll prove that $\int_A f\dd\mu = \varphi(A)$.
+	Let $\nu(A) = \varphi(A) - \int_A f\dd \mu$ be a measure.
+
+	Let $\nu_n$ be increasing signed measures.
+	\[
+		\nu_n(A):= \nu(A) - \frac{1}{n}\mu(A), \quad \forall A\in \mathscr{F}.
+	\]
+	Let $X_n^\pm$ be the Hahn decomposition of $\nu_n$, and
+	\[
+	X^+ = \bigcup_{n=1}^\infty X_n^+,\quad
+	X^- = \bigcap_{n=1}^\infty X_n^-.
+	\]
+	First since $X^- \subset X_n^-$,
+	\[
+		\nu(X^-) = \nu_n(X^-) + \frac{1}{n}\mu(X^-)\le \frac{1}{n}\mu(X^-)\to 0.
+	\]
+	We have $f + \frac{1}{n}\ii_{X_n^+}\in \mathscr{L}$ since
+	\begin{align*}
+		\int_A\left(f+\frac{1}{n}\ii_{X_n^+}\right)\dd\mu
+		&= \varphi(A) - \nu(A) + \frac{1}{n}\mu(X_n^+ \cap A)\\
+		&\le \varphi(A) - \nu(X_n^+\cap A) + \frac{1}{n}\mu(X_n^+\cap A)\\
+		&=\varphi(A) - \nu_n(X_n^+\cap A) \le \varphi(A).
+	\end{align*}
+	So we have $\int_X f\dd\mu \ge \int_X (f+\frac{1}{n}\ii_{X_n^+})\dd\mu$,
+	$\mu(X_n^+) = 0 \implies \mu(X^+) = 0$.
+
+	Since $\varphi\ll \mu$,  $\varphi(X^+) = 0\implies \nu(X^+) = 0$.
+\end{proof}
+
+\begin{proposition}
+	Let $\varphi$ be a $\sigma$-fintie signed measure,  $\mu$ be a finite measure,
+	if $\varphi\ll \mu$, then $\frac{\dd\varphi}{\dd\mu}$ exists and
+	its integral exists.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $X = \sum_{n=1}^{\infty} A_n$, $|\varphi(A_n)| <\infty$,
+	then the R-N derivative $f_n$ exists on $A_n$,
+
+	Let $f = \sum_{n=1}^{\infty} f_n\ii_{A_n}$, then $f$ finite a.e.,
+	\[
+	\varphi(A\cap A_n) = \int_{A\cap A_n}f_n \dd\mu = \int_{A\cap A_n}f\dd \mu.
+	\]
+	WLOG $\varphi^-$ finite, then
+	\[
+	\varphi(\{f<0\}\cap A_n) = \int_{A_n}f^-\dd\mu = \int_{A_n}f_n^-\dd\mu
+	\ge -\varphi^-(A_n)
+	\]
+	So the integral of $f$ exists.
+
+	Since $\varphi$ is countably additive and the integral of $f$ exists,
+	we can add the above equality to get the desired.
+\end{proof}
+
+\begin{proposition}
+	Let $\varphi$ be a signed measure, the above conclusion also holds.
+\end{proposition}
+\begin{proof}[Proof]
+    Let
+	\[
+	\mathscr{G}:=\left\{\sum_{n=1}^{\infty} A_n :
+	|\varphi(A_n)|< \infty, n=1,2,\dots\right\}.
+	\]
+	Since $\emptyset\in \mathscr{G}$, and it's closed under set difference:
+	\[
+	\sum_{n=1}^{\infty} A_n \backslash \sum_{n=1}^{\infty} B_n
+	= \sum_{n=1}^{\infty} (A_n \backslash B)
+	\]
+	by $A_n \backslash B \subset A_n$,
+	we have $|\varphi(A_n \backslash B)| < \infty$.
+
+	$\mathscr{G}$ is a $\sigma$-ring.
+
+	There exists  $B$ s.t. $\mu(B) = \gamma:= \sup\{\mu(A): A\in \mathscr{G}\}$.
+	Just take $\mu(B_n) \to \gamma, B = \bigcup_{n=1}^\infty B_n$.
+
+	So $\varphi$ is $\sigma$-finite on  $(B, B\cap \mathscr{F})$,
+	the R-N derivative exists.
+
+	For all $C \subset B^c$, we must have $\varphi(C) = 0$ or $ \infty$.
+	TODO!!
+\end{proof}
+
+At last we come to the full statement:
+\begin{theorem}
+    Let $\varphi$ be a signed measure, $\mu$ a $\sigma$-finite measure,
+	if  $\varphi\ll\mu$, then $\frac{\dd \varphi}{\dd \mu}$ exists.
+\end{theorem}
+\begin{example}
+    Let $X = \mathbb{R}$, $\mu(A) = \#A$, $\mu$ is not $\sigma$-finite.
+	Let  $\varphi(A) = 0$ when $A$ countable, $1$ otherwise.
+
+	In this case the R-N derivative doesn't exist, otherwise
+	\[
+	0 = \varphi(\{x\}) = \int_{\{x\}} f\dd \mu = f(x)\mu(x) = f(x),
+	\]
+	contradiction!
+\end{example}
