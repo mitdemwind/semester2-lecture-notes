@@ -1,0 +1,174 @@
+%! TeX root = ./main.tex
+\section{Bilinear forms on inner product space}
+\label{sec:Bilinear forms on inner product space}
+Let $V$ be a finite dimensional vector space, $\dim V = n$.
+\begin{definition}
+	Let $F = \mathbb{C}$, we say a function $f: V\times V \to V$ is
+	a \vocab{semi bilinear form} if:
+	\begin{itemize}
+		\item $f(c_1\alpha + \beta, \gamma) = c_1f(\alpha, \gamma) + f(\beta, \gamma)$;
+		\item $f(\alpha, c_1\beta + \gamma) = \overline{c}_1f(\alpha, \beta)+f(\alpha, \gamma)$.
+	\end{itemize}
+
+	Let $\form(V)$ denote the (semi) bilinear forms on (complex) real vector space $V$.
+\end{definition}
+
+For $f \in \form(V)$, fix a basis $\mathcal{B} = \{\alpha_1,\dots, \alpha_n\}$ of $V$,
+let $[f]_{\mathcal{B}}\in F^{n\times n}$ be the matrix
+\[
+	([f]_{\mathcal{B}})_{jk} = f(\alpha_k, \alpha_j).
+\]
+which is called \vocab{the matrix of $f$ under $\mathcal{B}$}.
+
+For $\alpha = \sum_{k=1}^{n} x_k\alpha_k, \beta = \sum_{j=1}^{n} y_j\alpha_j\in V$.
+It's clear that
+\[
+f(\alpha, \beta) = \sum_{j, k = 1}^{n} x_k \overline{y}_j f(\alpha_k, \alpha_j)
+= \sum_{j, k = 1}^{n} x_k \overline{y}_j ([f]_{\mathcal{B}})_{jk}
+= [\beta]_{\mathcal{B}}^* [f]_{\mathcal{B}} [\alpha]_{\mathcal{B}}.
+\]
+
+From this we know that the map $\form(V) \to F^{n\times n}, f\mapsto [f]_{\mathcal{B}}$
+is a linear isomorphism.
+Since if $[f]_{\mathcal{B}} = 0$, then $f(\alpha, \beta) = 0$ for all $\alpha, \beta\in V$.
+Thus it's injective. Obviously it's surjective and linear,
+so
+\[
+	\dim \form(V) = n^2
+\]
+
+\begin{example}
+    Let $A\in F^{n\times n}$. Let $f\in \form(F^{n\times 1})$ be
+	\[
+	f(X, Y) = Y^*AX, \quad \forall X, Y\in F^{n\times 1}.
+	\]
+	Let $\mathcal{B}$ be the standard basis of $F$,
+	it's clear that $[f]_{\mathcal{B}} = A$.
+\end{example}
+\begin{proposition}
+	Let $\mathcal{B}' = \{\alpha_1', \dots, \alpha_n'\}$ be another basis of $V$,
+	$P\in \GL_n(F)$ satisfies
+	\[
+		(\alpha_1',\dots, \alpha_n') = (\alpha_1, \dots, \alpha_n) P.
+	\]
+	Then $[f]_{\mathcal{B}'} = P^*[f]_{\mathcal{B}}P$.
+\end{proposition}
+\begin{proof}[Proof]
+	Since $[\alpha]_{\mathcal{B}} = P[\alpha]_{\mathcal{B}'}$,
+	just plug this into the definition of $[f]_{\mathcal{B}}$, the rest is trivial.
+\end{proof}
+
+\begin{definition}
+	Let $f\in \form(V)$.
+	\begin{itemize}
+		\item When $F = \mathbb{R}$, if $\forall \alpha, \beta \in V$ we have
+			$f(\alpha, \beta) = f(\beta, \alpha)$, then we say $f$ is symmetrical
+			(also called Hermite);
+		\item When $F = \mathbb{C}$, if $\forall \alpha, \beta \in V$ we have
+			$f(\alpha, \beta) = \overline{f(\beta, \alpha)}$, we say $f$ is Hermite.
+	\end{itemize}
+\end{definition}
+\begin{proposition}
+	When $F = \mathbb{C}$, $f$ Hermite $\iff f(\alpha, \alpha) \in \mathbb{R}$,
+	$\forall \alpha\in V$.
+\end{proposition}
+\begin{proof}[Proof]
+    For the ``$\impliedby$'' direction,
+	consider $f(\alpha + \beta, \alpha + \beta)\in \mathbb{R}$.
+	Expanding we'll get $f(\alpha, \beta)+f(\beta, \alpha) \in \mathbb{R}$, i.e.
+	\[
+	f(\alpha, \beta) + f(\beta, \alpha) = \overline{f(\alpha, \beta)} +
+	\overline{f(\beta, \alpha)}.
+	\]
+	Replace $\alpha$ with $i\alpha$, we get
+	\[
+	f(\alpha, \beta) - f(\beta, \alpha) = -\overline{f(\alpha, \beta)} +
+	\overline{f(\beta, \alpha)}.
+	\]
+	Combining two equations we get the conclusion.
+\end{proof}
+
+\begin{definition}
+	Let $f\in \form(V)$ be an Hermite form.
+	If $\forall \alpha \in V \backslash\{0\}$, $f(\alpha, \alpha) > 0$,
+	we say $f$ is \vocab{positive definite}.
+
+	Similarly we can define negative definite and semi positive definite.
+\end{definition}
+Note that a positive definite Hermite form is nothing but an inner product.
+
+It's clear that if a matrix $A$ is positive definite, then $A$ is inversible,
+and $P^*AP$ is also positive definite.
+In particular, $P^*P$ is positive definite.
+\begin{theorem}[Cholesky decomposition]
+    Let $A\in F^{n\times n}$ be a positive definite matrix, there exists
+	a unique upper triangular matrix $R$ with positive diagonal entries
+	s.t. $A = R^*R$.
+\end{theorem}
+\begin{proof}[Proof]
+    Consider the inner product $f(X, Y) = Y^*AX$.
+	Let the standard inner product on $V$ be $f_0(X, Y) = Y^*X$.
+
+	Since inner product spaces with same dimensions are isomorphic,
+	so there exists a matrix $R\in \GL_n(F)$, such that
+	\[
+		R: (F^{n\times 1}, f)\to (F^{n\times 1}, f_0),\quad X\mapsto RX
+	\]
+	is an isomorphism of inner product space, i.e. $f_0(RX, RY) = f(X, Y)$.
+	This is equivalent to $A = R^*R$.
+
+	For any $P\in GL_n(F)$, $P$ is also an isomorphism of $(F^{n\times 1}, f) \to
+	(F^{n\times 1}, f_0)$ iff $RP^{-1}$ preserves the inner product $f_0$,
+	iff $RP^{-1}\in \mathrm{O}(n)$ or $\mathrm{U}(n)$.
+
+	By QR decomposition, $R = RP^{-1} \cdot P$, so there must be a unique $P$ s.t.
+	$P$ upper triangular with positive diagonal entries.
+\end{proof}
+\begin{corollary}
+    $A$ positive definite $ \implies \det A > 0$.
+\end{corollary}
+
+\begin{definition}
+	Let $A\in F^{n\times n}$, for $1\le k \le n$, define
+	\[
+	\Delta_k(A) := \det (A_{1\le i\le k}^{1\le j\le k})
+	\]
+	be the \vocab{leading principal minor}.
+\end{definition}
+\begin{theorem}
+    Let $A\in F^{n\times n}$ be an Hermite matrix.
+	Then $A$ positive definite $\iff \Delta_k(A) > 0$, $k = 1,\dots, n$.
+\end{theorem}
+
+\begin{lemma}[LU decomposition]
+	Let $F$ be \textit{any field}. For $A\in \GL_n(F)$, the followings are equivalent:
+	\begin{itemize}
+		\item $\Delta_k(A) \ne 0, k = 1,\dots, n$;
+		\item  $A = LU$, where $L$ lower triangular, and $U$ upper triangular
+			with diagonal entries 1.
+	\end{itemize}
+\end{lemma}
+\begin{proof}[Proof]
+	On one hand,
+    Let $L_k, U_k$ be the top-left $k\times k$ submatrix of $L, U$,
+	since $L, U$ inversible, $L_k, U_k$ inversible.
+	By the triangular property, $\Delta_k(A) = \det(L_kU_k)\ne 0$.
+
+	On the other hand, it's sufficient to prove:
+	\[
+	\exists N\text{ strictly upper triangular}, A(N + I_n) \text{ lower triangular}
+	\]
+	Let $A_k$ be the $k$-th leading principal submatrix of $A$,
+	and $\alpha_{k+1}, \beta_{k+1} \in F^{n\times 1}$ the $(k+1) $-th column of $A, N $.
+
+	Now compute the first $k$ rows of the $(k+1)$-th column of  $A(N+I)$,
+	which is equal to $A_k\beta_{k+1}' + \alpha_{k+1}'$,
+	where $\alpha_{k+1}', \beta_{k+1}'$ is the first $k$ entries
+	of $\alpha_{k+1}, \beta_{k+1}$.
+
+	Since $A_k$ inversible, $\exists \beta_{k+1}'$ s.t.
+	$A_k\beta_{k+1}' + \alpha_{k+1}' = 0$.
+
+	Hence these $\beta_{k+1}'$ forms a strictly upper triangular matrix $N$,
+	as desired.
+\end{proof}

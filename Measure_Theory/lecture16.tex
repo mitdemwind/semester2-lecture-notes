@@ -1,0 +1,207 @@
+%! TeX root = ./main.tex
+\begin{remark}
+    If $\mu, \nu$ are $\sigma$-finite measures,  $\nu \ll \mu$, then
+	\[
+	\int_X \ii_A \dd \nu = \int_X \ii_A \frac{\dd\nu}{\dd\mu}
+	\implies \int_X f\dd\nu = \int_X f \frac{\dd\nu}{\dd\mu}.
+	\]
+\end{remark}
+
+\subsection{The dual space of $L_p$}
+\label{sub:The dual space of $L_p$}
+Let $(X, \mathscr{F}, \mu)$ be a measure space, $1< p< \infty$.
+
+Recall that $f_n \xrightarrow{(w)L_p} f$ is defined as
+\[
+\lim_{n\to \infty} \int_Xf_ng\dd\mu = \int_X fg\dd \mu, \quad \forall g\in L_q.
+\]
+By Holder's inequality,
+\[
+\left|\int_X fg\dd\mu\right| \le \lVert g \rVert _q \lVert f \rVert _p,
+\quad \forall f\in L_p, g\in L_q.
+\]
+Thus given any $g\in L_q$, we can induce a \vocab{funtional} on $L_p$,
+moreover it's linear and bounded.
+
+\begin{definition}
+	We say a funtional $\Phi: L_p \to \mathbb{R}$ is bounded linear if:
+	\[
+	|\Phi(f)| \le C\lVert f \rVert _p, \quad
+	\Phi(f_1 + cf_2) = \Phi(f_1) + c\Phi(f_2).
+	\]
+\end{definition}
+We can easily see that $\Phi$ is continuous:
+\[
+\lVert f_n - f \rVert _p \to 0 \implies |\Phi(f_n) - \Phi(f)| \to 0.
+\]
+Let $ \lVert \Phi \rVert := \inf C = \sup_{\lVert f \rVert _p = 1}|\Phi(f)|$.
+
+For all $A\in \mathscr{F}$, $\Phi_A := \Phi(f\ii_A)$ is also
+a linear and bounded functional.
+It's clear that $ \lVert \Phi_A \rVert \le \lVert \Phi \rVert $.
+
+Let $\Phi_g$ denote the functional induced by $g\in L_q$ :
+\[
+\Phi_g : f\mapsto \int_X fg\dd\mu,
+\quad |\Phi_g(f)| \le \lVert g \rVert _q \lVert f \rVert _p.
+\]
+Moreover, take $f = |g|^{q-1}\mathrm{sgn}(g)$,
+we found that $ \lVert \Phi_g \rVert = \lVert g \rVert _q$.
+We check it here:
+\[
+\int_X |f|^p \dd\mu = \int_X |g|^{p(q-1)}\dd\mu = \int_X |g|^{q}\dd\mu,
+\]
+so $f\in L_p$, $ \lVert f \rVert _p = \lVert g \rVert _q^{\frac{q}{p}}
+= \lVert g \rVert _q^{q-1}$.
+Thus the equality of Holder's inequality holds.
+
+In fact $L_q$ contains all the bounded linear functionals of $L_p$:
+\begin{theorem}
+    The dual space of $L_p$ is $L_q$, i.e. $L_p^* = L_q$.
+\end{theorem}
+
+The critical part is to use a signed measure $\varphi$ to determine $g$:
+\[
+\varphi(A) = \int_A g\dd\mu = \int_X \ii_A g\dd\mu = \Phi(\ii_A),
+\quad A\in \mathscr{F}.
+\]
+We're faced with two main problems:
+\begin{itemize}
+	\item $\ii_A$ may not be in $L_p$.
+	\item $\mu$ may not be $\sigma$-finite, so the derivative may not be unique.
+\end{itemize}
+
+To solve these problem, we'll start from finite measure,
+and proceed by finite $\to$ $\sigma$-finite $\to$ arbitary.
+
+\begin{proposition}
+	If $\mu$ is a finite measure, then $L_p^* = L_q$.
+\end{proposition}
+\begin{proof}[Proof]
+    For any bounded linear functional $\Phi$, let $\varphi(A) = \Phi(\ii_A)$,
+	\[
+	|\varphi(A)|\le C\lVert \ii_A \rVert _p = C \mu(A)^{\frac{1}{p}},
+	\]
+	so $\varphi$ is finite and $\varphi\ll\mu$.
+
+	Clearly $\varphi(\emptyset) = 0$, and $\varphi(A + B) = \varphi(A) + \varphi(B)$.
+
+	For countable additivity, let $A = \sum_{n=1}^{\infty} A_n$,
+	$B_N = \sum_{n=N+1}^{\infty} A_n$, since $\mu(A)$ finite,
+	\[
+	\left| \varphi(A) - \sum_{n=1}^{N} \varphi(A_n) \right| = |\varphi(B_N)|
+	\le C \mu(B_N)^{\frac{1}{p}} \to 0.
+	\]
+	By $\varphi\ll \mu$, let $g = \frac{\dd\varphi}{\dd\mu}$.
+	We have $|g|< \infty, a.e.$ and $g\in L^1$, so
+	\[
+	\Phi(\ii_A) = \varphi(A) = \int_A g\dd\mu = \int_X \ii_A g\dd \mu,\quad
+	\forall A\in \mathscr{F}.
+	\]
+	By the linearity of $\Phi$, we know for simple functions
+	the above equation holds.
+
+	For $f\in L_p$ non-negative, we can take simple $f_n\uparrow f$,
+	so $\int f_n^p \dd\mu \uparrow \int f^p\dd\mu \implies f_n \xrightarrow{L_p} f $.
+
+	By the continuity of $\Phi$, $\Phi(f_n)\to \Phi(f)$.
+
+	For the integral part, let $X^+ = \{g \ge 0\}, X^- = \{g < 0\}$.
+	Then $f_n^\pm := f_n \ii_{X^\pm}$ non-negative simple,
+	and $f_n^\pm \xrightarrow{L_p} f^\pm := f\ii_{X^\pm}$.
+
+	Now we can use Levi's theorem to get
+	\[
+	\int_X f_n^\pm g\dd \mu \to \int_X f^\pm g\dd\mu.
+	\]
+	Note since LHS is  $\Phi(f_n^\pm)$, RHS must be $\Phi(f^\pm)\in \mathbb{R}$,
+	so we can safely apply $f = f^+ + f^-$.
+	At last $f$ non-negative $ \implies f$ measurable is easy, so we've proven
+	\[
+	\Phi(f) = \int_X fg\dd\mu,\quad \forall f\in L_p.
+	\]
+
+	Next we'll prove $g\in L_q$.
+	Let $A_n = \{|g|\le n\}$, let $g_n := g\ii_{A_n}$, clearly $g_n \in L_q$ as
+	the base measure is finite.
+
+	Since $\Phi_{g_n} = \Phi_{A_n}$, so
+	\[
+	\lVert g_n \rVert _q = \lVert \Phi_{A_n} \rVert \le \lVert \Phi \rVert.
+	\]
+
+	Now $|g_n| \uparrow |g|, a.e.$, by Levi
+	$\lVert g_n \rVert _q\to \lVert g \rVert _q$, so $\lVert g \rVert _q < \infty$.
+\end{proof}
+
+\begin{proposition}
+	When $\mu$ is $\sigma$-finite,  $L_p^* = L_q$.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $X = \sum_{n=1}^{\infty} X_n$, $\mu(X_n) < \infty$.
+
+	There exists $g_n$ on $X_n$ s.t. $\Phi_{X_n} = \Phi_{g_n}$.
+	Let $g = \sum_{n=1}^{\infty} g_n\ii_{X_n}$.
+
+	For $f\in L_p$, $\sum_{n=1}^{N} f\ii_{X_n}\xrightarrow{L_p} f$, we have
+	\[
+	\Phi(f) \leftarrow \Phi\left(\sum_{n=1}^{N} f\ii_{X_n}\right)
+	= \sum_{n=1}^{N} \Phi_{X_n}(f) = \sum_{n=1}^{N} \int_{X_n}fg\dd\mu.
+	\]
+	Similarly, let $A^+ = \{fg \ge 0\}, A^- = \{fg < 0\}$,
+	$f^\pm = f\ii_{A^\pm}$, we know the integral converges.
+
+	 $g\in L_q$ is also the same as before.TODO
+	 \[
+	 \lVert g \rVert _q =
+	 \lim_{N\to \infty} \left\lVert \sum_{n=1}^{N} g_n\ii_{X_n} \right\rVert
+	 \le \lVert \Phi_g \rVert = \lVert \Phi \rVert .
+	 \]
+\end{proof}
+
+\begin{proposition}
+	$\mu$ is an arbitary measure.
+\end{proposition}
+\begin{proof}[Proof]
+    If $\mu(A) < \infty$, consider $\Phi_A: f\mapsto \Phi(f\ii_A)$,
+	we can get $g_A$. 
+
+	If $A \subset B$, $\mu(B) < \infty$, then $g_B\ii_A = g_A, a.e.$,
+	$ \lVert \Phi_A \rVert \le \lVert \Phi_B \rVert$.
+
+	We can take $A_n\uparrow, \mu(A_n) < \infty$ s.t.
+	\[
+	\sup_n \lVert \Phi_{A_n} \rVert = \sup\{\lVert \Phi_A \rVert : \mu(A) < \infty\}.
+	\]
+	\begin{remark}
+	    Here we're using $A_n$ to replace $X_1 + \dots X_n$ in the previous proof.
+	\end{remark}
+
+	Let $g_n := g_{A_n} \uparrow g$, then $g\in L_q$:
+	\[
+	\lVert g \rVert _q^q = \int_X \lim_{n\to \infty} |g_n| ^q\dd\mu
+	\le \liminf_{n\to \infty}\int_X |g_n| ^q\dd\mu \le \lVert \Phi \rVert ^q.
+	\]
+
+	Let $A = \bigcup_{n=1}^\infty A_n$,
+	since $g\in L_q$, by Holder and LDC,
+	\[
+	\int_X fg\dd\mu \leftarrow \int_X fg_n\dd\mu = \Phi_{A_n}(f)
+	= \Phi(f\ii_{A_n}) \to \Phi(f\ii_A).
+	\]
+
+	The last part is to prove $\Phi(f\ii_{A^c}) = 0$.
+	Otherwise let $D_n = \{|f| > \frac{1}{n}\}\cap A^c$, then $\mu(D_n)<\infty$ since
+	\[
+	\mu(D_n) \le \mu\left(|f|>\frac{1}{n}\right)
+	\le \int_X (n|f| \ii_{D_n})^p \dd\mu < \infty.
+	\]
+	By LDC, $f\ii_{D_n} \xrightarrow{L_p} f\ii_ {A^c}$, so $\Phi(f\ii_{D_n})\ne 0$
+	for some $n$.
+	But $\mu(D) < \infty$, let $B_n = A_n + D$ we'll find a contradiction
+	on $\sup_n \lVert \Phi_{B_n} \rVert > \sup_n \lVert \Phi_{A_n} \rVert$.
+\end{proof}
+
+When $p = 1$, we can prove for $\sigma$-fintie measure $\mu$ that
+$L_1^* = L_\infty$.
+The method is the same as above.

@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1683709228 "main.tex" "main.pdf" "main" 1683709230 0
-  "../macros.tex" 1683514122 1764 640018a0f5794e6e327c2ed6515a3b41 ""
+["pdflatex"] 1683873993 "main.tex" "main.pdf" "main" 1683873994 0
+  "../macros.tex" 1683850628 1845 73b3f03d7b9b848b2674ad7ae61d8f0f ""
   "../preamble.tex" 1681111692 5008 c0fc89cf215d98646054ff2ab750867a ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -224,15 +224,15 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1676871738 4623355 58034c3eb7ddf7eacc726a83d01e26d2 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1676871762 7879246 a0e06bd93a50eeea2adb95467ae0402a ""
   "/usr/local/texlive/2022/texmf.cnf" 1676871735 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "lecture12.tex" 1682058884 6054 039b355d6a4e088f9c5610a4226dab87 ""
   "lecture13.tex" 1682652997 8712 9ea9d0db1bab56c3253cdfe13a8bc5f6 ""
   "lecture14.tex" 1682664624 8134 1854aa9b5f1ce8523ad5c888fba60aa5 ""
-  "lecture15.tex" 1683709226 5983 e97633f36147683ea76a2a55d4e97bc7 ""
-  "main.aux" 1683709229 11368 7cc58ab7f0b927d4e78fe8377d287e4d "pdflatex"
-  "main.out" 1683709229 1056 7ac7fef624cd6ec30459b489ccc1ac58 "pdflatex"
-  "main.pre" 1683709229 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1683702152 587 5bef3fdb3ad82f55253db3f9a21b3be9 ""
-  "main.toc" 1683709229 532 8f6d89231c79f7a56eb58da96c356a73 "pdflatex"
+  "lecture15.tex" 1683867344 6148 f7e8a8399380c57ae547141d19d496e3 ""
+  "lecture16.tex" 1683873991 6886 4e11412a62b383eace3c6dacd271e103 ""
+  "main.aux" 1683873994 11130 bdaca3d53c19483649a5ced8f319504d "pdflatex"
+  "main.out" 1683873994 1053 442aecff4ef7776b542e45a05fb0a880 "pdflatex"
+  "main.pre" 1683873994 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1683867087 608 00e352d700434d72a785389e18b0e50e ""
+  "main.toc" 1683873994 529 4c32c3954a8633c08c4886ba06aadf76 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

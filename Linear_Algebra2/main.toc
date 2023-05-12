@@ -1,3 +1,3 @@
-\contentsline {subsection}{\numberline {0.1}Adjoint maps}{1}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Orthogonal maps and Unitary maps}{3}{subsection.0.2}%
-\contentsline {subsection}{\numberline {0.3}Normal maps}{5}{subsection.0.3}%
+\contentsline {subsection}{\numberline {0.1}Orthogonal maps and Unitary maps}{2}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Normal maps}{4}{subsection.0.2}%
+\contentsline {section}{\numberline {1}Bilinear forms on inner product space}{7}{section.1}%

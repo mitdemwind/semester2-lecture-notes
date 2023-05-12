@@ -133,7 +133,7 @@ We can't prove this directly, so we'll prove some easy cases first.
 \end{proof}
 
 \begin{proposition}
-	Let $\varphi$ be a signed measure, the above conclusion also holds.
+	Let $\varphi$ be an arbitary signed measure, the above conclusion also holds.
 \end{proposition}
 \begin{proof}[Proof]
     Let
@@ -149,10 +149,13 @@ We can't prove this directly, so we'll prove some easy cases first.
 	by $A_n \backslash B \subset A_n$,
 	we have $|\varphi(A_n \backslash B)| < \infty$.
 
+	Clearly it's closed under countable disjoint union, combined with
+	difference sets we deduce it's closed under countable union, thus
 	$\mathscr{G}$ is a $\sigma$-ring.
 
-	There exists  $B$ s.t. $\mu(B) = \gamma:= \sup\{\mu(A): A\in \mathscr{G}\}$.
-	Just take $\mu(B_n) \to \gamma, B = \bigcup_{n=1}^\infty B_n$.
+	Note that there exists  $B$ s.t.
+	$\mu(B) = \gamma:= \sup\{\mu(A): A\in \mathscr{G}\}$.
+	(Since we can take $\mu(B_n) \to \gamma, B = \bigcup_{n=1}^\infty B_n$.)
 
 	So $\varphi$ is $\sigma$-finite on  $(B, B\cap \mathscr{F})$,
 	the R-N derivative exists.
