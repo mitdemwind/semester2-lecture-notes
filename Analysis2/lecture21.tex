@@ -1,0 +1,153 @@
+%! TeX root = ./main.tex
+\subsection{Convex functions}
+\label{sub:Convex functions}
+\begin{definition}[Hesse matrix]
+	Let $f: \Omega \subset\mathbb{R}^{n}\to \mathbb{R}$ be a $C^2$ function,
+	we call the Jacobi matrix of $\nabla f$ to be the \vocab{Hesse matrix} of $f$.
+	(Also called Hessian matrix)
+	\[
+	H_f(p) = \nabla^2 f(p) = \left(\pfr{}{x_i}\pfr{}{x_j}f(p)\right)_{i,j}.
+	\]
+	Since the partial derivatives commute, so $H_f$ is a symmetrical matrix,
+	hence diagonalizable.
+\end{definition}
+
+\begin{proposition}
+	Let $f\in C^2(\Omega)$, let $x_0$ be a minimum of $f$,
+	then $\nabla f(x_0) = 0$, and $H_f(x_0)$ is semi positive definite.
+\end{proposition}
+\begin{proof}[Proof]
+    By Taylor's expansion,
+	\[
+	f(x) = f(x_0) + \dd f(x_0) (x - x_0) + \frac{1}{2}(x-x_0)^TH_f(x_0)(x-x_0)
+	+ o(|x - x_0|^2).
+	\]
+	If $H_f(x_0)$ has a negative eigenvalue $-\lambda$, with
+	eigenvector $v$,
+	then $f(x_0 + tv) = f(x_0) - \frac{1}{2} \lambda t^2 |v|^2 + o(|tv|^2)$,
+	which contradicts with the minimality of $x_0$.
+\end{proof}
+
+\begin{proposition}
+	If $\nabla f(x_0) = 0$, $H_f(x_0)$ is positive definite,
+	then $x_0$ is a local minimum of $f$.
+\end{proposition}
+\begin{proof}[Proof]
+    Same as previous one.
+\end{proof}
+
+\begin{definition}[Convex functions]
+	If $f$ and $\Omega$ satisfies:
+	\[
+	\forall x,y\in \Omega, tx + (1-t)y \in \Omega, \quad
+	f(tx + (1-t)y) \le tf(x) + (1-t) f(y)
+	\]
+	we say $\Omega$ is a \vocab{convex set} and $f$ a \vocab{convex function}.
+\end{definition}
+
+\begin{theorem}[Jensen's inequality]
+    Let $f$ be a convex function on $\Omega$.
+	Real numbers $t_i\ge 0, \sum_{i=1}^{N} t_i = 1$, for $x_i\in \Omega$,
+	\[
+	f\left(\sum_{i=1}^N t_i x_i\right) \le \sum_{i=1}^{N} t_if(x_i).
+	\]
+\end{theorem}
+
+\begin{example}[Convex functions]
+    Linear functions $f(x) = Ax + b$ are convex.
+
+	The norm function $\lVert \cdot \rVert: \mathbb{R}^{n}\to \mathbb{R}$ is convex.
+	Also let $A$ be an $n\times n$ positive definite matrix,
+	then $f(x) = x^T A x$ is convex.
+\end{example}
+
+Just like the one dimensional case, convex functions have nice properties.
+\begin{theorem}
+    Let $f$ be a convex function on an open convex set $\Omega$,
+	then $f$ is continuous, and Lipschitz continuous in any compact set, i.e.
+	\[
+	|f(x) - f(y)| \le M|x - y|,\quad x,y\in U
+	\]
+	where $U$ is a compact set.
+\end{theorem}
+\begin{proof}[Proof]
+    WLOG $0\in \Omega$, take an orthogonal basis $e_1, \dots, e_n$.
+	Let
+	\[
+	x = \sum_{i=1}^{n} \lambda_i \overline{e}_i, \quad \overline{e}_i
+	= e_i \text{ or } -e_i, \lambda_i \ge 0.
+	\]
+	When $|x|$ sufficiently small, $\sum_{i=1}^n \lambda_i < 1$,
+	so by Jensen's inequality,
+	\[
+	f(x) \le \sum_{i=1}^{n} \lambda_i f(\overline{e}_i) + \lambda f(0),
+	\]
+	\[
+	f(x) - f(0) \le \sum_{i=1}^{n} \lambda_i(f(\overline{e}_i) - f(0))
+	\le \left(\sum_{i=1}^{n} \lambda_i^2\right)^{\frac{1}{2}}
+	\left(\sum_{i=1}^{n} (f(\overline{e}_i) - f(0)) ^2\right)^{\frac{1}{2}}
+	\le |x| C,
+	\]
+	since we can change the length of $e_i$,
+	and $f$ is continuous on a straight line.
+
+	This means $f$ is continuous.
+	For the second part, let $\lambda_0 = \frac{1}{1 + \sum_{i=1}^{n} \lambda_i}$,
+	since $0 = \lambda_0 x + \sum_{i=1}^{n} \lambda_0 \lambda_i (- \overline{e}_i)$,
+	by Jensen's inequality, we'll get the desired property.
+\end{proof}
+
+\begin{proposition}
+	Let $f$ be a differentiable function on a covex set $\Omega$,
+
+	$f$ is convex $\iff f(x) \ge f(x_0) + \dd f(x_0) (x - x_0)$.
+\end{proposition}
+\begin{proof}[Proof]
+    If $f$ is convex,
+	just use the definition and let $t\to 0$:
+	\[
+	f(x_0) + f'(x_0) t(x - x_0) + o(t(x - x_0)) \le tf(x) + (1-t) f(x_0).
+	\]
+
+	Conversely, let $z = tx + (1-t)x_0$,
+	\[
+	f(x) \ge f(z) + f'(z) (1-t)(x - x_0),
+	f(x_0)\ge f(z) + f'(z) t(x_0 - x).
+	\]
+	Thus adding these together we get
+	\[
+	tf(x) + (1-t)f(x_0) \ge f(z).
+	\]
+\end{proof}
+
+\begin{theorem}
+    Let $\Omega \subset \mathbb{R}^{n}$ be an open convex set,
+	$f\in C ^2(\Omega)$, $f$ convex $\iff H_f(x)$ semi positive definite.
+\end{theorem}
+\begin{proof}[Proof]
+    One direction can be proved using Taylor's expansion.
+
+	On the other hand,
+	let $H(t) = f(x_0 + t(x - x_0)) - f(x_0) -t\dd f(x_0)(x- x_0)$,
+	then $H'(t) = \dd f(x_0 + t(x - x_0)) (x - x_0) - \dd f(x_0)(x - x_0)$,
+
+	\[
+		H''(t) = (x - x_0)^TH_f(p)(x_0 + t(x-x_0)) (x-x_0)\ge 0.
+	\]
+	So $H(t)$ is a convex function, $H(0) = 0, H'(0) = 0$.
+\end{proof}
+
+\section{Integrals on surfaces}
+\label{sec:Integrals on surfaces}
+
+\subsection{Measures on manifolds}
+\label{sub:Measures on manifolds}
+To define integrals, we need to define a measure on it first.
+
+For example, let $v_1,\dots,v_d\in \mathbb{R}^{n}$ be linearly independent vectors,
+and unit vectors $v_{d+1},\dots,v_n$ complete them to a basis,
+satisfying $v_j \perp v_i, j > d, j > i$.
+
+Let $A$ be a linear map s.t. $Ae_i = v_i$, then the volume of $A(E)$ is
+$|\det A| = \sqrt{\det(G\cdot G^T)}$, where $G = \colvecs{v_1}{v_d}$ is
+a $d\times n$ matrix.
