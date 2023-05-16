@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1683856098 "main.tex" "main.pdf" "main" 1683856099 0
+["pdflatex"] 1684209459 "main.tex" "main.pdf" "main" 1684209461 0
   "../macros.tex" 1683850628 1845 73b3f03d7b9b848b2674ad7ae61d8f0f ""
   "../preamble.tex" 1681111692 5008 c0fc89cf215d98646054ff2ab750867a ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -229,14 +229,14 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1676871738 4623355 58034c3eb7ddf7eacc726a83d01e26d2 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1676871762 7879246 a0e06bd93a50eeea2adb95467ae0402a ""
   "/usr/local/texlive/2022/texmf.cnf" 1676871735 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "lecture18.tex" 1682643067 4434 e39060f96b1c804a26cf47c090750260 ""
   "lecture19.tex" 1682646710 2768 89e3a9761215806fa91b3873c47574f2 ""
   "lecture20.tex" 1683604939 7012 5a4beb6449319eb5e0ee9e483a8444d1 ""
-  "lecture21.tex" 1683856098 6392 f49c5a4d5ce7a8c9793ca6bc89e8cdd1 ""
-  "main.aux" 1683856099 10307 dc142b219589c96304a8e3d8a0acdc9e "pdflatex"
-  "main.pre" 1683856098 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1683849748 748 a9e946abbfb379dab511b8210cd48083 ""
-  "main.toc" 1683856099 268 d7adca64ba6305a2b1fddd1e193762eb "pdflatex"
+  "lecture21.tex" 1684208039 6501 36f42e8b85a4bc47ef225721a088dad9 ""
+  "lecture22.tex" 1684209459 5513 ff5e158815898a1ab9e22e0fb4abc1eb ""
+  "main.aux" 1684209460 11171 ae03b050ed5458e4636e9305772c573a "pdflatex"
+  "main.pre" 1684209460 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1684202250 769 eec2054e2950bf24e6e8abe9bb0a67a6 ""
+  "main.toc" 1684209460 429 6de13d6f0b2e6c7d0759891f063c0f42 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

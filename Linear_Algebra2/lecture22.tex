@@ -1,0 +1,164 @@
+%! TeX root = ./main.tex
+\begin{proof}[Proof of the theorem]
+    Let $A$ be an Hermite matrix, if $A$ positive definite,
+	then $\det A \ge 0$.
+
+	Let $A_k$ be the upper left $k\times k$ submatrix of $A$.
+	For $X \in F^{k\times 1} \backslash \{0\}$, we have
+	\[
+	X^* A_k X = \colvec{X}{0}^* A \colvec{X}{0} > 0.
+	\]
+	Hence $A_k$ positive definite, $\det A_k = \Delta_k(A) \ge 0$.
+
+	Conversely, by our lemma let $A = LU$,
+	let $D = (U^*)^{-1} L$, $A = U^*DU$.
+
+	Hence $A$ Hermite $\implies D$ Hermite.
+	Moreover $D$ is lower triangular, so $D$ is diagonal.
+
+	Some computation yields that $A_k = U_k^* D_k U_k$.
+	Therefore
+	\[
+		\Delta_k(A) \ge 0 \implies \det(U_k^* D_k U_k) \ge 0
+		\implies \det D_k \ge 0.
+	\]
+	From this we deduce that all the diagonal entries of $D$ are positive,
+	so $D$ positive definite $\implies A$ positive definite.
+\end{proof}
+
+\subsection{Bilinear forms on inner product spaces}
+\label{sub:Bilinear forms on inner product spaces}
+Let $V$ be an inner product space, given a basis of $V$,
+recall that there are two linear isomorphism:
+\[
+	\form(V) \to F^{n\times n}, f\mapsto [f]_{\mathcal{B}}
+	\quad L(V) \to F^{n\times n}, T\mapsto [T]_{\mathcal{B}}
+\]
+Hence we can define a map $\form(V) \to L(V)$ by composing these two isomorphism.
+Denote this map by $f\mapsto T_f$.
+It seems like this map also depends on the choice of the basis,
+but in fact it's independent as long as $\mathcal{B}$ is orthonormal!
+
+Let $\mathcal{B}'$ be another orthonormal basis,
+then $[T_f]_{\mathcal{B}'} = P^{-1} [T_f]_{\mathcal{B}} P$,
+while $[f]_{\mathcal{B}'} = P^* [f]_{\mathcal{B}} P$, but $P$ is
+orthogonal (or unitary), so $P^{-1} = P^*$, i.e. $T_f$ doesn't change
+under the new basis.
+
+Since $T_f$ do not depend on the basis, thus we wonder whether we can
+define this map intrinsically.
+\begin{proposition}
+	For all $T\in L(V)$, $T$ induces a (semi) bilinear form
+	$f(\alpha, \beta) = \left<T\alpha, \beta \right>$.
+	We claim that this map $\mathcal{F}$ gives an isomorphism of $L(V)$
+	and $\form(V)$.
+\end{proposition}
+\begin{proof}[Proof]
+    Clearly $\mathcal{F}$ is injective:
+	\[
+	\left<T\alpha, \beta \right> = 0, \forall \beta \implies T\alpha = 0,
+	\]
+	thus $\ker \mathcal{F} = \{0\}$.
+
+	By dimenional reasons $\mathcal{F}$ must be an isomorphism.
+\end{proof}
+
+By considering $\mathcal{F}^{-1}$, we get an one-to-one map $f\mapsto T_f$ s.t.
+\[
+f(\alpha, \beta) = \left<T_f\alpha, \beta \right>.
+\]
+We'll see that this definition coincide with the initial one.
+In fact it's sufficient to prove $[T_f]_{\mathcal{B}} = [f]_{\mathcal{B}}$,
+which is just a bunch of computation ;)
+
+\begin{remark}
+    We can construct $T_f$ explicitly from $f$:
+
+	The inner product gives a conjugate linear isomorphism
+	\[
+		\Phi: V\to V^*, \quad \Phi(\alpha)(\beta) = \left<\beta, \alpha\right>
+		= \overline{\left<\alpha, \beta \right>}.
+	\]
+	Similarly, $f\in \form(V)$ gives a conjugate linear map
+	\[
+		\Phi_f: V\to V^*, \quad \Phi_f(\alpha)(\beta) =
+		\overline{f(\alpha, \beta)}.
+	\]
+
+	Then $T = \Phi^{-1} \circ \Phi_f$ is the desired linear map:
+	\[
+	\left<T\alpha, \beta \right> = \overline{\Phi(T\alpha)(\beta)}
+	= \overline{\Phi_f(\alpha)(\beta)} = f(\alpha, \beta).
+	\]
+\end{remark}
+
+Hence all the properties of linear maps can be carried over to the forms,
+and vice versa (using the matrix representation).
+
+\begin{corollary}
+    Let $F = \mathbb{C}$, $T\in L(V)$, $T$ self-adjoint iff
+	$\left<T\alpha, \alpha\right>\in \mathbb{R}, \forall \alpha\in V$.
+\end{corollary}
+\begin{proof}[Proof]
+    $T$ self-adjoint iff $f$ Hermite iff $f(\alpha, \alpha) \in \mathbb{R}$.
+\end{proof}
+
+\begin{corollary}
+	Let $f\in \form(V)$.
+	\begin{itemize}
+		\item If $f$ Hermite, there exists an orthonormal basis of $V$ s.t.
+			$[f]_{\mathcal{B}}$ is real diagonal.
+		\item If $F = \mathbb{C}$, there exists an orthonormal basis
+			such that $[f]_{\mathcal{B}}$ upper triangular.
+	\end{itemize}
+\end{corollary}
+
+\subsection{Spectral decomposition}
+\label{sub:Spectral decomposition}
+
+\begin{theorem}[Spectral decomposition of normal maps]
+    Let $T\in L(V)$ be a self-adjoint map (or normal map in complex field),
+	let $\sigma(T) = \{c_1,\dots, c_k\}$, $P_i\in L(V)$ are the projection
+	onto $V_{c_i}$. Then for any $f\in F[x]$, we have
+	\[
+	f(T) = \sum_{i=1}^{k} f(c_i)P_i.
+	\]
+	In particular, $T = \sum_{i=1}^{k} c_iP_i$.
+\end{theorem}
+\begin{proof}[Proof]
+    Consider the orthogonal direct sum
+	\[
+	V = \bigoplus_{i=1}^k V_{c_i},
+	\]
+	since previously we've proven that $T$ is orthogonally diagonalizable
+	(or unitarily diagonalizable).
+
+	Using this decomposition, the conclusion is somewhat trivial.
+\end{proof}
+
+\begin{corollary}
+    Each $P_i$ is a polynomial of $T$.
+\end{corollary}
+\begin{proof}[Proof]
+	Take $f_i\in F[x]$ s.t. $f_i(c_i) = \delta_{ij}$.
+	Then $f_i(T) = \sum_{j=1}^{k} f_i(c_j)P_j = P_i$.
+\end{proof}
+
+Using simialr technique, we can consider functions other than polynomials of $T$,
+defined by $\phi(T) = \sum_{i=1}^{k} \phi(c_i) T$.
+By Lagrange interpolation, we can always find a polynomial $p$ s.t.
+$p(c_i) = \phi(c_i)$ for all $c_i\in \sigma(T)$.
+
+\begin{example}
+	If $T$ semi positive definite normal matrix, $\sigma(T) \subset [0, +\infty)$,
+	so we can define $\sqrt{T} = \sum_{i=1}^{k} \sqrt{c_i}P_i$.
+\end{example}
+
+\begin{proposition}
+	$T$ self-adjoint (normal) $\implies \phi(T)$ self-adjoint (normal);
+	$\sigma(\phi(T)) = \phi(\sigma(T))$.
+\end{proposition}
+\begin{proof}[Proof]
+    Note that $T$ and $\phi(T)$ are diagonal matrices
+	under orthonormal basis of $V_{c_i}$.
+\end{proof}
