@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1684123484 "main.tex" "main.pdf" "main" 1684123485 0
+["pdflatex"] 1684288456 "main.tex" "main.pdf" "main" 1684288459 0
   "../macros.tex" 1683850628 1845 73b3f03d7b9b848b2674ad7ae61d8f0f ""
   "../preamble.tex" 1681111692 5008 c0fc89cf215d98646054ff2ab750867a ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -52,6 +52,7 @@
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb" 1248133631 30457 bc0868ebece724ed7c3d37e3d9bff7bd ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb" 1248133631 35309 940e81a5b9e04201a07e8b33a3ae6e64 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb" 1215737283 148436 6a185415b8a1b77c58fee2272f3574e2 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb" 1215737283 148301 cb90e68db88ca98c49afbaaab3ac1967 ""
   "/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -215,15 +216,15 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1676871738 4623355 58034c3eb7ddf7eacc726a83d01e26d2 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1676871762 7879246 a0e06bd93a50eeea2adb95467ae0402a ""
   "/usr/local/texlive/2022/texmf.cnf" 1676871735 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "lecture18.tex" 1682474393 45 da3d838c563cbe0bc4fb9a07f5dec35d ""
   "lecture19.tex" 1683681118 5711 978234c6b51584d594f07f187c8b02f8 ""
   "lecture20.tex" 1684116165 5443 39ef057607a44ee36d57037c2495a670 ""
-  "lecture21.tex" 1684123482 4902 0d8bc941119edfd3245dc3fac55b5d2a ""
-  "main.aux" 1684123485 7791 78bf55d7df65518955a901e88719b197 "pdflatex"
-  "main.out" 1684123485 965 0ab643dc5ad31f06a0bef45ad1e2b5f1 "pdflatex"
-  "main.pre" 1684123484 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1684116128 731 57beda9353745421857bc375b7882fed ""
-  "main.toc" 1684123485 514 77bf35754add7b1e9b54fbb3ae451621 "pdflatex"
+  "lecture21.tex" 1684123489 4902 0d8bc941119edfd3245dc3fac55b5d2a ""
+  "lecture22.tex" 1684288455 3762 477eaef0c65604302c5c5a4eacf19cad ""
+  "main.aux" 1684288459 8394 d446e3fc3b127de7db6fffd62d44e81e "pdflatex"
+  "main.out" 1684288459 965 0ab643dc5ad31f06a0bef45ad1e2b5f1 "pdflatex"
+  "main.pre" 1684288457 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1684281593 752 8ec9f97d100df5f20aa8c3a76ac32fcc ""
+  "main.toc" 1684288459 514 77bf35754add7b1e9b54fbb3ae451621 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
