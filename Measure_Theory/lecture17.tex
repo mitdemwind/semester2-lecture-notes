@@ -1,0 +1,181 @@
+%! TeX root = ./main.tex
+\subsection{Lebesgue decomposition}
+\label{sub:Lebesgue decomposition}
+Let $\varphi, \phi$ be two signed measures.
+
+If $\varphi \ll |\phi|$, then we say $\varphi$ is absolute continuous
+with respect to $\phi$, denoted by $\varphi \ll \phi$.
+We can see that $\varphi \ll \phi \iff |\varphi|\ll |\phi|$.
+
+\begin{definition}
+	If $\exists N\in \mathscr{F}$ such that
+	\[
+	|\varphi|(N^c) = |\phi|(N) = 0,
+	\]
+	then we say $\varphi$ and $\phi$ are \vocab{mutually singular},
+	denoted by $\varphi \perp \phi$.
+\end{definition}
+
+\begin{lemma}
+	$\varphi \perp \phi$ iff there exists $N\in \mathscr{F}$ such that
+	\[
+	\varphi(A\cap N^c) = \phi(A\cap N) = 0, \quad \forall A.
+	\]
+\end{lemma}
+\begin{proof}[Proof]
+    This is trivial by $|\varphi|(A) = 0 \iff \varphi(B) = 0, \forall B \subset A$.
+\end{proof}
+
+Two measures are mutually singular is to say their supports are disjoint.
+
+\begin{lemma}
+	If $\varphi \ll \phi$ and $\varphi \perp \phi$, then $\varphi \equiv 0$.
+\end{lemma}
+\begin{proof}[Proof]
+    Take $N$ s.t. $|\varphi|(N^c) = |\phi|(N) = 0$, since $\varphi \ll \phi$,
+	$|\varphi|(N) = 0$ as well, thus $|\varphi|(X) = 0$.
+\end{proof}
+
+\begin{theorem}[Lebesgue decomposition]
+    Let $\varphi, \phi$ be $\sigma$-finite signed measures, there exists
+	unique $\sigma$-finite signed measures $\varphi_c, \varphi_s$ s.t.
+	\[
+	\varphi = \varphi_c + \varphi_s, \quad \varphi_c \ll \phi, \varphi_s \perp \phi.
+	\]
+\end{theorem}
+
+Again, we'll start from finite measures, and reach $\sigma$-finite signed measures
+step by step.
+
+\begin{proposition}
+	Let $\varphi, \mu$ be finite measures, then the Lebesgue decomposition holds.
+\end{proposition}
+\begin{proof}[Proof]
+    Since $\varphi \ll \varphi + \mu$, let $f = \frac{\dd\varphi}{\dd(\varphi+\mu)}$,
+	note that $0\le f\le 1$, $(\varphi+\mu)$-a.e. (here we use the finite condition)
+	and $1 - f  = \frac{\dd\mu}{\dd(\varphi+\mu)}$.
+
+	Let $N = \{f = 1\}$,
+	\[
+		\varphi_c(A) = \varphi(A\cap N^c),\quad \varphi_s(A) = \varphi(A\cap N).
+	\]
+
+	Clearly $\varphi_s(N^c) = 0$,
+	\[
+	\varphi(N) = \int_N f\dd(\varphi+\mu) = \int_N 1 \dd(\varphi+\mu)
+	= \varphi(N) + \mu(N)
+	\]
+	so $\mu(N) = 0, \varphi_s \perp \mu$.
+
+	On the other hand, if $\mu(A) = 0$, since $1 - f > 0$,
+	\[
+	0 = \mu(AN^c) = \int_{AN^c}(1-f)\dd(\varphi+\mu) \implies
+	\varphi_c(A) \le (\varphi + \mu)(AN^c) = 0.
+	\]
+	Thus $\varphi_c \ll \mu$, we're done.
+\end{proof}
+
+From this proof, we can see that the critical point is to find a set $N$,
+s.t. $\mu(N) = 0$ and $\varphi_c = \varphi(\cdot \cap N^c) \ll \mu$,
+i.e. in some sense the ``largest'' null set of $\mu$.
+
+So this can give another proof:
+\begin{proof}[Proof]
+    Let $\gamma := \sup\{\varphi(A): A\in \mathscr{F}, \mu(A) = 0\}$.
+
+	Let $A_n \in \mathscr{F}, \mu(A_n) = 0$ and $\varphi(A_n) \to \gamma$.
+	Let $N = \bigcup A_n$, then $\varphi(N) = \gamma, \mu(N) = 0$.
+
+	If $\mu(A) = 0, \varphi_c(A) > 0$ for some $A$, then $\mu(N\cup A) = 0$,
+	\[
+	\varphi(N\cup A) = \varphi(N) + \varphi(A\cap N^c) > \varphi(N) = \gamma,
+	\]
+	contradiction!
+
+	Hence $\varphi_c \ll \mu$.
+\end{proof}
+
+\begin{proposition}
+	Let $\varphi, \mu$ be $\sigma$-finite measures, the Lebesgue decomposition holds.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $\{A_n\}$ be a partition of $X$, $\varphi(A_n) < \infty, \mu(A_n) < \infty$.
+
+	On $(A_n ,A_n\cap \mathscr{F})$, there exists Lebesgue
+	decomposition $\varphi_{n,c}, \varphi_{n,s}$,
+	let $\varphi_c(A) = \sum_{n=1}^{\infty} \varphi_{n,c}(A\cap A_n)$,
+	$\varphi_s$ similarly defined,
+	we can easily check that $\varphi_c \ll \mu$ and $\varphi_s \perp \mu$.
+\end{proof}
+
+At last we prove the Lebesgue decomposition:
+Let $X^+, X^-$ be the Hahn decomposition of $\varphi$, WLOG  $\varphi^-$ finite.
+
+By previous propositions, we have $\varphi_c^\pm, \varphi_s^\pm$,
+since $\varphi_s^-, \varphi_c^-$ finite, so $\varphi_c, \varphi_s$ is well-defined.
+The rest is some trivial work to check they satisfy the condition.
+
+Now it remains to check the uniqueness.
+Suppose $\varphi_{c, i}, \varphi_{s, i}$ are two decompositions, $i = 1, 2$.
+
+Let $N_i$ be sets s.t. $\mu(N_i) = |\varphi_{s, i}|(N_i^c) = 0$,
+let $N = N_1\cup N_2$, we have
+\[
+\mu(N) = 0 \implies  \varphi_{c, i}(N) = 0;\quad
+|\varphi_{s, i}|(N^c) = 0, i = 1, 2.
+\]
+Thus $\varphi_{c, i}(A) = \varphi_{c, i}(AN^c) = \varphi(AN^c)$,
+and $\varphi_{s, i}(A) = \varphi_{s, i}(AN) = \varphi(AN)$.
+
+At last we take $\mu = |\phi|$ to finally conclude.
+
+\begin{example}
+    Let $\mu$ be a probability on $(\mathbb{R}, \mathcal{B}_{\mathbb{R}})$,
+	$\lambda$ is Lebesgue measure.
+ 
+	If $\mu \ll \lambda$, we say $\mu$ is continuous, and $\frac{\dd\mu}{\dd\lambda}$
+	is the density function of $\mu$.
+
+	If $\mu(\{x\}) > 0$, then we say $x$ is an atom of $\mu$,
+	\[
+	D = D_\mu := \{x\in \mathbb{R}: \mu(\{x\}) > 0\},
+	\]
+	then $\mu$ finite $ \implies D$ countable.
+
+	If $\mu(D) = 1$, then we say $\mu$ is discrete.
+
+	If $\mu \perp \lambda$ and $D_\mu = \emptyset$, then we say $\mu$ is singular.
+\end{example}
+
+Then for any finite measure $\mu$,
+let $\mu = \mu_c + \mu_s$ be the Lebesgue decomposition with respect to $\lambda$. 
+Let $\mu_1 = \mu_c, \mu_2 = \mu(\cdot \cap D_\mu), \mu_3 = \mu_s - \mu_2$.
+
+Then $\mu_1, \mu_2, \mu_3$ are pairwise singular.
+
+\subsection{Conditional expectations}
+\label{sub:Conditional expectations}
+Let $(X, \mathscr{F}, P)$ be a probability space.
+Let $\mathscr{G}$ be a sub $\sigma$-algebra of $\mathscr{F}$.
+Then we have another probability space $(X, \mathscr{G}, P)$.
+
+Recall that $L_2(\mathscr{G}) \subset L_2(\mathscr{F})$ are Hilbert spaces.
+
+Let $g \in \mathscr{G}$ be a function, $g \ge 0$, then $\int_X g\dd P$ is
+the same in two spaces.(By Levi's theorem)
+
+By linear algebra, for any $f\in \mathscr{F}$,
+there's a unique optimal approximation (or orthogonal projection)
+$f^*\in \mathscr{G}$ s.t.
+\[
+\lVert f - f^* \rVert _2 = \inf_{g\in L_2(\mathscr{G})} \lVert f - g \rVert _2.
+\]
+
+Therefore by orthogonality,
+\[
+Efg = Ef^*g, \forall g\in L_2(\mathscr{G}) \iff Ef\ii_A = Ef^*\ii_A,
+\forall A\in \mathscr{G}.
+\]
+
+Let $\varphi(A) = Ef\ii_A$,  $\varphi \ll P$,
+in fact we have $f^* = \frac{\dd\varphi}{\dd P}$.

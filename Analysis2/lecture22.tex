@@ -1,0 +1,101 @@
+%! TeX root = ./main.tex
+Since $A A^T = \begin{pmatrix}
+	GG^T &0 \\0 &I_{n-d}
+\end{pmatrix}$, $|\det A| = \sqrt{\det GG^T}$,
+we say $GG^T$ is the \vocab{Gram matrix} of $G$.
+
+Another example is the length of a curve. Recall that we have the formula
+\[
+L(\gamma) = \int_0^1 |\gamma'(t)|\dd t.
+\]
+The length of a curve is essentially the ``volume'' of a 1-dimensional manifold,
+so the idea of higher dimensional manifold is the same.
+
+\begin{definition}
+	Let $M$ be a manifold in $\mathbb{R}^{n}$.
+	Let $\Phi: V \subset \mathbb{R}^{d}\to U \subset M$ be a smooth homeomorphism,
+	$\rank \Phi = d$. We can split $U$ to many small regions and use
+	the paraloids to approximate the volume of each regoin.
+
+	Thus we define:
+	\[
+	m(U) =
+	\int_{V} \sqrt{\det (\dd \Phi(x)^T \dd \Phi(x))}\dd x_1\dd x_2\cdots \dd x_d.
+	\]
+	The above differential form inside the integral is called the \vocab{volume form}:
+	\[
+	\dd \sigma(y) = \sqrt{\det(\dd \Phi^T \dd \Phi)} \dd y.
+	\]
+
+	Moreover, with this measure we can define the integral of general measurable
+	function $f$ (measurable means locally measurable on $\mathbb{R}^{d}$):
+	\[
+	\int_U f\dd\sigma = \int_V f(\Phi(x)) \sqrt{\det(\dd \Phi^T \dd \Phi)}\dd x.
+	\]
+\end{definition}
+
+Just like the length of a curve, the volume defined above is also
+a geometric quantity, i.e. independent of coordinates.
+
+\begin{example}
+    Let $d = 1$, $\gamma: (-1, 1)\to \mathbb{R}^{n}$, $\gamma'(0)\ne 0$.
+	For fixed $-1<a<b<1$ and a function $f$ on $\gamma$, let $C_a^b$ denote
+	the curve between $\gamma(a), \gamma(b)$,
+	\[
+	\int_{C_a^b}f\dd \sigma = \int_a^b f(\gamma(t))|\gamma'(t)|\dd t
+	\]
+	is called the \vocab{curve integral of the first type}.
+\end{example}
+\begin{example}
+    Let $d = n - 1$, $f: \mathbb{R}^{n-1}\to \mathbb{R}$, the graph of $f$ is
+	a hyper-surface $\Gamma_f = \{(x, f(x))\mid x\in \mathbb{R}^{n-1}\}$.
+	It has a parametrization $\Phi(x) = (x, f(x))$, so
+	\[
+	\dd \Phi = \colvec{I_{n-1}}{\nabla f}\implies \dd \Phi^T \dd \Phi = I_{n-1}
+	+ \nabla f^T \cdot \nabla f.
+	\]
+	Hence $\det(\dd \Phi^T \dd \Phi) = 1 + |\nabla f|^2$.
+	(This can be obtained by looking at the eigenvectors)
+
+	Therefore for $\varphi$ on $\mathbb{R}^{n}$, we have
+	\[
+	\int_{\Gamma_f} \varphi\dd\sigma = \int_{\mathbb{R}^{n-1}} \varphi(x, f(x))
+	\sqrt{1 + |\nabla f|^2}\dd x.
+	\]
+\end{example}
+Next we'll compute the surface area of unit sphere $S^{n-1}$.
+
+Let $c_n$ denote the volume of unit sphere in $\mathbb{R}^n$,
+\[
+c_n = \frac{\pi^{\frac{n}{2}}}{\Gamma(\frac{n}{2}+1)}.
+\]
+We claim in advance that the surface area of unit sphere $\omega_{n-1} = nc_n$.
+Here we use the sphere coordinates:
+\[
+x_1 = r\prod_{k=1}^{n-1} \sin\theta_k,\quad
+x_i = r\sin\theta_{n-1}\cdots \sin\theta_i\cos\theta_{i-1}, 2\le i\le n.
+\]
+Let $F_n(r, \theta_1, \dots, \theta_{n-1}) = (x_1,\dots,x_n)$.
+\[
+\dd F_n = \begin{pmatrix}
+	\sin \theta_{n-1}\dd F_{n-1} & \cos\theta_{n-1}F_{n-1}^T\\
+	(\cos\theta_{n-1}, 0, \dots, 0) & -r\sin\theta_{n-1}
+\end{pmatrix}.
+\]
+So we can compute its determinant (expand using the last row),
+note that the first column of $\dd F_{n-1}$ is $r^{-1}F_{n-1}^T$,
+\begin{align*}
+\det \dd F_n = &-r\sin\theta_{n-1}(\sin\theta_{n-1})^{n-1}\det(\dd F_{n-1})\\
+&+ (-1)^{n-1}(\cos \theta_{n-1})^2
+(-1)^{n-2}r(\sin\theta_{n-1})^{n-2}\det(\dd F_{n-1})\\
+= &-r(\sin\theta_{n-1})^{n-2} \det(\dd F_{n-1}).
+\end{align*}
+Hence $\dd x = r^{n-1}\sin^{n-2}\theta_{n-1}\cdots \sin\theta_2 \dd r
+\dd \theta_1 \cdots \dd \theta_{n-1} = r^{n-1} \dd r\dd \omega$.
+
+Denote $F_n^S$ to be the function $F_n$ restricted to $S^{n-1}$.
+Then $\dd F_n = (r^{-1} F_n^T, \dd F_n^S)$.
+We can compute that the Gram determinant of $\dd F_n^S$ is just $\det\dd F_n$ with
+$r = 1$.
+
+The rest is some integrals with gamma function and beta function, which is left out.

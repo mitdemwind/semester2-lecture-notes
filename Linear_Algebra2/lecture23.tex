@@ -1,0 +1,143 @@
+%! TeX root = ./main.tex
+\begin{theorem}
+    Let $T\in L(V)$ be semi positive definite.
+	\begin{itemize}
+		\item $\sqrt{T}$ semi positive definite, and $\sqrt{T}^2 = T$.
+		\item $T$ positive definite $\iff \sqrt{T}$ positive definite.
+		\item If $S\in L(V)$ semi positive definite and $S^2 = T$,
+			then $S = \sqrt{T}$.
+	\end{itemize}
+\end{theorem}
+\begin{proof}[Proof]
+	Since $[\sqrt{T}]_{\mathcal{B}}=\diag(\sqrt{c_1}I_{d_1},\dots,\sqrt{c_k}I_{d_k})$,
+	the first two statements are trivial.
+
+	Let $\sigma(S) = \{s_1, \dots, s_r\}$, $V_i = \ker(S - s_i\id)$.
+	Since $S$ self-adjoint, $V = \bigoplus_{i=1}^r V_i$.
+
+	For any $\alpha \in V_i, T\alpha = S^2\alpha = s_i^2\alpha$,
+	thus $V_i \subset \ker(T - s_i^2\id)$.
+	Since $s_i \ge 0$, $\sqrt{T} = S$.
+\end{proof}
+
+Note that $T^*T$ is always positive definite,
+so we can consider $\sqrt{T^*T}$.
+We call the eigen-values of $\sqrt{T^*T}$ \vocab{singular values} of $T$.
+
+In some sense, $\sqrt{T^*T}$ is a semi positive approximation of $T$:
+\begin{lemma}
+	For any $\alpha\in V$, $\lVert T\alpha \rVert = \lVert \sqrt{T^*T}\alpha \rVert$.
+	In particular, $\ker T = \ker \sqrt{T^*T}$.
+\end{lemma}
+\begin{proof}[Proof]
+    Let $N = \sqrt{T^*T}$,
+	\[
+	\lVert N\alpha \rVert ^2 = \left<N\alpha, N\alpha \right>
+	= \left<N^2\alpha, \alpha \right> = \left<T^*T\alpha, \alpha \right>
+	= \left<T\alpha, T\alpha \right> = \lVert T\alpha \rVert ^2.
+	\]
+\end{proof}
+
+\begin{theorem}[Polar decomposition]
+    Let $T\in L(V)$,
+	\begin{enumerate}[\indent(1)]
+		\item There exists $U\in L(V)$ orthogonal or unitary,
+			$N\in L(V)$ semi positive definite, $T = UN$.
+		\item We must have $N = \sqrt{T^*T}$.
+		\item $T$ invertible iff $N$ positive definite, in this case $U$ is unique.
+	\end{enumerate}
+\end{theorem}
+\begin{remark}
+    This is a generalization of $z = re^{i\theta}$ in $\mathbb{C}$.
+	That's where the name comes from.
+\end{remark}
+\begin{proof}[Proof]
+    If $(1)$ holds, then
+	\[
+	T^* = NU^* \implies T^*T = NU^*UN = N^2 \implies N = \sqrt{T^*T}.
+	\]
+	Since $T, N$ are semi positive definite, $T$ invertible iff $T$ positive definite.
+	Now we must have $U = TN^{-1}$, which is unique.
+
+	To prove $(1)$, when $T$ invertible, let $N, U$ as above,
+	by our lemma,
+	\[
+		\lVert U\alpha \rVert = \lVert TN^{-1}\alpha \rVert = \lVert \alpha \rVert
+	\]
+	Thus $U$ is orthogonal or unitary.
+
+	When $T$ is not invertible, $\ker T = \ker N$,
+	thus $\exists U_1: \Img(N) \to \Img(T)$ s.t. $T = U_1N$.
+	(Just take $N\alpha\mapsto T\alpha$)
+
+	Moreover $U_1$ is an isomorphism of inner product space:
+	$\lVert U_1N\alpha \rVert = \lVert T\alpha \rVert = \lVert N\alpha \rVert$.
+	So $U_1$ preserves inner product and hence injective.
+	By dimension reasons, $U_1$ must be an isomorphism.
+
+	Now we can take an arbitary isomorphism $U_2: \Img(N)^\perp\to \Img(T)^\perp$,
+	$U := U_1\oplus U_2$ is the desired map.
+\end{proof}
+
+Looking back at the singular values,
+consider the image of unit sphere $S \subset V$ under $T$,
+$N(S)$ is an ellipsoid:
+\[
+N(S) = \left\{\sum_{i=1}^{n} c_ix_i\alpha_i: \sum_{i=1}^{n} x_i^2 = 1\right\}.
+\]
+Since $T = UN$, $U$ is a rotation, so $T(S)$ is also an ellipsoid,
+whose axes lengths are $2c_i$, where $c_i$ are singular values of $T$.
+
+\begin{corollary}[Singular value decomposition, SVD]
+    Let $A \in F^{n\times n}$, then there exists decomposition $A = U_1DU_2$,
+	where $D$ is a diagonal matrix with non-negative entries,
+	$U_1, U_2$ are orthogonal or unitary matrices.
+\end{corollary}
+\begin{proof}[Proof]
+    Consider the polar decomposition $A = UN$, let  $N = PDP^{-1}$,
+	where $P$ orthogonal or unitary, $D$ non-negative diagonal.
+	Thus we can take $U_1 = UP, U_2 = P^{-1}$.
+
+	Note that the diagonal entries of $D$ is precisely the singular value of $A$.
+\end{proof}
+
+\begin{corollary}
+    Let $T\in L(V)$, then $T$ map \textit{some} orthogonal basis to
+	another orthogonal basis.
+\end{corollary}
+\begin{proof}[Proof]
+    Let $T = U N$ be the polar decomposition.
+	Let $\alpha_1, \dots, \alpha_n$ be an orthonormal basis s.t. $N$ diagonal,
+	then
+	\[
+	T\alpha_i = UN\alpha_i = c_i U \alpha_i,
+	\]
+	obviously $c_iU\alpha_i$ consititude an orthogonal basis.
+\end{proof}
+
+\subsection{Further on normal maps}
+\label{sub:Further on normal maps}
+For $\theta\in \mathbb{R}$, let $Q_\theta$ be the rotation of angle $\theta$.
+The main goal of this section is to prove:
+\begin{theorem}
+    Let $V$ be a finite dimensional real inner product space, $T\in L(V)$ normal.
+	There exists an orthonormal basis $ \mathcal{B}$ s.t.
+	\[
+		[T]_{\mathcal{B}} = \diag(a_1, \dots, a_l,
+		r_1Q_{\theta_1}, \dots, r_mQ_{\theta_m}),
+	\]
+	where $a_i \in \mathbb{R}, r_j > 0, \theta_j \in (0, \pi)$.
+\end{theorem}
+
+Let's look at a corollary of this theorem first:
+\begin{corollary}
+    If $T$ orthogonal, then
+	\[
+		[T]_{\mathcal{B}} = \diag(I_{l_1}, -I_{l_2},
+		Q_{\theta_1}, \dots, Q_{\theta_m}).
+	\]
+\end{corollary}
+\begin{proof}[Proof]
+    Applying the theorem, since each block is orthogonal, $a_i = \pm 1$, $r_j = 1$.
+\end{proof}
+This gives us a comprehension of rotations in higher dimensional spaces.

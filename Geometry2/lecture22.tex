@@ -1,0 +1,83 @@
+%! TeX root = ./main.tex
+Using the ``word processing'' method,
+since we've showed that $\gamma = \alpha_1\beta_1\cdots$ where
+$\alpha_i \subset U', \beta_i \subset U''$.
+So actually we're saying that
+\[
+\gamma = i'_\sharp (\alpha_1) i''_\sharp(\beta_1)\cdots
+\]
+if we some $\delta \subset U' \cap U''$,
+then the conjugate of $i'_\sharp(\delta) i''_\sharp(\delta)^{-1}$ can
+change $\cdots i'_\sharp(\delta) \cdots$ to $\cdots i''_\sharp(\delta) \cdots$.
+
+Thus if $\gamma$ is in the kernel, it can indeed be written as a product
+of conjugates of $i'_\sharp(\delta) i''_\sharp(\delta)^{-1}$.
+
+\begin{remark}
+    A more frequently used version is that $W$ is a strong deformation kernel
+	of some open neighborhood in $X$.
+\end{remark}
+
+\begin{example}
+    For any finite representation of a group
+	\[
+	G = \left<x_1,\dots,x_n \mid R_1,\dots, R_n \right>,
+	\]
+	$G$ can be realized as the fundamental groups of a space:
+	Let $X$ be a CW-complex with a single 0-cell,
+	$n$ 1-cells corresponding to $x_i$, and $m$ 2-cells corresponding to $R_i$.
+\end{example}
+
+\begin{remark}
+    The path connected condition of $W$ can't be removed,
+	e.g. two segments can fuse to $S^1$.
+\end{remark}
+
+\begin{example}
+    Let $f: S\to S$ be a homeomorphism, where $S$ is a closed surface.
+	Consider the \textit{mapping torus}:
+	\[
+		M_f = S \times [0, 1] / \sim,
+	\]
+	where $(0, 0)\sim (f(x), 1)$.
+
+	Let $Y = S \times \{0\} \cup (\{x_0\} \times  [0, 1])$, $U'$ is an open
+	neighborhood of $Y$, $U'' = M_f \backslash Y$.
+
+	Observe that $U' \simeq S \vee circle$, and $U'' \simeq (S \backslash disk)
+	\times (\varepsilon, 1 - \varepsilon) \simeq S \backslash disk$.
+
+	\[
+	\pi_1(M_f) \cong \pi_1(X) * \left<t \right> / (g\sim tf_\sharp(g) t^{-1})
+	\cong \pi_1(S)\rtimes_{f_\sharp} \left<t \right>
+	\]
+\end{example}
+
+Seifent-vanKampen:
+if $i'_\sharp, i''_\sharp$ are both injective, then $j'_\sharp, j''_\sharp$ are
+also injective.
+
+Next we'll see some applications of fundamental groups:
+\begin{itemize}
+	\item Bronwer fixed point theorem: A continuous map $f: D^n \to D^n$ must
+		have a fixed point.
+	\item Invariance of the boundary: If $x\in X$ has a neighborhood homeomorphic
+		to $\mathbb{R}^{n-1}\times [0, +\infty)$, s.t.
+		$x\in \mathbb{R}^{n-1} \times \{0\}$, then $x$ doesn't have a neighborhood
+		homeomorphic to $\mathbb{R}^{n}$.
+	\item Invariance of regions: If $U \subset \mathbb{R}^{n}$ open,
+		$f: U\to \mathbb{R}^{n}$ is a continuous injection,
+		then $f(U)$ is also open, i.e. $f: U\to f(U)$ is a homeomorphism.
+\end{itemize}
+
+Here we can only prove the case $n = 2$, since the complete proof
+need homotopy groups of rank $n$ (i.e. $\pi_n$), but here we only introduced $\pi_1$.
+However, the idea is nearly identical.
+
+\begin{proof}[Proof]
+    Assmue by contradiction that $f$ has no fixed points,
+	let $g(x) = \frac{x-f(x)}{\lVert x - f(x) \rVert}$,
+	then $g: D^n \to S^{n-1}$ is a deformation.
+	Thus $g_\sharp: \pi_1(D^2) \to \pi_1(S^1)$ surjective,
+	but $\pi_1(D^2) = \{1\}, \pi_1(S^1) = \mathbb{Z}$, contradiction!
+\end{proof}
