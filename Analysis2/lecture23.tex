@@ -1,0 +1,114 @@
+%! TeX root = ./main.tex
+\subsection{Stolkes' formula}
+\label{sub:Stolkes' formula}
+Intuitively, Stolkes' formula states that:
+Let $D$ be a region, $\dd \omega$ be a differential form,
+then
+\[
+\int_D \dd \omega = \int_{\partial D} \omega.
+\]
+Here $\partial D$ means the ``boundary'' of $D$.
+
+Of course we need some ``regularity'' requirements of $D$ and $\omega$,
+and it's the generalization of Newton-Lebniz formula into higher dimensions.
+
+\begin{definition}[Bounded regions with boundary]
+	Let $\Omega \subset \mathbb{R}^{n}$ be a compact set,
+	we say it's a \vocab{bounded region with boundary} if
+	$\forall x\in \partial \Omega$,
+	there exists open sets $U, V \subset \mathbb{R}^n$,
+	$x\in U$ and a continuous homeomorphism $\Phi: U\to V$,
+	such that
+	\[
+	\Phi(U\cap \Omega) = V\cap \{x_n\ge 0\}, \quad
+	\Phi(U\cap \partial\Omega) = V\cap \{x_n = 0\}.
+	\]
+	If $\Phi$ is also $C^1$, we say $x\in \partial\Omega$ is a \vocab{regular point},
+	otherwise a \vocab{singular point}.
+\end{definition}
+
+\begin{lemma}
+	Let $\Omega$ be a bounded region with boundary,
+	for all regular $p\in \partial\Omega$, there exists a unique unit vector
+	$\nu(p) \in \mathbb{R}^{n}$, and $\varepsilon > 0$, s.t.
+	\[
+	\nu(p) \perp T_p\partial\Omega, |\nu(p)| = 1,
+	p - t\nu(p) \in \Omega, \forall 0<t<\varepsilon.
+	\]
+	We call $\nu(p)$ the \vocab{outward unit normal vector} of $p$.
+\end{lemma}
+\begin{proof}[Proof]
+    By the definition of regular points, we may assume that:
+	\[
+	\Omega\cap V = \{x\in V\mid f(x)\ge 0\}, \quad
+	\partial\Omega \cap V = \{x\in V\mid f(x) = 0\}.
+	\]
+	Where $f$ is a $C^1$ function.
+
+	Since $\nabla f$ is nonzero,
+	the tangent space $T_p\partial\Omega = \{v\mid v\cdot \nabla f = 0\}$.
+
+	Let $\nu(p) = - \frac{\nabla f}{|\nabla f|}$, then it's obvious $\nu(p)$ points
+	outside of $\Omega$.
+\end{proof}
+
+Now for a cuboid $I$ and a $C^1$ function $\phi$,
+ \begin{align*}
+\int_I \frac{\dd \phi}{\dd x_n} \dd x
+&= \int_{I_{n-1}} \phi(x_1, \dots, x_{n-1}, b_n)\dd x_1\cdots \dd x_{n-1}
+- \int_{I_{n-1}} \phi(x_1, \dots, x_{n-1}, a_n)\dd x_1\cdots \dd x_{n-1}\\
+&= \int_{\partial I} \phi \cdot \nu_n \dd \sigma.
+\end{align*}
+Where $\sigma$ is the measure on the boundary, $\nu$ is the outward unit
+normal vector.
+
+\begin{lemma}
+	Let $K$ be a compact set in $\mathbb{R}^{n}$, $U \supset K$ is open,
+	there exists a smooth function $f$ such that
+	$\supp f \subset U$, and $f\big|_K > 0$.
+\end{lemma}
+\begin{proof}[Proof]
+    Let $\rho(x)$ be a smooth function s.t. $\rho(x) = 1$ for $|x|\le 1$ and
+	$\rho(x) = 0$ for $|x|\ge 2$.
+	Let
+	\[
+	g(x) = \int_{|y|\le 2} f(x - \delta y)\rho(y)\dd y.
+	\]
+	Then $g$ is a smooth non-negative function.
+\end{proof}
+
+\begin{theorem}[Unit decomposition on compact sets]
+	Let $K$ be a compact set, $\{U_1, \dots, U_k\}$ is an open covering of $K$.
+	There exists smooth functions $f_1,\dots, f_k$ s.t.
+	\[
+	1 = f_1(x) + f_2(x) + \dots + f_k(x),\quad \supp f_i(x) \subset U_i.
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    For $1 \le i\le k$, $\delta > 0$, define
+	\[
+		K_i^\delta = \{x\in U_i \mid d(x, U_i^c) > \delta\}.
+	\]
+	Note that $\{\bigcup_{i=1}^k K_i ^{\frac{1}{m}}\}_{m = 1}^{\infty}$
+	is also an open covering of $K$, thus there exists $N$ s.t.
+	\[
+	K \subset \bigcup_{i=1}^k K_i^{\frac{1}{N}}.
+	\]
+	Hence by lemma we have $g_i$ s.t. $\supp g_i \subset U_i$ and
+	$g_i > 0$ on the closure of $K_i^{\frac{1}{N}}$.
+	Similarly we have a smooth function $g$ s.t. $g(x) = 0$ on $K$,
+	and $g > 0$ outside of the closure of $\bigcup_{i=1}^k K_i^{\frac{1}{N}}$.
+
+	Let $G(x) = g_1(x)+\cdots+g_k(x)+g(x) > 0$ on $\bigcup_{i=1}^k U_i$,
+	then we can define $f_i(x) = \frac{g_i(x)}{G(x)}$ which satisfy the condition.
+\end{proof}
+
+\begin{theorem}
+	Let $\Phi$ be a $C^1$ homeomorphism from a cuboid $I$ to $\Omega$,
+	then $\Omega$ satisfies Stolkes' formula:
+
+	$\forall \phi\in C^1(\mathring{D}) \cap C(\overline{D})$, we have
+	\[
+	\int_D \nabla \phi \dd x = \int_{\partial D}\phi \nu \dd \sigma.
+	\]
+\end{theorem}

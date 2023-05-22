@@ -1,6 +1,5 @@
-\contentsline {subsection}{\numberline {0.1}Tangent space}{1}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Smooth maps between manifolds}{3}{subsection.0.2}%
-\contentsline {subsection}{\numberline {0.3}Conditional extremum problem}{4}{subsection.0.3}%
-\contentsline {subsection}{\numberline {0.4}Convex functions}{5}{subsection.0.4}%
-\contentsline {section}{\numberline {1}Integrals on surfaces}{8}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Measures on manifolds}{8}{subsection.1.1}%
+\contentsline {subsection}{\numberline {0.1}Conditional extremum problem}{2}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Convex functions}{3}{subsection.0.2}%
+\contentsline {section}{\numberline {1}Integrals on surfaces}{5}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Measures on manifolds}{5}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Stolkes' formula}{7}{subsection.1.2}%

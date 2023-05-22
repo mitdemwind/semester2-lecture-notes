@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1684296077 "main.tex" "main.pdf" "main" 1684296080 0
-  "../macros.tex" 1683850628 1845 73b3f03d7b9b848b2674ad7ae61d8f0f ""
+["pdflatex"] 1684746270 "main.tex" "main.pdf" "main" 1684746271 0
+  "../macros.tex" 1684473209 1890 7e0d344de4c4b1894b8f46f22a9a9ae9 ""
   "../preamble.tex" 1681111692 5008 c0fc89cf215d98646054ff2ab750867a ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -229,17 +229,15 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1676871738 4623355 58034c3eb7ddf7eacc726a83d01e26d2 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1676871762 7879246 a0e06bd93a50eeea2adb95467ae0402a ""
   "/usr/local/texlive/2022/texmf.cnf" 1676871735 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "asy/main-1.pdf" 1683535946 2833 fd61a2ff3146e3e3aea624d935f2ccf3 ""
-  "lecture19.tex" 1684135062 2881 8795e24cab3884868077c937d1ec868b ""
   "lecture20.tex" 1684140648 4205 ba29ca87ed2fd61b275dd473bdea7d60 ""
   "lecture21.tex" 1684141606 2459 81cf2c847f3e52ce95472ed98ac93bb4 ""
-  "lecture22.tex" 1684296077 3011 54d63dc652d29489641dcc36202cacdf ""
-  "main.aux" 1684296079 6263 823d3fb717a300dc9c67535466298223 "pdflatex"
-  "main.pre" 1684296079 45 f7227769cf0d2787921cad6f89acce02 "pdflatex"
-  "main.tex" 1684289427 760 69edf53b5281f5d8c25cdef6ba1eb58b ""
-  "main.toc" 1684296079 158 a2c7b203f96c37df376b3e28f3ca2cd5 "pdflatex"
+  "lecture22.tex" 1684296238 3022 d9a0273705641631a44cbc9149841cf3 ""
+  "lecture23.tex" 1684746269 2362 1f03e95bd9f96bb0996221493408a362 ""
+  "main.aux" 1684746271 5030 03cc1d7ce6ad29d2c4a2c15f6b0e0c2b "pdflatex"
+  "main.pre" 1684746270 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1684739330 781 1db7e7ce4a03242e41b06e399b0add74 ""
+  "main.toc" 1684746271 165 83ad0ddc4ed9b8c85d020fde4a66fc07 "pdflatex"
   (generated)
-  "asy/main-1.asy"
   "main.aux"
   "main.log"
   "main.pdf"

@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1684288456 "main.tex" "main.pdf" "main" 1684288459 0
-  "../macros.tex" 1683850628 1845 73b3f03d7b9b848b2674ad7ae61d8f0f ""
+["pdflatex"] 1684728060 "main.tex" "main.pdf" "main" 1684728061 0
+  "../macros.tex" 1684473209 1890 7e0d344de4c4b1894b8f46f22a9a9ae9 ""
   "../preamble.tex" 1681111692 5008 c0fc89cf215d98646054ff2ab750867a ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -216,15 +216,15 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1676871738 4623355 58034c3eb7ddf7eacc726a83d01e26d2 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1676871762 7879246 a0e06bd93a50eeea2adb95467ae0402a ""
   "/usr/local/texlive/2022/texmf.cnf" 1676871735 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "lecture19.tex" 1683681118 5711 978234c6b51584d594f07f187c8b02f8 ""
   "lecture20.tex" 1684116165 5443 39ef057607a44ee36d57037c2495a670 ""
   "lecture21.tex" 1684123489 4902 0d8bc941119edfd3245dc3fac55b5d2a ""
-  "lecture22.tex" 1684288455 3762 477eaef0c65604302c5c5a4eacf19cad ""
-  "main.aux" 1684288459 8394 d446e3fc3b127de7db6fffd62d44e81e "pdflatex"
-  "main.out" 1684288459 965 0ab643dc5ad31f06a0bef45ad1e2b5f1 "pdflatex"
-  "main.pre" 1684288457 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1684281593 752 8ec9f97d100df5f20aa8c3a76ac32fcc ""
-  "main.toc" 1684288459 514 77bf35754add7b1e9b54fbb3ae451621 "pdflatex"
+  "lecture22.tex" 1684288461 3762 477eaef0c65604302c5c5a4eacf19cad ""
+  "lecture23.tex" 1684728059 3946 9b86282b25f600ab318942e843e17781 ""
+  "main.aux" 1684728061 7187 c454dc45ba2adf2b101d58103030a487 "pdflatex"
+  "main.out" 1684728061 787 ebec68dfc85450b5fba1443bb87e5b3d "pdflatex"
+  "main.pre" 1684728060 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1684720740 773 3fece589cc2d7fcc905a11bca837e5ed ""
+  "main.toc" 1684728061 422 3ebb93b4d359ac49f39f9a228e7ca2b6 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

@@ -1,0 +1,61 @@
+%! TeX root = ./main.tex
+\begin{proof}[Proof]
+    If $x$ is an interior point, $x\in U$ and $U$ homeomorphic to $\mathbb{R}^{n}$,
+	then $U \backslash \{x\}$ can deform to a $n-1$ dimensional sphere,
+	thus $\pi_1(U\backslash\{x\}) \ne \{1\}$.
+
+	But if $x$ is a boundary point, then $\pi_1(U \backslash\{x\}) = \{1\}$,
+	contradiction!
+\end{proof}
+
+\begin{proof}[Proof]
+    Assume by contradiction that there exists $0\in U$ s.t.
+	$f(0)\in \mathbb{R}^{n}$ has no open neighborhood lying completely
+	in $f(U)$.
+
+	We can construct a map $g: \mathbb{R}^{n}\to \mathbb{R}^{n}$ such that:
+	\[
+	\lVert x - g(f(x)) \rVert \le 1,\quad x\in B(0, 1);
+	\quad g(f(x)) \ne 0.
+	\]
+	Then by Bronwer fixed point theorem on $x\mapsto x - g(f(x))$
+	we get a contradiction.
+
+	The construction is as below:
+
+	Since $f(\partial B(0, 1))$ must be at least say $10\varepsilon$ away from 0,
+	and $B(f(0), \varepsilon)$ has a point outside of the image of $f$,
+	so we have a map $P: B(f(0), \varepsilon)\backslash\{p\}\to
+	\partial B(f(0), \varepsilon)$.
+
+	Then consider $g = f^{-1}\circ P$, since $f^{-1}$ may not exist on every point,
+	so we need Tietze extension theorem to get an extension $h$.
+	In $B(f(0), 2\varepsilon)$, we'll change $h$ a little (i.e. take a
+	polynomial approximation) to ensure $g(f(x)) \in B(0, 1)$.
+\end{proof}
+
+\subsection{Covering spaces}
+\label{sub:Covering spaces}
+Except van Kampen's theorem, there's another way to compute fundamental groups.
+\begin{definition}[Covering maps]
+	Let $p: \wt{X} \to X$ be a continuous map. If
+	\begin{itemize}
+		\item $p$ is surjective;
+		\item For any $x\in X$, there exists an open neighborhood $U=U(x) \subset X$,
+			such that $p^{-1}(U)$ is a union of disjoint open sets $\{U_\alpha\}$,
+			and $p$ is homeomorphism from $U_\alpha$ onto $U$ for each $\alpha$.
+	\end{itemize}
+	Then we say $p$ is a \vocab{covering map}, and $\wt{X}$ is a
+	\vocab{covering space} of $X$.
+	$p^{-1}(x)$ is called a \vocab{fiber}.
+\end{definition}
+\begin{remark}
+    Often we'll require $\wt{X}, X$ are path connected to ensure the relations
+	with fundamental groups. In this case $\# p^{-1}(x)$ is constant.
+\end{remark}
+
+\begin{definition}
+	We say two covering is \vocab{isomorphic}
+	if exists $\tau: \wt{X}\to \wt{X}'$ s.t. $p'\circ \tau = p$.
+	Two covering is \vocab{equivalent} if $p' \circ \wt{\sigma} = \sigma \circ p$.
+\end{definition}
