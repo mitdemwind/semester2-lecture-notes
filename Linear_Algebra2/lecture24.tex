@@ -1,0 +1,134 @@
+%! TeX root = ./main.tex
+Here we'll present multiple proofs to emphasize some
+intermediate result.
+
+\begin{proposition}
+	Let $T$ be a normal map, if $W \subset V$ is $T$-invariant,
+	then $T_W$ is also normal.
+\end{proposition}
+\begin{proof}[Proof]
+    First note that $W, W^\perp$ are $T^*$-invariant.
+	For $\alpha, \beta\in W$, we have
+	\[
+	\left<(T_W)^*\alpha, \beta \right> = \left<\alpha, T_W\beta \right>
+	= \left<\alpha, T\beta \right> = \left<T^*\alpha, \beta \right>.
+	\]
+	Thus $(T_W)^* = T^*_W$. The conclusion follows.
+\end{proof}
+
+\begin{proposition}
+	Let $T$ be a normal map, there exists an orthogonal decomposition
+	$V = \bigoplus_{i=1}^k V_i$, such that each $V_i$ is $T$-invariant,
+	and $T_{V_i}$ simple.
+\end{proposition}
+\begin{proof}[Proof]
+    Note that if $W$ is $T$-invariant, then $W^\perp$ is
+	also $T$-invariant.
+	By induction and the previous proposition this is trivial.
+\end{proof}
+
+Therefore to prove \autoref{thm:normaldecom}, we only need to prove the case
+when $T$ is simple.
+
+\begin{proof}[Proof of \autoref{thm:normaldecom}]
+    WLOG $\dim V > 1$.
+
+	Since $T$ simple $ \implies f_T\in \mathbb{R}[x]$ prime,
+	thus $\deg f_T = 2$, $\dim V = 2$ and $f_T = (x - c)(x - \overline{c})$.
+
+	Take any orthonormal basis $\mathcal{B} = \{\alpha_1, \alpha_2\}$,
+	let $r = |c|$, $A = r^{-1}[T]_{\mathcal{B}}$.
+	Clearly $A$ normal and $\sigma(A) = \{r^{-1}c, r^{-1}\overline{c}\}$,
+	so $A$ is unitarily similar to $\diag(r^{-1}c, r^{-1}\overline{c})$,
+	$A$ is unitary.
+
+	Moreover $A$ is a real matrix so $A$ orthogonal, and $\det A = 1$,
+	thus $A = Q_\theta, \theta\in [0, 2\pi]$.
+
+	At last by $T$ has no eigenvector, and we can change $\alpha_2$ to
+	$-\alpha_2$, so we can require $\theta \in (0, \pi)$.
+\end{proof}
+
+\begin{proposition}
+	Let $T\in L(V)$, then $\ker(T)^\perp = \img(T^*), \img(T)^\perp = \ker(T^*)$.
+\end{proposition}
+\begin{proof}[Proof]
+    Trivial, just some computation.
+\end{proof}
+
+\begin{proposition}
+	Let $T\in L(V)$, $\sigma(T^*) = \overline{\sigma(T)}$,
+	\[
+		\forall c\in \sigma(T), \quad
+		\dim\ker(T - cI) = \dim\ker(T^* - \overline{c}I).
+	\]
+\end{proposition}
+\begin{proof}[Proof]
+    By the previous proposition,
+	\[
+	\dim \ker(T - cI) = n - \dim\img(T^* - \overline{c}I)
+	= \dim\ker(T^* - \overline{c}I)
+	\]
+	which also implies $\sigma(T) = \overline{\sigma(T^*)}$.
+\end{proof}
+\begin{proposition}
+	If $T$ normal, then $\ker(T - cI) = \ker(T^* - \overline{c}I)$.
+\end{proposition}
+\begin{proof}[Proof]
+    Let $W = \ker(T - cI)$, $T_W^*$ is just $(c\id_W)^* = \overline{c}\id_W$.
+	Thus $W \subset \ker(T^* 0 \overline{c}I)$, by dimensional reasons they
+	must be equal.
+\end{proof}
+
+\begin{proposition}
+	Let $T$ be a normal map, $f, g\in F[x]$ coprime
+	$\implies \ker(f(T))\perp \ker(g(T))$.
+\end{proposition}
+\begin{proof}[Proof]
+    Since $g(T)^* = \overline{g}(T^*)$, $g(T)$ is normal,
+	thus $\ker(g(T))^\perp = \img(g(T))$.
+
+	Let $W = \ker(f(T))$, let $a, b\in F[x]$ s.t. $af+bg = 1$,
+	so $a(T)f(T) + b(T)g(T) = \id_V$.
+	Restrict this equation to $W$, we get $b(T)_W g(T)_W = \id_W$,
+	hence  $W \subset \img(g(T))$.
+\end{proof}
+
+\begin{proposition}
+	Let $T$ be a normal map,
+	\begin{itemize}
+		\item The primary decomposition of $T$ are orthogonal decomposition;
+		\item The cyclic decomposition of $T$ can be orthogonal.
+	\end{itemize}
+\end{proposition}
+\begin{proof}[Proof]
+    The first one is trivial by previous proposition.
+
+	For cyclic decomposition, we proceed by induction on $\dim V$.
+
+	Let $\alpha_1\in V$ s.t. $p_{\alpha_1} = p_r$,
+	then $(R\alpha_1)^\perp$ are $T$-invariant, use induction hypo
+	on it and we're done.
+\end{proof}
+
+\begin{remark}
+    This means the primary cyclic decomposition of $T$ can also be orthogonal.
+\end{remark}
+
+This gives the second proof of \autoref{thm:normaldecom}:
+\begin{proof}[Proof]
+    WLOG $T$ normal and primary cyclic,
+	then $p_T$ is primary, and $T$ normal $ \implies T$ semisimple,
+	so $p_T$ has no multiple factors, thus $p_T$ prime, which proves the result.
+\end{proof}
+
+Next we present the third proof:
+\begin{proposition}
+	If $A, B\in \mathbb{R}^{n\times n}$ are unitarily similar,
+	then they are orthogonally similar.
+\end{proposition}
+
+\begin{proposition}[QS decomposition]
+	For any unitary matrix $U$, $U = QS$ where $Q$ real orthogonal, $S$ unitary
+	and symmetrical. Moreover $\exists f\in \mathbb{C}[x]$ s.t. $S = f(U^tU)$.
+\end{proposition}
