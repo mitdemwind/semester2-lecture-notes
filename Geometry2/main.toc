@@ -1,2 +1,1 @@
-\contentsline {subsection}{\numberline {0.1}Fundamental groups}{2}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Covering spaces}{5}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.1}Covering spaces}{3}{subsection.0.1}%

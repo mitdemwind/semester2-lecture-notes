@@ -1,0 +1,35 @@
+%! TeX root = ./main.tex
+\begin{proof}[Proof]
+    Since $\Omega = \Phi(I)$, let $y$ be the coordinates on $I$, $x = \Phi(y)$,
+	\[
+	\int_{\Phi(I)} \nabla \varphi \dd x =
+	\int_I \nabla \varphi(\Phi(y)) (\dd \Phi)^{-1} J_\Phi \dd y.
+	\]
+	Let $A = \dd \Phi$, WLOG $J_\Phi > 0$.
+	Using the index notation and Einstein summation,
+	\[
+	A_{kj}A^{ji} = A^{kj}A_{ji} = \delta_{ki}.
+	\]
+	Thus
+	\[
+	\partial_{y_j}\varphi A^{ji} |A| = \partial_{y_j}(\varphi A^{ji} |A|)
+	- \varphi \partial_{y_j}(A^{ji} |A|)
+	\]
+	Since $|A| = A_{kl}A^{kl}|A|$, $A_{kl} = \pfr{\Phi_k}{y_l}$.
+	\begin{align*}
+	    \partial_{y_j} (A^{ji} |A|)
+		&= |A|\partial_{y_j}A^{ji} + A^{ji}\partial_{y_j}|A|\\
+		&= |A|\partial_{y_j} A^{ji} + A^{ji}|A| \partial_{y_j}A_{kl}A^{kl}\\
+		&= |A|(\partial_{y_j} A^{ji} + \partial_{y_l}A_{kj}A^{kl})\\
+		&= |A|(\partial_{y_j}A^{ji} - \partial_{y_j}A^{ji}) = 0.
+	\end{align*}
+	Hence by our previous work,
+	\[
+	\int_I \partial_{y_j}(\varphi A^{ji} |A|)\dd y
+	= \int_{\partial I} \varphi A^{ji}|A| \nu_j \dd \sigma.
+	\]
+	Putting this together for all $i$'s,
+	note that $\wt{\nu} = \frac{\nabla \Phi^{-1}_n}{|\nabla \Phi^{-1}_n|}$,
+
+	TODO
+\end{proof}

@@ -1,4 +1,4 @@
-\contentsline {subsection}{\numberline {0.1}Radon-Nikodym theorem}{1}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}The dual space of $L_p$}{4}{subsection.0.2}%
-\contentsline {subsection}{\numberline {0.3}Lebesgue decomposition}{7}{subsection.0.3}%
-\contentsline {subsection}{\numberline {0.4}Conditional expectations}{9}{subsection.0.4}%
+\contentsline {subsection}{\numberline {0.1}The dual space of $L_p$}{1}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Lebesgue decomposition}{4}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.3}Conditional expectations}{6}{subsection.0.3}%
+\contentsline {subsection}{\numberline {0.4}Regular conditional distribution}{8}{subsection.0.4}%

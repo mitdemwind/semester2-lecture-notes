@@ -1,0 +1,205 @@
+%! TeX root = ./main.tex
+\begin{remark}
+    $\int_X f\dd \mu$ only depends on $\sigma(f)$, so when $f\in \mathscr{G}
+	\subset \mathscr{F}$, the integral is the same under both $\sigma$-algebra.
+\end{remark}
+
+We can see that the condition $L_2$ is a little strong, so we can reduce
+it to existence of integrals.
+
+\begin{definition}[Conditional expectation]
+	Let $f\in \mathscr{F}$ whose integral exists,
+	we say the \vocab{conditional expectation}
+	of $f$ under $\mathscr{G}$ is the function $f^*$ with integral which satisfies:
+	\[
+	f^*\in \mathscr{G},\quad Ef^*\ii_A = \int_A f\dd P, \forall A\in \mathscr{G}.
+	\]
+	This function is denoted by $E(f|\mathscr{G})$.
+\end{definition}
+
+By the notation $E(f|\mathscr{G})$ we mean a family of \textit{almost surely}
+equal functions which are measurable in $(X, \mathscr{G}, P)$.
+
+The \vocab{conditional probability} of $A$ under $\mathscr{G}$ is
+\[
+P(A|\mathscr{G}) := E(\ii_A | \mathscr{G}).
+\]
+
+As we've said, let $\phi(A) = Ef\ii_A$ be a signed measure,
+we have
+\[
+\frac{\dd \phi}{\dd P} = f\in (X, \mathscr{F}), \quad
+\frac{\dd \phi|_{\mathscr{G}}}{\dd P} = f^* \in (X, \mathscr{G}).
+\]
+All we've done is to find a approximation of $f$ which isn't
+necessarily in  $\mathscr{G}$
+
+Let $g:(X, \mathscr{F}) \to (Y, \mathscr{S})$.
+We say the conditional expectation of $f$ with respect to $g$ is defined as
+\[
+E(f|g) = E(f|\sigma(g))
+\]
+In probability courses we learned:
+\[
+Ef = EE(f|g),
+\]
+now it's almost trivial since $\int_X f\dd P = \int_X f^* \dd P$.
+
+\begin{example}
+    Let $\mathscr{G} = \{\emptyset, B, B^c, X\}$, where $B\in \mathscr{F}$.
+	Then $E(f|\mathscr{G}) = \int_B f\dd P P(B)^{-1} \ii_B
+	+ \int_{B^c}f\dd P P(B^c)^{-1} \ii_{B^c}$.
+
+	We can see that the conditional expectation is indeed an ``expectation''.
+
+	Also, $P(A|\mathscr{G}) = P(A\cap B)P(B)^{-1}\ii_B
+	+ P(A\cap B^c)P(B^c)^{-1}\ii_{B^c}$,
+	thus $P(A|B) = \frac{P(A\cap B)}{P(B)}$, which coincides with elementary
+	probability.
+\end{example}
+
+\begin{definition}
+	Let $ \{A_t, t\in T\}$ be a family of sets in $\mathscr{F}$, if
+	$\forall n\ge 2, \{t_1, \dots, t_n\} \subset T$,
+	\[
+	P\left(\bigcap_{k=1}^n A_{t_k}\right) = \prod_{k=1}^n P(A_{t_k}),
+	\]
+	we say $\{A_t, t\in T\}$ are independent.
+
+	Likely, we can define the independence of collections of sets,
+	and therefore random variables.
+\end{definition}
+
+\begin{lemma}
+	Let $f$ be a random variable whose integral exists, if $f$ and $\mathscr{E}$ are
+	independent, we have
+	\[
+	E(f\ii_A) = (Ef) \cdot P(A), \quad\forall A\in \mathscr{E}
+	\]
+\end{lemma}
+
+Next we'll study the properties of conditional expectations:
+Let $f, g$ be functions whose integrals exist, $\mathscr{G}, \mathscr{G}_0$ are
+sub $\sigma$-algebras of  $\mathscr{F}$,
+\begin{enumerate}[\indent(1)]
+	\item If $f\in \mathscr{G}$, then $E(f|\mathscr{G}) = f, a.s.$.
+		(Trivial)
+	\item If $f$ and $\mathscr{G}$ are independent,
+		then $E(f|\mathscr{G}) = Ef, a.s.$.
+
+		Let $f^* = Ef$, we can see
+		\[
+		Ef\ii_A = (Ef)P(A) = Ef^*\ii_A,
+		\]
+	\item Let $\mathscr{G} \subset \mathscr{G}_0$,
+		\[
+		E(E(f|\mathscr{G})|\mathscr{G}_0) = E(f|\mathscr{G})
+		= E(E(f|\mathscr{G}_0)|\mathscr{G}), a.s.
+		\]
+
+		The left hand side is immediate by $(1)$. The right hand side
+		can be checked directly using definition.
+
+	\item If $f\le g, a.s.$ then $E(f|\mathscr{G}) \le E(g|\mathscr{G}), a.s.$.
+		\[
+		Ef^*\ii_A = Ef\ii_A \le Eg\ii_A = Eg^*\ii_A, \quad \forall A\in \mathscr{G}.
+		\]
+	\item For all $a,b\in \mathbb{R}$, if $aEf + bEg$ exists, then
+		\[
+		E(af+bg | \mathscr{G}) = aE(f|\mathscr{G}) + bE(g|\mathscr{G}).
+		\]
+
+		This also can be checked using definition (let $h = af+bg$).
+\end{enumerate}
+
+\begin{theorem}
+    Let $f_1,f_2,\dots$ be r.v. whose integrals exist,
+	$\mathscr{G} \subset \mathscr{F}$, then the limit theorems also holds:
+	\begin{itemize}
+		\item If $0\le f_n\uparrow f, a.s.$, then
+			\[
+			0 \le E(f_n|\mathscr{G}) \uparrow E(f|\mathscr{G}), a.s.;
+			\]
+		\item If $f_n\ge 0, a.s.$, then
+			\[
+				E\left(\liminf_{n\to \infty} f_n | \mathscr{G}\right)
+				\le \liminf_{n\to \infty}E(f_n|\mathscr{G}), a.s.;
+			\]
+		\item If $|f_n| \le g, a.s.$ and $g\in L_1$, $f_n \to f, a.s.$ or in measure.
+			\[
+			E(f|\mathscr{G}) = \lim_{n\to \infty} E(f_n|\mathscr{G}), a.s.
+			\]
+	\end{itemize}
+\end{theorem}
+\begin{proof}[Proof]
+    \begin{itemize}
+    	\item Let  $f_n^* = E(f_n|\mathscr{G})$, then they are a.s. increasing,
+			let $\hat{f} = \lim_{n\to \infty} f_n^*$,
+			then $\hat{f} \in \mathscr{G}$, and
+			\[
+			E\hat{f}\ii_A = \lim_{n\to \infty} Ef_n^*\ii_A = Ef\ii_A.
+			\]
+		\item Similarly, let
+			\[
+				g_n := \inf_{m\ge n}f_m \uparrow \liminf_{n\to \infty} f_n =: f.
+			\]
+			We have $g_n^* \uparrow f^*$, so
+			\[
+			g_n \le f_n \implies g_n^* \le f^* \implies f^* \le
+			\liminf_{n\to \infty} f_n^*, a.s.
+			\]
+		\item Lebesgue dominated theorem can be proved similarly.
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}
+    Let $f,g$ are r.v. whose integrals exist, $g\in \mathscr{G} \subset \mathscr{F}$.
+	\[
+	E(fg|\mathscr{G}) = gE(f|\mathscr{G}), a.s.
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    Fix $f$, we use typical method on $g$.
+	When $g = \ii_A$, $A\in \mathscr{G}$, then the conclusion holds:
+	\[
+	E(f^*\ii_A \ii_B) = E(f^*\ii_{AB}) = Ef\ii_{AB} = E(f\ii_A\ii_B).
+	\]
+	Since $AB\in \mathscr{G}$.
+
+	Now using the linearity and limit theorems we're done.
+	Note that we need to prove on $\{f, g\ge 0\}$ and other 3 sets respectively.
+\end{proof}
+
+\subsection{Regular conditional distribution}
+\label{sub:Regular conditional distribution}
+Let $\{A_n\}$ be a partition of $X$, $\mathscr{G} = \sigma(\{A_n\})$,
+$P(A_n) > 0$. Thus if $B\in \mathscr{G}$ and $P(B) = 0 \implies B = \emptyset$.
+So the conditional expectations are uniquely determined
+(the only null set is the empty set).
+
+We'll compute the conditional expectation of $f$ under $\mathscr{G}$.
+\[
+f^*(x) = \sum_{n} a_n\ii_{A_n}(x), \quad \forall x.\quad
+Ef^*\ii_{A_n} = Ef\ii_{A_n} \implies a_n = \frac{Ef\ii_{A_n}}{P(A_n)}.
+\]
+Hence $\forall x\in X, A\in \mathscr{F}$,
+\[
+p(x, A) = P(A|\mathscr{G})(x) = (\ii_A)^*(x)
+= \sum_{n} \frac{P(A\cap A_n)}{P(A_n)} \ii_A(x).
+\]
+We get a function $p(x, \cdot)$, which is a probability on $\mathscr{F}$,
+and $p(x, \cdot) = P(\cdot | A_n)$ when $x\in A_n$.
+
+For a fixed $x$,
+\[
+	(\ii_A)^*(x) = \int_X \ii_A(y) \dd p(x,\cdot), \quad \forall A\in \mathscr{F}.
+\]
+
+Now using typical method we can generalize $\ii_A$ to any measurable function $f$.
+Since here $a.s.$ means equal at every point, so all the functions are determined.
+
+Now what we've done is to realize conditional expectation as an integral over
+\vocab{conditional probabilities} $p(x, \cdot)$:
+\[
+f^*(x) = \int_X f(y) \dd p(x, \cdot) = \int_X f(y)p(x, \dd y).
+\]

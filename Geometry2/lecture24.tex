@@ -1,0 +1,120 @@
+%! TeX root = ./main.tex
+\begin{example}
+    The map $x\mapsto e^{ix}$ is a covering map from $\mathbb{R}$ to $S^1$.
+	Also $\mathbb{R}^2$ is a covering space of $T^2$, since
+	$T^2$ can be represented as $\mathbb{R}^2 / \mathbb{Z}^2$.
+\end{example}
+
+\begin{example}
+    The surface $2T^2$ can be viewed as an octagon with edges fused together,
+	(an octagon with each angle $45^\circ$)
+	which can be realized in hyperbolic plane $\mathbb{H}^2$.
+
+	In fact, $\mathbb{H}^2$ is always the covering space of $kT^2$ when $k\ge 2$,
+	and $kP^2$ when $k\ge 3$.
+\end{example}
+
+From the examples we can see that covering spaces are the ``expanded'' spaces
+of original spaces, i.e. the structures are ``flattened'' in covering spaces,
+so that we can study the structure of original spaces more easily.
+
+An important application is that we can ``lift'' the maps to covering spaces.
+\begin{theorem}[Map lifting theorem]
+    Let $p: \wt{X} \to X$ be a covering map, $X$ is path connected.
+	Let $A$ be a path connected space, $f: A\to X$ has a \vocab{lifting}
+	$\wt{f}: A\to \wt{X}$ s.t. $\tilde f(a)\in p^{-1}(f(a)), \forall a\in A$ if
+	and only if there exists a homomorphism $\Phi$ s.t. $f_\sharp=p_\sharp\circ\Phi$:
+	\begin{equation*}
+	\begin{tikzcd}
+		&\pi_1(\wt{X}, e_0)\dar["p_\sharp"]\\
+		\pi_1(A, a_0)\rar["f_\sharp"']\urar[dashed, "\Phi"] &\pi_1(X, x_0)
+	\end{tikzcd}
+	\end{equation*}
+
+	This is equivalent to $f_\sharp(\pi_1(A, a_0)) \leqslant
+	p_\sharp(\pi_1(\wt{X}, e_0))$.
+\end{theorem}
+\begin{proof}[Proof]
+    If we fixed $\tilde f(a_0) = e_0$, then for a neighborhood $V$ of $e_0$,
+	there's a unique map $\tilde f: U\to V$, where $U$ is a neighborhood of $a_0$.
+	This is because $p$ restricted on $V$ is a homeomorphism,
+	and $f$ continuous implies $U$ is open, $U$ is called
+	a \textit{basic neighborhood} of $a_0$.
+
+	For any $b\in A$, there's a path $\gamma$ from $a_0$ to $b$.
+	Since $\gamma$ is compact, it can be splited to several segments,
+	where each segment lies inside a basic neighborhood of some point.
+
+	Therefore the lifting of $\gamma$ can be uniquely determined by
+	the lifting of one point. Hence $\tilde f(b)$ is also determined.
+	\bigskip
+
+	Next we'll show that this $\tilde f$ is well-defined and continuous.
+	Let $\alpha, \beta$ be two paths from $a_0$ to $b$.
+	Then $f\circ \alpha, f\circ \beta$ are two paths from $x_0$ to $f(b)$.
+
+	When $f_\sharp(\pi_1(A, a_0)) \leqslant p_\sharp(\pi_1(\wt(X), e_0))$,
+	let $w = \alpha \beta^{-1}\in \pi_1(A)$,
+	then there exists $\varphi\in \pi_1(\wt{X})$ s.t. $f\circ w = p\circ \varphi$.
+
+	But there's a unique lifting for $f\circ \alpha, f\circ \beta$,
+	so $\tilde f(\alpha)\tilde f(\beta)^{-1} = \varphi$,
+	thus $\tilde f(b)$ is well-defined.
+
+	Clearly $\tilde f$ is continuous, so we're done.
+\end{proof}
+\begin{remark}
+    Different base points will result in the image $p_\sharp$ and  $\tilde f$.
+\end{remark}
+
+\begin{example}
+    Let $M$ be a closed surface, $M \ne S^2, \mathbb{RP}^2$.
+	Note that $M$ has a contractible covering space,
+	so any map $S^n \to M$ is always homotopic to constant, where $n\ge 2$.
+\end{example}
+
+Now if we look at the definition of isomorphic coverings,
+we'll find that this is just a map lifting, where $\tau$ is a lifting
+of $p$, $\tau^{-1}$ is a lifting of $p'$.
+By map lifting theorem we get:
+\begin{corollary}
+    Two covering spaces $\wt{X}, \wt{X}'$ of $X$ are isomorphic
+	iff $p_\sharp(\pi_1(\wt{X})) = p'_\sharp(\pi_1(\wt {X}'))$.
+\end{corollary}
+
+From this we discover that each covering of $X$ corresponds
+to a subgroup of $\pi_1(X)$. In fact the inverse is also true:
+\begin{theorem}[Existence theorem of covering spaces]
+    Let $X$ be a path connected space,
+	then for all subgroups $G \leqslant \pi_1(X, x_0)$,
+	there exists a covering $p: \wt{X} \to X$ s.t.
+	\[
+	p_\sharp(\pi_1(\wt{X}, e_0)) = G.
+	\]
+\end{theorem}
+\begin{remark}
+    This implies that \vocab{universal coverings} always exists,
+	i.e. the covering space $\wt{X}$ which has trivial fundamental group.
+\end{remark}
+
+The proof is quite complex, so we'll put it off here.
+
+\begin{definition}[Regular covering space]
+	If $p_\sharp(\pi_1(\wt{X}, e_0))$ is a normal subgroup of $\pi_1(X, x_0)$,
+	then we say it's a \vocab{regular covering} of $X$.
+\end{definition}
+In this case the base point will not change the image of $p_\sharp$.
+
+\begin{proposition}
+	Let $p:\wt{X} \to X$ be a regular covering, for any $ e_1, e_2\in p^{-1}(x_0)$,
+	there exists a homeomorphism $f: \wt{X} \to \wt{X}$ s.t.
+	\begin{itemize}
+		\item $f$ is a lifting of $p$;
+		\item  $f(e_1) = f(e_2)$.
+	\end{itemize}
+\end{proposition}
+
+We say the lifting of $p$ with respect to itself \vocab{deck transformation}.
+Regular coverings have \textit{orbit transitivity}:
+$\forall e_1, e_2\in p^{-1}(x_0)$, there exists a self-homeomorphism
+sending $e_1$ to $e_2$.

@@ -56,6 +56,14 @@ Except van Kampen's theorem, there's another way to compute fundamental groups.
 
 \begin{definition}
 	We say two covering is \vocab{isomorphic}
-	if exists $\tau: \wt{X}\to \wt{X}'$ s.t. $p'\circ \tau = p$.
+	if exists homeomorphism $\tau: \wt{X}\to \wt{X}'$ s.t. $p'\circ \tau = p$.
 	Two covering is \vocab{equivalent} if $p' \circ \wt{\sigma} = \sigma \circ p$.
+	The difference is shown in the diagram.
+	\begin{equation*}
+	\begin{tikzcd}
+		\wt{X}\drar["p"']\rar["\tau"] & \wt{X}'\dar["p'"]
+		&& \wt{X}\rar["\wt{\sigma}"]\dar["p"'] & \wt{X}'\dar["p'"]\\
+		& X && X\rar["\sigma"'] & X'
+	\end{tikzcd}
+	\end{equation*}
 \end{definition}
