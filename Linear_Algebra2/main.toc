@@ -1,5 +1,5 @@
-\contentsline {section}{\numberline {1}Bilinear forms}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Positive define matrices}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Bilinear forms on inner product spaces}{4}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Spectral decomposition}{5}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Further on normal maps}{8}{subsection.1.4}%
+\contentsline {subsection}{\numberline {0.1}Bilinear forms on inner product spaces}{1}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Spectral decomposition}{2}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.3}Further on normal maps}{5}{subsection.0.3}%
+\contentsline {section}{\numberline {1}Bilinear forms}{8}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Some special bilinear forms}{9}{subsection.1.1}%

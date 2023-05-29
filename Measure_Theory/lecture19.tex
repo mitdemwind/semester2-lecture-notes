@@ -1,0 +1,178 @@
+%! TeX root = ./main.tex
+Next we'll generalize this observation to generic $\mathscr{G}$.
+
+Since $(\ii_A)^*$ is not a implicit function, we'll specify a function
+$p(x, A)$ for each $(\ii_A)^*$.
+We want $p(x, A)$ is a probability, so we need to check countable additivity:
+let $A = \sum_{n} A_n$, we only have
+\[
+p(x, A) = \sum_{n} p(x, A_n), a.s.
+\]
+but there's uncountably many such $A_1, A_2, \dots$, so this
+is the main difficulty of generalization.
+
+\begin{definition}
+	If a function $p(x, A)$ statisfies
+	$p(x, \cdot)$ is a probability on $ \mathscr{F}$,
+	and $p(\cdot, A) = P(A|\mathscr{G})$, then we say $p$ is
+	a \vocab{regular conditional probability} on $ \mathscr{G}$,
+	denoted by $P_{\mathscr{G}}(x, A)$.
+\end{definition}
+
+Since the regular conditional probability may not exist,
+we need to study it on a simpler $\sigma$-algebra, say $\sigma(f)$ for
+some r.v. $f$.
+\[
+p(x, \{f\in B\}) = \mu(x, B) \to F(x, a)
+\]
+This means we only need to find a distribution $F(x, \cdot)$.
+\begin{definition}
+	Let $f$ be a r.v., if $F(x, a)$ statisfies
+	$F(x, \cdot)$ is a distribution, and $F(\cdot, a) = P(f\le a|\mathscr{G}), a.s.$,
+	we call it the \vocab{regular conditional distribution function} of $f$
+	with respect to $\mathscr{G}$, denoted by $F_{f|\mathscr{G}}(\cdot, \cdot)$.
+\end{definition}
+
+\begin{theorem}
+    Let $f$ be a r.v., then the regular conditional
+	distribution function always exists.
+\end{theorem}
+\begin{proof}[Proof]
+    For all $r\in \mathbb{Q}$, we can take a r.v. $G(\cdot, r)$ s.t.
+	\[
+	G(\cdot, r) = P(f\le r|\mathscr{G}), a.s.
+	\]
+	We get a function $G(\cdot, \cdot)$ on $X \times \mathbb{Q}$.
+
+	Recall that distribution statisfies:
+	monotonicity, right continuity and normality (range is $[0, 1]$).
+
+	Let $N_1, N_2, N_3$ be subsets of $X$ where the above condition doesn't hold,
+	respectively. Let $N = N_1\cup N_2\cup N_3$.
+
+	For fixed $r_1, r_2$, the set $A_{r_1, r_2} := \{x\mid G(x, r_1)>G(x, r_2)\}$
+	is null because of the properties conditional expectation.
+	Thus $N_1 = \bigcup_{r_1, r_2\in \mathbb{Q}} A_{r_1, r_2}$ is null.
+
+	By similar techniques, we can prove $N_2, N_3$ are null as well.
+	(Note that here we can consider them in $N_1^c$, which means $G(x, \cdot)$
+	is increasing)
+
+	Hence $P(N) = 0$, let
+	\[
+	F(x, a) = \inf\{G(x, r): r\in \mathbb{Q}, r > a\}.
+	\]
+	Then $F(x, \cdot)$ is right continuous on $X \backslash N \times \mathbb{R}$.
+	In fact we can also check the other two requirements,
+	so $F$ is indeed a regular conditional d.f..
+
+	For $\forall a\in \mathbb{R}$, let
+	\[
+	F_{f|\mathscr{G}}(x, a) := \left\{
+	\begin{aligned}
+		&F(x, a), &x\notin N;\\
+		&H(a), &x\in N.
+	\end{aligned}\right.
+	\]
+	where $H(a)$ is an arbitary distribution function.
+	We've already proved that $F_{f|\mathscr{G}}(x, \cdot)$ is a d.f.;
+	For fixed $a$, by Levi's theorem,
+	\[
+	F_{f|\mathscr{G}} = \lim_{r\in \mathbb{Q}, r\to a^+}G(\cdot, r)
+	= \lim_{r\in \mathbb{Q}, r\to a^+} P(f\le r|\mathscr{G})
+	= P(f\le a|\mathscr{G}), a.s.
+	\]
+	So $F_{f|\mathscr{G}}$ is the desired regular conditional d.f..
+\end{proof}
+
+Similarly we can define a \vocab{regular conditional distribution} $\mu(x, B)$
+for a r.v. $f$.
+\begin{theorem}
+    Let $h$ be a function,
+	\[
+		(h(f))^*(x) = \int_{\mathbb{R}} h(a)\mu(x, \dd a).
+	\]
+	In particular, $f^*(x) = \int_{\mathbb{R}} a\mu(x, \dd a)$.
+\end{theorem}
+
+Let $g:(X, \mathscr{F}) \to (Y, \mathscr{S})$ be a measurable map,
+$\mathscr{G} = \sigma(g)$.
+Then $f^*\in \mathscr{G} \iff f^* = \varphi(g), a.s.$,
+where $\varphi:(Y, \mathscr{S}) \to (\mathbb{R}, \mathscr{B}_{\mathbb{R}})$.
+
+\begin{definition}
+	We say $\varphi(\cdot)$ is the conditional expectation of $f$ under
+	a \vocab{given value} of $g$, denoted by $E(f|g = \cdot)$.
+	It's a real-valued function on $Y$.
+\end{definition}
+\begin{definition}
+	If a function $\nu(y, B)$ statisfies:
+	$\nu(y, \cdot)$ is a distribution on $\mathscr{B}_{\mathbb{R}}$,
+	and $\nu(y, B) = P(f\in B| g = y), a.s.$ in $\mathscr{L}(g)$ (the measure on $Y$
+	induced by $g$), then we call it the regular conditional distribution of $f$
+	under \vocab{given value} of $g$, we denote this by $\mu_{f|g}(y, B)$.
+\end{definition}
+
+\begin{corollary}
+    $\nu(y, B)$ exists, and
+	\[
+	E(h(f)| g=y) = \int_{\mathbb{R}} h(a)\mu(y, \dd a), \mathscr{L}(g)\text{-}a.s.
+	\]
+\end{corollary}
+\begin{example}
+    Consider a continuous random vector on $\mathbb{R}^2$.
+	Let $\lambda_2$ be the Lebesgue measure on $\mathbb{R}^2$.
+
+	Recall that $(f, g)$ is continuous iff there exists $p(x, y)$ s.t.
+	\[
+	P((f,g)\in B) = \iint_{B} p(x, y)\dd \lambda_2, \forall B\in \mathscr{B}_2.
+	\]
+	Let $p_g(y) = \int_{\mathbb{R}} p(x, y)\lambda(\dd x)$,
+	in probability we learned
+	\[
+	p_{f|g}(x|y) = \left\{
+	\begin{aligned}
+		&\frac{p(x, y)}{p_g(y)}, &p_g(y) > 0;\\
+		&0, &p_g(y) = 0.
+	\end{aligned}\right.
+	\]
+	By our corollary we get $\mu_{f|g}(y, B) = \int_Bp_{f|g}(x|y)\lambda(\dd x)$.
+\end{example}
+
+\section{Product spaces}
+\label{sec:Product spaces}
+\subsection{Finite dimensional product spaces (omitted)}
+\label{sub:Finite dimensional product spaces}
+This section is almost covered in real variable functions.
+
+Let $X_1, \dots, X_n$ be original spaces, $X = \prod_{k=1}^n X_k$.
+We're going to build measurable structure on $X$.
+
+Let
+\[
+\mathscr{Q} := \{\prod_{k=1}^n A_k : A_k \in \mathscr{F}_k, k = 1,\dots, n\}
+\]
+denote the measurable rectangles, we can check $\mathscr{Q}$ is a semi-ring,
+and $X \in \mathscr{Q}$.
+Let
+\[
+\mathscr{F} = \prod_{k=1}^n \mathscr{F}_k := \sigma(\mathscr{Q})
+\]
+be the \vocab{product $\sigma$-algebra}.
+
+Let $\pi_k$ be the projection map onto the $k$-th component,
+we have
+\begin{proposition}
+	For each $k$, $\pi_k$ is a measurable
+	map $(X, \mathscr{F}) \to (X_k, \mathscr{F}_k)$, and
+	\[
+		\mathscr{F} = \sigma\left(\bigcup_{k=1}^n \pi_k^{-1}\mathscr{F}_k\right).
+	\]
+\end{proposition}
+
+\begin{theorem}
+    Let $f = (f_1, \dots, f_n): \Omega\to X$, then $f:(\Omega, \mathscr{S})\to
+	(X, \mathscr{F})$ measurable iff each $f_k$ is measurable.
+\end{theorem}
+
+A \vocab{section} is to fix some components of a subset of $X$.

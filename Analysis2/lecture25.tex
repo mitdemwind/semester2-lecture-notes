@@ -1,0 +1,107 @@
+%! TeX root = ./main.tex
+Let $(\phi_1, \dots, \phi_n)$ be an element in the tangent boundle $TM$,
+it can represent a vector field
+\[
+	X = (\phi_1,\dots, \phi_n) = \sum_{i=1}^{n} \phi_i\pfr{}{x_i}.
+\]
+Here $X \in TM, X(p)\in T_pM$.
+
+We define the \vocab{divergence} of $X$ to be
+\[
+\Div(X) = \sum_{i=1}^{n} \pfr{\phi_i}{x_i}.
+\]
+The Stolke's formula can be presented as divergence theorem:
+\begin{theorem}[Divergence theorem]
+    Let $X$ be a vector field,
+	\[
+	\int_D \Div(X) \dd x = \int_{\partial D} X \cdot \nu \dd \sigma.
+	\]
+\end{theorem}
+
+Another commonly-used operator is the \vocab{Laplace operator}:
+\[
+\Delta = \Div \cdot \nabla, \quad \Delta \phi = \Div(\nabla \phi)
+= \tr(H_\phi) = \sum_{i=1}^{n} \frac{\partial^2\phi}{\partial x_i^2}.
+\]
+
+When $n = 2$, we have $X = P\pfr{}{x} + Q\pfr{}{y}$,
+$\Div(X) = \pfr{P}{x}+\pfr{Q}{y}$,
+\[
+\int_D \left(\pfr{P}{x} + \pfr{Q}{y}\right)\dd x\dd y
+= \int_{\partial D} X\cdot \nu \dd \sigma.
+\]
+Since $\partial D$ is a curve $\gamma(t)$,
+so $\dd \sigma = |\gamma'(t)| \dd t$.
+Let $\gamma(t) = (x(t), y(t))$, then $\nu(t) = \frac{(y'(t), -x'(t))}{|\gamma'(t)|}$.
+Here we must take $\gamma(t)$ to be \textit{counterclockwise} to ensure
+$\nu$ points outside of $D$.
+
+Thus we get
+\[
+\int_{\partial D} X\cdot \nu \dd \sigma
+= \int_{\gamma} \frac{Py'(t) - Qx'(t)}{|\gamma'(t)|} |\gamma'(t)|\dd t
+= \int_{\partial D} (P\dd y - Q\dd x).
+\]
+This result is known as \textit{Green's formula}.
+
+This leads to the curve integrals of the second type:
+let $\gamma(t)\in \mathbb{R}^d$, $X$ a vector field, we call the integral
+\[
+\int_{\gamma} \sum_{i=1}^{d} X^i\dd x_i = \int_{\gamma} X\cdot \dd \gamma(t).
+\]
+the \vocab{curve integral of the second type}.
+
+When $n = 3$, the result is called \textit {Gauss's formula},
+we have $X = P\pfr{}{x}+Q\pfr{}{y}+R\pfr{}{z}$,
+\[
+\int_D \Div(X) \dd x\dd y\dd z = \int_{\partial D}X\cdot \nu\dd \sigma.
+\]
+Let $\gamma(u, v) = (x, y, z)$ be a parametrization of $\partial D$.
+We have two tangent vector $\gamma_u, \gamma_v$, so the normal vector
+is defined as $\nu = \frac{\gamma_u \times \gamma_v}{|\gamma_u \times \gamma_v|}$.
+Also $\dd \sigma = |\gamma_u \times \gamma_v|\dd u\dd v$.
+After some computation we can get
+\[
+\nu \dd \sigma = (\dd y\dd z, \dd z\dd x, \dd x\dd y).
+\]
+\[
+\int_D \Div(X)\dd x\dd y\dd z = \int_{\partial D}(P\dd y\dd z
++ Q\dd z\dd x + R\dd x\dd y).
+\]
+
+\subsection{Differential forms}
+\label{sub:Differential forms}
+Let $T^*_pM$ denote the \textit{dual space} of $T_pM$,
+and  $\dd x_i$ is the dual basis of $\pfr{}{x_i}$.
+The linear combination of $\dd x_i$ are called \vocab{differential forms},
+and a differential form on a manifold can be written as $ \sum_{i=1}^{n} a_i\dd x_i$,
+where $a_i$ are functions on $M$.
+
+We can construct differential forms of higher order, the order is $1 \le k\le n$,
+called \vocab{$k$-forms}, which is a linear combination of
+\[
+\dd x_{i_1}\dd x_{i_2}\cdots \dd x_{i_k}, \quad i_1<i_2<\cdots<i_k.
+\]
+Here the product is \textit{wedge product},
+i.e. $\dd x_i \dd x_j = -\dd x_j \dd x_i$.
+We denote the space of all $k$-forms by $\Lambda^k(\Omega)$.
+
+We can define the multiplication of forms:
+let  $\omega_1 \in \Lambda^{k_1}, \omega_2\in \Lambda^{k_2}$,
+then $\omega_1\wedge \omega_2 \in \Lambda^{k_1+k_2}$ by
+multiplying the coefficients and $\dd x_i$'s respectively.
+
+There's also an operator called \vocab{exterior differentiation}
+$\dd: \Lambda^k\to \Lambda^{k+1}$,
+where
+\[
+	\dd(a \dd x_{i_1}\cdots \dd x_{i_k}) = \sum_{j=1}^{n} \pfr{a}{x_j}
+	\dd x_j \dd x_{i_1}\cdots \dd x_{i_k}.
+\]
+This operator behaves like the derivatives very much:
+\[
+\dd(\omega_1 + \omega_2) = \dd \omega_1 + \dd \omega_2,\quad
+\dd(\omega_1\omega_2) = \dd \omega_1\wedge \omega_2 +
+(-1)^{k_1k_2} \omega_1 \wedge \dd \omega_2.
+\]
+

@@ -1,0 +1,135 @@
+%! TeX root = ./main.tex
+\begin{proof}[Proof]
+    Let $\sigma(U^tU) = \{c_1, \dots, c_k\}$.
+	We can take a polynomial $f\in \mathbb{C}[x]$ s.t. $f(c_i)^2 = c_i$.
+
+	Since $U$ is unitary, $|c_i| = 1 \implies |f(c_i)| = 1$.
+
+	Let $S = f(U^tU)$, we claim that $S$ unitary and $S^2 = U^tU$.
+
+	Let $U^tU = P\diag(c_1, \dots, c_k)P^{-1}$, where $P$ is unitary,
+	then $S = P\diag(f(c_1), \dots, f(c_k))P^{-1}$ is unitary,
+	and clearly $S^2 = U^tU$.
+
+	Let $Q = US^{-1}$, then $Q$ unitary. Since $S$ symmetrical,
+	$S^{-1} = S^*\implies \overline{S^{-1}} = S^t = S$,
+	\[
+	\overline{Q}Q^{-1} = \overline{U} S S U^{-1} = \overline{U}U^tU U^{-1} = I_n.
+	\]
+	Hence $\overline{Q} = Q$, $Q$ is real orthogonal.
+\end{proof}
+
+\begin{proof}[Return to the original proposition]
+    Let $A, B$ be real matrices unitarily similar,
+	let $B = UAU^{-1}$, taking the conjuate we get
+	\[
+	UAU^{-1} = \overline{U}AU^t \implies U^tUA = AU^tU.
+	\]
+	Let $U = QS$, then $AS = SA$. We have
+	\[
+	B = UAU^{-1} = QSAS^{-1}Q^{-1} = QAQ^{-1}.
+	\]
+	Therefore $A, B$ are orthogonally similar.
+\end{proof}
+
+\begin{corollary}
+    Let $A, B$ be normal matrices, TFAE:
+	\begin{enumerate}[\indent(1)]
+		\item $A, B$ are unitarily similar (or orthogonally similar);
+		\item $A, B$ are similar;
+		\item $f_A = f_B$.
+	\end{enumerate}
+\end{corollary}
+\begin{proof}[Proof]
+    We only need to prove $(3)\implies (1)$.
+
+	When $F = \mathbb{C}$, $A, B$ are unitarily similar to
+	diagonal matrices $D_1, D_2$.
+	Since $f_A = f_B$, $D_1, D_2$ only differ by a permutation,
+	hence unitarily similar.
+
+	When $F = \mathbb{R}$, by the previous proposition and proof for $\mathbb{C}$,
+	we get the result.
+\end{proof}
+
+The third proof of \autoref{thm:normaldecom} is to
+factorize $f_T \in \mathbb{R}[x]$ and use the above corollary.
+
+At last we prove another property of normal maps:
+\begin{proposition}
+	Let $A$ be a normal matrix, then $A^*$ is a complex polynomial of $A$.
+\end{proposition}
+\begin{proof}[Proof]
+    Use the spectral decomposition.
+\end{proof}
+
+\section{Bilinear forms}
+\label{sec:Bilinear forms}
+In this section we study the bilinear forms on generic fields.
+Let $M^2(V)$ denote all the bilinear forms on $V$.
+
+For $f\in M^2(V)$,
+Let $(f(\alpha_i, \alpha_j))_{ij}$ be the matrix of $f$ under basis $\{\alpha_i\}$.
+(Note that this differs by a transpose with previous section)
+
+Obviously $M^2(V) \to F^{n\times n}$ by $f\mapsto [f]_{\mathcal{B}}$ is
+a linear isomorphism.
+
+\begin{proposition}
+	Let $ \mathcal{B}, \mathcal{B}'$ be two basis,
+	$P$ is the transformation matrix between them, for all $f\in M^2(V)$ we
+	have $[f]_{\mathcal{B}'} = P^t[f]_{\mathcal{B}}P$.
+\end{proposition}
+\begin{proof}[Proof]
+    Trivial.
+\end{proof}
+
+If $A = P^tBP$ for some $P\in \GL(V)$, we say $A, B$ are \vocab{congruent}.
+
+A bilinear form will induce two linear maps $V\to V^*$, namely $L_f, R_f$:
+\[
+L_f(\alpha)(\beta) = R_f(\beta)(\alpha) = f(\alpha, \beta).
+\]
+\begin{proposition}
+	For any basis $ \mathcal{B}$,
+	we have $\rank L_f = \rank R_f = \rank [f]_{\mathcal{B}}$.
+	This number is called the rank of $f$, denoted by $\rank f$.
+\end{proposition}
+
+If $\rank f = n$, we say $f$ is non-degenrate, this is equivalent to
+$L_f$ invertible or $R_f$ invertible.
+
+\subsection{Some special bilinear forms}
+\label{sub:Some special bilinear forms}
+\begin{definition}
+	For $f\in M^2(V)$,
+	\begin{itemize}
+		\item If $f(\alpha, \beta) = f(\beta, \alpha), \forall \alpha, \beta\in V$,
+			then we say $f$ is \vocab{symmetrical}.
+		\item If $f(\alpha, \beta) = -f(\beta,\alpha), \forall \alpha, \beta\in V$,
+			we say $f$ is \vocab{anti-symmetrical}.
+		\item If $f(\alpha, \alpha) = 0, \forall \alpha\in V$,
+			we say $f$ is \vocab{alternating}.
+	\end{itemize}
+	We denote the above functions by $S^2(V), A^2(V), \Lambda^2(V)$.
+\end{definition}
+We can see that $\Lambda^2(V) \subset A^2(V)$,
+and they are all subspaces of $M^2(V)$.
+
+\begin{proposition}
+	If $\Char F\ne 2$, then $A^2(V) = \Lambda^2(V)$,
+	and $M^2(V) = A^2(V) \oplus S^2(V)$.
+\end{proposition}
+\begin{proof}[Proof]
+    Already proved in last semester.
+\end{proof}
+
+\begin{proposition}
+	Let $\mathcal{B}$ be any basis of $V$,
+	\begin{itemize}
+		\item $f$ symmetrical $\iff [f]_{\mathcal{B}}$ symmetrical;
+		\item $f$ anti-symmetrical $\iff [f]_{\mathcal{B}}$ anti-symmetrical;
+		\item $f$ alternating $\iff [f]_{\mathcal{B}}$ anti-symmetrical and
+			the diagonal entries are all zero.
+	\end{itemize}
+\end{proposition}

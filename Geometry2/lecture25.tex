@@ -1,0 +1,49 @@
+%! TeX root = ./main.tex
+We say the lifting of $p$ with respect to itself is a \vocab{deck transformation}.
+In fact, deck transformations are just automorphisms of covering spaces,
+and they constitude a group $Deck_X(\wt{X})$ or $Deck_{\wt{X} / X}$.
+
+Here's another definition of regular covering:
+If the group action $Deck_{\wt{X}/X}$ onto $\wt{X}$ are transitive in $p^{-1}(x_0)$,
+then we say the covering is \vocab{regular covering}.
+
+There should be some pictures of regular and non-regular coverings
+of $S^1\vee S^1$, but I'm a bit lazy :-)
+
+Now we'll prove this two definitions are equivalent.
+\begin{proposition}
+	Let $p: \wt{X} \to X$ be a covering, $p$ is regular
+	iff $p_\sharp \pi_1(\wt{X}, \tilde x_0) \subset \pi_1(X, x_0)$ is a
+	normal subgroup.
+\end{proposition}
+\begin{proof}[Proof]
+    When $p_\sharp \pi_1(\wt{X}, \wt{x}_0) \lhd \pi_1(X, x_0)$,
+	for $\tilde x_0, \tilde x'_0 \in \wt{X}$, we need to prove that
+	there exists $\tau\in Deck_{\wt{X}/X}$ s.t. $\tau(\tilde x_0) = \tilde x_0'$.
+
+	We'll use lifting theorem on $p$,
+	thus we only need to show
+	\[
+		p_\sharp\pi_1(\wt{X}, \tilde x_0) \subset p_\sharp \pi_1(\wt{X}, \tilde x_0').
+	\]
+	Let $\gamma$ be a path from $\tilde x_0$ to $\tilde x_0'$,
+	and $\alpha\in \pi_1(\wt{X}, \tilde x_0)$.
+	Note that $\alpha \simeq \gamma \overline{\gamma}\alpha\gamma \overline{\gamma}$,
+	$\alpha' = \overline{\gamma} \alpha \gamma\in \pi_1(\wt{X}, \tilde x_0')$.
+	Hence
+	\[
+	p_\sharp(\alpha) = p_\sharp(\gamma)p_\sharp(\alpha')p_\sharp(\overline{\gamma})
+	\in h p_\sharp\pi_1(\wt{X}, \tilde x_0') h^{-1}
+	= p_\sharp\pi_1(\wt{X}, \tilde x_0').
+	\]
+
+	The converse is the same.
+\end{proof}
+
+Now we'll prove \autoref{thm:eocs}:
+First we'll handle the case of universal covering.
+\begin{theorem}
+    Universal covering space and is unique under isomorphism
+	for path connected and locally path connected space $X$.
+	If $X$ is also locally semi-simply connected, then universal covering exists.
+\end{theorem}

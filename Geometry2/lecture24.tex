@@ -82,10 +82,11 @@ By map lifting theorem we get:
 	iff $p_\sharp(\pi_1(\wt{X})) = p'_\sharp(\pi_1(\wt {X}'))$.
 \end{corollary}
 
-From this we discover that each covering of $X$ corresponds
+	From this we discover that each covering of $X$ corresponds
 to a subgroup of $\pi_1(X)$. In fact the inverse is also true:
 \begin{theorem}[Existence theorem of covering spaces]
-    Let $X$ be a path connected space,
+	\label{thm:eocs}
+    Let $X$ be a path connected and locally path connected space,
 	then for all subgroups $G \leqslant \pi_1(X, x_0)$,
 	there exists a covering $p: \wt{X} \to X$ s.t.
 	\[
@@ -104,17 +105,3 @@ The proof is quite complex, so we'll put it off here.
 	then we say it's a \vocab{regular covering} of $X$.
 \end{definition}
 In this case the base point will not change the image of $p_\sharp$.
-
-\begin{proposition}
-	Let $p:\wt{X} \to X$ be a regular covering, for any $ e_1, e_2\in p^{-1}(x_0)$,
-	there exists a homeomorphism $f: \wt{X} \to \wt{X}$ s.t.
-	\begin{itemize}
-		\item $f$ is a lifting of $p$;
-		\item  $f(e_1) = f(e_2)$.
-	\end{itemize}
-\end{proposition}
-
-We say the lifting of $p$ with respect to itself \vocab{deck transformation}.
-Regular coverings have \textit{orbit transitivity}:
-$\forall e_1, e_2\in p^{-1}(x_0)$, there exists a self-homeomorphism
-sending $e_1$ to $e_2$.
