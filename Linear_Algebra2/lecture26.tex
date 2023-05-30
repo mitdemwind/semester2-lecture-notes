@@ -1,0 +1,115 @@
+%! TeX root = ./main.tex
+\begin{definition}[Quadratic forms]
+	Let $q: V\to F$ be a function, we say $q$ is a \vocab{quadratic form}
+	if there exists $f\in M^2(V)$ s.t.
+	\[
+	q(\alpha) = f(\alpha, \alpha), \quad \forall \alpha\in V.
+	\]
+\end{definition}
+
+When $V = F^n$, quadratic forms are just a homogenous quadratic polynomial
+with $n$ variables, i.e.
+\[
+q(X) = X^t A X, \quad A\in F^{n\times n}, X \in F^{n}.
+\]
+Let $Q(V)$ denote all the quadratic forms on $V$, it's an $F$-vector space.
+By definition there's a surjective linear map $M^2(V)\to Q(V)$ by
+$\Phi(f)(\alpha) = f(\alpha, \alpha)$.
+
+\begin{proposition}
+	Let $\Char F \ne 2$,
+	\begin{itemize}
+		\item The map $\Phi: S^2(V) \to Q(V)$ is an isomorphism.
+		\item Let $q\in Q(V)$, if $f\in S^2(V)$ and $\Phi(f) = q$, then
+			\[
+			f(\alpha, \beta) = \frac{1}{4}(q(\alpha+\beta) - q(\alpha-\beta)).
+			\]
+	\end{itemize}
+\end{proposition}
+\begin{proof}[Proof]
+    The first one can be proved by $\ker(\Phi) = \Lambda^2(V)$ and
+	$M^2(V) = S^2(V) \oplus \Lambda^2(V)$.
+
+	The second one is trivial by direct computation.
+\end{proof}
+
+From this we can define the matrix of a quadratic form $q$ to be
+the matrix of the symmetrical bilinear form $\Phi^{-1}(q)$,
+thus $[q]_{\mathcal{B}}$ is always symmetrical.
+
+\begin{theorem}
+    Let $f\in M^2(V)$,
+	\begin{itemize}
+		\item  If $\Char F\ne 2$, then $f\in S^2(V) \iff \exists \mathcal{B}$,
+			s.t. $[f]_ {\mathcal{B}}$ diagonal;
+		\item $f\in\Lambda^2(V) \iff \exists \mathcal{B}$ s.t. $[f]_{\mathcal{B}}$
+			is block diagonal with each block being $0$ or $\begin{pmatrix}
+				0&1\\-1&0
+			\end{pmatrix}$.
+	\end{itemize}
+\end{theorem}
+
+To prove this theorem, it's sufficient to prove:
+\begin{lemma}
+	Let $f\in S^2(V)\cup A^2(V)$, $W \subset V$ is a subspace, let
+	\[
+	W^\perp = \{\beta\in V \mid f(\alpha, \beta) = 0, \forall \alpha\in W\}.
+	\]
+	If $f\big|_{W}$ is non-degenerate, then $V = W\oplus W^\perp$.
+	In this case, let $\mathcal{B}_1, \mathcal{B}_2$ be basis of $W$, $W^\perp$,
+	and  $\mathcal{B} = (\mathcal{B}_1, \mathcal{B}_2)$, we have
+	\[
+		[f]_{\mathcal{B}} = \diag([f|_W]_{\mathcal{B}_1},
+		[f|_{W^\perp}]_{\mathcal{B}_2}).
+	\]
+\end{lemma}
+\begin{proof}[Proof]
+    Since $f\big|_W$ non-degenerate, $W\cap W^\perp = 0$.
+	Note that
+	\[
+	W^\perp = \bigcap_{\alpha\in W}\ker(L_f(\alpha)) = L_f(W)^0.
+	\]
+	Thus $\dim W^\perp = n - \dim L_f(W) \ge n - \dim W$.
+	This implies that  $V = W\oplus W^\perp$.
+
+	For the second part, since  $f(\alpha, \beta) = 0\implies f(\beta, \alpha) = 0$,
+	thus the matrix must obey the conclusion.
+\end{proof}
+
+Now by induction it's trivial when $n = 1$,
+\begin{itemize}
+	\item When $f\in S^2(V)$,
+		WLOG $f\ne 0$, $\exists \alpha$ s.t. $f(\alpha, \alpha) \ne 0$.
+		Let $W = \Span\{\alpha\}$, by lemma and induction hypo we're done.
+	\item When $f\in A^2(V)$, there exists $\alpha, \beta$
+		s.t. $f(\alpha, \beta) =1$. Let $W = \Span\{\alpha, \beta\}$,
+		similarly by lemma and induction hypo, we're done.
+\end{itemize}
+
+\begin{corollary}
+	For any $q\in Q(V)$,
+	there exists a basis of $V$ s.t. $[q]_{\mathcal{B}}$ diagonal.
+\end{corollary}
+
+The non-degenerate alternating bilinear forms are called \vocab{symplectic forms}.
+\begin{corollary}
+    If there exists symplectic form $f$ on $V$, then $\dim V = 2m$ and
+	\[
+		[f]_{\mathcal{B}} = \begin{pmatrix}
+			0&I_m \\ -I_m&0
+		\end{pmatrix}
+	\]
+	for some basis $\mathcal{B}$.
+\end{corollary}
+
+\begin{theorem}
+    Let $F$ be an algebraically closed field, and $\Char F \ne 2$.
+	Let $f\in S^2(V)$, there exists a basis $\mathcal{B}$, s.t. $[f]_{\mathcal{B}}$ 
+	diagonal and the diagonal entries can only be $0$ or $1$.
+\end{theorem}
+\begin{proof}[Proof]
+    Use the previous result and multiply some scalars (the root of $x^2 = c$).
+\end{proof}
+
+When $F = \mathbb{R}$, using similar technique we can prove the
+diagonal entries can only be $0, 1$ or $-1$.
