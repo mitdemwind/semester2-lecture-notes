@@ -1,0 +1,63 @@
+%! TeX root = ./main.tex
+\begin{proof}[Proof]
+    If $\wt{x}, \wt{X}'$ are both universal coverings,
+	by map lifting theorem, since $\pi_1(\wt{X})$ is trivial,
+	$p: \wt{X} \to X$ can be lifted to $\sigma: \wt{X}\to \wt{X}'$,
+	similarly we have $\sigma'$, and it's easy to see $\sigma$ and
+	$\sigma'$ are inverse maps, so they are isomorphic.
+
+	For existence part, $X$ locally semi-simply connected means
+	for $\forall x\in X$, there exists a neighborhood basis $\{U_i\}$ s.t.
+	$\pi_1(U_i, x) \to \pi_1(X, x)$ is trivial.
+
+	Let $P(X, x_0)$ be all paths in $X$ starting from $x_0$,
+	and $\mathscr{X}$ is the homology equivalent classes
+	(with fixed endpoints) of $P(X, x_0)$.
+
+	Let $p: \mathscr{X}\to X$ by $\left<a \right>\mapsto a(1)$,
+	and $\tilde x_0$ denote the constant path.
+
+	Next we'll define the topology on $\mathscr{X}$ :
+
+	Let $\{U_\alpha\}$ be a topology basis of $X$,
+	consider the following sets:
+	\[
+	U(U_\alpha, a) = \{\left<ac \right>\mid c\in P(U_\alpha, a(1))\}.
+	\]
+	Let the topology basis on $\mathscr{X}$ be the above sets.
+	We claim $p: \mathscr{X}\to X$ is indeed a covering.
+\end{proof}
+
+\begin{example}
+    A counter example of above theorem when $X$ is not locally
+	semi-simply connected:
+	Hawaiian earrings (a family of tangent circles with radius $\to 0$).
+\end{example}
+
+Now we can view all these things from group actions.
+
+Let $X$ be a topological space, $G$ is a group acting on $X$.
+We say the action is \vocab{freely discontinuous} if
+for all $x\in X$, there's a neighborhood $U$ s.t. $gU \cap U \ne \emptyset$ only
+holds for $g = e$.
+
+\begin{proposition}
+	Let $G\curvearrowright X$ be a freely discontinuous action,
+	then the quotient map $X \to X / G$ by $x\mapsto Gx$ is
+	a regular covering, and the group action is just deck transformations.
+\end{proposition}
+
+\begin{example}
+    The antipodal map in $S^n$ generates a group $\{\pm 1\}$,
+	and the action is freely discontinuous,
+	so $S^n \to S^n / \{\pm 1\} = \mathbb{R}P^n$ is a covering.
+
+	Let $\alpha: (x, y)\mapsto (x, y+1)$ and $\beta: (x, y)\mapsto (x+1, -y)$ on
+	$\mathbb{E}^2$ generates a group action $G \curvearrowright \mathbb{E}^2$.
+	This is also freely discontinuous, and $\mathbb{E}^2 / G$ is a Klein bottle.
+\end{example}
+
+Let $X$ be a topological space, $G$ is a group acting on $X$.
+We say the action is \vocab{properly discontinuous} if
+for all compact set $K \subset X$, $gK \cap K \ne \emptyset$ only
+holds for finitely many $g$.

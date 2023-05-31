@@ -1,0 +1,66 @@
+%! TeX root = ./main.tex
+Note that $\omega_1\wedge \omega_2 = (-1)^{k_1k_2}\omega_2\wedge \omega_1$,
+so when $k_1k_2$ is even, the wedge product may not be anti-symmetrical.
+
+If we have a coordinate transformation  $\Phi: (x_1,\dots,x_n)\to (y_1,\dots,y_n)$,
+we have
+\[
+	\dd y_i = \sum_{j=1}^{n} \pfr{y_i}{x_i} \dd x_i,
+\]
+thus $\dd y_1\cdots \dd y_n = J_\Phi \dd x_1 \cdots\dd x_n$.
+Here $J_\Phi$ can be negative, so the differential forms already contains
+the information of orientation.
+
+\begin{theorem}
+    Let $\omega$ be a differential form, $\dd (\dd \omega) = 0$.
+\end{theorem}
+\begin{proof}[Proof]
+    Partial derivatives commute.
+\end{proof}
+
+\begin{definition}
+	Let $\omega$ be a differential form, if $\dd \omega = 0$, we say
+	$\omega$ is a \vocab{closed form}, if there exists $\omega_1$ s.t.
+	$\dd \omega_1 = \omega$, then $\omega$ is a \vocab{exact form}.
+\end{definition}
+
+The theorem above tells us that exact forms must be closed,
+but in general closed forms may not be exact, it depends on the topology
+structure of $\Omega$.
+
+\begin{theorem}[Poincare]
+	The closed forms on $\mathbb{R}^{n}$ must be exact.
+\end{theorem}
+\begin{proof}[Proof]
+	Use induction, when $\omega$ is an $n$-form this can be proved by computation.
+
+	For a generic form $\omega = \omega_1 + \dd x_1\wedge \omega_2$,
+	where $\omega_1, \omega_2$ do not contain $\dd x_1$.
+	We want to find $\omega_3$ s.t.
+	$\dd \omega_3 = \dd x_1\wedge \omega_2 + \omega_4$,
+	where $\omega_3, \omega_4$ don't contain $\dd x_1$ as well.
+	(The construction is direct)
+
+	Since $\omega - \dd \omega_3 = \omega_1 - \omega_4$,
+	and
+	\[
+		\dd(\omega - \dd\omega_3) = \dd \omega = 0 \implies
+		\dd(\omega_1 - \omega_4) = 0.
+	\]
+	Since $\dd (\omega_1 - \omega_4) = 0$ and it doesn't contain $\dd x_1$,
+	hence all its coefficients can't contain $\dd x_1$.
+	Thus we can view it as a differential form in $\mathbb{R}^{n-1}$.
+\end{proof}
+\begin{remark}
+    When $\Omega$ is simply connected, then all the closed $1$-forms are exact.
+	Also this is equivalent to the integral on any closed curves are $0$.
+\end{remark}
+
+We can rewrite Stolkes' formula using differential forms:
+\begin{theorem}[Stolkes' formula]
+    Let $D$ be a $k+1$ dimensional orientable manifold,
+	$\omega \in \Lambda^k(\mathbb{R}^{n})$, we have
+	\[
+	\int_D \dd \omega = \int_{\partial D} \omega.
+	\]
+\end{theorem}

@@ -1,1 +1,1 @@
-\contentsline {subsection}{\numberline {0.1}Covering spaces}{2}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.1}Covering spaces}{1}{subsection.0.1}%

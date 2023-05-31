@@ -1,2 +1,2 @@
-\contentsline {subsection}{\numberline {0.1}Stolkes' formula}{2}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Differential forms}{6}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.1}Stolkes' formula}{1}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Differential forms}{4}{subsection.0.2}%
