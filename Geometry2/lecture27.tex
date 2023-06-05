@@ -1,0 +1,52 @@
+%! TeX root = ./main.tex
+Usually we suppose $X$ is a locally compact Hausdorff space.
+
+\begin{example}
+    Let $\mathbb{Z}$ acts on $\mathbb{C}$ by $\sigma: x+iy \mapsto\lambda x+i\lambda^{-1}y$.
+	Then it's not properly discontinuous.
+\end{example}
+\begin{proposition}
+	Let $G$ acts on $X$ properly discontinuously.
+	If $X$ is locally compact Hausdorff, then so is $X / G$.
+\end{proposition}
+\begin{proof}[Proof]
+    For $\overline{x} \ne \overline{y}\in X / G$,
+	take compact neighborhoods $K(x), K(y) \subset X$,
+	since $gK(x) \cap K(y) \ne \emptyset$ only holds for finitely many $g$,
+	we can ``shrink'' $K(x)$ and $K(y)$ so that $gK(x)\cap K(y) = \emptyset$ for
+	all $g\in G$.
+	Thus $X / G$ is Hausdorff.
+
+	Clearly $X / G$ is locally compact.
+\end{proof}
+
+\begin{proposition}
+	Let $X$ be a locally compact Hausdorff space, $G$ act on $X$.
+	The action is properly discontinuous + free $\iff$ it's freely discontinuous.
+\end{proposition}
+\begin{proof}[Proof]
+    Trivial.
+\end{proof}
+
+\begin{corollary}
+    Let $X$ be a locally compact Hausdorff space,
+	and $G$ acts on $X$ properly discontinuously.
+	If $G$ has no torsion, then the action is freely discontinuous.
+\end{corollary}
+\begin{proof}[Proof]
+    If the action is not free, there exists $g\ne \id$,  $gx = x$.
+	Thus $\{x\}\cap \{gx\} \ne \emptyset$ holds for any $g^n$.
+
+	Since $g$ is not a torsion, this contradicts with proper discontinuity.
+\end{proof}
+
+\begin{example}
+    Consider the action of $\Gamma = \SL(2, \mathbb{Z})$ on the
+	space $UHP = \{z\in \mathbb{C}\mid Im(z) > 0\}$ by fractional linear transformation.
+	(hyberbolic transformation)
+
+	This action is properly discontinuous, let  $\Gamma(2) = \{A\in \Gamma \mid
+	A\equiv I (\bmod 2)\}$, which has no torsion, thus it's freely discontinuous.
+	Note that $[\Gamma:\Gamma(2)] = 6$, and $UHP \to UHP / \Gamma(2)$ is a
+	covering map.
+\end{example}

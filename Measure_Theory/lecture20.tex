@@ -1,0 +1,151 @@
+%! TeX root = ./main.tex
+\begin{definition}
+	A function $p(x_1, A_2)$ is called a \vocab{transform function}
+	from $X_1$ to $X_2$ if $p(x_1, \cdot)$ is a measure on $\mathscr{F}_2$,
+	and $p(\cdot, A_2)$ is measurable in $\mathscr{F}_1$.
+\end{definition}
+If $X_2 = \sum_{n} A_n$ and $p(x, A_n) < \infty$ for all $n$ and $x$,
+then we say $p(\cdot, \cdot)$ is $\sigma$-finite.
+Note that this partition is independent of $x$.
+If each $p(x, \cdot)$ is a probabilty, we say $p$ is a
+\vocab{probabilty transform function}.
+
+Let $X = X_1 \times X_2, \hat{X} = X_2\times X_1,
+\mathscr{F} = \mathscr{F}_1 \times \mathscr{F}_2$.
+
+\begin{theorem}
+    Let $p(x_1, A_2)$ be a $\sigma$-finite transform function from $X_1$ to $X_2$.
+	\begin{itemize}
+		\item For all $\sigma$-finite measure  $\mu_1$ on $X_1$, $\exists !$ measure
+			$\mu$ s.t.
+			\[
+			\mu(A_1 \times  A_2) = \int_{A_1} p(x_1, A_2)\mu_1(\dd x_1),
+			\]
+		\item If $f: X\to \mathbb{R}$'s integral exists, then
+			\[
+			\int_X f\dd \mu = \int_{X_1}\mu_1(\dd x_1)
+			\int_{X_2}f(x_1, x_2)p(x_1, \dd x_2).
+			\]
+	\end{itemize}
+\end{theorem}
+\begin{proof}[Proof]
+    See proof of Fubini's theorem in analysis.
+\end{proof}
+
+Hence given a measure on $X_1$ and a transform function, we can get a
+measure on the product space.
+
+If we start from the conditional probabilty, let $g(x) = x_1, f(x) = x_2$,
+we have
+\[
+E(h_2(x_2)| x_1) = \varphi(x_1), \quad \phi(x_1) =\int_{X_2}h_2(x_2)\nu(x_1, \dd x_2).
+\]
+Multiplying a function of $x_1$, (i.e. $h_1(x_1)$) taking the integral we get
+\[
+E(h_1(x_1)h_2(x_2)) = \int_{X_1} \mu_1(x_1)
+\int_{X_2} h_1(x_1)h_2(x_2)\nu(x_1, \dd x_2).
+\]
+Thus by typical method we can generalize $h_1(x_1)h_2(x_2)$ to any
+function $f(x_1, x_2)$.
+Hence the transform function $p$ is nothing but the regular conditional probabilty.
+
+\begin{corollary}[Fubini's theorem]
+    If $p(x_1, \cdot) \equiv \mu_2$, denote $\mu$ as $\mu_1 \times \mu_2$,
+	if the integral of $f$ exists,
+	\[
+	\int_X f\dd \mu_1 \times \mu_2 = \int_{X_1}\mu_1(\dd x_1)\int_{X_2}f(x_1, x_2)
+	\mu_2(\dd x_2) = \int_{X_2}\mu_2(\dd x_2)\int_{X_1}f(x_1, x_2)\mu_1(\dd x_1).
+	\]
+\end{corollary}
+\begin{remark}
+    The integral of $f$ exists means that the integral of $f$ exists in
+	the product space, i.e. the LHS must exist.
+	It's not true we only have the RHS exists.
+\end{remark}
+
+\begin{example}
+    Let $X_1 = X_2 = \mathbb{R}$, we use the Lebesgue measure $\lambda$.
+	Let $f(x, y) = \ii_{\{0< y\le 2\}} - \ii_{\{-1 < y \le 0\}}$.
+
+	It's easy to see the integral of $f$ doesn't exist,
+	but $\iint f(x,y) \dd y\dd x = \infty$, while $\iint f(x,y)\dd x\dd y$ does
+	not exist.
+\end{example}
+
+By induction we can reach product space of finitely many spaces:
+\begin{theorem}
+	Let $p_k$ be the transform function from $\prod_{i=1}^{k-1}X_i$ to $X_k$,
+	for any $\sigma$-finite measure  $\mu_1$ on $X_1$, $\exists !$ measure $\mu$,
+	such that ...TODO
+\end{theorem}
+
+\subsection{Countable dimensional product space}
+\label{sub:Countable dimensional product space}
+Again let $\pi_n$ be the projection onto $X_n$,
+and $\pi_{(n)}$ be the projection onto $X_{(n)} := \prod_{i=1}^n X_i$.
+
+Let $\mathscr{F}_{(n)} := \prod_{i=1}^n \mathscr{F}_i = \sigma(\mathscr{Q}_{(n)})$,
+and define
+\[
+	\mathscr{Q}_{[n]} = \left\{\prod_{k=1}^n A_k \times \prod_{k = n+1}^\infty X_k\mid
+	A_k \in X_k\right\} = \pi_{(n)}^{-1} \mathscr{Q}_{(n)}.
+\]
+\begin{proposition}
+	$\mathscr{Q} = \bigcup_{n=1}^\infty\mathscr{Q}_{[n]}$ is a semi-ring,
+	and $X\in \mathscr{Q}$.
+	Similarly, $\mathscr{A} = \bigcup_{n=1}^\infty \mathscr{F}_{[n]}$ is an algebra.
+\end{proposition}
+
+\begin{theorem}[Tulcea]
+    Let $p_k$ be probabilty transform functions $\prod_{i=1}^{k-1}X_i \to X_k$,
+	then for all probabilty $P_1$ on $X_1$, there exists unique
+	probabilty $P$ on $\prod_{k=1}^\infty X_k$ s.t.
+	\[
+	P\left(\prod_{k=1}^n A_k \times \prod_{k=n+1}^\infty X_k\right)
+	= \int_{A_1}P_1(\dd x_1)\int_{A_2}p_2(x_1, \dd x_2) \cdots
+	\int_{A_n} p_n(x_1, \dots, x_{n-1}, \dd x_n).
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    By results in previous section,
+	we can define $P_n$ on $\mathscr{F}_{[n]}$.
+
+	Since $P_{n+1}\big|_{\mathscr{F}_{[n]}} = P_n$, we can get
+	a function $P$ on the
+	algebra $\mathscr{A} = \bigcup_{n=1}^\infty \mathscr{F}_{[n]}$.
+	(By transfinite induction)
+
+	At last we'll prove $P$ is a measure on $\mathscr{A}$, thus it can be uniquely
+	extended to $\mathscr{F} = \sigma(\mathscr{A})$.
+
+	\begin{claim}
+		$P_n = P_{n+1}\big|_{\mathscr{F}_{[n]}}$.
+	\end{claim}
+	\begin{proof}[Proof]
+	    Some abstract nonsense. Just note that $A_{(n+1)} = A_{(n)} \times X_{n+1}$
+		for $A \in \mathscr{F}_{(n)}$,
+		and just compute the $(n+1)$-th integral to get the equality.
+	\end{proof}
+
+	\begin{claim}
+	    $P$ is countablely additive on $\mathscr{A}$.
+	\end{claim}
+	\begin{proof}[Proof]
+	    It's easy to see that $P$ has finite additivity,
+		so it suffices to prove $P$ is continuous at empty set.
+
+		Let  $A_1, A_2, \dots \in \mathscr{A}$, $A_n \downarrow \emptyset$,
+		if  $P(A_n) \not\to 0$,
+		let $\varepsilon := \downarrow \lim_{n\to \infty} P(A_n) > 0$.
+
+		There exist $1\le m_1 < m_2 < \cdots$ s.t. $A_n \in \mathscr{F}_{[m_n]}$.
+		WLOG $m_n = n$ (otherwise add more sets in the sequence, i.e.
+		$B_k = A_n$ when $m_n \le k < m_{n+1}$).
+
+		Therefore we have $A_{(n)} = \pi_{(n)}^{-1} A_{(n)}$,
+		\[
+		A_n = \pi_{(n+1)}^{-1}(A_{(n)} \times X_{n+1}) \supseteq A_{n+1}
+		\implies A_{(n)} \times X_{n+1} \supseteq A_{(n+1)}.
+		\]
+	\end{proof}
+\end{proof}

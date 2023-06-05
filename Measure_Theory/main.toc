@@ -1,0 +1,4 @@
+\contentsline {subsection}{\numberline {0.1}Regular conditional distribution}{3}{subsection.0.1}%
+\contentsline {section}{\numberline {1}Product spaces}{6}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Finite dimensional product spaces (omitted)}{6}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Countable dimensional product space}{8}{subsection.1.2}%
