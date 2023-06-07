@@ -1,1 +1,1 @@
-\contentsline {subsection}{\numberline {0.1}Covering spaces and group actions}{4}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.1}Covering spaces and group actions}{2}{subsection.0.1}%

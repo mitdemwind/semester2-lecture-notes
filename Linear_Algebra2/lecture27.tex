@@ -1,0 +1,286 @@
+%! TeX root = ./main.tex
+\subsection{Lie algebras}
+\label{sub:Lie algebras}
+
+There's a class I missed, so the notes may not be complete.
+
+\begin{definition}[Lie algebra]
+	Let $L$ be a vector space over a field $F$. Suppose an operation
+	(called \vocab{Lie bracket})
+	\[
+		L\times L \to L, \quad (x, y) \mapsto [x, y]
+	\]
+	is given and satisfies:
+	\begin{itemize}
+		\item (Bilinearity)
+			\[
+			\left\{\begin{aligned}
+					&[ax+by,z] = a[x,z]+b[y,z],\\
+					&[x,ay+bz] = a[x,y]+b[x,z],
+			\end{aligned}
+			\right. \quad \forall x,y,z\in L, a,b\in F;
+			\]
+		\item (Alternativity)
+			\[
+				[x, x] = 0, \quad \forall x\in L;
+			\]
+		\item (Jacobi identity)
+			\[
+				[[x, y], z] + [[y, z], x] + [[z, x], y] = 0,\quad \forall x,y,z\in L.
+			\]
+	\end{itemize}
+	Then $L$ is called a \vocab{Lie algebra} over $F$.
+\end{definition}
+The Lie algebra can be viewed as a vectorization of Lie groups,
+where Lie bracket is the commutator in Lie groups.
+
+\begin{example}
+    On any $F$-vector space $L$, one can define a trivial Lie bracket by
+	\[
+		[x, y] = 0,\quad \forall x,y\in L
+	\]
+	Then $L$ becomes a Lie algebra, called an \vocab{abelian Lie algebra}.
+\end{example}
+
+We can also define homomorphisms by $\phi([x, y]) = [\phi(x), \phi(y)]$.
+
+\begin{definition}[Representation]
+	Let $L$ be a Lie algebra over $F$. A \vocab{representation} of $L$ is
+	a homomorphism $\phi: L\to \mathfrak{gl}(V)$, where $V$ is some
+	finite-dimensional $F$-vector space.
+\end{definition}
+
+\begin{example}[Adjoint representation]
+    Let $L$ be a Lie algebra over $F$. Define a linear map
+	$\mathrm{ad}: L\to \mathfrak{gl}(L)$ by
+	\[
+		\mathrm{ad}(x)(y) = [x, y],\quad \forall x, y\in L.
+	\]
+	We claim that it is a representation, called the \vocab{adjoint representation}
+	of $L$. In fact, it follows from the Jacobi identity that for any $x,y,z\in L$,
+	\begin{align*}
+		\mathrm{ad}([x, y])(z) &= [[x,y],z]\\
+		& = [x, [y, z]] - [y, [x, z]]\\
+		& = \mathrm{ad}(x)([y, z]) - \mathrm{ad}(y)([x, z])\\
+		& = [\mathrm{ad}(x), \mathrm{ad}(y)](z).
+	\end{align*}
+\end{example}
+
+\begin{definition}[Subalgebra, ideal, quotient algebra]
+	Let $L$ be a Lie algebra over $F$.
+	\begin{itemize}
+		\item If $S, T \subset L$ are subspaces, write
+			\[
+				[S, T] := \Span\{[x, y]: x\in S, y\in T\}.
+			\]
+		\item A subspace $K \subset L$ is called a \vocab{subalgebra} if
+			$[K, K] \subset K$, denoted $K < L$.
+		\item A subspace $I \subset L$ is an \vocab{ideal} if $[I, L] \subset I$,
+			denoted $I \lhd L$.
+		\item Let $I\lhd L$. On the quotient space $L / I$,
+			we introduce the Lie bracket
+			\[
+				[x + I, y + I] := [x, y] + I, \quad \forall x, y\in L.
+			\]
+			Then $L/ I$ becomes a Lie algebra, called the \vocab{quotient algebra}
+			of $L$ by $I$.
+	\end{itemize}
+\end{definition}
+
+\begin{example}
+    Let $\phi: L\to L'$ be a homomorphism. Then
+	\[
+	\ker \phi \lhd L, \quad \img(\phi) \lhd L', \quad \img(\phi) \cong L / \ker \phi.
+	\]
+	The \vocab{center} of $L$ is defined as
+	\[
+		Z(L) := \{x\in L: [x,y] = 0, \forall y\in L\}.
+	\]
+	We have $Z(L) \lhd L$ and $Z(L) = \ker \mathrm{ad}$.
+\end{example}
+
+\begin{definition}[Direct sum]
+	Let $L_1, \dots L_r$ be Lie algebras over $F$. On the (external) vector space
+	Direct sum $L_1\oplus\dots\oplus L_r$ we introduce the Lie bracket
+	\[
+		[(x_1,\dots,x_r), (y_1,\dots, y_r)] = ([x_1,y_1], \dots, [x_r, y_r])
+	\]
+	This makes $L_1\oplus\dots\oplus L_r$ a Lie algebra, called the
+	\vocab{(external) Lie algebra direct sum} of $L_1, \dots, L_r$.
+\end{definition}
+
+\begin{definition}[Linear Lie algebra]
+	Subalgebras of $\mathfrak{gl}_n(F)$ and $\mathfrak{gl}(V)$ are called
+	\vocab{linear Lie algebras}.
+\end{definition}
+
+We have the following deep result:
+\begin{theorem}[Ado-Iwasawa]
+    All finite-dimensional Lie algebras over $F$ are isomorphic to linear Lie
+	algebras.
+\end{theorem}
+
+Let us introduce some important linear Lie algebras.
+\begin{example}[Special linear Lie algebra]
+    Let
+	\[
+	\mathfrak{sl}_n(F) = \{x\in \mathfrak{gl}_n(F): \tr(x) = 0\},
+	\mathfrak{sl}(V) = \{x\in \mathfrak{sl}(V): \tr(V) = 0\},
+	\]
+	where $V$ is a vector space over $F$.
+	We have $\mathfrak{sl}(V) \lhd \mathfrak{gl}(V)$.
+\end{example}
+
+\begin{example}[The Lie algebra $L(V, f)$]
+    Let $V$ be a finite-dimensional $F$-vector space, and $f: V\times V\to F$ be
+	a bilinear form. For $x\in \mathfrak{gl}(V)$, we say that $f$ is
+	\vocab{invariant under $x$ (in the infinitesimal snese)} if
+	\[
+	f(xv, w) + f(v, xw) = 0, \quad \forall v, w\in V.
+	\]
+	This comes from the derivative of Lie groups:
+	Let $L\in \GL(V)$, $g(0) = \id_V$. By taking derivatives at $t=0$ on
+	\[
+	f(g(t)v, g(t)w) = f(v, w),
+	\]
+	we get $f(g'(0)v, w) + f(v, g'(0)w) = 0$.
+
+	Let $L(V, f) \subset \mathfrak{gl}(V)$ be the subspace of
+	all $x\in \mathfrak{gl}(V)$ that leave $f$ invariant,
+	we claim that $L(V, f) < \mathfrak{gl}(V)$.
+\end{example}
+
+\begin{example}
+    Let's consider 2 special cases of $L(V, f)$ :
+	\begin{itemize}
+		\item Let $V = F^n$, and $f$ be the symmetrical form given by
+			\[
+			f(v, w) = v^tw, \quad \forall v, w\in F^n.
+			\]
+			Then $\mathfrak{o}_n(F):= L(F^n, f)$ is called the
+			\vocab{orthogonal Lie algebra}.
+			Under the identification $\mathfrak{gl}(F^n) \cong \mathfrak{gl}_n(F)$,
+			we have $\mathfrak{o}_n(F) = \{x\in \mathfrak{gl}_n(F): x^t+x=0\}$.
+		\item Let $V = F^{2n}$, and $f$ be the symplectic form given by
+			\[
+			f(v, w) = v^t \begin{pmatrix}
+				0 & I_n\\ -I_n & 0
+			\end{pmatrix}
+			w, \quad \forall v, w\in V.
+			\]
+			Then $\mathfrak{sp}_{2n}(F) := L(F^{2n}, f)$ is called the
+			\vocab{symplectic Lie algebra}.
+	\end{itemize}
+\end{example}
+
+Suppose $I\lhd L$, and we understand $I$ and $L / I$, then we understand $L$ (in
+the rough sense). This motivates the following:
+\begin{definition}[Simple Lie algebra, semisimple Lie algebra]
+	Let $L$ be a finite-dimensional Lie algebra over $F$.
+	\begin{itemize}
+		\item $L$ is \vocab{simple} if it's nonabelian and has no nontrivial ideals.
+		\item  $L$ is \vocab{semisimple} if it's nonzero and has no nonzero abelian
+			ideal.
+	\end{itemize}
+\end{definition}
+Clearly, a simple Lie algebra is semisimple.
+One of our main purposes is to explain the proof of the following classification
+theorem:
+\begin{theorem}
+    Let $L$ be a finite-dimensional Lie algebra over $\mathbb{C}$.
+	\begin{enumerate}[(1)]
+		\item $L$ is semisimple iff it's isomorphic to the direct sum of
+			finitely many simple Lie algebras.
+		\item $L$ is simple iff it's isomorphic to one of the following Lie algebras:
+			\begin{itemize}
+				\item $\mathfrak{sl}_n(\mathbb{C}), n\ge 2$ ;
+				\item $\mathfrak{o}_n(\mathbb{C}), n\ge 7$ ;
+				\item $\mathfrak{sp}_{2n}(\mathcal{C}), n\ge 2$ ;
+				\item one of the 5 exceptional complex simple Lie algebras,
+					denoted by $\mathfrak{e}_6, \mathfrak{e}_7, \mathfrak{e}_8,
+					\mathfrak{f}_4, \mathfrak{g}_2$ respectively.
+			\end{itemize}
+	\end{enumerate}
+\end{theorem}
+\begin{remark}
+    It can be shown that
+	\[
+	\mathfrak{o}_2(\mathbb{C}) \cong \mathbb{C}, \quad
+	\mathfrak{o}_3(\mathbb{C})\cong \mathfrak{sl}_2(\mathbb{C})
+	= \mathfrak{sp}_2(\mathbb{C}),
+	\]
+	\[
+	\mathfrak{o}_4(\mathbb{C}) \cong \mathfrak{sl}_2(\mathbb{C})
+	\oplus \mathfrak{sl}_2(\mathbb{C}), \quad
+	\mathfrak{o}_5(\mathbb{C})\cong \mathfrak{sp}_4(\mathbb{C}),
+	\quad \mathfrak{o}_6(\mathbb{C}) \cong \mathfrak{sl}_4(\mathbb{C}).
+	\]
+\end{remark}
+
+\subsection{Abelian, nilpotent and solvable Lie algebras}
+\label{sub:ad-semisimple, nilpotent Lie algebras}
+
+From now on, let us make the convention that
+$L$ always denotes a finite-dimensional complex Lie algebra,
+and $V$ always denoted a complex vector space.
+
+Recall that for $x\in \mathfrak{gl}(V)$,
+$x$ is said to be semisimple if it's diagonalizable;
+and nilpotent if $x^r = 0$ for some $r\ge 1$.
+
+\begin{definition}[ad-semisimple and ad-nilpotent]
+	$x$ is \vocab{ad-semisimple} if $\mathrm{ad}(x)\in \mathfrak{gl}(V)$
+	is semisimple.
+	Similarly define ad-nilpotent.
+\end{definition}
+
+\begin{proposition}
+	Let $L<\mathfrak{gl}(V), x\in L$.
+	If $x$ is semisimple, then it's ad-semisimple. If $x$ is nilpotent,
+	then it's ad-nilpotent.
+\end{proposition}
+\begin{remark}
+    If $L$ is semisimple, then the converse of the proposition holds.
+\end{remark}
+
+\begin{theorem}
+    A Lie algebra $L$ is abelian iff it consists only of ad-semisimple elements.
+\end{theorem}
+
+For a Lie algebra $L$, we define two sequences of ideals
+\[
+L = L^0 \supset L^1 \supset \cdots, \quad L = L^{(0)} \supset L^{(1)} \supset \cdots
+\]
+by
+\[
+	L^k = [L, L^{k-1}],\quad L^{(k)} = [L^{(k-1)}, L^{(k-1)}].
+\]
+\begin{definition}
+	$L$ is said to be \vocab{nilpotent} if $L^k = 0$ for some $k$.
+	$L$ is said to be \vocab{solvable} if $L^{(k)} = 0$ for some $k $.
+\end{definition}
+
+It's easy to see $L^k \supset L^{(k)}$, thus nilpotent Lie algebras
+must be solvable.
+
+\begin{proposition}
+	Let $L$ be a finite-dimensional Lie algebra, TFAE:
+	\begin{itemize}
+		\item $L$ is semisimple;
+		\item $L$ has no nonzero nilpotent subalgebras;
+		\item $L$ has no nonzero solvable subalgebras.
+	\end{itemize}
+\end{proposition}
+
+\begin{theorem}[Engel]
+    Let $L<\mathfrak{gl}(V)$ be a linear Lie algebra consisting of nilpotent
+	transformations, then the following statement holds:
+	\begin{itemize}
+		\item There exists $v\in V$ s.t. $Lv = 0$.
+		\item There exists a basis of $V$ s.t. elements in $L$ are all
+			upper triangular.
+	\end{itemize}
+\end{theorem}
+\begin{remark}
+    This implies that $L$ is nilpotent.
+\end{remark}

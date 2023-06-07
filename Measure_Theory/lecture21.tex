@@ -1,0 +1,142 @@
+%! TeX root = ./main.tex
+\begin{theorem}[Kolmogorov]
+    Let $P_k$ be a probability on $(X_k, \mathscr{F}_k)$,
+	then there exists a unique measure $P$ on $(\prod X_k, \prod \mathscr{F}_k)$,
+	such that
+	\[
+		P\left(\prod_{k=1}^n A_k \times \prod_{k=n+1}^\infty X_k\right)
+		= \prod_{k=1}^nP_k(A_k).
+	\]
+\end{theorem}
+\begin{proof}[Proof]
+    This is immediate by Tulcea's theorem.
+\end{proof}
+
+Let's make a summary of Tulcea's theorem.
+To get a measure on $\mathscr{F}$, we need:
+\begin{itemize}
+	\item Measures $P_n$ on $ \mathscr{F}_{[n]}$,
+		which is induced by measures on $ \mathscr{F}_{(n)}$.
+	\item Compatibility, i.e. $P_{n+1}|_{\mathscr{F}_{[n]}} = P_n$.
+		Hence we'll get a function $P$ on the algebra $\bigcup \mathscr{F}_{[n]}$.
+	\item At last to prove $P$ is a measure, we need the continuity at $\emptyset$.
+\end{itemize}
+Tulcea's theorem tells us that the measure induced by the probability transform
+functions statisfies above conditions.
+
+\subsection{Arbitary infinite dimensional product space}
+\label{sub:Arbitary infinite dimensional product space}
+Let $\{X_t, t\in T\}$ be a collection of sets, where $T$ is uncountable.
+Let $X = \prod_{t\in T}X_t$ be the product space.
+
+Let $U \subset S \subset T$, where $|S|<\infty$, define the projection
+\[
+\pi_S: X\to X_S := \prod_{t\in S}X_t,\quad
+\pi_{S\to U}: X_S \to X_U, \quad \pi_{S\to U}\circ \pi_S = \pi_U.
+\]
+Similarly, we can define the cylinder set:
+\[
+\mathscr{Q}_S = \left\{\pi_S^{-1}\left(\prod_{t\in S}A_t\right): A_t\in \mathscr{F}_t,
+\forall t\in S\right\}; \quad \mathscr{F}_S = \sigma(\mathscr{Q}_S).
+\]
+\begin{proposition}
+	We have $\mathscr{Q}_S$, $\mathscr{Q}:= \bigcup_{|S|<\infty} \mathscr{Q}_S$ are
+	semi-rings containing $X$.
+\end{proposition}
+\begin{proposition}
+	$\mathscr{A}:= \bigcup_{|S|< \infty} \mathscr{F}_S$ is an algebra
+	containing $\mathscr{Q}$.
+\end{proposition}
+\begin{proposition}
+	Let $\mathscr{F} := \sigma(\mathscr{Q}) = \sigma(\mathscr{A})$, we have
+	\[
+	\mathscr{F} = \sigma(\{\pi_t, t\in T\}) = \{\pi_S^{-1}A: A\in \mathscr{F}_S,
+	|S| \le \omega\}.
+	\]
+\end{proposition}
+\begin{remark}
+    To prove the equality, first note $LHS =
+	\sigma(\bigcup_{t\in T}\pi_t^{-1}\mathscr{F}_t)$,
+	and $RHS$ is a $\sigma$-algebra.
+\end{remark}
+
+In random process, $(\Omega, \mathscr{S})$ is the sample space,
+the index set $T$ is regarded as time,
+for each time $t\in T$, there's a random variable $f_t: \Omega \to X_t$.
+Thus $f := \{f_t, t\in T\}$ is a map $\Omega\to \prod_{t\in T}X_t$.
+
+\begin{theorem}
+    Let $ \mathscr{F} = \prod_{t\in T} \mathscr{F}_t$,
+	\[
+	f:(\Omega, \mathscr{S})\to (X, \mathscr{F}) \iff
+	f_t:(\Omega, \mathscr{S}) \to (X_t, \mathscr{F}_t), \forall t.
+	\]
+\end{theorem}
+
+If $(X_t, \mathscr{F}_t)\equiv (S, \mathscr{S}_0)$, then we say $f$ is a random
+process; $S$ is said to be the range space,
+and $f(\omega) = \{f_t(\omega): t\in T\}\in S^T$ is an orbit.
+
+For any probability $Q$ on $(\Omega, \mathscr{S})$, $Q\circ f^{-1}$ is
+the distribution of $f$, by previous proposition,
+we only need all the countably dimensional joint distribution of $f$.
+
+From Tulcea's theorem, we only need to study
+\textit{finite dimensional joint distribution} $P_{t_1, \dots, t_n}$ where
+$t_1, \dots, t_n \in T$.
+
+Similarly we require the probability to have some compatibility:
+\begin{itemize}
+	\item Let $t(1), \dots, t(n)$ be a permutation of $ t_1, \dots, t_n$.
+		We require
+		\[
+			P_{t_1, \dots, t_n}\left(\prod_{i=1}^n A_{t_i}\right)
+			= P_{t(1),\dots, t(n)}\left(\prod_{i=1}^n A_{t(i)}\right).
+		\]
+	\item Let $t_{n+1} \in T$,
+		\[
+		P_{t_1, \dots, t_{n+1}}\left(\prod_{i=1}^n A_{t_i} \times X_{t_{n+1}}\right)
+		= P_{t_1, \dots, t_n}\left(\prod_{i=1}^n A_{t_i}\right).
+		\]
+\end{itemize}
+
+\begin{theorem}[Kolmogorov]
+    If $\mathbf{P}$ is compatible, then $\exists! P $ on
+	$(\mathbb{R}^T, \mathscr{B}^T)$ s.t.
+	\[
+	P(\pi_S^{-1} A) = P_S(A),\quad \forall |S| < \infty, A\in \mathscr{B}^S.
+	\]
+\end{theorem}
+\begin{proof}[Sketch of the proof]
+    Let $\mathscr{F}_0 = \{\pi_{T_0}^{-1}(A): A\in \mathscr{F}_{T_0},
+	|T_0|\le \omega\}$.
+
+	Step 1, fix a countable $T_0 \subset T$,
+	by Tulcea's theorem, we can define $P(\pi_{T_0}^{-1}A) = P_{T_0}(A)$.
+
+	Step 2, $P$ is well-defined in different permutations of $T_0$.
+
+	Step 3, if $T_1, T_2$ countable, and $\pi_{T_1}^{-1}(A_1) = \pi_{T_2}^{-1}(A_2)$,
+	we have $P_{T_1}(A_1) = P_{T_2}(A_2)$.
+	This can be done by looking at $T_0 = T_1\cup T_2$.
+
+	Step 4, check $P$ statisfies countable additivity.
+\end{proof}
+
+\begin{example}[Brownian motion]
+    Let $\mathbf{B} = \{B_t, t\in T\}$, $T = \mathbb{R}_+$.
+	Let $(\Omega, \mathscr{S}, \hat{P})$ be the sample space,
+	$(\mathbb{R}^T, \mathscr{B}^T)$ be the orbit space,
+	where $\varphi: T\to \mathbb{R}$ is an orbit.
+	\[
+	\mathbf{B}(\omega) := \varphi: t\mapsto \varphi(t) = B_t(\omega).
+	\]
+	Initially, let $B_0 = 0$, define the transformation density
+	\[
+	p_t(x, y) = \frac{1}{\sqrt{2\pi t}}\exp\left(- \frac{(y - x)^2}{2t}\right).
+	\]
+	Starting from finite dimensional orbit distribution,
+	we can get countable dimensional orbit distribution.
+
+	TODO
+\end{example}

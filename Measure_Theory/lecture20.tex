@@ -147,5 +147,43 @@ and define
 		A_n = \pi_{(n+1)}^{-1}(A_{(n)} \times X_{n+1}) \supseteq A_{n+1}
 		\implies A_{(n)} \times X_{n+1} \supseteq A_{(n+1)}.
 		\]
+		Equivalently,
+		\[
+		\ii_{A_{(n+1)}}(x_1,\dots, x_{n+1}) \le \ii_{A_{(n)}}(x_1,\dots, x_n).
+		\]
+		Therefore, we have $0\le \phi_{1,n+1}(x_1)\le \phi_{1, n}(x_1)\le 1$,
+		where
+		\[
+		\phi_{1, n}(x_1) := \int_{X_2} p_2(x_1, \dd x_2)\cdots
+		\int_{X_n}\ii_{A_{(n)}}(x_1,\dots,x_n) p_n(x_1,\dots,x_{n-1},\dd x_n).
+		\]
+		Note that $P(A_{[n]}) = P_n(A_{[n]}) = \int_{X_1}\phi_{1, n}P_1(\dd x_1)$.
+
+		Let $\phi_1 := \downarrow \lim_{n\to \infty}\phi_{1, n}$, by dominated
+		convergence theorem,
+		\[
+		\int_{X_1}\phi_1\dd P_1 = \downarrow \lim_{n\to \infty}\int_{X_1}\phi_{1, n}
+		\dd P_1 = \varepsilon > 0.
+		\]
+		Hence $\exists \tilde x_1\in X_1$ s.t. $\phi_1(\tilde x_1) > 0$.
+		We must have $\tilde x_1\in A_{(1)}$, otherwise
+		\[
+		\ii_{A_{(n)}}(\tilde x_1, x_2,\dots, x_n) \le \ii_{A_{(1)}}(\tilde x_1) = 0,
+		\]
+		which gives $\phi_{1, n}(\tilde x_1) = 0$, $\forall n$, contradiction!
+
+		By the same process we can take $\phi_2(x_2) = \downarrow \lim_{n\to \infty}
+		\phi_{2, n}(x_2)$, where $\phi_{2, n}(x_2)$ is defined as
+		\[
+		\int_{X_3}p_3(\tilde x_1, x_2, \dd x_3)\cdots \int_{X_n}\ii_{A_{(n)}}
+		(\tilde x_1, x_2, \dots, x_n) p_n(\tilde x_1, x_2,\dots, x_{n-1}, \dd x_n).
+		\]
+		We'll get $\tilde x_2$ s.t. $(\tilde x_1, \tilde x_2)\in A_{(2)}$,
+		and $\phi_2(\tilde x_2)>0$.
+
+		By induction we get $(\tilde x_1, \tilde x_2, \dots)\in
+		\bigcap_{n=1}^\infty A_{[n]}$,
+		which contradicts with $A_n\downarrow \emptyset$!
 	\end{proof}
+	Hence the conclusion holds.
 \end{proof}

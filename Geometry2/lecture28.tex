@@ -1,0 +1,30 @@
+%! TeX root = ./main.tex
+At last, we'll combined what we've learned and prove a well-known theorem:
+\begin{theorem}
+    Simply connected surfaces with complete metric and constant curvature $-1$
+	are globally isometrically isomorphic to $\mathbb{H}^2$.
+\end{theorem}
+\begin{remark}
+    Here the curvature is the Gauss curvature. The proof is similar for
+	$ \mathbb{S}^2(k=1)$ and $\mathbb{E}^2(k=0)$.
+\end{remark}
+\begin{proof}[Sketch of the proof]
+    The surface can be viewed as a manifold, whose charts are assigned
+	the first fundamental form. The proof can be spilt to 2 parts,
+	one for local properties and one for global properties.
+
+	If we have the local result, i.e. each point has an open neighborhood
+	homeomorphic to an open disk in $\mathbb{H}^2$, we'll prove the theorem:
+
+	$\bullet$ There exists a unique well-defined locally isometric
+	extension $f: M\to \mathbb{H}^2$. (Here we need $M$ simply connected)
+
+	Since $f$ is locally isometric, $f$ is a covering map.
+	But $\pi_1(M) = \{1\}$, by the uniqueness of universal covering,
+	there exists an isomorphism of coverings $\sigma$
+	s.t. $f = \id\circ \sigma = \sigma$. Thus $f$ is a homeomorphism.
+
+	$\bullet$ Locally, we'll take a geodesic parallel parameter,
+	i.e. the $y$-axis and $x$-curves are geodesic lines.
+	We have $I = \dd x^2 + G(x, y)\dd y^2$, where $G(0, y) = 1$, $G_x(0, y) = 0$.
+\end{proof}
