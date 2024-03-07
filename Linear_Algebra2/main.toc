@@ -1,4 +1,30 @@
-\contentsline {section}{\numberline {1}Bilinear forms}{4}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Some special bilinear forms}{4}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Lie algebras}{7}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Abelian, nilpotent and solvable Lie algebras}{10}{subsection.1.3}%
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}recap}{2}{subsection.1.1}%
+\contentsline {paragraph}{Direct sums of vector spaces}{2}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Diagonization}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Eigen-things}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Characteristic polynomial}{4}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Canonical forms}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Minimal polynomials and Cayley-Hamilton}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Invariant subspaces}{10}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Primary Decomposition}{12}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Cyclic decomposition}{13}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Rational canonical forms}{16}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Primary cyclic decomposition and Jordan canonical forms}{18}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Semisimple transformations}{21}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Bonus section}{23}{subsection.3.8}%
+\contentsline {section}{\numberline {4}Inner product spaces}{24}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Inner product}{24}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Orthogonality}{27}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Adjoint maps}{29}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Orthogonal maps and Unitary maps}{31}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Normal maps}{32}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Bilinear forms}{35}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Positive define matrices}{37}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Bilinear forms on inner product spaces}{38}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Spectral decomposition}{39}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Further on normal maps}{42}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Bilinear forms}{45}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Some special bilinear forms}{46}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Lie algebras}{48}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Abelian, nilpotent and solvable Lie algebras}{52}{subsection.6.3}%

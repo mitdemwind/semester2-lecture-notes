@@ -17,14 +17,35 @@ defaultpen(fontsize(11pt));
 settings.tex="latex";
 settings.outformat="pdf";
 
-pair A = (-0.1, 0), B = (0.2, 0);
-draw(circle(A, 0.08));
-draw(circle(B, 0.08));
-draw((-0.02, 0) -- (0.12, 0));
+size(8cm);
+pair A = (-1, 0);
+pair B = (1 + 2*pi, 0);
+pair C = (0, 1);
+pair D = (2*pi, 1);
+draw(circle(C, 1), blue);
+draw(circle(D, 1), blue);
+draw(A--B);
 
-pair C = (0.5, 0), D = (0.8, 0);
-draw(circle(C, 0.07), grey+linewidth(7));
-draw(circle(D, 0.07), grey+linewidth(7));
-draw((0.59, 0)--(0.71, 0), grey+linewidth(7));
+real t = 0, s = 0;
+for(int i = -320; i <= 1320; i += 1)
+{
+s = ((i-1)*pi)/500;
+t = (i*pi)/500;
+D((t - sin(t), 1 - cos(t))--(s - sin(s), 1 - cos(s)), red);
+}
+for(int i = -320; i <= 1320; i += 1)
+{
+s = ((i-1)*pi)/500;
+t = (i*pi)/500;
+D((t-0.5*sin(t), 1-0.5*cos(t))--(s-0.5*sin(s), 1-0.5*cos(s)), lightred);
+}
+for(int i = -320; i <= 1320; i += 1)
+{
+s = ((i-1)*pi)/500;
+t = (i*pi)/500;
+D((t-1.5*sin(t), 1-1.5*cos(t))--(s-1.5*sin(s), 1-1.5*cos(s)), pink);
+}
 
-draw(circle((1.1, 0), 0.1)); draw((1.1, 0.1)--(1.1, -0.1));
+D((0, 0)); D((2*pi, 0));
+D((0, 0.5), lightred); D((2*pi, 0.5), lightred);
+D((0, -0.5), pink); D((2*pi, -0.5), pink);
