@@ -1,2 +1,13 @@
 # semester2-lecture-notes
 My math course notes in 2023 spring.
+- **Mathematical Analysis II (Honor)**,
+  taught by Yang Shiwu
+- **Advanced Algebra II (Honor)**,
+  taught by An Jinpeng
+- **Geometry II (Honor)**,
+	taught by Liu Yi
+- **Measure Theory**,
+  taught by Zhang Fuxi
+
+There might be a little missing part or mistakes in the notes,
+if you find any, welcome to open issues or PRs.

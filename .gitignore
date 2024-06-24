@@ -10,3 +10,7 @@
 **/*.run.xml
 **/*.synctex.gz
 **/*.toc
+*.py
+
+__pycache__
+Test
