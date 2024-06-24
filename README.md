@@ -9,5 +9,5 @@ My math course notes in 2023 spring.
 - **Measure Theory**,
   taught by Zhang Fuxi
 
-There might be a little missing part or mistakes in the notes,
+There might be a few missing parts or mistakes in the notes,
 if you find any, welcome to open issues or PRs.
